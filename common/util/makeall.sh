@@ -43,7 +43,7 @@ _repos='arr clarg err futils himem log mt19937 str table';
 
 for _repo in ${_repos}; do
 	cd ${_repo};
-	${_echo} "Building sub-repo ‘${repo}’..." >/dev/stderr;
+	${_echo} "Building sub-repo ‘${_repo}’..." >/dev/stderr;
 	${_make} ${_target} -j${_jobs};
 	cd ..;
 done
