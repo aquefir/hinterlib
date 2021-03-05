@@ -23,7 +23,7 @@ common/util/cleanall.sh;
 common/util/makeall.sh release;
 
 if test "${PREFIX}" = ''; then
-	PREFIX='/usr/local/x86_64-pc-ape';
+	PREFIX='/usr/local';
 fi
 
 _prefix="${PREFIX}";
