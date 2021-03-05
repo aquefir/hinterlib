@@ -17,7 +17,7 @@ int uni_print( const char * fmt, ... )
 {
 	va_list args;
 
-	ASSERT_RETNEG1( fmt != NULL );
+	UNI_ASSERT( fmt != NULL );
 	fprintf( stdout, "\n[info] " );
 	va_start( args, fmt );
 	vprintf( fmt, args );
@@ -31,7 +31,7 @@ int uni_pwarn( const char * fmt, ... )
 {
 	va_list args;
 
-	ASSERT_RETNEG1( fmt != NULL );
+	UNI_ASSERT( fmt != NULL );
 	fprintf( stdout, "\n[warn] " );
 	va_start( args, fmt );
 	vprintf( fmt, args );
@@ -45,7 +45,7 @@ int uni_perror( const char * fmt, ... )
 {
 	va_list args;
 
-	ASSERT_RETNEG1( fmt != NULL );
+	UNI_ASSERT( fmt != NULL );
 	fprintf( stderr, "\n[fail] " );
 	va_start( args, fmt );
 	vprintf( fmt, args );
