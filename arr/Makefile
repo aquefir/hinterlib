@@ -25,7 +25,7 @@ INCLUDES := include ../decl/include ../err/include ../log/include \
 INCLUDEL := src
 
 # space-separated library name list
-LIBS    :=
+LIBS    := uni_log uni_err uni_himem
 LIBDIRS :=
 
 # frameworks (macOS target only)

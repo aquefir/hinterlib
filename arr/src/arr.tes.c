@@ -9,6 +9,8 @@
 
 #include "arr.h"
 
+#include <uni/memory.h>
+
 TES_OPEN( );
 
 struct uni_arr* s32array;
