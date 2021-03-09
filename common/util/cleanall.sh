@@ -3,8 +3,8 @@
 
 if test "$(uname -s)" = 'Darwin'; then
 	_make=gmake;
-	if command -v gecho >/dev/null 2>&1; then
-		_echo=gecho;
+	if test -f /usr/local/opt/coreutils/bin/gecho; then
+		_echo=/usr/local/opt/coreutils/bin/gecho;
 	else
 		_echo='/bin/echo'; # ensure it is not a bashism
 	fi
