@@ -186,7 +186,7 @@ static void set_seed_arr( struct mt_prng * prng, u32 * seed, ptri seed_sz )
 
 	set_seed( prng, 19650218u );
 
-	for( i = j = 0, k = N > seed_sz ? N : seed_sz; k != 0; --k )
+	for( i = 1, j = 0, k = N > seed_sz ? N : seed_sz; k != 0; --k )
 	{
 		prng->mt[i] = ( prng->mt[i] ^
 				      ( ( prng->mt[i - 1] ^

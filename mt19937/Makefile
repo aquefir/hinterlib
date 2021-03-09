@@ -25,7 +25,7 @@ INCLUDES := include ../decl/include ../err/include ../log/include \
 INCLUDEL :=
 
 # space-separated library name list
-LIBS    :=
+LIBS    := uni_log uni_err uni_himem
 LIBDIRS :=
 
 # frameworks (macOS target only)
@@ -34,7 +34,7 @@ FWORKS :=
 # ‘3P’ are in-tree 3rd-party dependencies
 # 3PLIBDIR is the base directory
 # 3PLIBS is the folder names in the base directory for each library
-3PLIBDIR := 3rdparty
+3PLIBDIR :=
 3PLIBS   :=
 
 # sources
@@ -46,12 +46,11 @@ PUBHFILES := \
 PRVHFILES :=
 
 # test suite sources
-TES_CFILES    :=
+TES_CFILES    := \
+	src/random.tes.c
 TES_PUBHFILES :=
 TES_CPPFILES  :=
 TES_PRVHFILES :=
-
-NO_TES := 1
 
 # this defines all our usual targets
 include $(AQ)/lib/slick/targets.mk
