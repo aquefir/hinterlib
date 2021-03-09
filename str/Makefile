@@ -25,7 +25,7 @@ INCLUDES := include ../decl/include ../err/include ../himem/include \
 INCLUDEL := src
 
 # space-separated library name list
-LIBS    :=
+LIBS    := uni_log uni_err uni_himem
 LIBDIRS :=
 
 # frameworks (macOS target only)
@@ -34,8 +34,8 @@ FWORKS :=
 # ‘3P’ are in-tree 3rd-party dependencies
 # 3PLIBDIR is the base directory
 # 3PLIBS is the folder names in the base directory for each library
-3PLIBDIR := 3rdparty
-3PLIBS   := tes
+3PLIBDIR :=
+3PLIBS   :=
 
 # sources
 SFILES    :=
