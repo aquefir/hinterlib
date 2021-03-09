@@ -6,11 +6,12 @@
 for old ‘embedded’ platforms like the IBM PC and the Game Boy Advance.
 
 Originally it was named `unilib` for lack of a better name, and the 1.x API
-still reflects this. `unilib` was forked into Neopolitan to provide dedicated
-support for [APE](https://justine.lol/ape.html) and its implementing
-[Cosmopoltian libc](https://justine.lol/cosmopolitan/index.html).
+still reflects this. `unilib` was forked into
+[Neopolitan](https://aquefir.co/neopolitan) to provide dedicated support for
+[APE](https://justine.lol/ape.html) and its implementing [Cosmopolitan
+libc](https://justine.lol/cosmopolitan/index.html).
 
-Geneticist [Razib Khan](https://twitter.com/razibkhan) [wrote an
+Geneticist [Razib Khan](https://twitter.com/razibkhan) once [wrote an
 article](https://razib.substack.com/p/they-came-they-saw-they-left-no-trace)
 detailing the genetic history of those inhabiting the Italian peninsula. In it
 he showed that during the height of imperial Rome, an intense cosmopolitanism
@@ -72,6 +73,13 @@ errors.
 UTF-8 validation, conversion, and inspection routines are also available.
 There are also high-level `struct`s and function collections for
 automatically-memory-managed strings and generic arrays.
+
+Hinterlib also integrates a portable Mersenne–Twister 19937 algorithm (of the
+64-bit variety), which is included as `<mt19937/random.h>`.
+
+Command line argument parsing is among the more recent additions to the
+library, and is the first ‘backported’ from Neopolitan. Another relatively new
+addition is the table module for database-like in-memory data management.
 
 Lastly, there are cross-platform wrappers for standard I/O and heap usage,
 which either wrap or implement logging and `malloc()` where necessary.
