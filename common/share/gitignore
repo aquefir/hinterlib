@@ -4,6 +4,7 @@
 /3rdparty/*
 !/3rdparty/README
 
+coverage.report
 *.prof*
 *.tes
 *.o
