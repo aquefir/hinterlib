@@ -9,6 +9,7 @@
 
 #include "table.h"
 
+#include <uni/memory.h>
 #include <uni/types/int.h>
 
 TES_OPEN( );
@@ -16,8 +17,12 @@ TES_OPEN( );
 struct uni_tbl* tbl1;
 struct uni_tbl* tbl2;
 uni_tblkey_t key1, key2, key3;
-u8* data1 = {0, 1, 2, 3};
-u8* data2 = {0, 0, 0, 0};
+u8* data1 = uni_alloc0( sizeof(u8) * 4 );
+u8* data2 = uni_alloc0( sizeof(u8) * 4 );
+
+data1[1] = 1;
+data1[2] = 2;
+data1[3] = 3;
 
 tbl1 = uni_tbl_init( sizeof(s32) );
 key1 = uni_new_tblkey( );
