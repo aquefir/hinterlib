@@ -8,6 +8,8 @@
 #ifndef INC_API__UNI_TYPES_FLOAT_H
 #define INC_API__UNI_TYPES_FLOAT_H
 
+#include "int.h"
+
 /* XXX: Copied from ../decl.h, as we do not #include with dotdirs */
 #if !defined( UNI_DEPRECATED )
 #if !defined( UNI_NODEPREC )
@@ -25,21 +27,19 @@
 #endif /* !defined( UNI_NODEPREC ) */
 #endif /* defined( UNI_DEPRECATED ) */
 
-/* VS Code complains that __fp16 is undefined... */
-#if defined( __clang__ ) && !defined( __VSCODE_INTELLISENSE__ )
-#if( defined( __arm__ ) || defined( __aarch64__ ) )
-typedef _Float16 f16;
-#else
-/* this is unsupported outside ARM because of ABIs */
-typedef __fp16 f16;
-#endif
-#else
-typedef float f16;
-#endif
+typedef u16 f16;
 
 typedef float f32;
 typedef double f64;
 typedef long double f80 UNI_DEPRECATED;
-typedef long double fbig;
+#if defined( __GNUC__ ) && !defined( __clang__ )
+typedef __float128 f128;
+#define UNI_HAS_F128() 1
+#elif defined( __clang__ ) && UNI_HAS_I128()
+typedef u128 f128;
+#define UNI_HAS_F128() 1
+#else
+#define UNI_HAS_F128() 0
+#endif
 
 #endif /* INC_API__UNI_TYPES_FLOAT_H */
