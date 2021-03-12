@@ -34,12 +34,12 @@ typedef double f64;
 typedef long double f80 UNI_DEPRECATED;
 #if defined( __GNUC__ ) && !defined( __clang__ )
 typedef __float128 f128;
-#define UNI_HAS_F128() 1
-#elif defined( __clang__ ) && UNI_HAS_I128()
+#define UNI_HAS_F128( ) 1
+#elif defined( __clang__ ) && UNI_HAS_I128( )
 typedef u128 f128;
-#define UNI_HAS_F128() 1
+#define UNI_HAS_F128( ) 1
 #else
-#define UNI_HAS_F128() 0
+#define UNI_HAS_F128( ) 0
 #endif
 
 #endif /* INC_API__UNI_TYPES_FLOAT_H */
