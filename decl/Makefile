@@ -46,12 +46,23 @@ PUBHFILES := \
 	include/uni/types/geo.h \
 	include/uni/types/int.h \
 	include/uni/types/mathprim.h \
+	include/uni/types/opt/bound.h \
+	include/uni/types/opt/common.h \
+	include/uni/types/opt/float.h \
+	include/uni/types/opt/int.h \
+	include/uni/types/opt/point.h \
+	include/uni/types/opt/quant.h \
+	include/uni/types/opt/range.h \
+	include/uni/types/opt/vecf.h \
+	include/uni/types/opt/veci.h \
 	include/uni/types/opt.h \
 	include/uni/types/options.h \
 	include/uni/types/point.h \
 	include/uni/types/quant.h \
 	include/uni/types/range.h \
 	include/uni/types/vec.h \
+	include/uni/types/vecf.h \
+	include/uni/types/veci.h \
 	include/uni/decl.h \
 	include/uni/ver.h
 PRVHFILES :=
