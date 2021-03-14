@@ -5,12 +5,9 @@
  *                       Released under BSD-2-Clause.                       *
 \****************************************************************************/
 
-#ifndef INC_API__UNI_TYPES_OPT_H
-#define INC_API__UNI_TYPES_OPT_H
+#ifndef INC_API__UNI_TYPES_OPT_VECF_H
+#define INC_API__UNI_TYPES_OPT_VECF_H
 
-#pragma message( \
-	"DEPRECATED: opt.h is deprecated. Please include <uni/types/opt/common> instead." )
+#include <uni/types/vecf.h>
 
-#include <uni/types/opt/common.h>
-
-#endif /* INC_API__UNI_TYPES_OPT_H */
+#endif /* INC_API__UNI_TYPES_OPT_VECF_H */
