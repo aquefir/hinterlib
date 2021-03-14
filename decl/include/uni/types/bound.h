@@ -222,7 +222,7 @@ typedef volatile struct _uni_b16d6 vb16d6;
 typedef struct _uni_b32d6 b32d6;
 typedef volatile struct _uni_b32d6 vb32d6;
 #if UNI_HAS_I64( )
-typedef struct _uni_b64d6 q64d6;
+typedef struct _uni_b64d6 b64d6;
 typedef volatile struct _uni_b64d6 vb64d6;
 #endif /* UNI_HAS_I64( ) */
 #if UNI_HAS_I128( )
