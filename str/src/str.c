@@ -10,6 +10,7 @@
 #include <stdarg.h>
 #include <uni/err.h>
 #include <uni/memory.h>
+#include <uni/types/range.h>
 
 #include "utf8.h"
 
@@ -812,7 +813,7 @@ char * uni_str_make( struct uni_str * str )
 	}
 }
 
-char * uni_str_mkslice( struct uni_str * str, struct rangep r )
+char * uni_str_mkslice( struct uni_str * str, ru64 r )
 {
 	if( !str || r.hi <= r.lo || r.hi > str->sz )
 	{

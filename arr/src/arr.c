@@ -10,6 +10,7 @@
 #include <stdarg.h>
 #include <uni/err.h>
 #include <uni/memory.h>
+#include <uni/types/range.h>
 
 struct uni_arr * uni_arr_init( u32 elemsz )
 {
@@ -158,7 +159,7 @@ void * uni_arr_make( struct uni_arr * arr )
 	}
 }
 
-void * uni_arr_mkslice( struct uni_arr * arr, struct rangep r )
+void * uni_arr_mkslice( struct uni_arr * arr, ru64 r )
 {
 	if( !arr )
 	{
@@ -398,7 +399,7 @@ struct uni_arr * uni_arr_concv( struct uni_arr ** arr )
 	}
 }
 
-struct uni_arr * uni_arr_slice( struct uni_arr * arr, struct rangep r )
+struct uni_arr * uni_arr_slice( struct uni_arr * arr, ru64 r )
 {
 	if( !arr || r.hi <= r.lo || r.hi > arr->sz )
 	{

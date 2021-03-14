@@ -11,6 +11,7 @@
 #include <uni/types/mathprim.h>
 #include <uni/types/int.h>
 #include <uni/types/opt.h>
+#include <uni/types/opt/range.h>
 
 struct uni_str;
 
@@ -20,7 +21,7 @@ void uni_str_fini( struct uni_str * );
 struct uni_str * uni_str_dup( struct uni_str * );
 ptri uni_str_getsz( struct uni_str * );
 char * uni_str_make( struct uni_str * );
-char * uni_str_mkslice( struct uni_str *, struct rangep );
+char * uni_str_mkslice( struct uni_str *, ru64 );
 
 int uni_str_app( struct uni_str *, const char * );
 int uni_str_appch( struct uni_str *, char );
