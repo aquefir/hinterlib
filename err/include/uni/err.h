@@ -1,3 +1,9 @@
+/****************************************************************************\
+ *                         Hinterlib error handling                         *
+ *                                                                          *
+ *                      Copyright © 2019-2021 Aquefir.                      *
+ *                       Released under BSD-2-Clause.                       *
+\****************************************************************************/
 
 #ifndef INC_API__UNI_ERR_H
 #define INC_API__UNI_ERR_H

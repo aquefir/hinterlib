@@ -1,7 +1,7 @@
 ##############################################################################
-##                         unilib base declarations                         ##
+##                       Hinterlib™ base declarations                       ##
 ##                                                                          ##
-##                      Copyright © 2019-2020 Aquefir                       ##
+##                      Copyright © 2019-2021 Aquefir.                      ##
 ##                       Released under BSD-2-Clause.                       ##
 ##############################################################################
 

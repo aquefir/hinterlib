@@ -3,7 +3,7 @@ This file contains the project’s copypastable boilerplate comment headers.
 Boilerplate for C-like languages:
 
 /****************************************************************************\
- *                       Hinterlib™ command line args                       *
+ *                 Mersenne-Twister Algorithm 19937, 32-bit                 *
  *                                                                          *
  *                      Copyright © 2019-2021 Aquefir.                      *
  *                       Released under BSD-2-Clause.                       *
@@ -12,7 +12,7 @@ Boilerplate for C-like languages:
 Hash-based boilerplate (Python, POSIX shell, Makefile):
 
 ##############################################################################
-##                       Hinterlib™ command line args                       ##
+##                 Mersenne-Twister Algorithm 19937, 32-bit                 ##
 ##                                                                          ##
 ##                      Copyright © 2019-2021 Aquefir.                      ##
 ##                       Released under BSD-2-Clause.                       ##

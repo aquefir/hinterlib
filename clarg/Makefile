@@ -1,5 +1,5 @@
 ##############################################################################
-##                         unilib command line args                         ##
+##                       Hinterlib™ command line args                       ##
 ##                                                                          ##
 ##                      Copyright © 2019-2021 Aquefir.                      ##
 ##                       Released under BSD-2-Clause.                       ##
