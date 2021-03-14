@@ -25,7 +25,7 @@ typedef f64 f64v2 __attribute__( ( vector_size( 16 ) ) );
 typedef f64 f64v4 __attribute__( ( vector_size( 32 ) ) );
 typedef f64 f64v8 __attribute__( ( vector_size( 64 ) ) );
 
-#if UNI_HAS_F128()
+#if UNI_HAS_F128( )
 typedef f128 f128v2 __attribute__( ( vector_size( 16 ) ) );
 typedef f128 f128v4 __attribute__( ( vector_size( 32 ) ) );
 #endif /* UNI_HAS_F128() */
@@ -45,7 +45,7 @@ typedef volatile f64v2 vf64v2;
 typedef volatile f64v4 vf64v4;
 typedef volatile f64v8 vf64v8;
 
-#if UNI_HAS_F128()
+#if UNI_HAS_F128( )
 typedef volatile f128v2 vf128v2;
 typedef volatile f128v4 vf128v4;
 #endif /* UNI_HAS_F128 */

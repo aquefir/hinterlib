@@ -46,7 +46,7 @@ typedef u32 u32v4 __attribute__( ( vector_size( 16 ) ) );
 typedef u32 u32v8 __attribute__( ( vector_size( 32 ) ) );
 typedef u32 u32v16 __attribute__( ( vector_size( 64 ) ) );
 
-#if UNI_HAS_I64()
+#if UNI_HAS_I64( )
 typedef s64 s64v2 __attribute__( ( vector_size( 16 ) ) );
 typedef s64 s64v4 __attribute__( ( vector_size( 32 ) ) );
 typedef s64 s64v8 __attribute__( ( vector_size( 64 ) ) );
@@ -56,7 +56,7 @@ typedef u64 u64v4 __attribute__( ( vector_size( 32 ) ) );
 typedef u64 u64v8 __attribute__( ( vector_size( 64 ) ) );
 #endif /* UNI_HAS_I64() */
 
-#if UNI_HAS_I128()
+#if UNI_HAS_I128( )
 typedef s128 s128v2 __attribute__( ( vector_size( 16 ) ) );
 typedef s128 s128v4 __attribute__( ( vector_size( 32 ) ) );
 
@@ -102,7 +102,7 @@ typedef volatile u32v4 vu32v4;
 typedef volatile u32v8 vu32v8;
 typedef volatile u32v16 vu32v16;
 
-#if UNI_HAS_I64()
+#if UNI_HAS_I64( )
 typedef volatile s64v2 vs64v2;
 typedef volatile s64v4 vs64v4;
 typedef volatile s64v8 vs64v8;
@@ -112,7 +112,7 @@ typedef volatile u64v4 vu64v4;
 typedef volatile u64v8 vu64v8;
 #endif /* UNI_HAS_I64() */
 
-#if UNI_HAS_I128()
+#if UNI_HAS_I128( )
 typedef volatile s128v2 vs128v2;
 typedef volatile s128v4 vs128v4;
 

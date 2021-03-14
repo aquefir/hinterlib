@@ -28,16 +28,16 @@ enum
 {
 	SIZEOF_CHAR = 1,
 #if defined( __i386__ ) || defined( CFG_GBA )
-	SIZEOF_PTR  = 4,
+	SIZEOF_PTR = 4,
 #elif defined( __x86_64__ )
-	SIZEOF_PTR  = 8,
+	SIZEOF_PTR = 8,
 #endif
-	S8_MIN      = -128,
-	S8_MAX      = 127,
-	S16_MIN     = -32768,
-	S16_MAX     = 32767,
-	U8_MAX      = 255,
-	U16_MAX     = 65535
+	S8_MIN  = -128,
+	S8_MAX  = 127,
+	S16_MIN = -32768,
+	S16_MAX = 32767,
+	U8_MAX  = 255,
+	U16_MAX = 65535
 };
 
 enum
@@ -53,13 +53,13 @@ enum
 
 enum
 {
-	U64_MAX  = 18446744073709551615UL
+	U64_MAX = 18446744073709551615UL
 };
 
 enum
 {
-	S64_MIN  = -9223372036854775808LL,
-	S64_MAX  = 9223372036854775807LL
+	S64_MIN = -9223372036854775808LL,
+	S64_MAX = 9223372036854775807LL
 };
 
 enum
@@ -68,8 +68,8 @@ enum
 	OFFS_MIN = S32_MIN,
 	OFFS_MAX = S32_MAX
 #elif defined( __x86_64__ )
-	OFFS_MIN = S64_MIN,
-	OFFS_MAX = S64_MAX
+	OFFS_MIN   = S64_MIN,
+	OFFS_MAX   = S64_MAX
 #endif
 };
 
@@ -78,7 +78,7 @@ enum
 #if defined( __i386__ ) || defined( CFG_GBA )
 	PTRI_MAX = U32_MAX
 #elif defined( __x86_64__ )
-	PTRI_MAX = U64_MAX
+	PTRI_MAX   = U64_MAX
 #else
 #error "Unknown platform."
 #endif
