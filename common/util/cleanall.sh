@@ -25,5 +25,8 @@ for _repo in ${_repos}; do
 	cd ..;
 done
 
+${_echo} 'Cleaning up profiling data...' >/dev/stderr;
+rm -f default.prof{raw,data};
+
 ${_echo} 'All done. Exiting...' >/dev/stderr;
 unset _repo _repos _echo _make;
