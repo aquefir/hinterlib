@@ -12,17 +12,17 @@
 
 struct _uni_rs8
 {
-	s64 lo, hi;
+	s8 lo, hi;
 };
 
 struct _uni_rs16
 {
-	s64 lo, hi;
+	s16 lo, hi;
 };
 
 struct _uni_rs32
 {
-	s64 lo, hi;
+	s32 lo, hi;
 };
 
 #if UNI_HAS_I64( )
@@ -41,17 +41,17 @@ struct _uni_rs128
 
 struct _uni_ru8
 {
-	u64 lo, hi;
+	u8 lo, hi;
 };
 
 struct _uni_ru16
 {
-	u64 lo, hi;
+	u16 lo, hi;
 };
 
 struct _uni_ru32
 {
-	u64 lo, hi;
+	u32 lo, hi;
 };
 
 #if UNI_HAS_I64( )
