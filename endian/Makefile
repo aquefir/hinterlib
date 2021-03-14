@@ -15,7 +15,7 @@ PROJECT := uni_endian
 
 # put a ‘1’ for the desired target types to compile
 SOFILE :=
-AFILE  := 1
+AFILE  :=
 
 # space-separated path list for #includes
 # <system> includes

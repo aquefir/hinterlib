@@ -15,7 +15,7 @@ PROJECT := uni_decl
 
 # put a ‘1’ for the desired target types to compile
 SOFILE :=
-AFILE  := 1
+AFILE  :=
 
 # space-separated path list for #includes
 # <system> includes
@@ -41,12 +41,16 @@ SFILES    :=
 CFILES    :=
 CPPFILES  :=
 PUBHFILES := \
+	include/uni/types/bound.h \
 	include/uni/types/float.h \
 	include/uni/types/geo.h \
 	include/uni/types/int.h \
 	include/uni/types/mathprim.h \
 	include/uni/types/opt.h \
 	include/uni/types/options.h \
+	include/uni/types/point.h \
+	include/uni/types/quant.h \
+	include/uni/types/range.h \
 	include/uni/types/vec.h \
 	include/uni/decl.h \
 	include/uni/ver.h
