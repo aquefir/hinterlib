@@ -19,7 +19,7 @@ AFILE  := 1
 
 # space-separated path list for #includes
 # <system> includes
-INCLUDES := include ../log/include
+INCLUDES := include ../log/include ../himem/include
 # "local" includes
 INCLUDEL := src
 
@@ -33,8 +33,8 @@ FWORKS :=
 # ‘3P’ are in-tree 3rd-party dependencies
 # 3PLIBDIR is the base directory
 # 3PLIBS is the folder names in the base directory for each library
-3PLIBDIR := 3rdparty
-3PLIBS   := tes
+3PLIBDIR :=
+3PLIBS   :=
 
 # sources
 SFILES    :=
