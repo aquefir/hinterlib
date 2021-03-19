@@ -18,8 +18,6 @@
  * 22-31 : error flags (sub-bitfield) (10 bits)
  */
 
-typedef u32 uni_err_t;
-
 #define UNI_ERRCODE_GET_DESC( C ) ( (C)&1023 )
 #define UNI_ERRCODE_GET_MOD( C ) ( ( ( C ) >> 10 ) & 511 )
 #define UNI_ERRCODE_GET_LVL( C ) ( ( ( C ) >> 18 ) & 8 )
@@ -27,6 +25,9 @@ typedef u32 uni_err_t;
 
 #define UNI_ERRCODE_MAKE( D, M, E, L ) \
 	( ( D ) | ( ( M ) << 10 ) | ( ( E ) << 21 ) | ( ( L ) << 27 ) )
+
+/* so this can be extended later perhaps */
+typedef u32 uni_err_t;
 
 enum
 {
@@ -49,6 +50,14 @@ enum
 	UNI_ERR_MOD_COSMO,
 	UNI_ERR_MOD_NT,
 	UNI_ERR_MOD_SYSV,
+	UNI_ERR_MOD_GBABIOS,
+	UNI_ERR_MOD_DPMI,
+	UNI_ERR_MOD_WIN32,
+	UNI_ERR_MOD_LINUX,
+	UNI_ERR_MOD_DARWIN,
+	UNI_ERR_MOD_X11,
+	UNI_ERR_MOD_GL,
+	UNI_ERR_MOD_POSIX,
 	UNI_MAX_ERR_MOD
 };
 
@@ -92,29 +101,18 @@ enum
 	UNI_ERR_EMASK_RESERVED3 = 1 << UNI_ERR_EFLAG_RESERVED3
 };
 
-/* XXX: Deprecate this somehow */
-enum /* err */
-{
-	UNI_ERR_SUCCESS = 0,
-	UNI_ERR_NULLREF,
-	UNI_MAX_BUILTIN_ERR = 0x7FFF,
-	UNI_MIN_CUSTOM_ERR  = 0x8000,
-	UNI_MAX_CUSTOM_ERR  = 0xFFFE,
-	UNI_MAX_ERR         = 0xFFFF
-};
-
 #if defined( NDEBUG )
 #define UNI_ASSERT( cnd ) ( (void)0 )
-#else /* !defined(NDEBUG) */
+#else /* !defined( NDEBUG ) */
 #define UNI_ASSERT( cnd ) \
 	( ( cnd ) ? (void)0 \
 		  : uni_assert_fail( #cnd, __FILE__, __LINE__, __func__ ) )
-#endif /* defined(NDEBUG) */
+#endif /* defined( NDEBUG ) */
 
 #if !defined( ASSERT )
 #define ASSERT( cnd ) \
 	_Pragma( \
-		"ASSERT() CPP macro is deprecated. Use UNI_ASSERT() instead" ) \
+		"ASSERT( ) CPP macro is deprecated. Use UNI_ASSERT( ) instead" ) \
 		UNI_ASSERT( cnd )
 #endif /* !defined( ASSERT ) */
 
