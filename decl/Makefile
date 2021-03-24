@@ -42,12 +42,16 @@ CFILES    :=
 CPPFILES  :=
 PUBHFILES := \
 	include/uni/types/bound.h \
+	include/uni/types/complexf.h \
+	include/uni/types/complexi.h \
 	include/uni/types/float.h \
 	include/uni/types/geo.h \
 	include/uni/types/int.h \
 	include/uni/types/mathprim.h \
 	include/uni/types/opt/bound.h \
 	include/uni/types/opt/common.h \
+	include/uni/types/opt/complexf.h \
+	include/uni/types/opt/complexi.h \
 	include/uni/types/opt/float.h \
 	include/uni/types/opt/int.h \
 	include/uni/types/opt/point.h \
