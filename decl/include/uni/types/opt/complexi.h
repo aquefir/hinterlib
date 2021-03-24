@@ -16,6 +16,14 @@
 #include <uni/types/complexi.h>
 #include <uni/types/opt/common.h>
 
+#ifndef REAL
+#define REAL __real__
+#endif /* REAL */
+
+#ifndef IMAG
+#define IMAG __imag__
+#endif /* IMAG */
+
 UNI_DECL_OPT( cs8 );
 UNI_DECL_OPT( cs16 );
 UNI_DECL_OPT( cs32 );
