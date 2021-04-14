@@ -24,19 +24,11 @@
 #define IMAG __imag__
 #endif /* IMAG */
 
-UNI_DECL_OPT( cf16 );
 UNI_DECL_OPT( cf32 );
 UNI_DECL_OPT( cf64 );
-#if UNI_HAS_F128( )
-UNI_DECL_OPT( cf128 );
-#endif /* UNI_HAS_F128 */
 
-UNI_DECL_OPT( vcf16 );
 UNI_DECL_OPT( vcf32 );
 UNI_DECL_OPT( vcf64 );
-#if UNI_HAS_F128( )
-UNI_DECL_OPT( vcf128 );
-#endif /* UNI_HAS_F128 */
 
 #endif /* !defined( __clang__) && !defined( __GNUC__ ) */
 

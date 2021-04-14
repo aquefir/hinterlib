@@ -27,24 +27,11 @@
 #endif /* !defined( UNI_NODEPREC ) */
 #endif /* defined( UNI_DEPRECATED ) */
 
-typedef u16 f16;
-typedef volatile u16 vf16;
-
 typedef float f32;
 typedef volatile float vf32;
 typedef double f64;
 typedef volatile double vf64;
 typedef long double f80 UNI_DEPRECATED;
-#if defined( __GNUC__ ) && !defined( __clang__ )
-typedef __float128 f128;
-typedef volatile __float128 f128;
-#define UNI_HAS_F128( ) 1
-#elif defined( __clang__ ) && UNI_HAS_I128( )
-typedef u128 f128;
-typedef volatile u128 vf128;
-#define UNI_HAS_F128( ) 1
-#else
 #define UNI_HAS_F128( ) 0
-#endif
 
 #endif /* INC_API__UNI_TYPES_FLOAT_H */

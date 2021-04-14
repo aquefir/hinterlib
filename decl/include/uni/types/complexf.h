@@ -15,24 +15,6 @@
 
 #include <uni/types/float.h>
 
-#if defined( __VSCODE_INTELLISENSE__ )
-
-typedef __complex__ float cf16;
-typedef __complex__ double cf128;
-
-typedef __complex__ volatile float vcf16;
-typedef __complex__ volatile double vcf128;
-
-#else
-
-typedef __complex__ short cf16;
-typedef __complex__ __float128 cf128;
-
-typedef __complex__ volatile short vcf16;
-typedef __complex__ volatile __float128 vcf128;
-
-#endif /* defined( __VSCODE_INTELLISENSE__ ) */
-
 typedef __complex__ float cf32;
 typedef __complex__ double cf64;
 
