@@ -59,6 +59,13 @@
 				"CFG_DARWIN",
 				"CFG_AMD64",
 				"CFG_LILENDIAN",
+				"CFG_WORDSZ_64",
+				"CFG_LONGSZ_64",
+				"CFG_HAVE_I32",
+				"CFG_HAVE_I64",
+				"CFG_HAVE_FP",
+				"CFG_FP_HARD",
+				"CFG_FP_SOFT",
 				"__VSCODE_INTELLISENSE__"
 			],
 			"compilerPath": "/usr/bin/clang",
