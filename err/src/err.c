@@ -83,8 +83,10 @@ static const ptri k_err_eflags_strsz[UNI_ERR_EFLAG_RESERVED3 + 1] = {
 		sizeof( "Reserved (2)" ) + sizeof( "Reserved (3)" ) + \
 		( UNI_ERR_EFLAG_RESERVED3 * 2 ) )
 
+#if defined( CFG_POSIX )
 static int err_eflags_buf_mut_init = 0;
 static pthread_mutex_t err_eflags_buf_mut;
+#endif /* defined( CFG_POSIX ) */
 
 static char err_eflags_buf[ERR_EFLAGS_ALL_STRSZ] = { 0 };
 
@@ -142,6 +144,7 @@ const char * uni_err_eff_tostr( uni_err_t n )
 
 		if( ( f & b ) == b )
 		{
+#if defined( CFG_POSIX )
 			/* initialise the buffer’s mutex */
 			if( !err_eflags_buf_mut_init )
 			{
@@ -167,6 +170,7 @@ const char * uni_err_eff_tostr( uni_err_t n )
 					return NULL;
 				}
 			}
+#endif /* defined( CFG_POSIX ) */
 
 			if( j > 0 && j < ERR_EFLAGS_ALL_STRSZ - 2 )
 			{
@@ -183,10 +187,12 @@ const char * uni_err_eff_tostr( uni_err_t n )
 		}
 	}
 
+#if defined( CFG_POSIX )
 	if( lock )
 	{
 		r = pthread_mutex_unlock( &err_eflags_buf_mut );
 	}
+#endif /* defined( CFG_POSIX ) */
 
 	return (const char *)err_eflags_buf;
 }

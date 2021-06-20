@@ -110,6 +110,17 @@ typedef __int64 offs;
 #error "Must be compiling for i386 or AMD64 when targeting Windows"
 #endif /* _M_ arch */
 /* UNIX land */
+#elif defined( CFG_GBA )
+typedef __INT32_TYPE__ s32;
+typedef __INT16_TYPE__ s16;
+typedef __INT8_TYPE__ s8;
+typedef __UINT32_TYPE__ u32;
+typedef __UINT16_TYPE__ u16;
+typedef __UINT8_TYPE__ u8;
+typedef __UINT32_TYPE__ ptri;
+typedef __INT32_TYPE__ offs;
+#define UNI_HAS_I128( ) 0
+#define UNI_HAS_I64( ) 0
 #elif defined( __clang__ ) || defined( __GNUC__ )
 typedef signed __int128 s128;
 typedef __INT64_TYPE__ s64;

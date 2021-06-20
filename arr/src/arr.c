@@ -159,7 +159,7 @@ void * uni_arr_make( struct uni_arr * arr )
 	}
 }
 
-void * uni_arr_mkslice( struct uni_arr * arr, ru64 r )
+void * uni_arr_mkslice( struct uni_arr * arr, rptri r )
 {
 	if( !arr )
 	{
@@ -399,7 +399,7 @@ struct uni_arr * uni_arr_concv( struct uni_arr ** arr )
 	}
 }
 
-struct uni_arr * uni_arr_slice( struct uni_arr * arr, ru64 r )
+struct uni_arr * uni_arr_slice( struct uni_arr * arr, rptri r )
 {
 	if( !arr || r.hi <= r.lo || r.hi > arr->sz )
 	{

@@ -285,6 +285,7 @@ u32 mt_random_u32( struct mt_prng * prng )
 	return (u32)mt_random_s32( prng );
 }
 
+#if defined( CFG_HAVE_I64 )
 s64 mt_random_s64( struct mt_prng * prng )
 {
 	return (s64)mt_random_s32( prng ) |
@@ -295,6 +296,7 @@ u64 mt_random_u64( struct mt_prng * prng )
 {
 	return (u64)mt_random_s64( prng );
 }
+#endif /* defined( CFG_HAVE_I64 ) */
 
 s32 mt_range_s32( struct mt_prng * prng, s32 begin, s32 end )
 {
@@ -326,6 +328,7 @@ u32 mt_range_u32( struct mt_prng * prng, u32 begin, u32 end )
 	return ( mt_random_u32( prng ) % ( end - begin ) ) + begin;
 }
 
+#if defined( CFG_HAVE_I64 )
 s64 mt_range_s64( struct mt_prng * prng, s64 begin, s64 end )
 {
 	if( begin > end || !prng )
@@ -355,3 +358,4 @@ u64 mt_range_u64( struct mt_prng * prng, u64 begin, u64 end )
 
 	return ( mt_random_u64( prng ) % ( end - begin ) ) + begin;
 }
+#endif /* defined( CFG_HAVE_I64 ) */

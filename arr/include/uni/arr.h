@@ -18,10 +18,10 @@ struct uni_arr * uni_arr_init( u32 );
 struct uni_arr * uni_arr_initsz( u32, u32 );
 struct uni_arr * uni_arr_dup( struct uni_arr * );
 void * uni_arr_make( struct uni_arr * );
-void * uni_arr_mkslice( struct uni_arr *, ru64 );
+void * uni_arr_mkslice( struct uni_arr *, rptri );
 struct uni_arr * uni_arr_conc( struct uni_arr *, ... );
 struct uni_arr * uni_arr_concv( struct uni_arr ** );
-struct uni_arr * uni_arr_slice( struct uni_arr *, ru64 );
+struct uni_arr * uni_arr_slice( struct uni_arr *, rptri );
 void uni_arr_fini( struct uni_arr * );
 
 ptri uni_arr_getsz( struct uni_arr * );

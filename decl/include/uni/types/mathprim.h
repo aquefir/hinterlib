@@ -40,50 +40,60 @@ struct point2
 	s32 x, y;
 } UNI_DEPRECATED;
 
+#if defined( CFG_HAVE_I64 )
 struct point2l
 {
 	s64 x, y;
 } UNI_DEPRECATED;
+#endif /* defined( CFG_HAVE_I64 ) */
 
 struct point3
 {
 	s32 x, y, z;
 } UNI_DEPRECATED;
 
+#if defined( CFG_HAVE_I64 )
 struct point3l
 {
 	s64 x, y, z;
 } UNI_DEPRECATED;
+#endif /* defined( CFG_HAVE_I64 ) */
 
 struct bound2
 {
 	u32 l, w;
 } UNI_DEPRECATED;
 
+#if defined( CFG_HAVE_I64 )
 struct bound2l
 {
 	u64 l, w;
 } UNI_DEPRECATED;
+#endif /* defined( CFG_HAVE_I64 ) */
 
 struct bound3
 {
 	u32 l, w, h;
 } UNI_DEPRECATED;
 
+#if defined( CFG_HAVE_I64 )
 struct bound3l
 {
 	u64 l, w, h;
 } UNI_DEPRECATED;
+#endif /* defined( CFG_HAVE_I64 ) */
 
 struct range
 {
 	s32 lo, hi;
 } UNI_DEPRECATED;
 
+#if defined( CFG_HAVE_I64 )
 struct rangel
 {
 	s64 lo, hi;
 } UNI_DEPRECATED;
+#endif /* defined( CFG_HAVE_I64 ) */
 
 struct rangep
 {

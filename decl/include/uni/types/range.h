@@ -39,6 +39,11 @@ struct _uni_rs128
 };
 #endif /* UNI_HAS_I128( ) */
 
+struct _uni_roffs
+{
+	offs lo, hi;
+};
+
 struct _uni_ru8
 {
 	u8 lo, hi;
@@ -68,6 +73,11 @@ struct _uni_ru128
 };
 #endif /* UNI_HAS_I128( ) */
 
+struct _uni_rptri
+{
+	ptri lo, hi;
+};
+
 typedef struct _uni_rs8 rs8;
 typedef volatile struct _uni_rs8 vrs8;
 typedef struct _uni_rs16 rs16;
@@ -82,6 +92,8 @@ typedef volatile struct _uni_rs64 vrs64;
 typedef struct _uni_rs128 rs128;
 typedef volatile struct _uni_rs128 vrs128;
 #endif /* UNI_HAS_I128( ) */
+typedef struct _uni_roffs roffs;
+typedef volatile struct _uni_roffs vroffs;
 
 typedef struct _uni_ru8 ru8;
 typedef volatile struct _uni_ru8 vru8;
@@ -97,5 +109,7 @@ typedef volatile struct _uni_ru64 vru64;
 typedef struct _uni_ru128 ru128;
 typedef volatile struct _uni_ru128 vru128;
 #endif /* UNI_HAS_I128( ) */
+typedef struct _uni_rptri rptri;
+typedef volatile struct _uni_rptri vrptri;
 
 #endif /* INC_API__UNI_TYPES_RANGE_H */

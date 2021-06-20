@@ -813,7 +813,7 @@ char * uni_str_make( struct uni_str * str )
 	}
 }
 
-char * uni_str_mkslice( struct uni_str * str, ru64 r )
+char * uni_str_mkslice( struct uni_str * str, rptri r )
 {
 	if( !str || r.hi <= r.lo || r.hi > str->sz )
 	{
