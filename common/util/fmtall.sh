@@ -15,7 +15,7 @@ fi
 
 ${_echo} -e 'Auto-formatting all sub-repositories.\n' >/dev/stderr;
 
-_repos='arr chkmath clarg decl endian err futils himem log mt19937 str table';
+_repos=$(cat common/etc/projects.list);
 
 for _repo in ${_repos}; do
 	cd ${_repo};

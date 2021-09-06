@@ -39,7 +39,7 @@ else
 	exit 127;
 fi
 
-_repos='arr clarg err futils himem log mt19937 str table';
+_repos="$(cat common/etc/projects.a.list)";
 
 for _repo in ${_repos}; do
 	cd ${_repo};

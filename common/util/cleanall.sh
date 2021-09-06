@@ -15,7 +15,7 @@ fi
 
 ${_echo} -e 'Cleaning all sub-repositories.\n' >/dev/stderr;
 
-_repos='arr clarg err futils himem log mt19937 str table';
+_repos="$(cat common/etc/projects.a.list)";
 
 for _repo in ${_repos}; do
 	cd ${_repo};
