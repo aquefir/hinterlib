@@ -14,6 +14,70 @@
 
 struct uni_arr;
 
+struct uni_slist_node;
+
+struct uni_slist_node
+{
+	void * data;
+	struct uni_slist_node * next;
+};
+
+struct uni_slist
+{
+	struct uni_slist_node * head;
+	struct uni_slist_node * tail;
+};
+
+struct uni_dlist_node;
+
+struct uni_dlist_node
+{
+	void * data;
+	struct uni_dlist_node * prev;
+	struct uni_dlist_node * next;
+};
+
+struct uni_dlist
+{
+	struct uni_dlist_node * head;
+	struct uni_dlist_node * tail;
+};
+
+struct uni_htbl
+{
+	void * vals;
+	const char ** keys;
+	ptri sz;
+	ptri cap;
+};
+
+/* circular buffer, useful for LIFO-style queues. */
+struct uni_circbuf
+{
+	/* start of the physical buffer in memory. */
+	void * buf_start;
+	/* end of the physical buffer in memory. */
+	void * buf_end;
+	/* head (dynamic start) of the buffer. */
+	void * head;
+	/* tail (dynamic end) of the buffer. */
+	void * tail;
+	/* size of each element of the buffer, denominated in octets. */
+	ptri elemsz;
+};
+
+struct uni_flatbuf
+{
+	/* raw buffer data. */
+	void * buf;
+	/* the current existing size of the buffer, denominated in elements. */
+	ptri sz;
+	/* the current capacity of the buffer, denominated in elements. */
+	ptri cap;
+	/* the size of one (1) element, denominated in octets. */
+	ptri elemsz;
+};
+
 struct uni_arr * uni_arr_init( u32 );
 struct uni_arr * uni_arr_initsz( u32, u32 );
 struct uni_arr * uni_arr_dup( struct uni_arr * );
