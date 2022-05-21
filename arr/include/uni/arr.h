@@ -8,12 +8,106 @@
 #ifndef INC_API__UNI_ARR_H
 #define INC_API__UNI_ARR_H
 
+#include <uni/decl.h>
+#include <uni/err.h>
+#include <uni/memory.h>
 #include <uni/types/mathprim.h>
 #include <uni/types/int.h>
 #include <uni/types/opt/range.h>
-#include <uni/decl.h>
+
+/*
+ * # FIFOs
+ * uni_q_* := 1ll, 2ll, circ, flat, bst
+ * uni_deq_* := 2ll, circ, bst
+ * uni_pq_* := flat, bst
+ * uni_depq_* := bst
+ * # LIFOs
+ * uni_stk_* := circ, flat
+ *
+ * uni_bl_* := flat
+ *
+ * # Other
+ * uni_htbl_* := *
+ * uni_dyna_* := flat
+ * uni_bl64_* := *
+ *
+ */
 
 UNI_DEPRECATED struct uni_arr;
+
+struct uni_dyna
+{
+	void * data;
+	ptri elemsz;
+	ptri sz;
+	ptri cap;
+};
+
+struct uni_dyna2
+{
+	void * data;
+	ptri cellsz;
+	ptri rowsz;
+	ptri rowct;
+	ptri rowcap;
+};
+
+/**
+ * TITLE:       Read Dynamic Array
+ * DESCRIPTION: Gives a read-only view of the data in a 1D dynamic array,
+ *              doing bounds-checking on the offset and an (admittedly
+ *              optional) desired element count.
+ *
+ * PARAMETER: The array to read from.
+ * PARAMETER: The starting index of the array.
+ * PARAMETER: The number of elements desired (may be zero).
+ *
+ * RETURNS: The adjusted pointer to the data in the array.
+ */
+static inline void * uni_dyna_read( struct uni_dyna a, ptri i, ptri n )
+{
+	if( i + n >= a.sz )
+	{
+		uni_die( );
+
+		/* UNREACHABLE */
+		return NULL;
+	}
+
+	return (void *)((ptri)a.data + (i * a.elemsz));
+}
+
+static inline void uni_dyna_write( struct uni_dyna a, ptri i, void * d, ptri n )
+{
+	if( i + n >= a.sz )
+	{
+		uni_die( );
+
+		/* UNREACHABLE */
+		return NULL;
+	}
+
+	{
+		void * const dst = (void*)((ptri)(a.data) + (i * a.elemsz));
+		const ptri count = n * a.elemsz;
+
+		uni_memcpy( dst, (const void*)d, count );
+	}
+}
+
+UNI_C_API struct uni_dyna uni_dyna_insert( struct uni_dyna, ptri, void *, ptri );
+
+UNI_C_API struct uni_dyna uni_dyna_delete( struct uni_dyna, rptri );
+
+UNI_C_API struct uni_dyna uni_dyna_dblcap( struct uni_dyna );
+
+UNI_C_API void * uni_dyna2_read( struct uni_dyna2, ptri, ptri, ptri );
+
+UNI_C_API struct uni_dyna2 uni_dyna2_write( struct uni_dyna2, ptri, ptri, void *, ptri );
+
+UNI_C_API struct uni_dyna2 uni_dyna2_insertrow( struct uni_dyna2, ptri, void * );
+
+UNI_C_API struct uni_dyna2 uni_dyna2_deleterow( struct uni_dyna2, rptri );
 
 struct uni_1ll_node;
 
@@ -354,6 +448,8 @@ struct uni_rb_node
 	ptri data;
 };
 
+typedef unsigned ( *PFN_uni_rb_cmp )( struct uni_rb_node, struct uni_rb_node );
+
 struct uni_prb_node;
 
 /* node of a parental red-black tree. */
@@ -371,7 +467,46 @@ struct uni_prb_node
 	 * IMPORTANT: clear the lowest bit of this before casting it to a
 	 * pointer type! */
 	ptri data;
+	/* size of the node's data, denominated in octets. */
+	ptri sz;
 };
+
+typedef unsigned ( *PFN_uni_prb_cmp )(
+	struct uni_prb_node, struct uni_prb_node );
+
+struct uni_rrb_node;
+
+/* node of a relaxed radix-balanced tree. */
+struct uni_rrb_node
+{
+	/* children of this relaxed radix-balanced node. */
+	struct uni_rrb_node * children[32];
+	/* pointer to the node's data. */
+	void * data;
+	/* size of the node's data, denominated in octets. */
+	ptri sz;
+};
+
+typedef unsigned ( *PFN_uni_rrb_cmp )(
+	struct uni_rrb_node, struct uni_rrb_node );
+
+struct uni_prrb_node;
+
+/* node of a parental relaxed radix-balanced tree. */
+struct uni_prrb_node
+{
+	/* children of this parental relaxed radix-balanced node. */
+	struct uni_prrb_node * children[32];
+	/* parent of this parental relaxed radix-balanced node. */
+	struct uni_prrb_node * parent;
+	/* pointer to the node's data. */
+	void * data;
+	/* size of the node's data, denominated in octets. */
+	ptri sz;
+};
+
+typedef unsigned ( *PFN_uni_prrb_cmp )(
+	struct uni_prrb_node, struct uni_prrb_node );
 
 struct uni_avl_node;
 
@@ -389,7 +524,12 @@ struct uni_avl_node
 	 * IMPORTANT: clear the lowest 2 bits of this before casting it to a
 	 * pointer type! */
 	ptri data;
+	/* size of the node's data, denominated in octets. */
+	ptri sz;
 };
+
+typedef unsigned ( *PFN_uni_avl_cmp )(
+	struct uni_avl_node, struct uni_avl_node );
 
 struct uni_pavl_node;
 
@@ -409,7 +549,12 @@ struct uni_pavl_node
 	 * IMPORTANT: clear the lowest 2 bits of this before casting it to a
 	 * pointer type! */
 	ptri data;
+	/* size of the node's data, denominated in octets. */
+	ptri sz;
 };
+
+typedef unsigned ( *PFN_uni_pavl_cmp )(
+	struct uni_pavl_node, struct uni_pavl_node );
 
 struct uni_splay_node;
 
@@ -420,24 +565,36 @@ struct uni_splay_node
 	struct uni_splay_node * lchild;
 	/* right child of this splay node. */
 	struct uni_splay_node * rchild;
+	/* parent of this splay node. */
+	struct uni_splay_node * parent;
 	/* pointer to the node's data. */
 	void * data;
+	/* size of the node's data, denominated in octets. */
+	ptri sz;
 };
 
-struct uni_psplay_node;
+typedef unsigned ( *PFN_uni_splay_cmp )(
+	struct uni_splay_node, struct uni_splay_node );
 
-/* node of a parental splay tree. */
-struct uni_psplay_node
+struct uni_treap_node;
+
+/* node of a treap. */
+struct uni_treap_node
 {
-	/* left child of this parental splay node. */
-	struct uni_psplay_node * lchild;
-	/* right child of this parental splay node. */
-	struct uni_psplay_node * rchild;
-	/* parent of this parental splay node. */
-	struct uni_psplay_node * parent;
+	/* left child of this treap node. */
+	struct uni_treap_node * lchild;
+	/* right child of this treap node. */
+	struct uni_treap_node * rchild;
+	/* parent of this treap node. */
+	struct uni_treap_node * parent;
 	/* pointer to the node's data. */
 	void * data;
+	/* size of the node's data, denominated in octets. */
+	ptri sz;
 };
+
+typedef unsigned ( *PFN_uni_treap_cmp )(
+	struct uni_treap_node, struct uni_treap_node );
 
 UNI_C_API UNI_DEPRECATED struct uni_arr * uni_arr_init( u32 );
 UNI_C_API UNI_DEPRECATED struct uni_arr * uni_arr_initsz( u32, u32 );
