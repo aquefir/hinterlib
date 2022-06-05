@@ -64,7 +64,7 @@ struct uni_dyna2
  *
  * RETURNS: The adjusted pointer to the data in the array.
  */
-static inline void * uni_dyna_read( struct uni_dyna a, ptri i, ptri n )
+static void * uni_dyna_read( struct uni_dyna a, ptri i, ptri n )
 {
 	if( i + n >= a.sz )
 	{
@@ -77,7 +77,7 @@ static inline void * uni_dyna_read( struct uni_dyna a, ptri i, ptri n )
 	return (void *)((ptri)a.data + (i * a.elemsz));
 }
 
-static inline void uni_dyna_write( struct uni_dyna a, ptri i, void * d, ptri n )
+static void uni_dyna_write( struct uni_dyna a, ptri i, void * d, ptri n )
 {
 	if( i + n >= a.sz )
 	{
