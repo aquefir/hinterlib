@@ -1,15 +1,14 @@
-/****************************************************************************\
- *                            Hinterlib™ strings                            *
- *                                                                          *
- *                      Copyright © 2019-2021 Aquefir.                      *
- *                       Released under BSD-2-Clause.                       *
-\****************************************************************************/
+/*****************************************************************************\
+ *                                 Hinterlib                                 *
+ *                                                                           *
+ *                      Copyright (C) 2019-2022 Aquefir                      *
+ *                        Released under BSD-2-Clause                        *
+\*****************************************************************************/
 
 #ifndef INC_API__UNI_UTF8_H
 #define INC_API__UNI_UTF8_H
 
 #include <uni/types/int.h>
-#include <uni/types/options.h>
 
 struct uni_u8pos
 {

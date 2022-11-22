@@ -1,9 +1,9 @@
-/****************************************************************************\
- *                         Hinterlib error handling                         *
- *                                                                          *
- *                      Copyright © 2019-2021 Aquefir.                      *
- *                       Released under BSD-2-Clause.                       *
-\****************************************************************************/
+/*****************************************************************************\
+ *                                 Hinterlib                                 *
+ *                                                                           *
+ *                      Copyright (C) 2019-2022 Aquefir                      *
+ *                        Released under BSD-2-Clause                        *
+\*****************************************************************************/
 
 #include <uni/err.h>
 
@@ -136,7 +136,9 @@ const char * uni_err_eff_tostr( uni_err_t n )
 	/* just the flags */
 	const u16 f = UNI_ERRCODE_GET_EFLAGS( n );
 	/* whether the buffer is locked yet */
+#if defined( CFG_POSIX )
 	int lock = 0, r;
+#endif /* defined( CFG_POSIX ) */
 
 	for( i = 0, j = 0; i <= UNI_ERR_EFLAG_RESERVED3; ++i )
 	{

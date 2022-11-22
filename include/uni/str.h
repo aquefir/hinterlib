@@ -1,16 +1,16 @@
-/****************************************************************************\
- *                            Hinterlib™ strings                            *
- *                                                                          *
- *                      Copyright © 2019-2021 Aquefir.                      *
- *                       Released under BSD-2-Clause.                       *
-\****************************************************************************/
+/*****************************************************************************\
+ *                                 Hinterlib                                 *
+ *                                                                           *
+ *                      Copyright (C) 2019-2022 Aquefir                      *
+ *                        Released under BSD-2-Clause                        *
+\*****************************************************************************/
 
 #ifndef INC_API__UNI_STR_H
 #define INC_API__UNI_STR_H
 
-#include <uni/types/mathprim.h>
+#include <uni/types/range.h>
 #include <uni/types/int.h>
-#include <uni/types/opt.h>
+#include <uni/types/opt/common.h>
 #include <uni/types/opt/range.h>
 
 struct uni_str;

@@ -1,9 +1,9 @@
-/****************************************************************************\
- *                         Hinterlib file utilities                         *
- *                                                                          *
- *                      Copyright © 2019-2021 Aquefir.                      *
- *                       Released under BSD-2-Clause.                       *
-\****************************************************************************/
+/*****************************************************************************\
+ *                                 Hinterlib                                 *
+ *                                                                           *
+ *                      Copyright (C) 2019-2022 Aquefir                      *
+ *                        Released under BSD-2-Clause                        *
+\*****************************************************************************/
 
 #include <uni/futils.h>
 
@@ -14,7 +14,8 @@
 #endif
 #include <uni/err.h>
 #include <uni/memory.h>
-#include <uni/types/options.h>
+#include <uni/types/opt/common.h>
+#include <uni/types/opt/int.h>
 #include <uni/types/int.h>
 
 /* This should be pure C compatible, so no fstat. */

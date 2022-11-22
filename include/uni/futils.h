@@ -1,15 +1,15 @@
-/****************************************************************************\
- *                         Hinterlib file utilities                         *
- *                                                                          *
- *                      Copyright © 2019-2021 Aquefir.                      *
- *                       Released under BSD-2-Clause.                       *
-\****************************************************************************/
+/*****************************************************************************\
+ *                                 Hinterlib                                 *
+ *                                                                           *
+ *                      Copyright (C) 2019-2022 Aquefir                      *
+ *                        Released under BSD-2-Clause                        *
+\*****************************************************************************/
 
 #ifndef INC_API__UNI_FUTILS_H
 #define INC_API__UNI_FUTILS_H
 
 #include <uni/decl.h>
-#include <uni/types/options.h>
+#include <uni/types/opt/int.h>
 #include <uni/types/int.h>
 
 UNI_OPTION( ptri ) uni_filesz( const char * );

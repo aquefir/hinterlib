@@ -1,9 +1,9 @@
-/****************************************************************************\
- *                             Hinterlib arrays                             *
- *                                                                          *
- *                      Copyright © 2019-2021 Aquefir.                      *
- *                       Released under BSD-2-Clause.                       *
-\****************************************************************************/
+/*****************************************************************************\
+ *                                 Hinterlib                                 *
+ *                                                                           *
+ *                      Copyright (C) 2019-2022 Aquefir                      *
+ *                        Released under BSD-2-Clause                        *
+\*****************************************************************************/
 
 #ifndef INC_API__UNI_ARR_H
 #define INC_API__UNI_ARR_H
@@ -11,7 +11,6 @@
 #include <uni/decl.h>
 #include <uni/err.h>
 #include <uni/memory.h>
-#include <uni/types/mathprim.h>
 #include <uni/types/int.h>
 #include <uni/types/opt/range.h>
 
