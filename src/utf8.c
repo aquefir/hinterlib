@@ -82,7 +82,7 @@ int _uni_scanu8( const char * in,
 			for( j = 0; j < n - 1; ++j )
 			{
 				if( ++by_i == sz ||
-					( ( u8 )( in[by_i] ) & 0xC0 ) != 0x80 )
+					( (u8)( in[by_i] ) & 0xC0 ) != 0x80 )
 				{
 					return 1;
 				}

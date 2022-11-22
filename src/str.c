@@ -303,7 +303,7 @@ int uni_isascii( const char * in )
 
 		for( i = 0; i < in_sz; ++i )
 		{
-			if( ( u8 )( in[i] ) >= 0x80 )
+			if( (u8)( in[i] ) >= 0x80 )
 			{
 				return 0;
 			}

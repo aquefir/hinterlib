@@ -73,7 +73,7 @@ static void * uni_dyna_read( struct uni_dyna a, ptri i, ptri n )
 		return NULL;
 	}
 
-	return (void *)((ptri)a.data + (i * a.elemsz));
+	return (void *)( (ptri)a.data + ( i * a.elemsz ) );
 }
 
 static void uni_dyna_write( struct uni_dyna a, ptri i, void * d, ptri n )
@@ -87,14 +87,16 @@ static void uni_dyna_write( struct uni_dyna a, ptri i, void * d, ptri n )
 	}
 
 	{
-		void * const dst = (void*)((ptri)(a.data) + (i * a.elemsz));
+		void * const dst =
+			(void *)( (ptri)( a.data ) + ( i * a.elemsz ) );
 		const ptri count = n * a.elemsz;
 
-		uni_memcpy( dst, (const void*)d, count );
+		uni_memcpy( dst, (const void *)d, count );
 	}
 }
 
-UNI_C_API struct uni_dyna uni_dyna_insert( struct uni_dyna, ptri, void *, ptri );
+UNI_C_API struct uni_dyna uni_dyna_insert(
+	struct uni_dyna, ptri, void *, ptri );
 
 UNI_C_API struct uni_dyna uni_dyna_delete( struct uni_dyna, rptri );
 
@@ -102,9 +104,11 @@ UNI_C_API struct uni_dyna uni_dyna_dblcap( struct uni_dyna );
 
 UNI_C_API void * uni_dyna2_read( struct uni_dyna2, ptri, ptri, ptri );
 
-UNI_C_API struct uni_dyna2 uni_dyna2_write( struct uni_dyna2, ptri, ptri, void *, ptri );
+UNI_C_API struct uni_dyna2 uni_dyna2_write(
+	struct uni_dyna2, ptri, ptri, void *, ptri );
 
-UNI_C_API struct uni_dyna2 uni_dyna2_insertrow( struct uni_dyna2, ptri, void * );
+UNI_C_API struct uni_dyna2 uni_dyna2_insertrow(
+	struct uni_dyna2, ptri, void * );
 
 UNI_C_API struct uni_dyna2 uni_dyna2_deleterow( struct uni_dyna2, rptri );
 
