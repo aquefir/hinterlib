@@ -73,11 +73,7 @@ struct mt_prng * mt_prng_init( void )
 	struct mt_prng * ret;
 	u32 seed[4];
 
-#if defined( CFG_WINDOWS )
-	return NULL;
-#else
 	ret = uni_alloc0( sizeof( struct mt_prng ) );
-#endif
 
 #if defined( CFG_LINUX ) || defined( CFG_DARWIN )
 	{
@@ -108,12 +104,12 @@ struct mt_prng * mt_prng_init( void )
 
 		if( !urandom_avail )
 		{
-			u64 now = get_rtime( );
+			const u64 now = get_rtime( );
 
-			seed[0] = now / 1000000000;
-			seed[1] = now % 1000000000;
-			seed[2] = getpid( );
-			seed[3] = getppid( );
+			seed[0] = (u32)(now >> 32);
+			seed[1] = (u32)(now & 0xFFFFFFFF);
+			seed[2] = (u32)getpid( );
+			seed[3] = (u32)getppid( );
 		}
 	}
 #elif defined( CFG_WINDOWS )
@@ -128,14 +124,13 @@ struct mt_prng * mt_prng_init( void )
 		}
 	}
 #else
-#warning Using insecure seed for random number generation because of missing rand_s() in Windows XP
 	{
-		u64 now = get_rtime( );
+		const u64 now = get_rtime( );
 
-		seed[0] = now / 1000000000;
-		seed[1] = now % 1000000000;
-		seed[2] = getpid( );
-		seed[3] = 0;
+		seed[0] = (u32)(now >> 32);
+		seed[1] = (u32)(now & 0xFFFFFFFF);
+		seed[2] = (u32)getpid( );
+		seed[3] = (u32)getppid( );
 	}
 #endif
 #elif defined( CFG_GBA )
@@ -277,7 +272,7 @@ s32 mt_random_s32( struct mt_prng * prng )
 	y ^= temper_shift_t( y ) & TEMPER_MASK_C;
 	y ^= temper_shift_l( y );
 
-	return (int)y;
+	return (s32)y;
 }
 
 u32 mt_random_u32( struct mt_prng * prng )
