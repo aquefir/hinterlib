@@ -106,8 +106,8 @@ struct mt_prng * mt_prng_init( void )
 		{
 			const u64 now = get_rtime( );
 
-			seed[0] = (u32)(now >> 32);
-			seed[1] = (u32)(now & 0xFFFFFFFF);
+			seed[0] = (u32)( now >> 32 );
+			seed[1] = (u32)( now & 0xFFFFFFFF );
 			seed[2] = (u32)getpid( );
 			seed[3] = (u32)getppid( );
 		}
@@ -127,8 +127,8 @@ struct mt_prng * mt_prng_init( void )
 	{
 		const u64 now = get_rtime( );
 
-		seed[0] = (u32)(now >> 32);
-		seed[1] = (u32)(now & 0xFFFFFFFF);
+		seed[0] = (u32)( now >> 32 );
+		seed[1] = (u32)( now & 0xFFFFFFFF );
 		seed[2] = (u32)getpid( );
 		seed[3] = (u32)getppid( );
 	}
