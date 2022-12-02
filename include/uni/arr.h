@@ -26,7 +26,7 @@
  * uni_bl_* := flat
  *
  * # Other
- * uni_htbl_* := *
+ * uni_htbl_* := htbl
  * uni_dyna_* := flat
  * uni_bl64_* := *
  *
@@ -83,7 +83,6 @@ static void uni_dyna_write( struct uni_dyna a, ptri i, void * d, ptri n )
 		uni_die( );
 
 		/* UNREACHABLE */
-		return NULL;
 	}
 
 	{
