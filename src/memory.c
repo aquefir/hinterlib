@@ -46,23 +46,6 @@ void * uni_alloc0( ptri sz )
 	return ret;
 }
 
-void * uni_alloca( ptri sz )
-{
-	if( sz == 0 )
-	{
-		uni_die( );
-
-		/* UNREACHABLE */
-		return NULL;
-	}
-
-#if defined( __clang__ ) || defined( __GNUC__ )
-	return __builtin_alloca( sz );
-#else
-#error "Cannot perform alloca() without Clang or GCC"
-#endif
-}
-
 void * uni_realloc( void * p, ptri sz )
 {
 	void * ret;

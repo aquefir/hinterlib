@@ -12,10 +12,6 @@
 
 void * uni_alloc( ptri );
 void * uni_alloc0( ptri );
-void * uni_alloca( ptri );
-#if 0
-void * uni_allocb( ptri );
-#endif /* 0 */
 void * uni_realloc( void *, ptri );
 #if 0
 void * uni_realloc0( void *, ptri );
@@ -24,7 +20,6 @@ void * uni_reallocb( void *, ptri );
 void * uni_tryalloc( ptri );
 void * uni_tryalloc0( ptri );
 #if 0
-void * uni_tryalloca( ptri );
 void * uni_tryallocb( ptri );
 #endif /* 0 */
 void * uni_tryrealloc( void *, ptri );
