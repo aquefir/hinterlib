@@ -1,0 +1,144 @@
+hn/types/intvec/hn_s64v2.type
+	2-wide vector of signed 64-bit integers.
+hn/types/intvec/hn_s64v4.type
+	4-wide vector of signed 64-bit integers.
+hn/types/intvec/hn_s64v8.type
+	8-wide vector of signed 64-bit integers.
+hn/types/intvec/hn_s32v2.type
+	2-wide vector of signed 32-bit integers.
+hn/types/intvec/hn_s32v4.type
+	4-wide vector of signed 32-bit integers.
+hn/types/intvec/hn_s32v8.type
+	8-wide vector of signed 32-bit integers.
+hn/types/intvec/hn_s32v16.type
+	16-wide vector of signed 32-bit integers.
+hn/types/intvec/hn_s16v2.type
+	2-wide vector of signed 16-bit integers.
+hn/types/intvec/hn_s16v4.type
+	4-wide vector of signed 16-bit integers.
+hn/types/intvec/hn_s16v8.type
+	8-wide vector of signed 16-bit integers.
+hn/types/intvec/hn_s16v16.type
+	16-wide vector of signed 16-bit integers.
+hn/types/intvec/hn_s16v32.type
+	32-wide vector of signed 16-bit integers.
+hn/types/intvec/hn_s8v2.type
+	2-wide vector of signed 8-bit integers.
+hn/types/intvec/hn_s8v4.type
+	4-wide vector of signed 8-bit integers.
+hn/types/intvec/hn_s8v8.type
+	8-wide vector of signed 8-bit integers.
+hn/types/intvec/hn_s8v16.type
+	16-wide vector of signed 8-bit integers.
+hn/types/intvec/hn_s8v32.type
+	32-wide vector of signed 8-bit integers.
+hn/types/intvec/hn_s8v64.type
+	64-wide vector of signed 8-bit integers.
+hn/types/intvec/hn_u64v2.type
+	2-wide vector of unsigned 64-bit integers.
+hn/types/intvec/hn_u64v4.type
+	4-wide vector of unsigned 64-bit integers.
+hn/types/intvec/hn_u64v8.type
+	8-wide vector of unsigned 64-bit integers.
+hn/types/intvec/hn_u32v2.type
+	2-wide vector of unsigned 32-bit integers.
+hn/types/intvec/hn_u32v4.type
+	4-wide vector of unsigned 32-bit integers.
+hn/types/intvec/hn_u32v8.type
+	8-wide vector of unsigned 32-bit integers.
+hn/types/intvec/hn_u32v16.type
+	16-wide vector of unsigned 32-bit integers.
+hn/types/intvec/hn_u16v2.type
+	2-wide vector of unsigned 16-bit integers.
+hn/types/intvec/hn_u16v4.type
+	4-wide vector of unsigned 16-bit integers.
+hn/types/intvec/hn_u16v8.type
+	8-wide vector of unsigned 16-bit integers.
+hn/types/intvec/hn_u16v16.type
+	16-wide vector of unsigned 16-bit integers.
+hn/types/intvec/hn_u16v32.type
+	32-wide vector of unsigned 16-bit integers.
+hn/types/intvec/hn_u8v2.type
+	2-wide vector of unsigned 8-bit integers.
+hn/types/intvec/hn_u8v4.type
+	4-wide vector of unsigned 8-bit integers.
+hn/types/intvec/hn_u8v8.type
+	8-wide vector of unsigned 8-bit integers.
+hn/types/intvec/hn_u8v16.type
+	16-wide vector of unsigned 8-bit integers.
+hn/types/intvec/hn_u8v32.type
+	32-wide vector of unsigned 8-bit integers.
+hn/types/intvec/hn_u8v64.type
+	64-wide vector of unsigned 8-bit integers.
+hn/types/intvec/s64v2.type
+	2-wide vector of signed 64-bit integers.
+hn/types/intvec/s64v4.type
+	4-wide vector of signed 64-bit integers.
+hn/types/intvec/s64v8.type
+	8-wide vector of signed 64-bit integers.
+hn/types/intvec/s32v2.type
+	2-wide vector of signed 32-bit integers.
+hn/types/intvec/s32v4.type
+	4-wide vector of signed 32-bit integers.
+hn/types/intvec/s32v8.type
+	8-wide vector of signed 32-bit integers.
+hn/types/intvec/s32v16.type
+	16-wide vector of signed 32-bit integers.
+hn/types/intvec/s16v2.type
+	2-wide vector of signed 16-bit integers.
+hn/types/intvec/s16v4.type
+	4-wide vector of signed 16-bit integers.
+hn/types/intvec/s16v8.type
+	8-wide vector of signed 16-bit integers.
+hn/types/intvec/s16v16.type
+	16-wide vector of signed 16-bit integers.
+hn/types/intvec/s16v32.type
+	32-wide vector of signed 16-bit integers.
+hn/types/intvec/s8v2.type
+	2-wide vector of signed 8-bit integers.
+hn/types/intvec/s8v4.type
+	4-wide vector of signed 8-bit integers.
+hn/types/intvec/s8v8.type
+	8-wide vector of signed 8-bit integers.
+hn/types/intvec/s8v16.type
+	16-wide vector of signed 8-bit integers.
+hn/types/intvec/s8v32.type
+	32-wide vector of signed 8-bit integers.
+hn/types/intvec/s8v64.type
+	64-wide vector of signed 8-bit integers.
+hn/types/intvec/u64v2.type
+	2-wide vector of unsigned 64-bit integers.
+hn/types/intvec/u64v4.type
+	4-wide vector of unsigned 64-bit integers.
+hn/types/intvec/u64v8.type
+	8-wide vector of unsigned 64-bit integers.
+hn/types/intvec/u32v2.type
+	2-wide vector of unsigned 32-bit integers.
+hn/types/intvec/u32v4.type
+	4-wide vector of unsigned 32-bit integers.
+hn/types/intvec/u32v8.type
+	8-wide vector of unsigned 32-bit integers.
+hn/types/intvec/u32v16.type
+	16-wide vector of unsigned 32-bit integers.
+hn/types/intvec/u16v2.type
+	2-wide vector of unsigned 16-bit integers.
+hn/types/intvec/u16v4.type
+	4-wide vector of unsigned 16-bit integers.
+hn/types/intvec/u16v8.type
+	8-wide vector of unsigned 16-bit integers.
+hn/types/intvec/u16v16.type
+	16-wide vector of unsigned 16-bit integers.
+hn/types/intvec/u16v32.type
+	32-wide vector of unsigned 16-bit integers.
+hn/types/intvec/u8v2.type
+	2-wide vector of unsigned 8-bit integers.
+hn/types/intvec/u8v4.type
+	4-wide vector of unsigned 8-bit integers.
+hn/types/intvec/u8v8.type
+	8-wide vector of unsigned 8-bit integers.
+hn/types/intvec/u8v16.type
+	16-wide vector of unsigned 8-bit integers.
+hn/types/intvec/u8v32.type
+	32-wide vector of unsigned 8-bit integers.
+hn/types/intvec/u8v64.type
+	64-wide vector of unsigned 8-bit integers.

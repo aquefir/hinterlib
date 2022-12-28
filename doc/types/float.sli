@@ -1,0 +1,8 @@
+hn/types/float/hn_f64.type
+	Double-precision IEEE 754 floating-point number.
+hn/types/float/hn_f32.type
+	Single-precision IEEE 754 floating-point number.
+hn/types/float/f64.type
+	Double-precision IEEE 754 floating-point number.
+hn/types/float/f32.type
+	Single-precision IEEE 754 floating-point number.

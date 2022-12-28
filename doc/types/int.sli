@@ -1,0 +1,32 @@
+hn/types/int/hn_s64.type
+	Signed 64-bit integer.
+hn/types/int/hn_s32.type
+	Signed 32-bit integer.
+hn/types/int/hn_s16.type
+	Signed 16-bit integer.
+hn/types/int/hn_s8.type
+	Signed 8-bit integer.
+hn/types/int/hn_u64.type
+	Unsigned 64-bit integer.
+hn/types/int/hn_u32.type
+	Unsigned 32-bit integer.
+hn/types/int/hn_u16.type
+	Unsigned 16-bit integer.
+hn/types/int/hn_u8.type
+	Unsigned 8-bit integer.
+hn/types/int/s64.type
+	Signed 64-bit integer.
+hn/types/int/s32.type
+	Signed 32-bit integer.
+hn/types/int/s16.type
+	Signed 16-bit integer.
+hn/types/int/s8.type
+	Signed 8-bit integer.
+hn/types/int/u64.type
+	Unsigned 64-bit integer.
+hn/types/int/u32.type
+	Unsigned 32-bit integer.
+hn/types/int/u16.type
+	Unsigned 16-bit integer.
+hn/types/int/u8.type
+	Unsigned 8-bit integer.
