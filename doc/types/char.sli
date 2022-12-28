@@ -1,0 +1,55 @@
+hn/types/char/HN_CHR_ISVALID.sub
+	[preproc][pure] Helper function to check if a character is valid ASCII.
+hn/types/char/HN_CHR_ISVALID.sub:$1
+	The character to validate.
+hn/types/char/HN_CHR_ISVALID.sub:$1*
+	Must be an integral at least 7 bits wide.
+hn/types/char/HN_CHR_ISVALID.sub:#
+	Expression is truthy if valid; otherwise, it is falsey.
+hn/types/char/HN_UCHR_ISVALID.sub
+	[preproc][pure] Helper function to check if a code point is valid Unicode.
+hn/types/char/HN_UCHR_ISVALID.sub:$1
+	The code point to validate.
+hn/types/char/HN_UCHR_ISVALID.sub:$1*
+	Must be an integral at least 32 bits wide, or a struct that is exactly 32
+	bits in size with no implicit padding.
+hn/types/char/HN_UCHR_ISVALID.sub:#
+	Expression is truthy if valid; otherwise, it is falsey.
+hn/types/char/HN_CHR_TRUNCATE.sub
+	[preproc][nothrow][noalloc] Helper function to truncate a character into the
+	valid ASCII range.
+hn/types/char/HN_CHR_TRUNCATE.sub:$1
+	The character to truncate.
+hn/types/char/HN_CHR_TRUNCATE.sub:$1*
+	Must be an integral at least 7 bits wide.
+hn/types/char/HN_CHR_TRUNCATE.sub:#
+	The truncated character (as a side effect).
+hn/types/char/HN_UCHR_TRUNCATE.sub
+	[preproc][nothrow][noalloc] Helper function to truncate a code point into
+	the valid Unicode range.
+hn/types/char/HN_UCHR_TRUNCATE.sub:$1
+	The code point to truncate.
+hn/types/char/HN_UCHR_TRUNCATE.sub:$1*
+	Must be an integral at least 32 bits wide, or a struct that is exactly 32
+	bits in size with no implicit padding.
+hn/types/char/HN_UCHR_TRUNCATE.sub:#
+	The truncated code point (as a side effect).
+hn/types/char/hn_chr.type
+	A single ASCII character.
+hn/types/char/hn_uchr.struct
+	A single Unicode code point.
+hn/types/char/hn_uchr/lo.var
+	The lower 16 bits of the code point.
+hn/types/char/hn_uchr/hi.var
+	The upper 5 bits of the code point.
+hn/types/char/hn_uchr/hi.var:*
+	Since the physical size of the variable is 16 bits, all higher bits after
+	the first 5 bits used as part of the code point value should be set to zero
+	and must not be read from, as initialisation does not guarantee that they
+	are zero.
+hn/types/char/hn_uchr.type
+	A single Unicode code point. Alias of struct hn_uchr.
+hn/types/char/chr.type
+	A single ASCII character.
+hn/types/char/uchr.type
+	A single Unicode code point. Alias of struct hn_uchr.
