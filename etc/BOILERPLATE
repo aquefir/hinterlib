@@ -3,17 +3,27 @@ This file contains the project's copypastable boilerplate comment headers.
 Boilerplate for C-like languages:
 
 /*****************************************************************************\
- *                                 Hinterlib                                 *
+ *                          Hinterlib/Neopolitan 2.                          *
  *                                                                           *
- *                      Copyright (C) 2019-2022 Aquefir                      *
- *                        Released under BSD-2-Clause                        *
+ *                      Copyright (C) 2019-2023 Aquefir                      *
+ *               Released under Artisan Software Licence v1.1.               *
 \*****************************************************************************/
 
 Hash-based boilerplate (Python, POSIX shell, Makefile):
 
 ###############################################################################
-##                                 Hinterlib                                 ##
+##                          Hinterlib/Neopolitan 2.                          ##
 ##                                                                           ##
-##                      Copyright (C) 2019-2022 Aquefir                      ##
-##                        Released under BSD-2-Clause                        ##
+##                      Copyright (C) 2019-2023 Aquefir                      ##
+##               Released under Artisan Software Licence v1.1.               ##
 ###############################################################################
+
+Additionally, a sanity check block to be placed at the top of every public API
+header:
+
+/* START sanity check */
+#if !defined( _SYNDEF_FOO ) || !defined( _CFGOPT_FOO )
+#error Your compiler is not configured correctly for using \
+Hinterlib/Neopolitan. Please ensure you are using Slick/Inbound and a \
+compatible compiler (either GCC, Clang, or FCC).
+#endif /* END sanity check */
