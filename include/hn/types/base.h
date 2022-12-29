@@ -34,6 +34,14 @@ compatible compiler (either GCC, Clang, or FCC).
 #define HN_VECSIZE(_n) __attribute__( ( vector_size( _n ) ) )
 #endif /* !defined( HN_VECSIZE ) */
 
+#if !defined( HN_API )
+#if defined( __cplusplus )
+#define HN_API extern "C"
+#else
+#define HN_API extern
+#endif /* defined( __cplusplus ) */
+#endif /* !defined( HN_API ) */
+
 enum
 {
 	/* Denotes the size of a pointer at runtime, denominated in octets. */
