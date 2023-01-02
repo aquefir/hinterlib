@@ -1,0 +1,41 @@
+hn/memory/hn_alloc.sub
+	[nothrow][noreturn][new] Allocate memory from heap.
+hn/memory/hn_alloc.sub:*
+	This function will halt the system on failure to allocate.
+hn/memory/hn_alloc.sub:$1
+	The amount of memory needed for allocation, denominated in octets.
+hn/memory/hn_alloc.sub:$1*
+	This value must be greater than zero (0). Note that values exceeding the
+	available system memory may cause this function to fail. If recovery from
+	such failure is needed, consider the hn_try{re,}alloc{al,}( ) family of
+	functions.
+hn/memory/hn_alloc.sub:#
+	A valid pointer to the start of the allocated memory region.
+hn/memory/hn_allocal.sub
+	[nothrow][noreturn][new] Allocate memory from heap, aligned to 2^n octets.
+hn/memory/hn_allocal.sub:*
+	This function will halt the system on failure to allocate.
+hn/memory/hn_allocal.sub:$1
+	The amount of memory needed for allocation, denominated in octets.
+hn/memory/hn_allocal.sub:$1*
+	This value must be greater than zero (0). Note that values exceeding the
+	available system memory may cause this function to fail. If recovery from
+	such failure is needed, consider the hn_try{re,}alloc{al,}( ) family of
+	functions. Furthermore, this value must be greater than or equal to "2^n"
+	where n is the value given in $2.
+hn/memory/hn_allocal.sub:$2
+	The number of bits "n" to align towards such that n bits will be zero in the
+	returned pointer, or in other terms, such that the address will be a
+	multiple of 2^n.
+hn/memory/hn_allocal.sub:#
+	A valid pointer to the start of the allocated memory region.
+hn/memory/hn_realloc.sub
+	[nothrow][noreturn][new] Reallocate a previous heap allocation to a new
+	size.
+hn/memory/hn_realloc.sub:*
+	This function will halt the system on failure to allocate.
+hn/memory/hn_realloc.sub:$1
+	The original pointer to the memory being reallocated.
+hn/memory/hn_realloc.sub:$1*
+	This value cannot be NULL (0). It must be a valid pointer to a memory region
+	returned from one of the other functions in this module.
