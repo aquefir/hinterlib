@@ -57,6 +57,6 @@ void hn_memset( void *, hn_ptri, hn_u8 );
 void hn_memcpy( void *, void *, hn_ptri );
 
 /* Compare two blocks of memory to see if their contents match. */
-hn_bl hn_memcmp( void *, void *, hn_ptri );
+hn_bl hn_memequ( void *, void *, hn_ptri );
 
 #endif /* INC_API__HN_MEMORY_H */
