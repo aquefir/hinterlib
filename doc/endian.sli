@@ -1,0 +1,72 @@
+hn/endian/HN_ENDIAN_SWAP16.sub
+	[preproc][pure] Performs an endianness reversal on a 16-bit variable.
+hn/endian/HN_ENDIAN_SWAP16.sub:$1
+	The variable to perform the octet swap on.
+hn/endian/HN_ENDIAN_SWAP16.sub:$1*
+	Must be exactly 16 bits in size.
+hn/endian/HN_ENDIAN_SWAP16.sub:#
+	The input variable with its octets reversed in ordering.
+hn/endian/HN_ENDIAN_SWAP32.sub
+	[preproc][pure] Performs an endianness reversal on a 32-bit variable.
+hn/endian/HN_ENDIAN_SWAP32.sub:$1
+	The variable to perform the octet swap on.
+hn/endian/HN_ENDIAN_SWAP32.sub:$1*
+	Must be exactly 32 bits in size.
+hn/endian/HN_ENDIAN_SWAP32.sub:#
+	The input variable with its octets reversed in ordering.
+hn/endian/HN_ENDIAN_SWAP64.sub
+	[preproc][pure] Performs an endianness reversal on a 64-bit variable.
+hn/endian/HN_ENDIAN_SWAP64.sub:$1
+	The variable to perform the octet swap on.
+hn/endian/HN_ENDIAN_SWAP64.sub:$1*
+	Must be exactly 64 bits in size.
+hn/endian/HN_ENDIAN_SWAP64.sub:#
+	The input variable with its octets reversed in ordering.
+hn/endian/HN_HOST2NET16.sub
+	Convert host endianness to network endianness. 16-bit variant.
+hn/endian/HN_HOST2NET16.sub:$1
+	The variable to perform the octet swap on.
+hn/endian/HN_HOST2NET16.sub:$1*
+	Must be exactly 16 bits in size.
+hn/endian/HN_HOST2NET16.sub:#
+	The variable with its endianness in network octet order.
+hn/endian/HN_HOST2NET32.sub
+	Convert host endianness to network endianness. 32-bit variant.
+hn/endian/HN_HOST2NET32.sub:$1
+	The variable to perform the octet swap on.
+hn/endian/HN_HOST2NET32.sub:$1*
+	Must be exactly 32 bits in size.
+hn/endian/HN_HOST2NET32.sub:#
+	The variable with its endianness in network octet order.
+hn/endian/HN_HOST2NET64.sub
+	Convert host endianness to network endianness. 64-bit variant.
+hn/endian/HN_HOST2NET64.sub:$1
+	The variable to perform the octet swap on.
+hn/endian/HN_HOST2NET64.sub:$1*
+	Must be exactly 64 bits in size.
+hn/endian/HN_HOST2NET64.sub:#
+	The variable with its endianness in network octet order.
+hn/endian/HN_NET2HOST16.sub
+	Convert network endianness to host endianness. 16-bit variant.
+hn/endian/HN_NET2HOST16.sub:$1
+	The variable to perform the octet swap on.
+hn/endian/HN_NET2HOST16.sub:$1*
+	Must be exactly 16 bits in size.
+hn/endian/HN_NET2HOST16.sub:#
+	The variable with its endianness in host octet order.
+hn/endian/HN_NET2HOST32.sub
+	Convert network endianness to host endianness. 32-bit variant.
+hn/endian/HN_NET2HOST32.sub:$1
+	The variable to perform the octet swap on.
+hn/endian/HN_NET2HOST32.sub:$1*
+	Must be exactly 32 bits in size.
+hn/endian/HN_NET2HOST32.sub:#
+	The variable with its endianness in host octet order.
+hn/endian/HN_NET2HOST64.sub
+	Convert network endianness to host endianness. 64-bit variant.
+hn/endian/HN_NET2HOST64.sub:$1
+	The variable to perform the octet swap on.
+hn/endian/HN_NET2HOST64.sub:$1*
+	Must be exactly 64 bits in size.
+hn/endian/HN_NET2HOST64.sub:#
+	The variable with its endianness in host octet order.
