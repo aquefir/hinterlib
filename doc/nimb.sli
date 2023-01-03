@@ -1,0 +1,22 @@
+hn/nimb/hn_nimb_init.sub
+	Initialise the sentinel bits of a new nimb in memory of a given size.
+hn/nimb/hn_nimb_init.sub:$1
+	Pointer to the memory containing the nimb.
+hn/nimb/hn_nimb_init.sub:$1*
+	Cannot be NULL (0). Must be a valid pointer.
+hn/nimb/hn_nimb_init.sub:$2
+	The size of the memory containing the nimb, denominated in octets.
+hn/nimb/hn_nimb_init.sub:$2*
+	Must be greater than zero (0).
+hn/nimb/hn_nimb_resize.sub
+	Propagate the sentinel bits through the nimb's underlying memory to occupy a
+	new physical storage size.
+hn/nimb/hn_nimb_resize.sub:$1
+	Pointer to the memory containing the nimb.
+hn/nimb/hn_nimb_resize.sub:$1*
+	Cannot be NULL (0). Must be a valid pointer.
+hn/nimb/hn_nimb_resize.sub:$2
+	The new size of the underlying allocation to be filled in, denominated in
+	octets.
+hn/nimb/hn_nimb_resize.sub:$2*
+	Must be greater than zero (0).
