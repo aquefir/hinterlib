@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-data
+/data
 3rdparty/*
 !3rdparty/README
 
