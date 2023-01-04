@@ -8,6 +8,19 @@
 #ifndef INC_API__HN_TYPES_NIMB_H
 #define INC_API__HN_TYPES_NIMB_H
 
+/**
+ * Functions for manipulating nimbs. Nimbs are arbitrary precision integers
+ * composed of arrays of u16s in memory using sentinel bits to link them
+ * together. They are a foundational component of data types in Hinterlib such
+ * as buffers and trees, where their semantics are used to provide unlimited
+ * extensibility without depending on having large machine pointers. Given a
+ * pointer to a u16 as a nimb, it can be comprehended by traversing it,
+ * advancing to the next element when the current element has its most
+ * significant bit (bit 15) high, and stopping at the first element that has
+ * its MSB low. All memory management is left to the user and should be equally
+ * workable with both heap-based and automatic stack-based storage.
+ */
+
 /* START sanity check */
 #if !defined( _SYNDEF_FOO ) || !defined( _CFGOPT_FOO )
 #error Your compiler is not configured correctly for using \
