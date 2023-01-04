@@ -39,7 +39,7 @@ void hn_nimb_from64( hn_u16 *, hn_u64 );
 #endif /* defined( _SYNDEF_HAVE_I64 ) */
 
 /* Get the size of the nimb by traversing the sentinel bits therein. */
-ptri hn_nimb_getsize( hn_u16 * );
+hn_ptri hn_nimb_getsize( hn_u16 * );
 
 /* Perform a full comparison of two nimbs. */
 hn_u8 hn_nimb_compare( hn_u16 *, hn_ptri, hn_u16 *, hn_ptri );
