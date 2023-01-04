@@ -75,12 +75,12 @@ void hn_nimb_not( hn_u16 *, hn_ptri );
 hn_bl hn_nimb_xor( hn_u16 *, hn_ptri, hn_u16 *, hn_ptri );
 
 /* Count the leading zero bits of a nimb. */
-hn_ptri hn_nimb_clz( hn_u16 *, hn_ptri );
+void hn_nimb_clz( hn_u16 *, hn_ptri, hn_u16 *, hn_ptri );
 
 /* Count the trailing zero bits of a nimb. */
-hn_ptri hn_nimb_ctz( hn_u16 *, hn_ptri );
+void hn_nimb_ctz( hn_u16 *, hn_ptri, hn_u16 *, hn_ptri );
 
 /* Count the number of high bits in a nimb. */
-hn_ptri hn_nimb_pct( hn_u16 *, hn_ptri );
+void hn_nimb_pct( hn_u16 *, hn_ptri, hn_u16 *, hn_ptri );
 
 #endif /* INC_API__HN_TYPES_NIMB_H */
