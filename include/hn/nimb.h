@@ -47,7 +47,7 @@ hn_u8 hn_nimb_compare( hn_u16 *, hn_ptri, hn_u16 *, hn_ptri );
 /* Add two nimbs together. */
 hn_bl hn_nimb_add( hn_u16 *, hn_ptri, hn_u16 *, hn_ptri );
 
-/* Subtrack one nimb from another. */
+/* Subtract one nimb from another. */
 hn_bl hn_nimb_sub( hn_u16 *, hn_ptri, hn_u16 *, hn_ptri );
 
 /* Logically shift a nimb left. */
