@@ -20,3 +20,321 @@ hn/nimb/hn_nimb_resize.sub:$2
 	octets.
 hn/nimb/hn_nimb_resize.sub:$2*
 	Must be greater than zero (0).
+hn/nimb/hn_nimb_from16.sub
+	Create a nimb from a 16-bit unsigned integer primitive.
+hn/nimb/hn_nimb_from16.sub:$1
+	Pointer to the nimb storage to contain the result.
+hn/nimb/hn_nimb_from16.sub:$1*
+	Cannot be NULL (0). Must be a valid pointer to a memory region at least 4
+	octets large.
+hn/nimb/hn_nimb_from16.sub:$2
+	The 32-bit unsigned integer to convert into a nimb.
+hn/nimb/hn_nimb_from32.sub
+	Create a nimb from a 32-bit unsigned integer primitive.
+hn/nimb/hn_nimb_from32.sub:$1
+	Pointer to the nimb storage to contain the result.
+hn/nimb/hn_nimb_from32.sub:$1*
+	Cannot be NULL (0). Must be a valid pointer to a memory region at least 6
+	octets large.
+hn/nimb/hn_nimb_from32.sub:$2
+	The 32-bit unsigned integer to convert into a nimb.
+hn/nimb/hn_nimb_from64.sub
+	Create a nimb from a 64-bit unsigned integer primitive.
+hn/nimb/hn_nimb_from64.sub:$1
+	Pointer to the nimb storage to contain the result.
+hn/nimb/hn_nimb_from64.sub:$1*
+	Cannot be NULL (0). Must be a valid pointer to a memory region at least 10
+	octets large.
+hn/nimb/hn_nimb_from64.sub:$2
+	The 64-bit unsigned integer to convert into a nimb.
+hn/nimb/hn_nimb_getsize.sub
+	Get the size of the nimb by traversing the sentinel bits therein.
+hn/nimb/hn_nimb_getsize.sub:$1
+	Pointer to the memory containing the nimb.
+hn/nimb/hn_nimb_getsize.sub:$1*
+	Cannot be NULL (0). Must be a valid pointer.
+hn/nimb/hn_nimb_getsize.sub:#
+	The size of the nimb, denominated in octets.
+hn/nimb/hn_nimb_compare.sub
+	Perform a full comparison of two nimbs.
+hn/nimb/hn_nimb_compare.sub:$1
+	Pointer to the left-hand nimb to compare.
+hn/nimb/hn_nimb_compare.sub:$1*
+	Cannot be NULL (0). Must be a valid pointer.
+hn/nimb/hn_nimb_compare.sub:$2
+	The size of the memory containing the left-hand nimb, denominated in octets.
+hn/nimb/hn_nimb_compare.sub:$2*
+	Must be greater than zero (0).
+hn/nimb/hn_nimb_compare.sub:$3
+	Pointer to the right-hand nimb to compare.
+hn/nimb/hn_nimb_compare.sub:$3*
+	Cannot be NULL (0). Must be a valid pointer.
+hn/nimb/hn_nimb_compare.sub:$4
+	The size of the memory containing the right-hand nimb, denominated in
+	octets.
+hn/nimb/hn_nimb_compare.sub:$4*
+	Must be greater than zero (0).
+hn/nimb/hn_nimb_compare.sub:#
+	An octet bitfield where bit 0 is the carry bit, bit 1 is the zero bit, and
+	bits 2-7 are reserved and should be ignored. The two meaningful bits can be
+	used to construct logic determining precedence and equality (less than,
+	equal to, greater than, ...).
+hn/nimb/hn_nimb_add.sub
+	Add two nimbs together.
+hn/nimb/hn_nimb_add.sub:$1
+	Pointer to the left-hand nimb to add, and where the result will be written.
+hn/nimb/hn_nimb_add.sub:$1*
+	Cannot be NULL (0). Must be a valid pointer.
+hn/nimb/hn_nimb_add.sub:$2
+	The size of the memory containing the left-hand nimb, denominated in octets.
+hn/nimb/hn_nimb_add.sub:$2*
+	Must be greater than zero (0).
+hn/nimb/hn_nimb_add.sub:$3
+	Pointer to the right-hand nimb to add to the left.
+hn/nimb/hn_nimb_add.sub:$3*
+	Cannot be NULL (0). Must be a valid pointer.
+hn/nimb/hn_nimb_compare.sub:$4
+	The size of the memory containing the right-hand nimb, denominated in
+	octets.
+hn/nimb/hn_nimb_add.sub:$4*
+	Must be greater than zero (0).
+hn/nimb/hn_nimb_add.sub:#
+	HN_FALSE if no overflow would occur, or HN_TRUE if overflow would occur. In
+	the latter case, the operation is not performed and the input nimbs are left
+	unmodified, so the user may allocate more memory or perform other logic as
+	desired to cope with that.
+hn/nimb/hn_nimb_sub.sub
+	Subtract one nimb from another.
+hn/nimb/hn_nimb_sub.sub:$1
+	Pointer to the left-hand nimb to subtract from, and where the result will be
+	written.
+hn/nimb/hn_nimb_sub.sub:$1*
+	Cannot be NULL (0). Must be a valid pointer.
+hn/nimb/hn_nimb_sub.sub:$2
+	The size of the memory containing the left-hand nimb, denominated in octets.
+hn/nimb/hn_nimb_sub.sub:$2*
+	Must be greater than zero (0).
+hn/nimb/hn_nimb_sub.sub:$3
+	Pointer to the right-hand nimb to subtract from the left.
+hn/nimb/hn_nimb_sub.sub:$3*
+	Cannot be NULL (0). Must be a valid pointer.
+hn/nimb/hn_nimb_compare.sub:$4
+	The size of the memory containing the right-hand nimb, denominated in
+	octets.
+hn/nimb/hn_nimb_sub.sub:$4*
+	Must be greater than zero (0).
+hn/nimb/hn_nimb_sub.sub:#
+	HN_FALSE if no overflow would occur, or HN_TRUE if overflow would occur. In
+	the latter case, the operation is not performed and the input nimbs are left
+	unmodified, so the user may allocate more memory or perform other logic as
+	desired to cope with that.
+hn/nimb/hn_nimb_lsl.sub
+	Logically shift a nimb left.
+hn/nimb/hn_nimb_lsl.sub:$1
+	Pointer to the left-hand nimb to shift, and where the result will be
+	written.
+hn/nimb/hn_nimb_lsl.sub:$1*
+	Cannot be NULL (0). Must be a valid pointer.
+hn/nimb/hn_nimb_lsl.sub:$2
+	The size of the memory containing the left-hand nimb, denominated in octets.
+hn/nimb/hn_nimb_lsl.sub:$2*
+	Must be greater than zero (0).
+hn/nimb/hn_nimb_lsl.sub:$3
+	Pointer to the right-hand nimb containing the number of bits to shift by.
+hn/nimb/hn_nimb_lsl.sub:$3*
+	Cannot be NULL (0). Must be a valid pointer.
+hn/nimb/hn_nimb_compare.sub:$4
+	The size of the memory containing the right-hand nimb, denominated in
+	octets.
+hn/nimb/hn_nimb_lsl.sub:$4*
+	Must be greater than zero (0).
+hn/nimb/hn_nimb_lsr.sub
+	Logically shift a nimb right.
+hn/nimb/hn_nimb_lsr.sub:$1
+	Pointer to the left-hand nimb to shift, and where the result will be
+	written.
+hn/nimb/hn_nimb_lsr.sub:$1*
+	Cannot be NULL (0). Must be a valid pointer.
+hn/nimb/hn_nimb_lsr.sub:$2
+	The size of the memory containing the left-hand nimb, denominated in octets.
+hn/nimb/hn_nimb_lsr.sub:$2*
+	Must be greater than zero (0).
+hn/nimb/hn_nimb_lsr.sub:$3
+	Pointer to the right-hand nimb containing the number of bits to shift by.
+hn/nimb/hn_nimb_lsr.sub:$3*
+	Cannot be NULL (0). Must be a valid pointer.
+hn/nimb/hn_nimb_compare.sub:$4
+	The size of the memory containing the right-hand nimb, denominated in
+	octets.
+hn/nimb/hn_nimb_lsr.sub:$4*
+	Must be greater than zero (0).
+hn/nimb/hn_nimb_rol.sub
+	Rotate a nimb left.
+hn/nimb/hn_nimb_rol.sub:$1
+	Pointer to the left-hand nimb to rotate, and where the result will be
+	written.
+hn/nimb/hn_nimb_rol.sub:$1*
+	Cannot be NULL (0). Must be a valid pointer.
+hn/nimb/hn_nimb_rol.sub:$2
+	The size of the memory containing the left-hand nimb, denominated in octets.
+hn/nimb/hn_nimb_rol.sub:$2*
+	Must be greater than zero (0).
+hn/nimb/hn_nimb_rol.sub:$3
+	Pointer to the right-hand nimb containing the number of bits to rotate by.
+hn/nimb/hn_nimb_rol.sub:$3*
+	Cannot be NULL (0). Must be a valid pointer.
+hn/nimb/hn_nimb_compare.sub:$4
+	The size of the memory containing the right-hand nimb, denominated in
+	octets.
+hn/nimb/hn_nimb_rol.sub:$4*
+	Must be greater than zero (0).
+hn/nimb/hn_nimb_ror.sub
+	Rotate a nimb right.
+hn/nimb/hn_nimb_ror.sub:$1
+	Pointer to the left-hand nimb to rotate, and where the result will be
+	written.
+hn/nimb/hn_nimb_ror.sub:$1*
+	Cannot be NULL (0). Must be a valid pointer.
+hn/nimb/hn_nimb_ror.sub:$2
+	The size of the memory containing the left-hand nimb, denominated in octets.
+hn/nimb/hn_nimb_ror.sub:$2*
+	Must be greater than zero (0).
+hn/nimb/hn_nimb_ror.sub:$3
+	Pointer to the right-hand nimb containing the number of bits to rotate by.
+hn/nimb/hn_nimb_ror.sub:$3*
+	Cannot be NULL (0). Must be a valid pointer.
+hn/nimb/hn_nimb_compare.sub:$4
+	The size of the memory containing the right-hand nimb, denominated in
+	octets.
+hn/nimb/hn_nimb_ror.sub:$4*
+	Must be greater than zero (0).
+hn/nimb/hn_nimb_and.sub
+	Logically AND two nimbs.
+hn/nimb/hn_nimb_and.sub:$1
+	Pointer to the left-hand nimb to AND, and where the result will be written.
+hn/nimb/hn_nimb_and.sub:$1*
+	Cannot be NULL (0). Must be a valid pointer.
+hn/nimb/hn_nimb_and.sub:$2
+	The size of the memory containing the left-hand nimb, denominated in octets.
+hn/nimb/hn_nimb_and.sub:$2*
+	Must be greater than zero (0).
+hn/nimb/hn_nimb_and.sub:$3
+	Pointer to the right-hand nimb to AND with the left.
+hn/nimb/hn_nimb_and.sub:$3*
+	Cannot be NULL (0). Must be a valid pointer.
+hn/nimb/hn_nimb_and.sub:$4
+	The size of the memory containing the right-hand nimb, denominated in
+	octets.
+hn/nimb/hn_nimb_and.sub:$4*
+	Must be greater than zero (0).
+hn/nimb/hn_nimb_orr.sub
+	Logically OR two nimbs.
+hn/nimb/hn_nimb_orr.sub:$1
+	Pointer to the left-hand nimb to OR, and where the result will be written.
+hn/nimb/hn_nimb_orr.sub:$1*
+	Cannot be NULL (0). Must be a valid pointer.
+hn/nimb/hn_nimb_orr.sub:$2
+	The size of the memory containing the left-hand nimb, denominated in octets.
+hn/nimb/hn_nimb_orr.sub:$2*
+	Must be greater than zero (0).
+hn/nimb/hn_nimb_orr.sub:$3
+	Pointer to the right-hand nimb to OR with the left.
+hn/nimb/hn_nimb_orr.sub:$3*
+	Cannot be NULL (0). Must be a valid pointer.
+hn/nimb/hn_nimb_orr.sub:$4
+	The size of the memory containing the right-hand nimb, denominated in
+	octets.
+hn/nimb/hn_nimb_orr.sub:$4*
+	Must be greater than zero (0).
+hn/nimb/hn_nimb_orr.sub:#
+	HN_FALSE if no overflow would occur, or HN_TRUE if overflow would occur. In
+	the latter case, the operation is not performed and the input nimbs are left
+	unmodified, so the user may allocate more memory or perform other logic as
+	desired to cope with that.
+hn/nimb/hn_nimb_not.sub
+	Logically bit inverse a nimb.
+hn/nimb/hn_nimb_not.sub:$1
+	Pointer to the nimb to inverse.
+hn/nimb/hn_nimb_not.sub:$1*
+	Cannot be NULL (0). Must be a valid pointer.
+hn/nimb/hn_nimb_not.sub:$2
+	The size of the memory containing the nimb, denominated in octets.
+hn/nimb/hn_nimb_not.sub:$2*
+	Must be greater than zero (0).
+hn/nimb/hn_nimb_xor.sub
+	Logically XOR two nimbs.
+hn/nimb/hn_nimb_xor.sub:$1
+	Pointer to the left-hand nimb to XOR, and where the result will be written.
+hn/nimb/hn_nimb_xor.sub:$1*
+	Cannot be NULL (0). Must be a valid pointer.
+hn/nimb/hn_nimb_xor.sub:$2
+	The size of the memory containing the left-hand nimb, denominated in octets.
+hn/nimb/hn_nimb_xor.sub:$2*
+	Must be greater than zero (0).
+hn/nimb/hn_nimb_xor.sub:$3
+	Pointer to the right-hand nimb to XOR with the left.
+hn/nimb/hn_nimb_xor.sub:$3*
+	Cannot be NULL (0). Must be a valid pointer.
+hn/nimb/hn_nimb_xor.sub:$4
+	The size of the memory containing the right-hand nimb, denominated in
+	octets.
+hn/nimb/hn_nimb_xor.sub:$4*
+	Must be greater than zero (0).
+hn/nimb/hn_nimb_xor.sub:#
+	HN_FALSE if no overflow would occur, or HN_TRUE if overflow would occur. In
+	the latter case, the operation is not performed and the input nimbs are left
+	unmodified, so the user may allocate more memory or perform other logic as
+	desired to cope with that.
+hn/nimb/hn_nimb_clz.sub
+	Count the leading zero bits of a nimb.
+hn/nimb/hn_nimb_clz.sub:$3
+	Pointer to the nimb to count.
+hn/nimb/hn_nimb_clz.sub:$3*
+	Cannot be NULL (0). Must be a valid pointer.
+hn/nimb/hn_nimb_clz.sub:$4
+	The size of the memory containing the nimb, denominated in octets.
+hn/nimb/hn_nimb_clz.sub:$4*
+	Must be greater than zero (0).
+hn/nimb/hn_nimb_clz.sub:#
+	HN_FALSE if no overflow would occur, or HN_TRUE if overflow would occur. In
+	the latter case, the operation is not performed and the input nimbs are left
+	unmodified, so the user may allocate more memory or perform other logic as
+	desired to cope with that.
+hn/nimb/hn_nimb_ctz.sub
+	Count the trailing zero bits of a nimb.
+hn/nimb/hn_nimb_ctz.sub:$3
+	Pointer to the nimb to count.
+hn/nimb/hn_nimb_ctz.sub:$3*
+	Cannot be NULL (0). Must be a valid pointer.
+hn/nimb/hn_nimb_ctz.sub:$4
+	The size of the memory containing the nimb, denominated in octets.
+hn/nimb/hn_nimb_ctz.sub:$4*
+	Must be greater than zero (0).
+hn/nimb/hn_nimb_ctz.sub:#
+	HN_FALSE if no overflow would occur, or HN_TRUE if overflow would occur. In
+	the latter case, the operation is not performed and the input nimbs are left
+	unmodified, so the user may allocate more memory or perform other logic as
+	desired to cope with that.
+hn/nimb/hn_nimb_pct.sub
+	Count the number of high bits in a nimb.
+hn/nimb/hn_nimb_pct.sub:$1
+	Pointer to the nimb to store the result in.
+hn/nimb/hn_nimb_pct.sub:$1*
+	Cannot be NULL (0). Must be a valid pointer.
+hn/nimb/hn_nimb_pct.sub:$2
+	The size of the memory containing the nimb, denominated in octets.
+hn/nimb/hn_nimb_pct.sub:$2*
+	Must be greater than zero (0).
+hn/nimb/hn_nimb_pct.sub:$3
+	Pointer to the nimb to count.
+hn/nimb/hn_nimb_pct.sub:$3*
+	Cannot be NULL (0). Must be a valid pointer.
+hn/nimb/hn_nimb_pct.sub:$4
+	The size of the memory containing the nimb, denominated in octets.
+hn/nimb/hn_nimb_pct.sub:$4*
+	Must be greater than zero (0).
+hn/nimb/hn_nimb_pct.sub:#
+	HN_FALSE if no overflow would occur, or HN_TRUE if overflow would occur. In
+	the latter case, the operation is not performed and the input nimbs are left
+	unmodified, so the user may allocate more memory or perform other logic as
+	desired to cope with that.
