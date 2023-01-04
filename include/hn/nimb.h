@@ -66,7 +66,7 @@ void hn_nimb_ror( hn_u16 *, hn_ptri, hn_u16 *, hn_ptri );
 void hn_nimb_and( hn_u16 *, hn_ptri, hn_u16 *, hn_ptri );
 
 /* Logically OR two nimbs. */
-hn_bl hn_nimb_or( hn_u16 *, hn_ptri, hn_u16 *, hn_ptri );
+hn_bl hn_nimb_orr( hn_u16 *, hn_ptri, hn_u16 *, hn_ptri );
 
 /* Logically bit inverse a nimb. */
 void hn_nimb_not( hn_u16 *, hn_ptri );
