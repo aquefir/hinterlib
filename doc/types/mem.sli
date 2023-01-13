@@ -1,0 +1,48 @@
+hn/types/mem/HN_IS_TRUNK8.sub
+	[pure][preproc] Checks a given address-like to see if it is a valid 8-bit
+	trunk. All trunks are aligned to their size boundary, so any lower bits
+	being nonzero means the variable cannot be a trunk.
+hn/types/mem/HN_IS_TRUNK8.sub:$1
+	The address-like to check.
+hn/types/mem/HN_IS_TRUNK8.sub:#
+	Falsey if the parameter cannot be a trunk, truthy if it can be.
+hn/types/mem/HN_IS_TRUNK12.sub
+	[pure][preproc] Checks a given address-like to see if it is a valid 12-bit
+	trunk. All trunks are aligned to their size boundary, so any lower bits
+	being nonzero means the variable cannot be a trunk.
+hn/types/mem/HN_IS_TRUNK12.sub:$1
+	The address-like to check.
+hn/types/mem/HN_IS_TRUNK12.sub:#
+	Falsey if the parameter cannot be a trunk, truthy if it can be.
+hn/types/mem/HN_IS_TRUNK16.sub
+	[pure][preproc] Checks a given address-like to see if it is a valid 16-bit
+	trunk. All trunks are aligned to their size boundary, so any lower bits
+	being nonzero means the variable cannot be a trunk.
+hn/types/mem/HN_IS_TRUNK16.sub:$1
+	The address-like to check.
+hn/types/mem/HN_IS_TRUNK16.sub:#
+	Falsey if the parameter cannot be a trunk, truthy if it can be.
+hn/types/mem/hn_addr8.struct
+	Pointer-convertible twig-trunk structure with 8-bit twigs. Conserves all
+	bits.
+hn/types/mem/hn_addr12.struct
+	Pointer-convertible twig-trunk structure with 12-bit twigs. Conserves all
+	bits.
+hn/types/mem/hn_addr16.struct
+	Pointer-convertible twig-trunk structure with 16-bit twigs. Conserves all
+	bits.
+hn/types/mem/hn_trunk8.struct
+	Pointer-convertible trunk structure with 8-bit twigs. Conserves the trunk
+	bits.
+hn/types/mem/hn_trunk12.struct
+	Pointer-convertible trunk structure with 12-bit twigs. Conserves the trunk
+	bits.
+hn/types/mem/hn_trunk16.struct
+	Pointer-convertible trunk structure with 16-bit twigs. Conserves the trunk
+	bits.
+hn/types/mem/hn_twig8.struct
+	Twig structure with 8-bit twigs.
+hn/types/mem/hn_twig12.struct
+	Twig structure with 12-bit twigs.
+hn/types/mem/hn_twig16.struct
+	Twig structure with 16-bit twigs.
