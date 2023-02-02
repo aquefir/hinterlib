@@ -4,6 +4,28 @@ hn/types/base/HN_PACKED.const
 hn/types/base/HN_PACKED.const:*
 	Must only be used following the name and body of a struct definition, ergo
 	after the tag and any body.
+hn/types/base/HN_TYPELESS.const
+	[preproc] Prevents the compiler from doing type analysis based
+	optimisations on the type, treating it as octet-addressable cast-friendly
+	data.
+hn/types/base/HN_TYPELESS.const:*
+	Must only be used following a struct definition or a typedef definition.
+hn/types/base/HN_NORETURN.const
+	[preproc] Indicates that the function it decorates will not return flow of
+	execution to the caller.
+hn/types/base/HN_NORETURN.const:*
+	Must only be used following a function declaration.
+hn/types/base/HN_NOTHROW.const
+	[preproc] Indicates that the function it decorates will not throw any
+	exceptions from higher level languages including (but not limited to) C++.
+hn/types/base/HN_NOTHROW.const:*
+	Must only be used following a function declaration.
+hn/types/base/HN_PURE.const
+	[preproc] Indicates that the function it decorates is "pure", ergo that it
+	exhibits no "side effects", ergo that given its inputs it will always give
+	the same outputs deterministically without changing any state outside.
+hn/types/base/HN_PURE.const:*
+	Must only be used following a function declaration.
 hn/types/base/HN_ALIGN.sub
 	[preproc][pure] Resolves to compiler-specific intrinsics to force
 	alignment of a struct to a number of octets that is an exponent of two.

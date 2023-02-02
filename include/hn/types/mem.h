@@ -16,6 +16,7 @@ compatible compiler (either GCC, Clang, or FCC).
 #endif /* END sanity check */
 
 #if defined( __has_attribute )
+
 #if __has_attribute( packed )
 #if !defined( HN_PACKED )
 /* Force the structure to be tightly packed into as few octets as possible.
@@ -23,6 +24,15 @@ compatible compiler (either GCC, Clang, or FCC).
 #define HN_PACKED __attribute__( ( packed ) )
 #endif /* !defined( HN_PACKED ) */
 #endif /* __has_attribute( packed ) */
+
+#if __has_attribute( may_alias )
+#if !defined( HN_TYPELESS )
+/* Prevents the compiler from doing type analysis based optimisations on the
+ * type, treating it as octet-addressable cast-friendly data. */
+#define HN_TYPELESS __attribute__( ( may_alias ) )
+#endif /* !defined( HN_TYPELESS ) */
+#endif /* __has_attribute( may_alias ) */
+
 #endif /* defined( __has_attribute ) */
 
 /* fallback #defines in case attributes are not supported */
@@ -30,6 +40,10 @@ compatible compiler (either GCC, Clang, or FCC).
 #if !defined( HN_PACKED )
 #define HN_PACKED
 #endif /* !defined( HN_PACKED ) */
+
+#if !defined( HN_TYPELESS )
+#define HN_TYPELESS
+#endif /* !defined( HN_TYPELESS ) */
 
 #if !defined( HN_ISTRUNK8 )
 #define HN_ISTRUNK8(_a) (((__UINTPTR_TYPE__)(_a) & 255) == 0)
@@ -72,7 +86,7 @@ struct hn_addr8
 	__UINT8_TYPE__ trunk8;
 	__UINT8_TYPE__ twig;
 #endif /* defined( _SYNDEF_LILENDIAN ) */
-} HN_PACKED;
+} HN_PACKED HN_TYPELESS;
 
 struct hn_addr12
 {
@@ -109,7 +123,7 @@ struct hn_addr12
 	__UINT16_TYPE__ twig : 12;
 #pragma GCC diagnostic pop
 #endif /* defined( _SYNDEF_LILENDIAN ) */
-} HN_PACKED;
+} HN_PACKED HN_TYPELESS;
 
 struct hn_addr16
 {
@@ -138,7 +152,7 @@ struct hn_addr16
 #endif /* word size */
 	__UINT16_TYPE__ twig;
 #endif /* defined( _SYNDEF_LILENDIAN ) */
-} HN_PACKED;
+} HN_PACKED HN_TYPELESS;
 
 struct hn_trunk16p8
 {
@@ -149,7 +163,7 @@ struct hn_trunk16p8
 	__UINT8_TYPE__ trunk8;
 	__UINT8_TYPE__ padding;
 #endif /* defined( _SYNDEF_LILENDIAN ) */
-} HN_PACKED;
+} HN_PACKED HN_TYPELESS;
 
 struct hn_trunk32p8
 {
@@ -162,7 +176,7 @@ struct hn_trunk32p8
 	__UINT8_TYPE__ trunk8;
 	__UINT8_TYPE__ padding;
 #endif /* defined( _SYNDEF_LILENDIAN ) */
-} HN_PACKED;
+} HN_PACKED HN_TYPELESS;
 
 struct hn_trunk64p8
 {
@@ -177,7 +191,7 @@ struct hn_trunk64p8
 	__UINT8_TYPE__ trunk8;
 	__UINT8_TYPE__ padding;
 #endif /* defined( _SYNDEF_LILENDIAN ) */
-} HN_PACKED;
+} HN_PACKED HN_TYPELESS;
 
 struct hn_trunk128p8
 {
@@ -194,7 +208,7 @@ struct hn_trunk128p8
 	__UINT8_TYPE__ trunk8;
 	__UINT8_TYPE__ padding;
 #endif /* defined( _SYNDEF_LILENDIAN ) */
-} HN_PACKED;
+} HN_PACKED HN_TYPELESS;
 
 struct hn_trunk16p12
 {
@@ -203,7 +217,7 @@ struct hn_trunk16p12
 	__UINT16_TYPE__ padding : 12;
 	__UINT16_TYPE__ trunk4 : 4;
 #pragma GCC diagnostic pop
-} HN_PACKED;
+} HN_PACKED HN_TYPELESS;
 
 struct hn_trunk32p12
 {
@@ -222,7 +236,7 @@ struct hn_trunk32p12
 	__UINT16_TYPE__ trunk4 : 4;
 #pragma GCC diagnostic pop
 #endif /* defined( _SYNDEF_LILENDIAN ) */
-} HN_PACKED;
+} HN_PACKED HN_TYPELESS;
 
 struct hn_trunk64p12
 {
@@ -243,7 +257,7 @@ struct hn_trunk64p12
 	__UINT16_TYPE__ trunk4 : 4;
 #pragma GCC diagnostic pop
 #endif /* defined( _SYNDEF_LILENDIAN ) */
-} HN_PACKED;
+} HN_PACKED HN_TYPELESS;
 
 struct hn_trunk128p12
 {
@@ -266,7 +280,7 @@ struct hn_trunk128p12
 	__UINT16_TYPE__ trunk4 : 4;
 #pragma GCC diagnostic pop
 #endif /* defined( _SYNDEF_LILENDIAN ) */
-} HN_PACKED;
+} HN_PACKED HN_TYPELESS;
 
 struct hn_trunk32p16
 {
@@ -283,7 +297,7 @@ struct hn_trunk32p16
 	__UINT16_TYPE__ padding;
 #pragma GCC diagnostic pop
 #endif /* defined( _SYNDEF_LILENDIAN ) */
-} HN_PACKED;
+} HN_PACKED HN_TYPELESS;
 
 struct hn_trunk64p16
 {
@@ -302,7 +316,7 @@ struct hn_trunk64p16
 	__UINT16_TYPE__ padding;
 #pragma GCC diagnostic pop
 #endif /* defined( _SYNDEF_LILENDIAN ) */
-} HN_PACKED;
+} HN_PACKED HN_TYPELESS;
 
 struct hn_trunk128p16
 {
@@ -323,12 +337,12 @@ struct hn_trunk128p16
 	__UINT16_TYPE__ padding;
 #pragma GCC diagnostic pop
 #endif /* defined( _SYNDEF_LILENDIAN ) */
-} HN_PACKED;
+} HN_PACKED HN_TYPELESS;
 
 struct hn_twig8
 {
 	__UINT8_TYPE__ twig;
-} HN_PACKED;
+} HN_PACKED HN_TYPELESS;
 
 struct hn_twig12
 {
@@ -337,82 +351,82 @@ struct hn_twig12
 	__UINT16_TYPE__ twig : 12;
 	__UINT16_TYPE__ padding : 4;
 #pragma GCC diagnostic pop
-} HN_PACKED;
+} HN_PACKED HN_TYPELESS;
 
 struct hn_twig16
 {
 	__UINT16_TYPE__ twig;
-} HN_PACKED;
+} HN_PACKED HN_TYPELESS;
 
-typedef struct hn_addr8 hn_addr8;
+typedef struct hn_addr8 hn_addr8 HN_TYPELESS;
 
-typedef struct hn_addr12 hn_addr12;
+typedef struct hn_addr12 hn_addr12 HN_TYPELESS;
 
-typedef struct hn_addr16 hn_addr16;
+typedef struct hn_addr16 hn_addr16 HN_TYPELESS;
 
-typedef struct hn_trunk16p8 hn_trunk16p8;
+typedef struct hn_trunk16p8 hn_trunk16p8 HN_TYPELESS;
 
-typedef struct hn_trunk32p8 hn_trunk32p8;
+typedef struct hn_trunk32p8 hn_trunk32p8 HN_TYPELESS;
 
-typedef struct hn_trunk64p8 hn_trunk64p8;
+typedef struct hn_trunk64p8 hn_trunk64p8 HN_TYPELESS;
 
-typedef struct hn_trunk128p8 hn_trunk128p8;
+typedef struct hn_trunk128p8 hn_trunk128p8 HN_TYPELESS;
 
-typedef struct hn_trunk16p12 hn_trunk16p12;
+typedef struct hn_trunk16p12 hn_trunk16p12 HN_TYPELESS;
 
-typedef struct hn_trunk32p12 hn_trunk32p12;
+typedef struct hn_trunk32p12 hn_trunk32p12 HN_TYPELESS;
 
-typedef struct hn_trunk64p12 hn_trunk64p12;
+typedef struct hn_trunk64p12 hn_trunk64p12 HN_TYPELESS;
 
-typedef struct hn_trunk128p12 hn_trunk128p12;
+typedef struct hn_trunk128p12 hn_trunk128p12 HN_TYPELESS;
 
-typedef struct hn_trunk32p16 hn_trunk32p16;
+typedef struct hn_trunk32p16 hn_trunk32p16 HN_TYPELESS;
 
-typedef struct hn_trunk64p16 hn_trunk64p16;
+typedef struct hn_trunk64p16 hn_trunk64p16 HN_TYPELESS;
 
-typedef struct hn_trunk128p16 hn_trunk128p16;
+typedef struct hn_trunk128p16 hn_trunk128p16 HN_TYPELESS;
 
-typedef struct hn_twig8 hn_twig8;
+typedef struct hn_twig8 hn_twig8 HN_TYPELESS;
 
-typedef struct hn_twig12 hn_twig12;
+typedef struct hn_twig12 hn_twig12 HN_TYPELESS;
 
-typedef struct hn_twig16 hn_twig16;
+typedef struct hn_twig16 hn_twig16 HN_TYPELESS;
 
 #if !defined( _CFGOPT_NOSHORTHAND )
 
-typedef struct hn_addr8 addr8;
+typedef struct hn_addr8 addr8 HN_TYPELESS;
 
-typedef struct hn_addr12 addr12;
+typedef struct hn_addr12 addr12 HN_TYPELESS;
 
-typedef struct hn_addr16 addr16;
+typedef struct hn_addr16 addr16 HN_TYPELESS;
 
-typedef struct hn_trunk16p8 trunk16p8;
+typedef struct hn_trunk16p8 trunk16p8 HN_TYPELESS;
 
-typedef struct hn_trunk32p8 trunk32p8;
+typedef struct hn_trunk32p8 trunk32p8 HN_TYPELESS;
 
-typedef struct hn_trunk64p8 trunk64p8;
+typedef struct hn_trunk64p8 trunk64p8 HN_TYPELESS;
 
-typedef struct hn_trunk128p8 trunk128p8;
+typedef struct hn_trunk128p8 trunk128p8 HN_TYPELESS;
 
-typedef struct hn_trunk16p12 trunk16p12;
+typedef struct hn_trunk16p12 trunk16p12 HN_TYPELESS;
 
-typedef struct hn_trunk32p12 trunk32p12;
+typedef struct hn_trunk32p12 trunk32p12 HN_TYPELESS;
 
-typedef struct hn_trunk64p12 trunk64p12;
+typedef struct hn_trunk64p12 trunk64p12 HN_TYPELESS;
 
-typedef struct hn_trunk128p12 trunk128p12;
+typedef struct hn_trunk128p12 trunk128p12 HN_TYPELESS;
 
-typedef struct hn_trunk32p16 trunk32p16;
+typedef struct hn_trunk32p16 trunk32p16 HN_TYPELESS;
 
-typedef struct hn_trunk64p16 trunk64p16;
+typedef struct hn_trunk64p16 trunk64p16 HN_TYPELESS;
 
-typedef struct hn_trunk128p16 trunk128p16;
+typedef struct hn_trunk128p16 trunk128p16 HN_TYPELESS;
 
-typedef struct hn_twig8 twig8;
+typedef struct hn_twig8 twig8 HN_TYPELESS;
 
-typedef struct hn_twig12 twig12;
+typedef struct hn_twig12 twig12 HN_TYPELESS;
 
-typedef struct hn_twig16 twig16;
+typedef struct hn_twig16 twig16 HN_TYPELESS;
 
 #endif /* !defined( _CFGOPT_NOSHORTHAND ) */
 

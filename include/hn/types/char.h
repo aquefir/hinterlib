@@ -16,6 +16,7 @@ compatible compiler (either GCC, Clang, or FCC).
 #endif /* END sanity check */
 
 #if defined( __has_attribute )
+
 #if __has_attribute( packed )
 #if !defined( HN_PACKED )
 /* Force the structure to be tightly packed into as few octets as possible.
@@ -23,6 +24,15 @@ compatible compiler (either GCC, Clang, or FCC).
 #define HN_PACKED __attribute__( ( packed ) )
 #endif /* !defined( HN_PACKED ) */
 #endif /* __has_attribute( packed ) */
+
+#if __has_attribute( may_alias )
+#if !defined( HN_TYPELESS )
+/* Prevents the compiler from doing type analysis based optimisations on the
+ * type, treating it as octet-addressable cast-friendly data. */
+#define HN_TYPELESS __attribute__( ( may_alias ) )
+#endif /* !defined( HN_TYPELESS ) */
+#endif /* __has_attribute( may_alias ) */
+
 #endif /* defined( __has_attribute ) */
 
 /* fallback #defines in case attributes are not supported */
@@ -30,6 +40,10 @@ compatible compiler (either GCC, Clang, or FCC).
 #if !defined( HN_PACKED )
 #define HN_PACKED
 #endif /* !defined( HN_PACKED ) */
+
+#if !defined( HN_TYPELESS )
+#define HN_TYPELESS
+#endif /* !defined( HN_TYPELESS ) */
 
 /* Helper function to check if a character is valid ASCII. */
 #define HN_CHR_ISVALID( _chr ) (((_chr) >= 0) && ((_chr) <= 127))
@@ -43,7 +57,7 @@ compatible compiler (either GCC, Clang, or FCC).
 #define HN_UCHR_TRUNCATE( _uchr ) ((((hn_uchr)_uchr).hi &= 31))
 
 /* A single ASCII character. */
-typedef __UINT8_TYPE__ hn_chr;
+typedef __UINT8_TYPE__ hn_chr HN_TYPELESS;
 /* A single Unicode code point. */
 struct hn_uchr
 {
@@ -58,17 +72,17 @@ struct hn_uchr
 	/* The lower 16 bits of the code point. */
 	__UINT16_TYPE__ lo;
 #endif /* defined( _SYNDEF_LILENDIAN ) */
-} HN_PACKED;
+} HN_PACKED HN_TYPELESS;
 
 /* A single Unicode code point. */
-typedef struct hn_uchr hn_uchr;
+typedef struct hn_uchr hn_uchr HN_TYPELESS;
 
 #if !defined( _CFGOPT_NOSHORTHAND )
 
 /* A single ASCII character. */
-typedef __UINT8_TYPE__ chr;
+typedef __UINT8_TYPE__ chr HN_TYPELESS;
 /* A single Unicode code point. */
-typedef struct hn_uchr uchr;
+typedef struct hn_uchr uchr HN_TYPELESS;
 
 #endif /* !defined( _CFGOPT_NOSHORTHAND ) */
 
