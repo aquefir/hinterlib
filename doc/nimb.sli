@@ -58,6 +58,57 @@ hn/nimb/hn_nimb_from64.sub:$1*
 	octets large.
 hn/nimb/hn_nimb_from64.sub:$2
 	The 64-bit unsigned integer to convert into a nimb.
+hn/nimb/hn_nimb_to16.sub
+	Create a 16-bit unsigned integer primitive from a nimb.
+hn/nimb/hn_nimb_to16.sub:$1
+	Pointer to the 16-bit unsigned integer to store as the result.
+hn/nimb/hn_nimb_to16.sub:$1*
+	Cannot be NULL (0). Must be a valid pointer to a memory region at least 2
+	octets large.
+hn/nimb/hn_nimb_to16.sub:$2
+	Pointer to the nimb to convert into a primitive.
+hn/nimb/hn_nimb_to16.sub:$2*
+	Cannot be NULL (0). Must be a valid pointer to a memory region at least 4
+	octets large.
+hn/nimb/hn_nimb_to16.sub:#
+	HN_FALSE if no overflow would occur, or HN_TRUE if overflow would occur.
+	In the latter case, the operation is not performed and the output data is
+	left unmodified, so the user may allocate more memory or perform other
+	logic as desired to cope with that.
+hn/nimb/hn_nimb_to32.sub
+	Create a 32-bit unsigned integer primitive from a nimb.
+hn/nimb/hn_nimb_to32.sub:$1
+	Pointer to the 32-bit unsigned integer to store as the result.
+hn/nimb/hn_nimb_to32.sub:$1*
+	Cannot be NULL (0). Must be a valid pointer to a memory region at least 4
+	octets large.
+hn/nimb/hn_nimb_to32.sub:$2
+	Pointer to the nimb to convert into a primitive.
+hn/nimb/hn_nimb_to32.sub:$2*
+	Cannot be NULL (0). Must be a valid pointer to a memory region at least 6
+	octets large.
+hn/nimb/hn_nimb_to32.sub:#
+	HN_FALSE if no overflow would occur, or HN_TRUE if overflow would occur.
+	In the latter case, the operation is not performed and the output data is
+	left unmodified, so the user may allocate more memory or perform other
+	logic as desired to cope with that.
+hn/nimb/hn_nimb_to64.sub
+	Create a 64-bit unsigned integer primitive from a nimb.
+hn/nimb/hn_nimb_to64.sub:$1
+	Pointer to the 64-bit unsigned integer to store as the result.
+hn/nimb/hn_nimb_to64.sub:$1*
+	Cannot be NULL (0). Must be a valid pointer to a memory region at least 8
+	octets large.
+hn/nimb/hn_nimb_to64.sub:$2
+	Pointer to the nimb to convert into a primitive.
+hn/nimb/hn_nimb_to64.sub:$2*
+	Cannot be NULL (0). Must be a valid pointer to a memory region at least 10
+	octets large.
+hn/nimb/hn_nimb_to64.sub:#
+	HN_FALSE if no overflow would occur, or HN_TRUE if overflow would occur.
+	In the latter case, the operation is not performed and the output data is
+	left unmodified, so the user may allocate more memory or perform other
+	logic as desired to cope with that.
 hn/nimb/hn_nimb_getsize.sub
 	Get the size of the nimb by traversing the sentinel bits therein.
 hn/nimb/hn_nimb_getsize.sub:$1

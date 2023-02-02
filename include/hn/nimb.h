@@ -1,24 +1,25 @@
-/*****************************************************************************\
- *                          Hinterlib/Neopolitan 2.                          *
- *                                                                           *
- *                      Copyright (C) 2019-2023 Aquefir                      *
- *               Released under Artisan Software Licence v1.1.               *
-\*****************************************************************************/
+/***************************************************************************\
+ *                         Hinterlib/Neopolitan 2.                         *
+ *                                                                         *
+ *                     Copyright (C) 2019-2023 Aquefir                     *
+ *              Released under Artisan Software Licence v1.1.              *
+\***************************************************************************/
 
-#ifndef INC_API__HN_TYPES_NIMB_H
-#define INC_API__HN_TYPES_NIMB_H
+#ifndef INC_API__HN_NIMB_H
+#define INC_API__HN_NIMB_H
 
 /**
  * Functions for manipulating nimbs. Nimbs are arbitrary precision integers
  * composed of arrays of u16s in memory using sentinel bits to link them
- * together. They are a foundational component of data types in Hinterlib such
- * as buffers and trees, where their semantics are used to provide unlimited
- * extensibility without depending on having large machine pointers. Given a
- * pointer to a u16 as a nimb, it can be comprehended by traversing it,
- * advancing to the next element when the current element has its most
- * significant bit (bit 15) high, and stopping at the first element that has
- * its MSB low. All memory management is left to the user and should be equally
- * workable with both heap-based and automatic stack-based storage.
+ * together. They are a foundational component of data types in Hinterlib
+ * such as buffers and trees, where their semantics are used to provide
+ * unlimited extensibility without depending on having large machine
+ * pointers. Given a pointer to a u16 as a nimb, it can be comprehended by
+ * traversing it, advancing to the next element when the current element has
+ * its most significant bit (bit 15) high, and stopping at the first element
+ * that has its MSB low. All memory management is left to the user and should
+ * be equally workable with both heap-based and automatic stack-based
+ * storage.
  */
 
 /* START sanity check */
@@ -49,6 +50,19 @@ void hn_nimb_from32( hn_u16 *, hn_u32 );
 #if defined( _SYNDEF_HAVE_I64 )
 /* Create a nimb from a 64-bit unsigned integer primitive. */
 void hn_nimb_from64( hn_u16 *, hn_u64 );
+#endif /* defined( _SYNDEF_HAVE_I64 ) */
+
+/* Create a 16-bit unsigned integer primitive from a nimb. */
+hn_bl hn_nimb_to16( hn_u16 *, hn_u16 * );
+
+#if defined( _SYNDEF_HAVE_I32 )
+/* Create a 32-bit unsigned integer primitive from a nimb. */
+hn_bl hn_nimb_to32( hn_u32 *, hn_u16 * );
+#endif /* defined( _SYNDEF_HAVE_I32 ) */
+
+#if defined( _SYNDEF_HAVE_I64 )
+/* Create a 64-bit unsigned integer primitive from a nimb. */
+hn_bl hn_nimb_to64( hn_u64 *, hn_u16 * );
 #endif /* defined( _SYNDEF_HAVE_I64 ) */
 
 /* Get the size of the nimb by traversing the sentinel bits therein. */
@@ -96,4 +110,4 @@ hn_bl hn_nimb_ctz( hn_u16 *, hn_ptri, hn_u16 *, hn_ptri );
 /* Count the number of high bits in a nimb. */
 hn_bl hn_nimb_pct( hn_u16 *, hn_ptri, hn_u16 *, hn_ptri );
 
-#endif /* INC_API__HN_TYPES_NIMB_H */
+#endif /* INC_API__HN_NIMB_H */
