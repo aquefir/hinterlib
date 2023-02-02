@@ -5,24 +5,24 @@ hn/types/base/HN_PACKED.const:*
 	Must only be used following the name and body of a struct definition, ergo
 	after the tag and any body.
 hn/types/base/HN_ALIGN.sub
-	[preproc][pure] Resolves to compiler-specific intrinsics to force alignment
-	of a struct to a number of octets that is an exponent of two.
+	[preproc][pure] Resolves to compiler-specific intrinsics to force
+	alignment of a struct to a number of octets that is an exponent of two.
 hn/types/base/HN_ALIGN.sub:$1
 	The number of octets to align the struct to.
 hn/types/base/HN_ALIGN.sub:$1*
 	Must be a number that is an exponent of two.
 hn/types/base/HN_ALIGN.sub:*
-	Must only be used following the name of a struct declaration or the name and
-	body of a struct definition.
+	Must only be used following the name of a struct declaration or the name
+	and body of a struct definition.
 hn/types/base/HN_DEPRECATED.const
 	[preproc] Marks a declaration as "deprecated", ergo that its use is
 	discouraged in new code even though it is still functionally present.
 hn/types/base/HN_DEPRECATED.const:*
 	Must only be used at the end of a valid C declaration.
 hn/types/base/HN_VECSIZE.sub
-	[preproc][pure] Resolves to compiler-specific intrinsics to create a Single
-	Instruction Multiple Data (SIMD) compatible vector type of a particular
-	size.
+	[preproc][pure] Resolves to compiler-specific intrinsics to create a
+	Single Instruction Multiple Data (SIMD) compatible vector type of a
+	particular size.
 hn/types/base/HN_VECSIZE.sub:$1
 	The size of the vector data type, denominated in octets.
 hn/types/base/HN_VECSIZE.sub:$1*

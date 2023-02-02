@@ -1,14 +1,15 @@
 hn/nimb/hn_nimb_*.group
 	Functions for manipulating nimbs. Nimbs are arbitrary precision integers
 	composed of arrays of u16s in memory using sentinel bits to link them
-	together. They are a foundational component of data types in Hinterlib such
-	as buffers and trees, where their semantics are used to provide unlimited
-	extensibility without depending on having large machine pointers. Given a
-	pointer to a u16 as a nimb, it can be comprehended by traversing it,
-	advancing to the next element when the current element has its most
-	significant bit (bit 15) high, and stopping at the first element that has
-	its MSB low. All memory management is left to the user and should be equally
-	workable with both heap-based and automatic stack-based storage.
+	together. They are a foundational component of data types in Hinterlib
+	such as buffers and trees, where their semantics are used to provide
+	unlimited extensibility without depending on having large machine
+	pointers. Given a pointer to a u16 as a nimb, it can be comprehended by
+	traversing it, advancing to the next element when the current element has
+	its most significant bit (bit 15) high, and stopping at the first element
+	that has its MSB low. All memory management is left to the user and should
+	be equally workable with both heap-based and automatic stack-based
+	storage.
 hn/nimb/hn_nimb_init.sub
 	Initialise the sentinel bits of a new nimb in memory of a given size.
 hn/nimb/hn_nimb_init.sub:$1
@@ -20,8 +21,8 @@ hn/nimb/hn_nimb_init.sub:$2
 hn/nimb/hn_nimb_init.sub:$2*
 	Must be greater than zero (0).
 hn/nimb/hn_nimb_resize.sub
-	Propagate the sentinel bits through the nimb's underlying memory to occupy a
-	new physical storage size.
+	Propagate the sentinel bits through the nimb's underlying memory to occupy
+	a new physical storage size.
 hn/nimb/hn_nimb_resize.sub:$1
 	Pointer to the memory containing the nimb.
 hn/nimb/hn_nimb_resize.sub:$1*
@@ -71,10 +72,10 @@ hn/nimb/hn_nimb_to16.sub:$2*
 	Cannot be NULL (0). Must be a valid pointer to a memory region at least 4
 	octets large.
 hn/nimb/hn_nimb_to16.sub:#
-	HN_FALSE if no overflow would occur, or HN_TRUE if overflow would occur.
-	In the latter case, the operation is not performed and the output data is
-	left unmodified, so the user may allocate more memory or perform other
-	logic as desired to cope with that.
+	{HN_,}FALSE if no overflow would occur, or {HN_,}TRUE if overflow would
+	occur. In the latter case, the operation is not performed and the output
+	data is left unmodified, so the user may allocate more memory or perform
+	other logic as desired to cope with that.
 hn/nimb/hn_nimb_to32.sub
 	Create a 32-bit unsigned integer primitive from a nimb.
 hn/nimb/hn_nimb_to32.sub:$1
@@ -88,10 +89,10 @@ hn/nimb/hn_nimb_to32.sub:$2*
 	Cannot be NULL (0). Must be a valid pointer to a memory region at least 6
 	octets large.
 hn/nimb/hn_nimb_to32.sub:#
-	HN_FALSE if no overflow would occur, or HN_TRUE if overflow would occur.
-	In the latter case, the operation is not performed and the output data is
-	left unmodified, so the user may allocate more memory or perform other
-	logic as desired to cope with that.
+	{HN_,}FALSE if no overflow would occur, or {HN_,}TRUE if overflow would
+	occur. In the latter case, the operation is not performed and the output
+	data is left unmodified, so the user may allocate more memory or perform
+	other logic as desired to cope with that.
 hn/nimb/hn_nimb_to64.sub
 	Create a 64-bit unsigned integer primitive from a nimb.
 hn/nimb/hn_nimb_to64.sub:$1
@@ -105,10 +106,10 @@ hn/nimb/hn_nimb_to64.sub:$2*
 	Cannot be NULL (0). Must be a valid pointer to a memory region at least 10
 	octets large.
 hn/nimb/hn_nimb_to64.sub:#
-	HN_FALSE if no overflow would occur, or HN_TRUE if overflow would occur.
-	In the latter case, the operation is not performed and the output data is
-	left unmodified, so the user may allocate more memory or perform other
-	logic as desired to cope with that.
+	{HN_,}FALSE if no overflow would occur, or {HN_,}TRUE if overflow would
+	occur. In the latter case, the operation is not performed and the output
+	data is left unmodified, so the user may allocate more memory or perform
+	other logic as desired to cope with that.
 hn/nimb/hn_nimb_getsize.sub
 	Get the size of the nimb by traversing the sentinel bits therein.
 hn/nimb/hn_nimb_getsize.sub:$1
@@ -124,7 +125,8 @@ hn/nimb/hn_nimb_compare.sub:$1
 hn/nimb/hn_nimb_compare.sub:$1*
 	Cannot be NULL (0). Must be a valid pointer.
 hn/nimb/hn_nimb_compare.sub:$2
-	The size of the memory containing the left-hand nimb, denominated in octets.
+	The size of the memory containing the left-hand nimb, denominated in
+	octets.
 hn/nimb/hn_nimb_compare.sub:$2*
 	Must be greater than zero (0).
 hn/nimb/hn_nimb_compare.sub:$3
@@ -138,17 +140,19 @@ hn/nimb/hn_nimb_compare.sub:$4*
 	Must be greater than zero (0).
 hn/nimb/hn_nimb_compare.sub:#
 	An octet bitfield where bit 0 is the carry bit, bit 1 is the zero bit, and
-	bits 2-7 are reserved and should be ignored. The two meaningful bits can be
-	used to construct logic determining precedence and equality (less than,
+	bits 2-7 are reserved and should be ignored. The two meaningful bits can
+	be used to construct logic determining precedence and equality (less than,
 	equal to, greater than, ...).
 hn/nimb/hn_nimb_add.sub
 	Add two nimbs together.
 hn/nimb/hn_nimb_add.sub:$1
-	Pointer to the left-hand nimb to add, and where the result will be written.
+	Pointer to the left-hand nimb to add, and where the result will be
+	written.
 hn/nimb/hn_nimb_add.sub:$1*
 	Cannot be NULL (0). Must be a valid pointer.
 hn/nimb/hn_nimb_add.sub:$2
-	The size of the memory containing the left-hand nimb, denominated in octets.
+	The size of the memory containing the left-hand nimb, denominated in
+	octets.
 hn/nimb/hn_nimb_add.sub:$2*
 	Must be greater than zero (0).
 hn/nimb/hn_nimb_add.sub:$3
@@ -161,19 +165,20 @@ hn/nimb/hn_nimb_compare.sub:$4
 hn/nimb/hn_nimb_add.sub:$4*
 	Must be greater than zero (0).
 hn/nimb/hn_nimb_add.sub:#
-	HN_FALSE if no overflow would occur, or HN_TRUE if overflow would occur. In
-	the latter case, the operation is not performed and the input nimbs are left
-	unmodified, so the user may allocate more memory or perform other logic as
-	desired to cope with that.
+	{HN_,}FALSE if no overflow would occur, or {HN_,}TRUE if overflow would
+	occur. In the latter case, the operation is not performed and the input
+	nimbs are left unmodified, so the user may allocate more memory or perform
+	other logic as desired to cope with that.
 hn/nimb/hn_nimb_sub.sub
 	Subtract one nimb from another.
 hn/nimb/hn_nimb_sub.sub:$1
-	Pointer to the left-hand nimb to subtract from, and where the result will be
-	written.
+	Pointer to the left-hand nimb to subtract from, and where the result will
+	be written.
 hn/nimb/hn_nimb_sub.sub:$1*
 	Cannot be NULL (0). Must be a valid pointer.
 hn/nimb/hn_nimb_sub.sub:$2
-	The size of the memory containing the left-hand nimb, denominated in octets.
+	The size of the memory containing the left-hand nimb, denominated in
+	octets.
 hn/nimb/hn_nimb_sub.sub:$2*
 	Must be greater than zero (0).
 hn/nimb/hn_nimb_sub.sub:$3
@@ -186,10 +191,10 @@ hn/nimb/hn_nimb_compare.sub:$4
 hn/nimb/hn_nimb_sub.sub:$4*
 	Must be greater than zero (0).
 hn/nimb/hn_nimb_sub.sub:#
-	HN_FALSE if no overflow would occur, or HN_TRUE if overflow would occur. In
-	the latter case, the operation is not performed and the input nimbs are left
-	unmodified, so the user may allocate more memory or perform other logic as
-	desired to cope with that.
+	{HN_,}FALSE if no overflow would occur, or {HN_,}TRUE if overflow would
+	occur. In the latter case, the operation is not performed and the input
+	nimbs are left unmodified, so the user may allocate more memory or perform
+	other logic as desired to cope with that.
 hn/nimb/hn_nimb_lsl.sub
 	Logically shift a nimb left.
 hn/nimb/hn_nimb_lsl.sub:$1
@@ -198,7 +203,8 @@ hn/nimb/hn_nimb_lsl.sub:$1
 hn/nimb/hn_nimb_lsl.sub:$1*
 	Cannot be NULL (0). Must be a valid pointer.
 hn/nimb/hn_nimb_lsl.sub:$2
-	The size of the memory containing the left-hand nimb, denominated in octets.
+	The size of the memory containing the left-hand nimb, denominated in
+	octets.
 hn/nimb/hn_nimb_lsl.sub:$2*
 	Must be greater than zero (0).
 hn/nimb/hn_nimb_lsl.sub:$3
@@ -218,7 +224,8 @@ hn/nimb/hn_nimb_lsr.sub:$1
 hn/nimb/hn_nimb_lsr.sub:$1*
 	Cannot be NULL (0). Must be a valid pointer.
 hn/nimb/hn_nimb_lsr.sub:$2
-	The size of the memory containing the left-hand nimb, denominated in octets.
+	The size of the memory containing the left-hand nimb, denominated in
+	octets.
 hn/nimb/hn_nimb_lsr.sub:$2*
 	Must be greater than zero (0).
 hn/nimb/hn_nimb_lsr.sub:$3
@@ -238,7 +245,8 @@ hn/nimb/hn_nimb_rol.sub:$1
 hn/nimb/hn_nimb_rol.sub:$1*
 	Cannot be NULL (0). Must be a valid pointer.
 hn/nimb/hn_nimb_rol.sub:$2
-	The size of the memory containing the left-hand nimb, denominated in octets.
+	The size of the memory containing the left-hand nimb, denominated in
+	octets.
 hn/nimb/hn_nimb_rol.sub:$2*
 	Must be greater than zero (0).
 hn/nimb/hn_nimb_rol.sub:$3
@@ -258,7 +266,8 @@ hn/nimb/hn_nimb_ror.sub:$1
 hn/nimb/hn_nimb_ror.sub:$1*
 	Cannot be NULL (0). Must be a valid pointer.
 hn/nimb/hn_nimb_ror.sub:$2
-	The size of the memory containing the left-hand nimb, denominated in octets.
+	The size of the memory containing the left-hand nimb, denominated in
+	octets.
 hn/nimb/hn_nimb_ror.sub:$2*
 	Must be greater than zero (0).
 hn/nimb/hn_nimb_ror.sub:$3
@@ -273,11 +282,13 @@ hn/nimb/hn_nimb_ror.sub:$4*
 hn/nimb/hn_nimb_and.sub
 	Logically AND two nimbs.
 hn/nimb/hn_nimb_and.sub:$1
-	Pointer to the left-hand nimb to AND, and where the result will be written.
+	Pointer to the left-hand nimb to AND, and where the result will be
+	written.
 hn/nimb/hn_nimb_and.sub:$1*
 	Cannot be NULL (0). Must be a valid pointer.
 hn/nimb/hn_nimb_and.sub:$2
-	The size of the memory containing the left-hand nimb, denominated in octets.
+	The size of the memory containing the left-hand nimb, denominated in
+	octets.
 hn/nimb/hn_nimb_and.sub:$2*
 	Must be greater than zero (0).
 hn/nimb/hn_nimb_and.sub:$3
@@ -296,7 +307,8 @@ hn/nimb/hn_nimb_orr.sub:$1
 hn/nimb/hn_nimb_orr.sub:$1*
 	Cannot be NULL (0). Must be a valid pointer.
 hn/nimb/hn_nimb_orr.sub:$2
-	The size of the memory containing the left-hand nimb, denominated in octets.
+	The size of the memory containing the left-hand nimb, denominated in
+	octets.
 hn/nimb/hn_nimb_orr.sub:$2*
 	Must be greater than zero (0).
 hn/nimb/hn_nimb_orr.sub:$3
@@ -309,10 +321,10 @@ hn/nimb/hn_nimb_orr.sub:$4
 hn/nimb/hn_nimb_orr.sub:$4*
 	Must be greater than zero (0).
 hn/nimb/hn_nimb_orr.sub:#
-	HN_FALSE if no overflow would occur, or HN_TRUE if overflow would occur. In
-	the latter case, the operation is not performed and the input nimbs are left
-	unmodified, so the user may allocate more memory or perform other logic as
-	desired to cope with that.
+	{HN_,}FALSE if no overflow would occur, or {HN_,}TRUE if overflow would
+	occur. In the latter case, the operation is not performed and the input
+	nimbs are left unmodified, so the user may allocate more memory or perform
+	other logic as desired to cope with that.
 hn/nimb/hn_nimb_not.sub
 	Logically bit inverse a nimb.
 hn/nimb/hn_nimb_not.sub:$1
@@ -326,11 +338,13 @@ hn/nimb/hn_nimb_not.sub:$2*
 hn/nimb/hn_nimb_xor.sub
 	Logically XOR two nimbs.
 hn/nimb/hn_nimb_xor.sub:$1
-	Pointer to the left-hand nimb to XOR, and where the result will be written.
+	Pointer to the left-hand nimb to XOR, and where the result will be
+	written.
 hn/nimb/hn_nimb_xor.sub:$1*
 	Cannot be NULL (0). Must be a valid pointer.
 hn/nimb/hn_nimb_xor.sub:$2
-	The size of the memory containing the left-hand nimb, denominated in octets.
+	The size of the memory containing the left-hand nimb, denominated in
+	octets.
 hn/nimb/hn_nimb_xor.sub:$2*
 	Must be greater than zero (0).
 hn/nimb/hn_nimb_xor.sub:$3
@@ -343,10 +357,10 @@ hn/nimb/hn_nimb_xor.sub:$4
 hn/nimb/hn_nimb_xor.sub:$4*
 	Must be greater than zero (0).
 hn/nimb/hn_nimb_xor.sub:#
-	HN_FALSE if no overflow would occur, or HN_TRUE if overflow would occur. In
-	the latter case, the operation is not performed and the input nimbs are left
-	unmodified, so the user may allocate more memory or perform other logic as
-	desired to cope with that.
+	{HN_,}FALSE if no overflow would occur, or {HN_,}TRUE if overflow would
+	occur. In the latter case, the operation is not performed and the input
+	nimbs are left unmodified, so the user may allocate more memory or perform
+	other logic as desired to cope with that.
 hn/nimb/hn_nimb_clz.sub
 	Count the leading zero bits of a nimb.
 hn/nimb/hn_nimb_clz.sub:$3
@@ -358,10 +372,10 @@ hn/nimb/hn_nimb_clz.sub:$4
 hn/nimb/hn_nimb_clz.sub:$4*
 	Must be greater than zero (0).
 hn/nimb/hn_nimb_clz.sub:#
-	HN_FALSE if no overflow would occur, or HN_TRUE if overflow would occur. In
-	the latter case, the operation is not performed and the input nimbs are left
-	unmodified, so the user may allocate more memory or perform other logic as
-	desired to cope with that.
+	{HN_,}FALSE if no overflow would occur, or {HN_,}TRUE if overflow would
+	occur. In the latter case, the operation is not performed and the input
+	nimbs are left unmodified, so the user may allocate more memory or perform
+	other logic as desired to cope with that.
 hn/nimb/hn_nimb_ctz.sub
 	Count the trailing zero bits of a nimb.
 hn/nimb/hn_nimb_ctz.sub:$3
@@ -373,10 +387,10 @@ hn/nimb/hn_nimb_ctz.sub:$4
 hn/nimb/hn_nimb_ctz.sub:$4*
 	Must be greater than zero (0).
 hn/nimb/hn_nimb_ctz.sub:#
-	HN_FALSE if no overflow would occur, or HN_TRUE if overflow would occur. In
-	the latter case, the operation is not performed and the input nimbs are left
-	unmodified, so the user may allocate more memory or perform other logic as
-	desired to cope with that.
+	{HN_,}FALSE if no overflow would occur, or {HN_,}TRUE if overflow would
+	occur. In the latter case, the operation is not performed and the input
+	nimbs are left unmodified, so the user may allocate more memory or perform
+	other logic as desired to cope with that.
 hn/nimb/hn_nimb_pct.sub
 	Count the number of high bits in a nimb.
 hn/nimb/hn_nimb_pct.sub:$1
@@ -396,7 +410,7 @@ hn/nimb/hn_nimb_pct.sub:$4
 hn/nimb/hn_nimb_pct.sub:$4*
 	Must be greater than zero (0).
 hn/nimb/hn_nimb_pct.sub:#
-	HN_FALSE if no overflow would occur, or HN_TRUE if overflow would occur. In
-	the latter case, the operation is not performed and the input nimbs are left
-	unmodified, so the user may allocate more memory or perform other logic as
-	desired to cope with that.
+	{HN_,}FALSE if no overflow would occur, or {HN_,}TRUE if overflow would
+	occur. In the latter case, the operation is not performed and the input
+	nimbs are left unmodified, so the user may allocate more memory or perform
+	other logic as desired to cope with that.

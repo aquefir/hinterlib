@@ -1,9 +1,9 @@
-/*****************************************************************************\
- *                          Hinterlib/Neopolitan 2.                          *
- *                                                                           *
- *                      Copyright (C) 2019-2023 Aquefir                      *
- *               Released under Artisan Software Licence v1.1.               *
-\*****************************************************************************/
+/***************************************************************************\
+ *                         Hinterlib/Neopolitan 2.                         *
+ *                                                                         *
+ *                     Copyright (C) 2019-2023 Aquefir                     *
+ *              Released under Artisan Software Licence v1.1.              *
+\***************************************************************************/
 
 #ifndef INC_API__HN_TYPES_FLOAT_H
 #define INC_API__HN_TYPES_FLOAT_H

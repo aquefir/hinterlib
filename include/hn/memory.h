@@ -1,9 +1,9 @@
-/*****************************************************************************\
- *                          Hinterlib/Neopolitan 2.                          *
- *                                                                           *
- *                      Copyright (C) 2019-2023 Aquefir                      *
- *               Released under Artisan Software Licence v1.1.               *
-\*****************************************************************************/
+/***************************************************************************\
+ *                         Hinterlib/Neopolitan 2.                         *
+ *                                                                         *
+ *                     Copyright (C) 2019-2023 Aquefir                     *
+ *              Released under Artisan Software Licence v1.1.              *
+\***************************************************************************/
 
 #ifndef INC_API__HN_MEMORY_H
 #define INC_API__HN_MEMORY_H
@@ -27,23 +27,23 @@ void * hn_allocal( hn_ptri, hn_u16 );
 /* Reallocate a previous heap allocation to a new size. */
 void * hn_realloc( void *, hn_ptri );
 
-/* Reallocate a previous heap allocation to a new size, aligned to 2^n octets.
- */
+/* Reallocate a previous heap allocation to a new size, aligned to 2^n
+ * octets. */
 void * hn_reallocal( void *, hn_ptri, hn_u16 );
 
 /* Allocate memory from heap, or return NULL as failure. */
 void * hn_tryalloc( hn_ptri );
 
-/* Allocate memory from heap, aligned to 2^n octets, or return NULL as failure.
- */
+/* Allocate memory from heap, aligned to 2^n octets, or return NULL as
+ * failure. */
 void * hn_tryallocal( hn_ptri, hn_u16 );
 
 /* Reallocate a previous heap allocation to a new size, or return NULL as
  * failure. */
 void * hn_tryrealloc( void *, hn_ptri );
 
-/* Reallocate a previous heap allocation to a new size, aligned to 2^n octets,
- * or return NULL as failure. */
+/* Reallocate a previous heap allocation to a new size, aligned to 2^n
+ * octets, or return NULL as failure. */
 void * hn_tryreallocal( void *, hn_ptri, hn_u16 );
 
 /* Free an allocation from heap. */

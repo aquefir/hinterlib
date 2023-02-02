@@ -24,8 +24,8 @@ hn/memory/hn_allocal.sub:$1*
 	functions. Furthermore, this value must be greater than or equal to "2^n"
 	where n is the value given in $2.
 hn/memory/hn_allocal.sub:$2
-	The number of bits "n" to align towards such that n bits will be zero in the
-	returned pointer, or in other terms, such that the address will be a
+	The number of bits "n" to align towards such that n bits will be zero in
+	the returned pointer, or in other terms, such that the address will be a
 	multiple of 2^n.
 hn/memory/hn_allocal.sub:#
 	A valid pointer to the start of the allocated memory region.
@@ -37,8 +37,8 @@ hn/memory/hn_realloc.sub:*
 hn/memory/hn_realloc.sub:$1
 	The original pointer to the memory being reallocated.
 hn/memory/hn_realloc.sub:$1*
-	This value cannot be NULL (0). It must be a valid pointer to a memory region
-	returned from one of the other functions in this module.
+	This value cannot be NULL (0). It must be a valid pointer to a memory
+	region returned from one of the other functions in this module.
 hn/memory/hn_realloc.sub:$2
 	The amount of memory needed for allocation, denominated in octets.
 hn/memory/hn_realloc.sub:$2*
@@ -56,8 +56,8 @@ hn/memory/hn_reallocal.sub:*
 hn/memory/hn_reallocal.sub:$1
 	The original pointer to the memory being reallocated.
 hn/memory/hn_reallocal.sub:$1*
-	This value cannot be NULL (0). It must be a valid pointer to a memory region
-	returned from one of the other functions in this module.
+	This value cannot be NULL (0). It must be a valid pointer to a memory
+	region returned from one of the other functions in this module.
 hn/memory/hn_reallocal.sub:$2
 	The amount of memory needed for allocation, denominated in octets.
 hn/memory/hn_reallocal.sub:$2*
@@ -67,8 +67,8 @@ hn/memory/hn_reallocal.sub:$2*
 	functions. Furthermore, this value must be greater than or equal to "2^n"
 	where n is the value given in $3.
 hn/memory/hn_reallocal.sub:$3
-	The number of bits "n" to align towards such that n bits will be zero in the
-	returned pointer, or in other terms, such that the address will be a
+	The number of bits "n" to align towards such that n bits will be zero in
+	the returned pointer, or in other terms, such that the address will be a
 	multiple of 2^n.
 hn/memory/hn_reallocal.sub:#
 	A valid pointer to the start of the allocated memory region.
@@ -86,11 +86,11 @@ hn/memory/hn_tryallocal.sub
 hn/memory/hn_tryallocal.sub:$1
 	The amount of memory needed for allocation, denominated in octets.
 hn/memory/hn_tryallocal.sub:$1*
-	This value must be greater than zero (0). This value must be greater than or
-	equal to "2^n" where n is the value given in $2.
+	This value must be greater than zero (0). This value must be greater than
+	or equal to "2^n" where n is the value given in $2.
 hn/memory/hn_tryallocal.sub:$2
-	The number of bits "n" to align towards such that n bits will be zero in the
-	returned pointer, or in other terms, such that the address will be a
+	The number of bits "n" to align towards such that n bits will be zero in
+	the returned pointer, or in other terms, such that the address will be a
 	multiple of 2^n.
 hn/memory/hn_tryallocal.sub:#
 	A valid pointer to the start of the allocated memory region, or NULL upon
@@ -100,8 +100,8 @@ hn/memory/hn_tryrealloc.sub
 hn/memory/hn_tryrealloc.sub:$1
 	The original pointer to the memory being reallocated.
 hn/memory/hn_tryrealloc.sub:$1*
-	This value cannot be NULL (0). It must be a valid pointer to a memory region
-	returned from one of the other functions in this module.
+	This value cannot be NULL (0). It must be a valid pointer to a memory
+	region returned from one of the other functions in this module.
 hn/memory/hn_tryrealloc.sub:$2
 	The amount of memory needed for allocation, denominated in octets.
 hn/memory/hn_tryrealloc.sub:$2*
@@ -115,16 +115,16 @@ hn/memory/hn_tryreallocal.sub
 hn/memory/hn_tryreallocal.sub:$1
 	The original pointer to the memory being reallocated.
 hn/memory/hn_tryreallocal.sub:$1*
-	This value cannot be NULL (0). It must be a valid pointer to a memory region
-	returned from one of the other functions in this module.
+	This value cannot be NULL (0). It must be a valid pointer to a memory
+	region returned from one of the other functions in this module.
 hn/memory/hn_tryreallocal.sub:$2
 	The amount of memory needed for allocation, denominated in octets.
 hn/memory/hn_tryreallocal.sub:$2*
-	This value must be greater than zero (0). This value must be greater than or
-	equal to "2^n" where n is the value given in $3.
+	This value must be greater than zero (0). This value must be greater than
+	or equal to "2^n" where n is the value given in $3.
 hn/memory/hn_tryreallocal.sub:$3
-	The number of bits "n" to align towards such that n bits will be zero in the
-	returned pointer, or in other terms, such that the address will be a
+	The number of bits "n" to align towards such that n bits will be zero in
+	the returned pointer, or in other terms, such that the address will be a
 	multiple of 2^n.
 hn/memory/hn_tryreallocal.sub:#
 	A valid pointer to the start of the allocated memory region, or NULL upon
@@ -134,11 +134,11 @@ hn/memory/hn_free.sub
 hn/memory/hn_free.sub:$1
 	Pointer to the heap allocation to be freed.
 hn/memory/hn_free.sub:$1*
-	This value cannot be NULL (0). It must be a valid pointer to a memory region
-	returned from one of the other functions in this module.
+	This value cannot be NULL (0). It must be a valid pointer to a memory
+	region returned from one of the other functions in this module.
 hn/memory/hn_memset.sub
-	[nothrow][noalloc] Set the contents of a stretch of memory, octet-by-octet,
-	to a given value.
+	[nothrow][noalloc] Set the contents of a stretch of memory,
+	octet-by-octet, to a given value.
 hn/memory/hn_memset.sub:$1
 	Pointer to the area of memory to set.
 hn/memory/hn_memset.sub:$1*
@@ -152,9 +152,9 @@ hn/memory/hn_memset.sub:$2*
 	This length must not exceed the total length of the allocated region being
 	pointed to in $1 minus any offsetting; that is, it must not exceed the
 	length of the memory allocation if the pointer is at the start of the
-	allocation, or if it is offset inside such an allocation, it must not exceed
-	the allocation size minus such an offset, or if the pointer is to automatic
-	storage, the length must not exceed the size of said storage.
+	allocation, or if it is offset inside such an allocation, it must not
+	exceed the allocation size minus such an offset, or if the pointer is to
+	automatic storage, the length must not exceed the size of said storage.
 hn/memory/hn_memset.sub:$3
 	The octet value to populate the memory region with.
 hn/memory/hn_memcpy.sub
@@ -176,13 +176,13 @@ hn/memory/hn_memcpy.sub:$2*
 hn/memory/hn_memcpy.sub:$3
 	The length of memory to copy, denominated in octets.
 hn/memory/hn_memcpy.sub:$3*
-	This length must not exceed the total length of the allocated regions being
-	pointed to in both $1 and $2 minus any offsetting; that is, it must not
-	exceed the length of either memory allocation if the pointers are at the
-	start of the allocation, or if they are offset inside such an allocation,
-	they must not exceed the allocation size minus such an offset, or if the
-	pointers are to automatic storage, their lengths must not exceed the size of
-	said storage.
+	This length must not exceed the total length of the allocated regions
+	being pointed to in both $1 and $2 minus any offsetting; that is, it must
+	not exceed the length of either memory allocation if the pointers are at
+	the start of the allocation, or if they are offset inside such an
+	allocation, they must not exceed the allocation size minus such an offset,
+	or if the pointers are to automatic storage, their lengths must not exceed
+	the size of said storage.
 hn/memory/hn_memequ.sub
 	[nothrow][noalloc] Compare two blocks of memory to see if their contents
 	match.
@@ -203,12 +203,12 @@ hn/memory/hn_memequ.sub:$2*
 hn/memory/hn_memequ.sub:$3
 	The length of memory to compare, denominated in octets.
 hn/memory/hn_memequ.sub:$3*
-	This length must not exceed the total length of the allocated regions being
-	pointed to in both $1 and $2 minus any offsetting; that is, it must not
-	exceed the length of either memory allocation if the pointers are at the
-	start of the allocation, or if they are offset inside such an allocation,
-	they must not exceed the allocation size minus such an offset, or if the
-	pointers are to automatic storage, their lengths must not exceed the size of
-	said storage.
+	This length must not exceed the total length of the allocated regions
+	being pointed to in both $1 and $2 minus any offsetting; that is, it must
+	not exceed the length of either memory allocation if the pointers are at
+	the start of the allocation, or if they are offset inside such an
+	allocation, they must not exceed the allocation size minus such an offset,
+	or if the pointers are to automatic storage, their lengths must not exceed
+	the size of said storage.
 hn/memory/hn_memequ.sub:#
 	{HN_,}TRUE if they match; {HN_,}FALSE if they do not.

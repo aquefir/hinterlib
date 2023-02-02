@@ -16,8 +16,8 @@ hn/types/char/HN_UCHR_ISVALID.sub:$1*
 hn/types/char/HN_UCHR_ISVALID.sub:#
 	Expression is truthy if valid; otherwise, it is falsey.
 hn/types/char/HN_CHR_TRUNCATE.sub
-	[preproc][nothrow][noalloc] Helper function to truncate a character into the
-	valid ASCII range.
+	[preproc][nothrow][noalloc] Helper function to truncate a character into
+	the valid ASCII range.
 hn/types/char/HN_CHR_TRUNCATE.sub:$1
 	The character to truncate.
 hn/types/char/HN_CHR_TRUNCATE.sub:$1*
@@ -44,9 +44,9 @@ hn/types/char/hn_uchr/hi.var
 	The upper 5 bits of the code point.
 hn/types/char/hn_uchr/hi.var:*
 	Since the physical size of the variable is 16 bits, all higher bits after
-	the first 5 bits used as part of the code point value should be set to zero
-	and must not be read from, as initialisation does not guarantee that they
-	are zero.
+	the first 5 bits used as part of the code point value should be set to
+	zero and must not be read from, as initialisation does not guarantee that
+	they are zero.
 hn/types/char/hn_uchr.type
 	A single Unicode code point. Alias of struct hn_uchr.
 hn/types/char/chr.type

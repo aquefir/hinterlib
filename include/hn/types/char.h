@@ -1,9 +1,9 @@
-/*****************************************************************************\
- *                          Hinterlib/Neopolitan 2.                          *
- *                                                                           *
- *                      Copyright (C) 2019-2023 Aquefir                      *
- *               Released under Artisan Software Licence v1.1.               *
-\*****************************************************************************/
+/***************************************************************************\
+ *                         Hinterlib/Neopolitan 2.                         *
+ *                                                                         *
+ *                     Copyright (C) 2019-2023 Aquefir                     *
+ *              Released under Artisan Software Licence v1.1.              *
+\***************************************************************************/
 
 #ifndef INC_API__HN_TYPES_CHAR_H
 #define INC_API__HN_TYPES_CHAR_H
@@ -16,7 +16,8 @@ compatible compiler (either GCC, Clang, or FCC).
 #endif /* END sanity check */
 
 #if !defined( HN_PACKED )
-/* Force the structure to be tightly packed into as few octets as possible. */
+/* Force the structure to be tightly packed into as few octets as possible.
+ */
 #define HN_PACKED __attribute__( ( packed ) )
 #endif /* !defined( HN_PACKED ) */
 
