@@ -25,7 +25,33 @@ compatible compiler (either GCC, Clang, or FCC).
 #endif /* !defined( HN_PACKED ) */
 #endif /* __has_attribute( packed ) */
 
-#if __has_attribute( align )
+#if __has_attribute( may_alias )
+#if !defined( HN_TYPELESS )
+/* Prevents the compiler from doing type analysis based optimisations on the
+ * type, treating it as octet-addressable cast-friendly data. */
+#define HN_TYPELESS __attribute__( ( may_alias ) )
+#endif /* !defined( HN_TYPELESS ) */
+#endif /* __has_attribute( may_alias ) */
+
+#if __has_attribute( noreturn )
+#if !defined( HN_NORETURN )
+#define HN_NORETURN __attribute__( ( noreturn ) )
+#endif /* !defined( HN_NORETURN ) */
+#endif /* __has_attribute( noreturn ) */
+
+#if __has_attribute( nothrow )
+#if !defined( HN_NOTHROW )
+#define HN_NOTHROW __attribute__( ( nothrow ) )
+#endif /* !defined( HN_NOTHROW ) */
+#endif /* __has_attribute( nothrow ) */
+
+#if __has_attribute( pure )
+#if !defined( HN_PURE )
+#define HN_PURE __attribute__( ( pure ) )
+#endif /* !defined( HN_PURE ) */
+#endif /* __has_attribute( pure ) */
+
+#if __has_attribute( aligned )
 #if !defined( HN_ALIGN )
 /* Set the alignment of an object, denominated in octets. */
 #define HN_ALIGN( _n ) __attribute__( ( aligned( _n ) ) )
@@ -52,6 +78,22 @@ compatible compiler (either GCC, Clang, or FCC).
 #if !defined( HN_PACKED )
 #define HN_PACKED
 #endif /* !defined( HN_PACKED ) */
+
+#if !defined( HN_TYPELESS )
+#define HN_TYPELESS
+#endif /* !defined( HN_TYPELESS ) */
+
+#if !defined( HN_NORETURN )
+#define HN_NORETURN
+#endif /* !defined( HN_NORETURN ) */
+
+#if !defined( HN_NOTHROW )
+#define HN_NOTHROW
+#endif /* !defined( HN_NOTHROW ) */
+
+#if !defined( HN_PURE )
+#define HN_PURE
+#endif /* !defined( HN_PURE ) */
 
 #if !defined( HN_ALIGN )
 #define HN_ALIGN( _n )
@@ -91,9 +133,9 @@ enum hn_bl
 };
 
 /* An unsigned integer sized the same as a machine address, for pointers. */
-typedef __UINTPTR_TYPE__ hn_ptri;
+typedef __UINTPTR_TYPE__ hn_ptri HN_TYPELESS;
 /* A signed integer sized the same as a machine pointer, for offsets. */
-typedef __INTPTR_TYPE__ hn_offs;
+typedef __INTPTR_TYPE__ hn_offs HN_TYPELESS;
 /* A boolean type. */
 typedef enum hn_bl hn_bl;
 
@@ -130,9 +172,9 @@ typedef enum hn_bl hn_bl;
 #endif /* !defined( TRUE ) */
 
 /* An unsigned integer sized the same as a machine address, for pointers. */
-typedef __UINTPTR_TYPE__ ptri;
+typedef __UINTPTR_TYPE__ ptri HN_TYPELESS;
 /* A signed integer sized the same as a machine pointer, for offsets. */
-typedef __INTPTR_TYPE__ offs;
+typedef __INTPTR_TYPE__ offs HN_TYPELESS;
 /* A boolean type. */
 typedef enum hn_bl bl;
 
