@@ -15,24 +15,54 @@ Hinterlib/Neopolitan. Please ensure you are using Slick/Inbound and a \
 compatible compiler (either GCC, Clang, or FCC).
 #endif /* END sanity check */
 
+#if defined( __has_attribute )
+
+#if __has_attribute( packed )
 #if !defined( HN_PACKED )
 /* Force the structure to be tightly packed into as few octets as possible.
  */
 #define HN_PACKED __attribute__( ( packed ) )
 #endif /* !defined( HN_PACKED ) */
+#endif /* __has_attribute( packed ) */
 
+#if __has_attribute( align )
 #if !defined( HN_ALIGN )
 /* Set the alignment of an object, denominated in octets. */
-#define HN_ALIGN( _x ) __attribute__( ( aligned( _x ) ) )
+#define HN_ALIGN( _n ) __attribute__( ( aligned( _n ) ) )
 #endif /* !defined( HN_ALIGN ) */
+#endif /* __has_attribute( align ) */
 
+#if __has_attribute( deprecated )
 #if !defined( HN_DEPRECATED )
 /* Mark an API identifier as deprecated. */
 #define HN_DEPRECATED __attribute__( ( deprecated ) )
 #endif /* !defined( HN_DEPRECATED ) */
+#endif /* __has_attribute( deprecated ) */
+
+#if __has_attribute( vector_size )
+#if !defined( HN_VECSIZE )
+#define HN_VECSIZE( _n ) __attribute__( ( vector_size( _n ) ) )
+#endif /* !defined( HN_VECSIZE ) */
+#endif /* __has_attribute( vector_size ) */
+
+#endif /* defined( __has_attribute ) */
+
+/* fallback #defines in case attributes are not supported */
+
+#if !defined( HN_PACKED )
+#define HN_PACKED
+#endif /* !defined( HN_PACKED ) */
+
+#if !defined( HN_ALIGN )
+#define HN_ALIGN( _n )
+#endif /* !defined( HN_ALIGN ) */
+
+#if !defined( HN_DEPRECATED )
+#define HN_DEPRECATED
+#endif /* !defined( HN_DEPRECATED ) */
 
 #if !defined( HN_VECSIZE )
-#define HN_VECSIZE(_n) __attribute__( ( vector_size( _n ) ) )
+#define HN_VECSIZE( _n )
 #endif /* !defined( HN_VECSIZE ) */
 
 #if !defined( HN_API )

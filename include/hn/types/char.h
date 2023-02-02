@@ -15,10 +15,20 @@ Hinterlib/Neopolitan. Please ensure you are using Slick/Inbound and a \
 compatible compiler (either GCC, Clang, or FCC).
 #endif /* END sanity check */
 
+#if defined( __has_attribute )
+#if __has_attribute( packed )
 #if !defined( HN_PACKED )
 /* Force the structure to be tightly packed into as few octets as possible.
  */
 #define HN_PACKED __attribute__( ( packed ) )
+#endif /* !defined( HN_PACKED ) */
+#endif /* __has_attribute( packed ) */
+#endif /* defined( __has_attribute ) */
+
+/* fallback #defines in case attributes are not supported */
+
+#if !defined( HN_PACKED )
+#define HN_PACKED
 #endif /* !defined( HN_PACKED ) */
 
 /* Helper function to check if a character is valid ASCII. */

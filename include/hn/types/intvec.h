@@ -15,8 +15,21 @@ Hinterlib/Neopolitan. Please ensure you are using Slick/Inbound and a \
 compatible compiler (either GCC, Clang, or FCC).
 #endif /* END sanity check */
 
+#if defined( __has_attribute )
+#if __has_attribute( vector_size )
 #if !defined( HN_VECSIZE )
-#define HN_VECSIZE(_n) __attribute__( ( vector_size( _n ) ) )
+/* Resolves to compiler-specific intrinsics to create a Single Instruction
+ * Multiple Data (SIMD) compatible vector type of a particular size.
+ */
+#define HN_VECSIZE( _n ) __attribute__( ( vector_size( _n ) ) )
+#endif /* !defined( HN_VECSIZE ) */
+#endif /* __has_attribute( vector_size ) */
+#endif /* defined( __has_attribute ) */
+
+/* fallback #defines in case attributes are not supported */
+
+#if !defined( HN_VECSIZE )
+#define HN_VECSIZE( _n )
 #endif /* !defined( HN_VECSIZE ) */
 
 #if defined( _SYNDEF_HAVE_I64 )
