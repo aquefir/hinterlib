@@ -15,6 +15,16 @@ Hinterlib/Neopolitan. Please ensure you are using Slick/Inbound and a \
 compatible compiler (either GCC, Clang, or FCC).
 #endif /* END sanity check */
 
+#include "types/base.h"
+#include "types/int.h"
+#include "types/mem.h"
 
+struct hn_cbuf_inf
+{
+	hn_u32 bits : 7;
+	hn_u32 ovr : 1;
+};
+
+void hn_cbuf16_psh( hn_twig
 
 #endif /* INC_API__HN_BUFFER_H */
