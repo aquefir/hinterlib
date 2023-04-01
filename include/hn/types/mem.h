@@ -57,6 +57,131 @@ compatible compiler (either GCC, Clang, or FCC).
 #define HN_ISTRUNK16(_a) (((__UINTPTR_TYPE__)(_a) & 65535) == 0)
 #endif /* !defined( HN_ISTRUNK16 ) */
 
+struct hn_faddr20
+{
+#if defined( _SYNDEF_LILENDIAN )
+	__UINT16_TYPE__ lo;
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wpedantic"
+	__UINT16_TYPE__ hi : 4;
+	__UINT16_TYPE__ padding : 12;
+#pragma GCC diagnostic pop
+#else
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wpedantic"
+	__UINT16_TYPE__ padding : 12;
+	__UINT16_TYPE__ hi : 4;
+#pragma GCC diagnostic pop
+	__UINT16_TYPE__ lo;
+#endif /* defined( _SYNDEF_LILENDIAN ) */
+};
+
+struct hn_faddr24
+{
+#if defined( _SYNDEF_LILENDIAN )
+	__UINT16_TYPE__ lo;
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wpedantic"
+	__UINT16_TYPE__ hi : 8;
+	__UINT16_TYPE__ padding : 8;
+#pragma GCC diagnostic pop
+#else
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wpedantic"
+	__UINT16_TYPE__ padding : 8;
+	__UINT16_TYPE__ hi : 8;
+#pragma GCC diagnostic pop
+	__UINT16_TYPE__ lo;
+#endif /* defined( _SYNDEF_LILENDIAN ) */
+};
+
+struct hn_faddr26
+{
+#if defined( _SYNDEF_LILENDIAN )
+	__UINT16_TYPE__ lo;
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wpedantic"
+	__UINT16_TYPE__ hi : 10;
+	__UINT16_TYPE__ padding : 6;
+#pragma GCC diagnostic pop
+#else
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wpedantic"
+	__UINT16_TYPE__ padding : 6;
+	__UINT16_TYPE__ hi : 10;
+#pragma GCC diagnostic pop
+	__UINT16_TYPE__ lo;
+#endif /* defined( _SYNDEF_LILENDIAN ) */
+};
+
+struct hn_faddr32
+{
+#if defined( _SYNDEF_LILENDIAN )
+	__UINT16_TYPE__ lo;
+	__UINT16_TYPE__ hi;
+#else
+	__UINT16_TYPE__ hi;
+	__UINT16_TYPE__ lo;
+#endif /* defined( _SYNDEF_LILENDIAN ) */
+};
+
+struct hn_faddr36
+{
+#if defined( _SYNDEF_LILENDIAN )
+	__UINT32_TYPE__ lo;
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wpedantic"
+	__UINT16_TYPE__ hi : 4;
+	__UINT16_TYPE__ padding : 12;
+#pragma GCC diagnostic pop
+#else
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wpedantic"
+	__UINT16_TYPE__ padding : 12;
+	__UINT16_TYPE__ hi : 4;
+#pragma GCC diagnostic pop
+	__UINT32_TYPE__ lo;
+#endif /* defined( _SYNDEF_LILENDIAN ) */
+};
+
+struct hn_faddr48
+{
+#if defined( _SYNDEF_LILENDIAN )
+	__UINT32_TYPE__ lo;
+	__UINT16_TYPE__ hi;
+#else
+	__UINT16_TYPE__ hi;
+	__UINT32_TYPE__ lo;
+#endif /* defined( _SYNDEF_LILENDIAN ) */
+};
+
+struct hn_faddr64
+{
+#if defined( _SYNDEF_LILENDIAN )
+	__UINT32_TYPE__ lo;
+	__UINT32_TYPE__ hi;
+#else
+	__UINT32_TYPE__ hi;
+	__UINT32_TYPE__ lo;
+#endif /* defined( _SYNDEF_LILENDIAN ) */
+};
+
+#if defined( _SYNDEF_I86 ) || defined( _SYNDEF_I186 )
+typedef struct hn_faddr20 hn_faddr;
+#elif defined( _SYNDEF_I286 )
+typedef struct hn_faddr24 hn_faddr;
+#elif defined( _SYNDEF_ARMV2 ) || defined( _SYNDEF_ARMV3 )
+typedef struct hn_faddr26 hn_faddr;
+#elif defined( _SYNDEF_IA32 ) || defined( _SYNDEF_ARMV4T )
+typedef struct hn_faddr32 hn_faddr;
+#elif defined( _SYNDEF_I686 )
+typedef struct hn_faddr36 hn_faddr;
+#elif defined( _SYNDEF_AMD64 )
+typedef struct hn_faddr48 hn_faddr;
+#else
+typedef struct hn_faddr64 hn_faddr;
+#endif
+
 struct hn_addr8
 {
 #if defined( _SYNDEF_LILENDIAN )

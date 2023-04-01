@@ -17,37 +17,13 @@ compatible compiler (either GCC, Clang, or FCC).
 
 #include "types/base.h"
 #include "types/int.h"
+#include "types/mem.h"
 
-/* Allocate memory from heap. */
-void * hn_alloc( hn_ptri );
+/* Attempt to allocate a 16-module. */
+hn_faddr hn_new16mod( void );
 
-/* Allocate memory from heap, aligned to 2^n octets. */
-void * hn_allocal( hn_ptri, hn_u16 );
-
-/* Reallocate a previous heap allocation to a new size. */
-void * hn_realloc( void *, hn_ptri );
-
-/* Reallocate a previous heap allocation to a new size, aligned to 2^n
- * octets. */
-void * hn_reallocal( void *, hn_ptri, hn_u16 );
-
-/* Allocate memory from heap, or return NULL as failure. */
-void * hn_tryalloc( hn_ptri );
-
-/* Allocate memory from heap, aligned to 2^n octets, or return NULL as
- * failure. */
-void * hn_tryallocal( hn_ptri, hn_u16 );
-
-/* Reallocate a previous heap allocation to a new size, or return NULL as
- * failure. */
-void * hn_tryrealloc( void *, hn_ptri );
-
-/* Reallocate a previous heap allocation to a new size, aligned to 2^n
- * octets, or return NULL as failure. */
-void * hn_tryreallocal( void *, hn_ptri, hn_u16 );
-
-/* Free an allocation from heap. */
-void hn_free( void * );
+/* Attempt to allocate a contiguous array of 16-modules. */
+hn_faddr hn_new16mods( hn_ptri );
 
 /* Set the contents of a stretch of memory, octet-by-octet, to a given value.
  */
