@@ -14,6 +14,8 @@ COMPILING text eol=lf
 *.s text eol=lf
 *.c text eol=lf
 *.h text eol=lf
+*.vala text eol=lf
+*.vapi text eol=lf
 *.pl text eol=lf
 *.py text eol=lf
 *.sh text eol=lf
@@ -22,6 +24,8 @@ COMPILING text eol=lf
 *.c linguist-language=C
 *.h linguist-language=C
 
+*.vala linguist-vendored
+*.vapi linguist-vendored
 *.pl linguist-vendored
 *.py linguist-vendored
 *.sh linguist-vendored
