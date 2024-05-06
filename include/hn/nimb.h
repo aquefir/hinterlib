@@ -1,25 +1,25 @@
-/***************************************************************************\
- *                         Hinterlib/Neopolitan 2.                         *
- *                                                                         *
- *                     Copyright (C) 2019-2023 Aquefir                     *
- *              Released under Artisan Software Licence v1.1.              *
-\***************************************************************************/
+/*********************************************************************\
+ *                      Hinterlib/Neopolitan 2.                      *
+ *                                                                   *
+ *                  Copyright (C) 2019-2024 Aquefir                  *
+ *           Released under Artisan Software Licence v1.1.           *
+\*********************************************************************/
 
 #ifndef INC_API__HN_NIMB_H
 #define INC_API__HN_NIMB_H
 
 /**
- * Functions for manipulating nimbs. Nimbs are arbitrary precision integers
- * composed of arrays of u16s in memory using sentinel bits to link them
- * together. They are a foundational component of data types in Hinterlib
- * such as buffers and trees, where their semantics are used to provide
- * unlimited extensibility without depending on having large machine
- * pointers. Given a pointer to a u16 as a nimb, it can be comprehended by
- * traversing it, advancing to the next element when the current element has
- * its most significant bit (bit 15) high, and stopping at the first element
- * that has its MSB low. All memory management is left to the user and should
- * be equally workable with both heap-based and automatic stack-based
- * storage.
+ * Functions for manipulating nimbs. Nimbs are arbitrary precision
+ * integers composed of arrays of u16s in memory using sentinel bits to
+ * link them together. They are a foundational component of data types
+ * in Hinterlib such as buffers and trees, where their semantics are
+ * used to provide unlimited extensibility without depending on having
+ * large machine pointers. Given a pointer to a u16 as a nimb, it can
+ * be comprehended by traversing it, advancing to the next element when
+ * the current element has its most significant bit (bit 15) high, and
+ * stopping at the first element that has its MSB low. All memory
+ * management is left to the user and should be equally workable with
+ * both heap-based and automatic stack-based storage.
  */
 
 /* START sanity check */
@@ -32,11 +32,12 @@ compatible compiler (either GCC, Clang, or FCC).
 #include "types/base.h"
 #include "types/int.h"
 
-/* Initialise the sentinel bits of a new nimb in memory of a given size. */
+/* Initialise the sentinel bits of a new nimb in memory of a given
+ * size. */
 void hn_nimb_init( hn_u16 *, hn_ptri );
 
-/* Propagate the sentinel bits through the nimb's underlying memory to occupy
- * a new physical storage size. */
+/* Propagate the sentinel bits through the nimb's underlying memory to
+ * occupy a new physical storage size. */
 void hn_nimb_resize( hn_u16 *, hn_ptri );
 
 /* Create a nimb from a 16-bit unsigned integer primitive. */

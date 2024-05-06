@@ -1,44 +1,49 @@
 hn/types/base/HN_PACKED.const
-	[preproc] Resolves to compiler-specific intrinsics to force a struct into
-	being tightly packed to the nearest minimum octet.
+	[preproc] Resolves to compiler-specific intrinsics to force a struct
+	into being tightly packed to the nearest minimum octet.
 hn/types/base/HN_PACKED.const:*
-	Must only be used following the name and body of a struct definition, ergo
-	after the tag and any body.
+	Must only be used following the name and body of a struct
+	definition, ergo after the tag and any body.
 hn/types/base/HN_TYPELESS.const
 	[preproc] Prevents the compiler from doing type analysis based
-	optimisations on the type, treating it as octet-addressable cast-friendly
-	data.
+	optimisations on the type, treating it as octet-addressable
+	cast-friendly data.
 hn/types/base/HN_TYPELESS.const:*
-	Must only be used following a struct definition or a typedef definition.
+	Must only be used following a struct definition or a typedef
+	definition.
 hn/types/base/HN_NORETURN.const
-	[preproc] Indicates that the function it decorates will not return flow of
-	execution to the caller.
+	[preproc] Indicates that the function it decorates will not return
+	flow of execution to the caller.
 hn/types/base/HN_NORETURN.const:*
 	Must only be used following a function declaration.
 hn/types/base/HN_NOTHROW.const
-	[preproc] Indicates that the function it decorates will not throw any
-	exceptions from higher level languages including (but not limited to) C++.
+	[preproc] Indicates that the function it decorates will not throw
+	any exceptions from higher level languages including (but not
+	limited to) C++.
 hn/types/base/HN_NOTHROW.const:*
 	Must only be used following a function declaration.
 hn/types/base/HN_PURE.const
-	[preproc] Indicates that the function it decorates is "pure", ergo that it
-	exhibits no "side effects", ergo that given its inputs it will always give
-	the same outputs deterministically without changing any state outside.
+	[preproc] Indicates that the function it decorates is "pure", ergo
+	that it exhibits no "side effects", ergo that given its inputs it
+	will always give the same outputs deterministically without changing
+	any state outside.
 hn/types/base/HN_PURE.const:*
 	Must only be used following a function declaration.
 hn/types/base/HN_ALIGN.sub
 	[preproc][pure] Resolves to compiler-specific intrinsics to force
-	alignment of a struct to a number of octets that is an exponent of two.
+	alignment of a struct to a number of octets that is an exponent of
+	two.
 hn/types/base/HN_ALIGN.sub:$1
 	The number of octets to align the struct to.
 hn/types/base/HN_ALIGN.sub:$1*
 	Must be a number that is an exponent of two.
 hn/types/base/HN_ALIGN.sub:*
-	Must only be used following the name of a struct declaration or the name
-	and body of a struct definition.
+	Must only be used following the name of a struct declaration or the
+	name and body of a struct definition.
 hn/types/base/HN_DEPRECATED.const
 	[preproc] Marks a declaration as "deprecated", ergo that its use is
-	discouraged in new code even though it is still functionally present.
+	discouraged in new code even though it is still functionally
+	present.
 hn/types/base/HN_DEPRECATED.const:*
 	Must only be used at the end of a valid C declaration.
 hn/types/base/HN_VECSIZE.sub
@@ -60,7 +65,8 @@ hn/types/base/hn_bl/HN_FALSE.const
 hn/types/base/hn_bl/HN_TRUE.const
 	Constant for true.
 hn/types/base/hn_ptri.type
-	An unsigned integer sized the same as a machine address, for pointers.
+	An unsigned integer sized the same as a machine address, for
+	pointers.
 hn/types/base/hn_offs.type
 	A signed integer sized the same as a machine pointer, for offsets.
 hn/types/base/hn_bl.type
@@ -72,7 +78,8 @@ hn/types/base/FALSE.const
 hn/types/base/TRUE.const
 	Constant for true.
 hn/types/base/ptri.type
-	An unsigned integer sized the same as a machine address, for pointers.
+	An unsigned integer sized the same as a machine address, for
+	pointers.
 hn/types/base/offs.type
 	A signed integer sized the same as a machine pointer, for offsets.
 hn/types/base/bl.type

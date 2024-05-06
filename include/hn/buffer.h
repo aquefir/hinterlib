@@ -1,9 +1,9 @@
-/***************************************************************************\
- *                         Hinterlib/Neopolitan 2.                         *
- *                                                                         *
- *                     Copyright (C) 2019-2023 Aquefir                     *
- *              Released under Artisan Software Licence v1.1.              *
-\***************************************************************************/
+/*********************************************************************\
+ *                      Hinterlib/Neopolitan 2.                      *
+ *                                                                   *
+ *                  Copyright (C) 2019-2024 Aquefir                  *
+ *           Released under Artisan Software Licence v1.1.           *
+\*********************************************************************/
 
 #ifndef INC_API__HN_BUFFER_H
 #define INC_API__HN_BUFFER_H
@@ -24,7 +24,5 @@ struct hn_cbuf_inf
 	hn_u32 bits : 7;
 	hn_u32 ovr : 1;
 };
-
-void hn_cbuf16_psh( hn_twig
 
 #endif /* INC_API__HN_BUFFER_H */

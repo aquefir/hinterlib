@@ -1,9 +1,9 @@
-###############################################################################
-##                                 Hinterlib                                 ##
-##                                                                           ##
-##                      Copyright (C) 2019-2022 Aquefir                      ##
-##                        Released under BSD-2-Clause                        ##
-###############################################################################
+#######################################################################
+##                      Hinterlib/Neopolitan 2.                      ##
+##                                                                   ##
+##                  Copyright (C) 2019-2024 Aquefir                  ##
+##           Released under Artisan Software Licence v1.1.           ##
+#######################################################################
 
 ifeq ($(strip $(AQ)),)
 $(error "AQ was not found in your environment. You need to install the Slick Makefiles from github.com/aquefir/slick to continue.")

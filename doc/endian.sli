@@ -1,5 +1,6 @@
 hn/endian/HN_ENDIAN_SWAP16.sub
-	[preproc][pure] Performs an endianness reversal on a 16-bit variable.
+	[preproc][pure] Performs an endianness reversal on a 16-bit
+	variable.
 hn/endian/HN_ENDIAN_SWAP16.sub:$1
 	The variable to perform the octet swap on.
 hn/endian/HN_ENDIAN_SWAP16.sub:$1*
@@ -7,7 +8,8 @@ hn/endian/HN_ENDIAN_SWAP16.sub:$1*
 hn/endian/HN_ENDIAN_SWAP16.sub:#
 	The input variable with its octets reversed in ordering.
 hn/endian/HN_ENDIAN_SWAP32.sub
-	[preproc][pure] Performs an endianness reversal on a 32-bit variable.
+	[preproc][pure] Performs an endianness reversal on a 32-bit
+	variable.
 hn/endian/HN_ENDIAN_SWAP32.sub:$1
 	The variable to perform the octet swap on.
 hn/endian/HN_ENDIAN_SWAP32.sub:$1*
@@ -15,7 +17,8 @@ hn/endian/HN_ENDIAN_SWAP32.sub:$1*
 hn/endian/HN_ENDIAN_SWAP32.sub:#
 	The input variable with its octets reversed in ordering.
 hn/endian/HN_ENDIAN_SWAP64.sub
-	[preproc][pure] Performs an endianness reversal on a 64-bit variable.
+	[preproc][pure] Performs an endianness reversal on a 64-bit
+	variable.
 hn/endian/HN_ENDIAN_SWAP64.sub:$1
 	The variable to perform the octet swap on.
 hn/endian/HN_ENDIAN_SWAP64.sub:$1*

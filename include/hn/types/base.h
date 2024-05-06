@@ -1,9 +1,9 @@
-/***************************************************************************\
- *                         Hinterlib/Neopolitan 2.                         *
- *                                                                         *
- *                     Copyright (C) 2019-2023 Aquefir                     *
- *              Released under Artisan Software Licence v1.1.              *
-\***************************************************************************/
+/*********************************************************************\
+ *                      Hinterlib/Neopolitan 2.                      *
+ *                                                                   *
+ *                  Copyright (C) 2019-2024 Aquefir                  *
+ *           Released under Artisan Software Licence v1.1.           *
+\*********************************************************************/
 
 #ifndef INC_API__HN_TYPES_BASE_H
 #define INC_API__HN_TYPES_BASE_H
@@ -19,16 +19,16 @@ compatible compiler (either GCC, Clang, or FCC).
 
 #if __has_attribute( packed )
 #if !defined( HN_PACKED )
-/* Force the structure to be tightly packed into as few octets as possible.
- */
+/* Force the structure to be tightly packed into as few octets as
+ * possible. */
 #define HN_PACKED __attribute__( ( packed ) )
 #endif /* !defined( HN_PACKED ) */
 #endif /* __has_attribute( packed ) */
 
 #if __has_attribute( may_alias )
 #if !defined( HN_TYPELESS )
-/* Prevents the compiler from doing type analysis based optimisations on the
- * type, treating it as octet-addressable cast-friendly data. */
+/* Prevents the compiler from doing type analysis based optimisations
+ * on the type, treating it as octet-addressable cast-friendly data. */
 #define HN_TYPELESS __attribute__( ( may_alias ) )
 #endif /* !defined( HN_TYPELESS ) */
 #endif /* __has_attribute( may_alias ) */
@@ -117,7 +117,8 @@ compatible compiler (either GCC, Clang, or FCC).
 
 enum
 {
-	/* Denotes the size of a pointer at runtime, denominated in octets. */
+	/* Denotes the size of a pointer at runtime, denominated in octets.
+	 */
 	HN_SIZEOF_PTR = sizeof( __UINTPTR_TYPE__ ),
 	/* Denotes he "null pointer" constant: zero. */
 	HN_NULL = 0
@@ -132,9 +133,11 @@ enum hn_bl
 	HN_TRUE = 1
 };
 
-/* An unsigned integer sized the same as a machine address, for pointers. */
+/* An unsigned integer sized the same as a machine address, for
+ * pointers. */
 typedef __UINTPTR_TYPE__ hn_ptri HN_TYPELESS;
-/* A signed integer sized the same as a machine pointer, for offsets. */
+/* A signed integer sized the same as a machine pointer, for offsets.
+ */
 typedef __INTPTR_TYPE__ hn_offs HN_TYPELESS;
 /* A boolean type. */
 typedef enum hn_bl hn_bl;
@@ -171,9 +174,11 @@ typedef enum hn_bl hn_bl;
 #endif
 #endif /* !defined( TRUE ) */
 
-/* An unsigned integer sized the same as a machine address, for pointers. */
+/* An unsigned integer sized the same as a machine address, for
+ * pointers. */
 typedef __UINTPTR_TYPE__ ptri HN_TYPELESS;
-/* A signed integer sized the same as a machine pointer, for offsets. */
+/* A signed integer sized the same as a machine pointer, for offsets.
+ */
 typedef __INTPTR_TYPE__ offs HN_TYPELESS;
 /* A boolean type. */
 typedef enum hn_bl bl;

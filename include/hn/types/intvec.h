@@ -1,9 +1,9 @@
-/***************************************************************************\
- *                         Hinterlib/Neopolitan 2.                         *
- *                                                                         *
- *                     Copyright (C) 2019-2023 Aquefir                     *
- *              Released under Artisan Software Licence v1.1.              *
-\***************************************************************************/
+/*********************************************************************\
+ *                      Hinterlib/Neopolitan 2.                      *
+ *                                                                   *
+ *                  Copyright (C) 2019-2024 Aquefir                  *
+ *           Released under Artisan Software Licence v1.1.           *
+\*********************************************************************/
 
 #ifndef INC_API__HN_TYPES_INTVEC_H
 #define INC_API__HN_TYPES_INTVEC_H
@@ -18,9 +18,9 @@ compatible compiler (either GCC, Clang, or FCC).
 #if defined( __has_attribute )
 #if __has_attribute( vector_size )
 #if !defined( HN_VECSIZE )
-/* Resolves to compiler-specific intrinsics to create a Single Instruction
- * Multiple Data (SIMD) compatible vector type of a particular size.
- */
+/* Resolves to compiler-specific intrinsics to create a Single
+ * Instruction Multiple Data (SIMD) compatible vector type of a
+ * particular size. */
 #define HN_VECSIZE( _n ) __attribute__( ( vector_size( _n ) ) )
 #endif /* !defined( HN_VECSIZE ) */
 #endif /* __has_attribute( vector_size ) */

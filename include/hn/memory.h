@@ -1,9 +1,9 @@
-/***************************************************************************\
- *                         Hinterlib/Neopolitan 2.                         *
- *                                                                         *
- *                     Copyright (C) 2019-2023 Aquefir                     *
- *              Released under Artisan Software Licence v1.1.              *
-\***************************************************************************/
+/*********************************************************************\
+ *                      Hinterlib/Neopolitan 2.                      *
+ *                                                                   *
+ *                  Copyright (C) 2019-2024 Aquefir                  *
+ *           Released under Artisan Software Licence v1.1.           *
+\*********************************************************************/
 
 #ifndef INC_API__HN_MEMORY_H
 #define INC_API__HN_MEMORY_H
@@ -25,8 +25,8 @@ hn_faddr hn_new16mod( void );
 /* Attempt to allocate a contiguous array of 16-modules. */
 hn_faddr hn_new16mods( hn_ptri );
 
-/* Set the contents of a stretch of memory, octet-by-octet, to a given value.
- */
+/* Set the contents of a stretch of memory, octet-by-octet, to a given
+ * value. */
 void hn_memset( void *, hn_ptri, hn_u8 );
 
 /* Copy some memory from one place to another. */

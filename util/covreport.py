@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+#######################################################################
+##                      Hinterlib/Neopolitan 2.                      ##
+##                                                                   ##
+##                  Copyright (C) 2019-2024 Aquefir                  ##
+##           Released under Artisan Software Licence v1.1.           ##
+#######################################################################
 
 def run(command):
 	import subprocess
@@ -32,6 +37,7 @@ def main(args):
 	from os.path import isfile
 	for arg in args:
 		if not isfile(arg):
+			from sys import stderr
 			print('path ‘%s’ does not exist or access is denied.' % arg,
 				file=stderr)
 			return 127

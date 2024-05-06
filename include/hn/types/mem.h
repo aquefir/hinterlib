@@ -1,9 +1,9 @@
-/***************************************************************************\
- *                         Hinterlib/Neopolitan 2.                         *
- *                                                                         *
- *                     Copyright (C) 2019-2023 Aquefir                     *
- *              Released under Artisan Software Licence v1.1.              *
-\***************************************************************************/
+/*********************************************************************\
+ *                      Hinterlib/Neopolitan 2.                      *
+ *                                                                   *
+ *                  Copyright (C) 2019-2024 Aquefir                  *
+ *           Released under Artisan Software Licence v1.1.           *
+\*********************************************************************/
 
 #ifndef INC_API__HN_TYPES_MEM_H
 #define INC_API__HN_TYPES_MEM_H
@@ -19,16 +19,16 @@ compatible compiler (either GCC, Clang, or FCC).
 
 #if __has_attribute( packed )
 #if !defined( HN_PACKED )
-/* Force the structure to be tightly packed into as few octets as possible.
- */
+/* Force the structure to be tightly packed into as few octets as
+ * possible. */
 #define HN_PACKED __attribute__( ( packed ) )
 #endif /* !defined( HN_PACKED ) */
 #endif /* __has_attribute( packed ) */
 
 #if __has_attribute( may_alias )
 #if !defined( HN_TYPELESS )
-/* Prevents the compiler from doing type analysis based optimisations on the
- * type, treating it as octet-addressable cast-friendly data. */
+/* Prevents the compiler from doing type analysis based optimisations
+ * on the type, treating it as octet-addressable cast-friendly data. */
 #define HN_TYPELESS __attribute__( ( may_alias ) )
 #endif /* !defined( HN_TYPELESS ) */
 #endif /* __has_attribute( may_alias ) */

@@ -1,9 +1,9 @@
-/***************************************************************************\
- *                         Hinterlib/Neopolitan 2.                         *
- *                                                                         *
- *                     Copyright (C) 2019-2023 Aquefir                     *
- *              Released under Artisan Software Licence v1.1.              *
-\***************************************************************************/
+/*********************************************************************\
+ *                      Hinterlib/Neopolitan 2.                      *
+ *                                                                   *
+ *                  Copyright (C) 2019-2024 Aquefir                  *
+ *           Released under Artisan Software Licence v1.1.           *
+\*********************************************************************/
 
 #ifndef INC_API__HN_ENDIAN_H
 #define INC_API__HN_ENDIAN_H
@@ -45,9 +45,9 @@ compatible compiler (either GCC, Clang, or FCC).
 #if !defined( HN_ENDIAN_SWAP32 )
 /* Performs an endianness reversal on a 32-bit variable. */
 #define HN_ENDIAN_SWAP32( _val ) \
-	( ( (_val)&0x000000FFu ) << 24 ) | ( ( (_val)&0x0000FF00u ) << 8 ) | \
-		( ( (_val)&0x00FF0000u ) >> 8 ) | \
-		( ( (_val)&0xFF000000u ) >> 24 )
+	( ( (_val)&0x000000FFu ) << 24 ) | ( ( (_val)&0x0000FF00u ) << 8 ) \
+		| ( ( (_val)&0x00FF0000u ) >> 8 ) \
+		| ( ( (_val)&0xFF000000u ) >> 24 )
 #endif /* !defined( HN_ENDIAN_SWAP32 ) */
 #endif /* defined( _SYNDEF_HAVE_I32 ) */
 #if defined( _SYNDEF_HAVE_I64 )
