@@ -45,523 +45,297 @@ compatible compiler (either GCC, Clang, or FCC).
 #define HN_TYPELESS
 #endif /* !defined( HN_TYPELESS ) */
 
-#if !defined( HN_ISTRUNK8 )
-#define HN_ISTRUNK8(_a) (((__UINTPTR_TYPE__)(_a) & 255) == 0)
-#endif /* !defined( HN_ISTRUNK8 ) */
+/**
+ * Software Modular Memory Technique
+ *
+ * knot: a block of memory sized to a fixed number of octets that is an
+ *       exponent of two. Usually this exponent is 8, 12, 16 or 20.
+ * amalgam: a small collection of metadata used to string knots
+ *          together into larger pieces of structured memory
+ *
+ * Hinterlib's heap allocators will not provide arbitrary stretches of
+ * memory upon request as this does not bode well with machines that
+ * do not provide the incredibly energy-intensive virtual memory
+ * provisions via an MMU. To help fight the incidence of fragmentation
+ * without such smoke-and-mirrors, the allocators instead will give
+ * callers a knot of memory of a certain size. With masking of higher
+ * bits, this knot can be looped over in a circular fashion at quite a
+ * negligible computational cost.
+ *
+ * Container implementations will work on amalgams of these building
+ * blocks, which may be sequential (i.e. contiguous) or sparse.
+ * Amalgams have a length, an element size, and a pointer dataset: in
+ * sequential amalgams, the pointer dataset is merely one pointer to
+ * the head of the sequence of knots, while in sparse amalgams, the
+ * pointer dataset is an array of pointers to each knot in sequence.
+ *
+ * Amalgams themselves would either occupy automatic storage or reside
+ * in a knot in their own right. Sparse amalgams may need larger knots
+ * to hold their full pointer lists. For reference:
+ *   - 8-knots => 63 (32-bit) / 31 (64-bit) elements
+ *   - 12-knots => 1023 (32-bit) / 511 (64-bit) elements
+ *   - 16-knots => 16383 (32-bit) / 8191 (64-bit) elements
+ *   - 20-knots => 262143 (32-bit) / 131071 (64-bit) elements
+ *
+ * We can then chart this to see total memory capacity of every kind of
+ * sparse amalgam. First is on 32-bit machines, then on 64-bit:
+ *
+ * Elem=> |  8-bit  |  12-bit |  16-bit | 20-bit
+ * -------+---------+---------+---------+-----------
+ *  8-bit |  ~16KB  |  ~258KB |   ~4MB  |   ~66MB
+ * 12-bit |  ~261KB |  ~4.2MB |  ~67MB  |  ~1073MB
+ * 16-bit |  ~4.2MB |  ~67MB  | ~1074MB |  ~17.2GB
+ * 20-bit | ~67.1MB | ~1074MB | ~17.2GB |  ~274.9GB
+ *
+ * Elem=> |  8-bit  |  12-bit |  16-bit | 20-bit
+ * -------+---------+---------+---------+-----------
+ *  8-bit |   ~8KB  |  ~129KB |   ~2MB  |   ~33MB
+ * 12-bit |  ~131KB |  ~2.1MB | ~33.5MB |  ~535.8MB
+ * 16-bit |  ~2.1MB | ~33.5MB |  ~537MB |   ~8.6GB
+ * 20-bit | ~33.5MB |  ~537MB |  ~8.6GB |  ~137.4GB
+ *
+ * These limits naturally do not apply to sequential amalgams, which
+ * are only limited by the amount of installed memory. If you are
+ * dealing with so much sparse data anyway, these structures can only
+ * impose a linear at worst cost basis for use, which is negligible
+ * compared to the overall cost of using a linked list strategy to
+ * handle large data anyway. More robust solutions will invariably
+ * require transforming such sparse data into contiguous runs where
+ * needed.
+ */
 
-#if !defined( HN_ISTRUNK12 )
-#define HN_ISTRUNK12(_a) (((__UINTPTR_TYPE__)(_a) & 4095) == 0)
-#endif /* !defined( HN_ISTRUNK12 ) */
+/* Gets a traversable pointer from an 8-bit knot. */
+#define HN_PTRFROMKNOT8( _k ) \
+	(__UINT8_TYPE__ *)( (__UINTPTR_TYPE__)( _k ) << 8 )
 
-#if !defined( HN_ISTRUNK16 )
-#define HN_ISTRUNK16(_a) (((__UINTPTR_TYPE__)(_a) & 65535) == 0)
-#endif /* !defined( HN_ISTRUNK16 ) */
+/* Gets an 8-bit knot from a pointer that was created for use within
+ * that knot. */
+#define HN_KNOT8FROMPTR( _p ) \
+	(hn_knot8)( (__UINTPTR_TYPE__)( _p ) >> 8 )
 
-struct hn_faddr20
+/* Controlled increment of an 8-bit knot so that it overflows in a
+ * predictable way like unsigned integers usually do. */
+#define HN_KNOT8PTR_INCR( _k, _n ) \
+	(void *)( ( ( (__UINTPTR_TYPE__)( _k ) >> 8 ) << 8 ) | \
+	( ( ( (__UINTPTR_TYPE__)( _k ) & 0xFF ) + ( _n ) ) & 0xFF ) )
+
+/* Controlled decrement of an 8-bit knot so that it overflows in a
+ * predictable way like unsigned integers usually do. */
+#define HN_KNOT8PTR_DECR( _k, _n ) \
+	(void *)( ( ( (__UINTPTR_TYPE__)( _k ) >> 8 ) << 8 ) | \
+	( ( ( (__UINTPTR_TYPE__)( _k ) & 0xFF ) - ( _n ) ) & 0xFF ) )
+
+/* Gets a traversable pointer from a 12-bit knot. */
+#define HN_PTRFROMKNOT12( _k ) \
+	(__UINT8_TYPE__ *)( (__UINTPTR_TYPE__)( _k ) << 12 )
+
+/* Gets a 12-bit knot from a pointer that was created for use within
+ * that knot. */
+#define HN_KNOT12FROMPTR( _p ) \
+	(hn_knot12)( (__UINTPTR_TYPE__)( _p ) >> 12 )
+
+/* Controlled increment of a 12-bit knot so that it overflows in a
+ * predictable way like unsigned integers usually do. */
+#define HN_KNOT12PTR_INCR( _k, _n ) \
+	(void *)( ( ( (__UINTPTR_TYPE__)( _k ) >> 12 ) << 12 ) | \
+	( ( ( (__UINTPTR_TYPE__)( _k ) & 0xFFF ) + ( _n ) ) & 0xFFF ) )
+
+/* Controlled decrement of a 12-bit knot so that it overflows in a
+ * predictable way like unsigned integers usually do. */
+#define HN_KNOT12PTR_DECR( _k, _n ) \
+	(void *)( ( ( (__UINTPTR_TYPE__)( _k ) >> 12 ) << 12 ) | \
+	( ( ( (__UINTPTR_TYPE__)( _k ) & 0xFFF ) - ( _n ) ) & 0xFFF ) )
+
+/* Gets a traversable pointer from a 16-bit knot. */
+#define HN_PTRFROMKNOT16( _k ) \
+	(__UINT8_TYPE__ *)( (__UINTPTR_TYPE__)( _k ) << 16 )
+
+/* Gets a 16-bit knot from a pointer that was created for use within
+ * that knot. */
+#define HN_KNOT16FROMPTR( _p ) \
+	(hn_knot16)( (__UINTPTR_TYPE__)( _p ) >> 16 )
+
+/* Controlled increment of a 16-bit knot so that it overflows in a
+ * predictable way like unsigned integers usually do. */
+#define HN_KNOT16PTR_INCR( _k, _n ) \
+	(void *)( ( ( (__UINTPTR_TYPE__)( _k ) >> 16 ) << 16 ) | \
+	( ( ( (__UINTPTR_TYPE__)( _k ) & 0xFFFF ) + ( _n ) ) & 0xFFFF ) )
+
+/* Controlled decrement of a 16-bit knot so that it overflows in a
+ * predictable way like unsigned integers usually do. */
+#define HN_KNOT16PTR_DECR( _k, _n ) \
+	(void *)( ( ( (__UINTPTR_TYPE__)( _k ) >> 16 ) << 16 ) | \
+	( ( ( (__UINTPTR_TYPE__)( _k ) & 0xFFFF ) - ( _n ) ) & 0xFFFF ) )
+
+/* Gets a traversable pointer from a 20-bit knot. */
+#define HN_PTRFROMKNOT20( _k ) \
+	(__UINT8_TYPE__ *)( (__UINTPTR_TYPE__)( _k ) << 20 )
+
+/* Gets a 20-bit knot from a pointer that was created for use within
+ * that knot. */
+#define HN_KNOT20FROMPTR( _p ) \
+	(hn_knot20)( (__UINTPTR_TYPE__)( _p ) >> 20 )
+
+/* Controlled increment of a 20-bit knot so that it overflows in a
+ * predictable way like unsigned integers usually do. */
+#define HN_KNOT20PTR_INCR( _k, _n ) \
+	(void *)( ( ( (__UINTPTR_TYPE__)( _k ) >> 20 ) << 20 ) | \
+	( ( ( (__UINTPTR_TYPE__)( _k ) & 0xFFFFF ) + ( _n ) ) & 0xFFFFF ) )
+
+/* Controlled decrement of a 20-bit knot so that it overflows in a
+ * predictable way like unsigned integers usually do. */
+#define HN_KNOT20PTR_DECR( _k, _n ) \
+	(void *)( ( ( (__UINTPTR_TYPE__)( _k ) >> 20 ) << 20 ) | \
+	( ( ( (__UINTPTR_TYPE__)( _k ) & 0xFFFFF ) - ( _n ) ) & 0xFFFFF ) )
+
+/* 8-bit memory knot addressing a contiguous block of 256 bytes. */
+typedef __UINT8_TYPE__ (* hn_knot8)[256] HN_TYPELESS;
+/* 12-bit memory knot addressing a contiguous block of 4096 bytes. */
+typedef __UINT8_TYPE__ (* hn_knot12)[4096] HN_TYPELESS;
+/* 16-bit memory knot addressing a contiguous block of 64 kibibytes. */
+typedef __UINT8_TYPE__ (* hn_knot16)[65536] HN_TYPELESS;
+/* 20-bit memory knot addressing a contiguous block of 1 mebibyte. */
+typedef __UINT8_TYPE__ (* hn_knot20)[1048576] HN_TYPELESS;
+
+/* Sequential amalgam of 8-bit knots. */
+struct hn_amalsq8
 {
-#if defined( _SYNDEF_LILENDIAN )
-	__UINT16_TYPE__ lo;
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpedantic"
-	__UINT16_TYPE__ hi : 4;
-	__UINT16_TYPE__ padding : 12;
-#pragma GCC diagnostic pop
-#else
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpedantic"
-	__UINT16_TYPE__ padding : 12;
-	__UINT16_TYPE__ hi : 4;
-#pragma GCC diagnostic pop
-	__UINT16_TYPE__ lo;
-#endif /* defined( _SYNDEF_LILENDIAN ) */
+	/* Length of amalgam, denominated in elements. */
+	__UINTPTR_TYPE__ len;
+	/* Pointer to the first knot. The rest are assumed to follow in
+	 * memory. */
+	hn_knot8 * data;
 };
 
-struct hn_faddr24
+/* Sequential amalgam of 12-bit knots. */
+struct hn_amalsq12
 {
-#if defined( _SYNDEF_LILENDIAN )
-	__UINT16_TYPE__ lo;
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpedantic"
-	__UINT16_TYPE__ hi : 8;
-	__UINT16_TYPE__ padding : 8;
-#pragma GCC diagnostic pop
-#else
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpedantic"
-	__UINT16_TYPE__ padding : 8;
-	__UINT16_TYPE__ hi : 8;
-#pragma GCC diagnostic pop
-	__UINT16_TYPE__ lo;
-#endif /* defined( _SYNDEF_LILENDIAN ) */
+	/* Length of amalgam, denominated in elements. */
+	__UINTPTR_TYPE__ len;
+	/* Pointer to the first knot. The rest are assumed to follow in
+	 * memory. */
+	hn_knot12 * data;
 };
 
-struct hn_faddr26
+/* Sequential amalgam of 16-bit knots. */
+struct hn_amalsq16
 {
-#if defined( _SYNDEF_LILENDIAN )
-	__UINT16_TYPE__ lo;
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpedantic"
-	__UINT16_TYPE__ hi : 10;
-	__UINT16_TYPE__ padding : 6;
-#pragma GCC diagnostic pop
-#else
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpedantic"
-	__UINT16_TYPE__ padding : 6;
-	__UINT16_TYPE__ hi : 10;
-#pragma GCC diagnostic pop
-	__UINT16_TYPE__ lo;
-#endif /* defined( _SYNDEF_LILENDIAN ) */
+	/* Length of amalgam, denominated in elements. */
+	__UINTPTR_TYPE__ len;
+	/* Pointer to the first knot. The rest are assumed to follow in
+	 * memory. */
+	hn_knot16 * data;
 };
 
-struct hn_faddr32
+/* Sequential amalgam of 20-bit knots. */
+struct hn_amalsq20
 {
-#if defined( _SYNDEF_LILENDIAN )
-	__UINT16_TYPE__ lo;
-	__UINT16_TYPE__ hi;
-#else
-	__UINT16_TYPE__ hi;
-	__UINT16_TYPE__ lo;
-#endif /* defined( _SYNDEF_LILENDIAN ) */
+	/* Length of amalgam, denominated in elements. */
+	__UINTPTR_TYPE__ len;
+	/* Pointer to the first knot. The rest are assumed to follow in
+	 * memory. */
+	hn_knot20 * data;
 };
 
-struct hn_faddr36
+/* Sparse amalgam of 8-bit knots. */
+struct hn_amalsp8
 {
-#if defined( _SYNDEF_LILENDIAN )
-	__UINT32_TYPE__ lo;
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpedantic"
-	__UINT16_TYPE__ hi : 4;
-	__UINT16_TYPE__ padding : 12;
-#pragma GCC diagnostic pop
-#else
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpedantic"
-	__UINT16_TYPE__ padding : 12;
-	__UINT16_TYPE__ hi : 4;
-#pragma GCC diagnostic pop
-	__UINT32_TYPE__ lo;
-#endif /* defined( _SYNDEF_LILENDIAN ) */
+	/* Length of amalgam, denominated in elements. */
+	__UINTPTR_TYPE__ len;
+	/* Flexible array head containing the beginning of the array of
+	 * pointers to the knots. */
+	hn_knot8 * data[0];
 };
 
-struct hn_faddr48
+/* Sparse amalgam of 12-bit knots. */
+struct hn_amalsp12
 {
-#if defined( _SYNDEF_LILENDIAN )
-	__UINT32_TYPE__ lo;
-	__UINT16_TYPE__ hi;
-#else
-	__UINT16_TYPE__ hi;
-	__UINT32_TYPE__ lo;
-#endif /* defined( _SYNDEF_LILENDIAN ) */
+	/* Length of amalgam, denominated in elements. */
+	__UINTPTR_TYPE__ len;
+	/* Flexible array head containing the beginning of the array of
+	 * pointers to the knots. */
+	hn_knot12 * data[0];
 };
 
-struct hn_faddr64
+/* Sparse amalgam of 16-bit knots. */
+struct hn_amalsp16
 {
-#if defined( _SYNDEF_LILENDIAN )
-	__UINT32_TYPE__ lo;
-	__UINT32_TYPE__ hi;
-#else
-	__UINT32_TYPE__ hi;
-	__UINT32_TYPE__ lo;
-#endif /* defined( _SYNDEF_LILENDIAN ) */
+	/* Length of amalgam, denominated in elements. */
+	__UINTPTR_TYPE__ len;
+	/* Flexible array head containing the beginning of the array of
+	 * pointers to the knots. */
+	hn_knot16 * data[0];
 };
 
-#if defined( _SYNDEF_I86 ) || defined( _SYNDEF_I186 )
-typedef struct hn_faddr20 hn_faddr;
-#elif defined( _SYNDEF_I286 )
-typedef struct hn_faddr24 hn_faddr;
-#elif defined( _SYNDEF_ARMV2 ) || defined( _SYNDEF_ARMV3 )
-typedef struct hn_faddr26 hn_faddr;
-#elif defined( _SYNDEF_IA32 ) || defined( _SYNDEF_ARMV4T )
-typedef struct hn_faddr32 hn_faddr;
-#elif defined( _SYNDEF_I686 )
-typedef struct hn_faddr36 hn_faddr;
-#elif defined( _SYNDEF_AMD64 )
-typedef struct hn_faddr48 hn_faddr;
-#else
-typedef struct hn_faddr64 hn_faddr;
-#endif
-
-struct hn_addr8
+/* Sparse amalgam of 20-bit knots. */
+struct hn_amalsp20
 {
-#if defined( _SYNDEF_LILENDIAN )
-	__UINT8_TYPE__ twig;
-	__UINT8_TYPE__ trunk8;
-#if defined( _SYNDEF_WORDSZ_32 )
-	__UINT16_TYPE__ trunk16;
-#elif defined( _SYNDEF_WORDSZ_64 )
-	__UINT16_TYPE__ trunk16;
-	__UINT32_TYPE__ trunk32;
-#elif defined( _SYNDEF_WORDSZ_128 )
-	__UINT16_TYPE__ trunk16;
-	__UINT32_TYPE__ trunk32;
-	__UINT64_TYPE__ trunk64;
-#endif /* word size */
-#else /* big endian */
-#if defined( _SYNDEF_WORDSZ_128 )
-	__UINT64_TYPE__ trunk64;
-	__UINT32_TYPE__ trunk32;
-	__UINT16_TYPE__ trunk16;
-#elif defined( _SYNDEF_WORDSZ_64 )
-	__UINT32_TYPE__ trunk32;
-	__UINT16_TYPE__ trunk16;
-#elif defined( _SYNDEF_WORDSZ_32 )
-	__UINT16_TYPE__ trunk16;
-#endif /* word size */
-	__UINT8_TYPE__ trunk8;
-	__UINT8_TYPE__ twig;
-#endif /* defined( _SYNDEF_LILENDIAN ) */
-} HN_PACKED HN_TYPELESS;
+	/* Length of amalgam, denominated in elements. */
+	__UINTPTR_TYPE__ len;
+	/* Flexible array head containing the beginning of the array of
+	 * pointers to the knots. */
+	hn_knot20 * data[0];
+};
 
-struct hn_addr12
-{
-#if defined( _SYNDEF_LILENDIAN )
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpedantic"
-	__UINT16_TYPE__ twig : 12;
-	__UINT16_TYPE__ trunk4 : 4;
-#pragma GCC diagnostic pop
-#if defined( _SYNDEF_WORDSZ_32 )
-	__UINT16_TYPE__ trunk16;
-#elif defined( _SYNDEF_WORDSZ_64 )
-	__UINT16_TYPE__ trunk16;
-	__UINT32_TYPE__ trunk32;
-#elif defined( _SYNDEF_WORDSZ_128 )
-	__UINT16_TYPE__ trunk16;
-	__UINT32_TYPE__ trunk32;
-	__UINT64_TYPE__ trunk64;
-#endif /* word size */
-#else /* big endian */
-#if defined( _SYNDEF_WORDSZ_128 )
-	__UINT64_TYPE__ trunk64;
-	__UINT32_TYPE__ trunk32;
-	__UINT16_TYPE__ trunk16;
-#elif defined( _SYNDEF_WORDSZ_64 )
-	__UINT32_TYPE__ trunk32;
-	__UINT16_TYPE__ trunk16;
-#elif defined( _SYNDEF_WORDSZ_32 )
-	__UINT16_TYPE__ trunk16;
-#endif /* word size */
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpedantic"
-	__UINT16_TYPE__ trunk4 : 4;
-	__UINT16_TYPE__ twig : 12;
-#pragma GCC diagnostic pop
-#endif /* defined( _SYNDEF_LILENDIAN ) */
-} HN_PACKED HN_TYPELESS;
+/* Sequential amalgam of 8-bit knots. */
+typedef struct hn_amalsq8 hn_amalsq8;
 
-struct hn_addr16
-{
-#if defined( _SYNDEF_LILENDIAN )
-	__UINT16_TYPE__ twig;
-#if defined( _SYNDEF_WORDSZ_32 )
-	__UINT16_TYPE__ trunk16;
-#elif defined( _SYNDEF_WORDSZ_64 )
-	__UINT16_TYPE__ trunk16;
-	__UINT32_TYPE__ trunk32;
-#elif defined( _SYNDEF_WORDSZ_128 )
-	__UINT16_TYPE__ trunk16;
-	__UINT32_TYPE__ trunk32;
-	__UINT64_TYPE__ trunk64;
-#endif /* word size */
-#else /* big endian */
-#if defined( _SYNDEF_WORDSZ_128 )
-	__UINT64_TYPE__ trunk_c;
-	__UINT32_TYPE__ trunk32;
-	__UINT16_TYPE__ trunk16;
-#elif defined( _SYNDEF_WORDSZ_64 )
-	__UINT32_TYPE__ trunk32;
-	__UINT16_TYPE__ trunk16;
-#elif defined( _SYNDEF_WORDSZ_32 )
-	__UINT16_TYPE__ trunk16;
-#endif /* word size */
-	__UINT16_TYPE__ twig;
-#endif /* defined( _SYNDEF_LILENDIAN ) */
-} HN_PACKED HN_TYPELESS;
+/* Sequential amalgam of 12-bit knots. */
+typedef struct hn_amalsq12 hn_amalsq12;
 
-struct hn_trunk16p8
-{
-#if defined( _SYNDEF_LILENDIAN )
-	__UINT8_TYPE__ padding;
-	__UINT8_TYPE__ trunk8;
-#else /* big endian */
-	__UINT8_TYPE__ trunk8;
-	__UINT8_TYPE__ padding;
-#endif /* defined( _SYNDEF_LILENDIAN ) */
-} HN_PACKED HN_TYPELESS;
+/* Sequential amalgam of 16-bit knots. */
+typedef struct hn_amalsq16 hn_amalsq16;
 
-struct hn_trunk32p8
-{
-#if defined( _SYNDEF_LILENDIAN )
-	__UINT8_TYPE__ padding;
-	__UINT8_TYPE__ trunk8;
-	__UINT16_TYPE__ trunk16;
-#else /* big endian */
-	__UINT16_TYPE__ trunk16;
-	__UINT8_TYPE__ trunk8;
-	__UINT8_TYPE__ padding;
-#endif /* defined( _SYNDEF_LILENDIAN ) */
-} HN_PACKED HN_TYPELESS;
+/* Sequential amalgam of 20-bit knots. */
+typedef struct hn_amalsq20 hn_amalsq20;
 
-struct hn_trunk64p8
-{
-#if defined( _SYNDEF_LILENDIAN )
-	__UINT8_TYPE__ padding;
-	__UINT8_TYPE__ trunk8;
-	__UINT16_TYPE__ trunk16;
-	__UINT32_TYPE__ trunk32;
-#else /* big endian */
-	__UINT32_TYPE__ trunk32;
-	__UINT16_TYPE__ trunk16;
-	__UINT8_TYPE__ trunk8;
-	__UINT8_TYPE__ padding;
-#endif /* defined( _SYNDEF_LILENDIAN ) */
-} HN_PACKED HN_TYPELESS;
+/* Sparse amalgam of 8-bit knots. */
+typedef struct hn_amalsp8 hn_amalsp8;
 
-struct hn_trunk128p8
-{
-#if defined( _SYNDEF_LILENDIAN )
-	__UINT8_TYPE__ padding;
-	__UINT8_TYPE__ trunk8;
-	__UINT16_TYPE__ trunk16;
-	__UINT32_TYPE__ trunk32;
-	__UINT64_TYPE__ trunk64;
-#else /* big endian */
-	__UINT64_TYPE__ trunk64;
-	__UINT32_TYPE__ trunk32;
-	__UINT16_TYPE__ trunk16;
-	__UINT8_TYPE__ trunk8;
-	__UINT8_TYPE__ padding;
-#endif /* defined( _SYNDEF_LILENDIAN ) */
-} HN_PACKED HN_TYPELESS;
+/* Sparse amalgam of 12-bit knots. */
+typedef struct hn_amalsp12 hn_amalsp12;
 
-struct hn_trunk16p12
-{
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpedantic"
-	__UINT16_TYPE__ padding : 12;
-	__UINT16_TYPE__ trunk4 : 4;
-#pragma GCC diagnostic pop
-} HN_PACKED HN_TYPELESS;
+/* Sparse amalgam of 16-bit knots. */
+typedef struct hn_amalsp16 hn_amalsp16;
 
-struct hn_trunk32p12
-{
-#if defined( _SYNDEF_LILENDIAN )
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpedantic"
-	__UINT16_TYPE__ padding : 12;
-	__UINT16_TYPE__ trunk4 : 4;
-	__UINT16_TYPE__ trunk16;
-#pragma GCC diagnostic pop
-#else /* big endian */
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpedantic"
-	__UINT16_TYPE__ trunk16;
-	__UINT16_TYPE__ padding : 12;
-	__UINT16_TYPE__ trunk4 : 4;
-#pragma GCC diagnostic pop
-#endif /* defined( _SYNDEF_LILENDIAN ) */
-} HN_PACKED HN_TYPELESS;
-
-struct hn_trunk64p12
-{
-#if defined( _SYNDEF_LILENDIAN )
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpedantic"
-	__UINT16_TYPE__ padding : 12;
-	__UINT16_TYPE__ trunk4 : 4;
-	__UINT16_TYPE__ trunk16;
-	__UINT32_TYPE__ trunk32;
-#pragma GCC diagnostic pop
-#else /* big endian */
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpedantic"
-	__UINT32_TYPE__ trunk32;
-	__UINT16_TYPE__ trunk16;
-	__UINT16_TYPE__ padding : 12;
-	__UINT16_TYPE__ trunk4 : 4;
-#pragma GCC diagnostic pop
-#endif /* defined( _SYNDEF_LILENDIAN ) */
-} HN_PACKED HN_TYPELESS;
-
-struct hn_trunk128p12
-{
-#if defined( _SYNDEF_LILENDIAN )
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpedantic"
-	__UINT16_TYPE__ padding : 12;
-	__UINT16_TYPE__ trunk4 : 4;
-	__UINT16_TYPE__ trunk16;
-	__UINT32_TYPE__ trunk32;
-	__UINT32_TYPE__ trunk64;
-#pragma GCC diagnostic pop
-#else /* big endian */
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpedantic"
-	__UINT32_TYPE__ trunk64;
-	__UINT32_TYPE__ trunk32;
-	__UINT16_TYPE__ trunk16;
-	__UINT16_TYPE__ padding : 12;
-	__UINT16_TYPE__ trunk4 : 4;
-#pragma GCC diagnostic pop
-#endif /* defined( _SYNDEF_LILENDIAN ) */
-} HN_PACKED HN_TYPELESS;
-
-struct hn_trunk32p16
-{
-#if defined( _SYNDEF_LILENDIAN )
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpedantic"
-	__UINT16_TYPE__ padding;
-	__UINT16_TYPE__ trunk16;
-#pragma GCC diagnostic pop
-#else /* big endian */
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpedantic"
-	__UINT16_TYPE__ trunk16;
-	__UINT16_TYPE__ padding;
-#pragma GCC diagnostic pop
-#endif /* defined( _SYNDEF_LILENDIAN ) */
-} HN_PACKED HN_TYPELESS;
-
-struct hn_trunk64p16
-{
-#if defined( _SYNDEF_LILENDIAN )
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpedantic"
-	__UINT16_TYPE__ padding;
-	__UINT16_TYPE__ trunk16;
-	__UINT32_TYPE__ trunk32;
-#pragma GCC diagnostic pop
-#else /* big endian */
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpedantic"
-	__UINT32_TYPE__ trunk32;
-	__UINT16_TYPE__ trunk16;
-	__UINT16_TYPE__ padding;
-#pragma GCC diagnostic pop
-#endif /* defined( _SYNDEF_LILENDIAN ) */
-} HN_PACKED HN_TYPELESS;
-
-struct hn_trunk128p16
-{
-#if defined( _SYNDEF_LILENDIAN )
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpedantic"
-	__UINT16_TYPE__ padding;
-	__UINT16_TYPE__ trunk16;
-	__UINT32_TYPE__ trunk32;
-	__UINT32_TYPE__ trunk64;
-#pragma GCC diagnostic pop
-#else /* big endian */
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpedantic"
-	__UINT32_TYPE__ trunk64;
-	__UINT32_TYPE__ trunk32;
-	__UINT16_TYPE__ trunk16;
-	__UINT16_TYPE__ padding;
-#pragma GCC diagnostic pop
-#endif /* defined( _SYNDEF_LILENDIAN ) */
-} HN_PACKED HN_TYPELESS;
-
-struct hn_twig8
-{
-	__UINT8_TYPE__ twig;
-} HN_PACKED HN_TYPELESS;
-
-struct hn_twig12
-{
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpedantic"
-	__UINT16_TYPE__ twig : 12;
-	__UINT16_TYPE__ padding : 4;
-#pragma GCC diagnostic pop
-} HN_PACKED HN_TYPELESS;
-
-struct hn_twig16
-{
-	__UINT16_TYPE__ twig;
-} HN_PACKED HN_TYPELESS;
-
-typedef struct hn_addr8 hn_addr8 HN_TYPELESS;
-
-typedef struct hn_addr12 hn_addr12 HN_TYPELESS;
-
-typedef struct hn_addr16 hn_addr16 HN_TYPELESS;
-
-typedef struct hn_trunk16p8 hn_trunk16p8 HN_TYPELESS;
-
-typedef struct hn_trunk32p8 hn_trunk32p8 HN_TYPELESS;
-
-typedef struct hn_trunk64p8 hn_trunk64p8 HN_TYPELESS;
-
-typedef struct hn_trunk128p8 hn_trunk128p8 HN_TYPELESS;
-
-typedef struct hn_trunk16p12 hn_trunk16p12 HN_TYPELESS;
-
-typedef struct hn_trunk32p12 hn_trunk32p12 HN_TYPELESS;
-
-typedef struct hn_trunk64p12 hn_trunk64p12 HN_TYPELESS;
-
-typedef struct hn_trunk128p12 hn_trunk128p12 HN_TYPELESS;
-
-typedef struct hn_trunk32p16 hn_trunk32p16 HN_TYPELESS;
-
-typedef struct hn_trunk64p16 hn_trunk64p16 HN_TYPELESS;
-
-typedef struct hn_trunk128p16 hn_trunk128p16 HN_TYPELESS;
-
-typedef struct hn_twig8 hn_twig8 HN_TYPELESS;
-
-typedef struct hn_twig12 hn_twig12 HN_TYPELESS;
-
-typedef struct hn_twig16 hn_twig16 HN_TYPELESS;
+/* Sparse amalgam of 20-bit knots. */
+typedef struct hn_amalsp20 hn_amalsp20;
 
 #if !defined( _CFGOPT_NOSHORTHAND )
 
-typedef struct hn_addr8 addr8 HN_TYPELESS;
+/* 8-bit memory knot addressing a contiguous block of 256 bytes. */
+typedef __UINT8_TYPE__ (* knot8)[256] HN_TYPELESS;
+/* 12-bit memory knot addressing a contiguous block of 4096 bytes. */
+typedef __UINT8_TYPE__ (* knot12)[4096] HN_TYPELESS;
+/* 16-bit memory knot addressing a contiguous block of 64 kibibytes. */
+typedef __UINT8_TYPE__ (* knot16)[65536] HN_TYPELESS;
+/* 20-bit memory knot addressing a contiguous block of 1 mebibyte. */
+typedef __UINT8_TYPE__ (* knot20)[1048576] HN_TYPELESS;
 
-typedef struct hn_addr12 addr12 HN_TYPELESS;
+/* Sequential amalgam of 8-bit knots. */
+typedef struct hn_amalsq8 amalsq8;
 
-typedef struct hn_addr16 addr16 HN_TYPELESS;
+/* Sequential amalgam of 12-bit knots. */
+typedef struct hn_amalsq12 amalsq12;
 
-typedef struct hn_trunk16p8 trunk16p8 HN_TYPELESS;
+/* Sequential amalgam of 16-bit knots. */
+typedef struct hn_amalsq16 amalsq16;
 
-typedef struct hn_trunk32p8 trunk32p8 HN_TYPELESS;
+/* Sequential amalgam of 20-bit knots. */
+typedef struct hn_amalsq20 amalsq20;
 
-typedef struct hn_trunk64p8 trunk64p8 HN_TYPELESS;
+/* Sparse amalgam of 8-bit knots. */
+typedef struct hn_amalsp8 amalsp8;
 
-typedef struct hn_trunk128p8 trunk128p8 HN_TYPELESS;
+/* Sparse amalgam of 12-bit knots. */
+typedef struct hn_amalsp12 amalsp12;
 
-typedef struct hn_trunk16p12 trunk16p12 HN_TYPELESS;
+/* Sparse amalgam of 16-bit knots. */
+typedef struct hn_amalsp16 amalsp16;
 
-typedef struct hn_trunk32p12 trunk32p12 HN_TYPELESS;
-
-typedef struct hn_trunk64p12 trunk64p12 HN_TYPELESS;
-
-typedef struct hn_trunk128p12 trunk128p12 HN_TYPELESS;
-
-typedef struct hn_trunk32p16 trunk32p16 HN_TYPELESS;
-
-typedef struct hn_trunk64p16 trunk64p16 HN_TYPELESS;
-
-typedef struct hn_trunk128p16 trunk128p16 HN_TYPELESS;
-
-typedef struct hn_twig8 twig8 HN_TYPELESS;
-
-typedef struct hn_twig12 twig12 HN_TYPELESS;
-
-typedef struct hn_twig16 twig16 HN_TYPELESS;
+/* Sparse amalgam of 20-bit knots. */
+typedef struct hn_amalsp20 amalsp20;
 
 #endif /* !defined( _CFGOPT_NOSHORTHAND ) */
-
-/* In modular memory:
-
-- trunk (n.) := the most significant portion of a full memory address
-- twig (n.) := the least significant portion of a full memory address
-- trunk size := number of bits consumed by a trunk
-- twig size := number of bits consumed by a twig
-- total address size := twig size + trunk size
- */
 
 #endif /* INC_API__HN_TYPES_MEM_H */
