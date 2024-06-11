@@ -73,6 +73,21 @@ compatible compiler (either GCC, Clang, or FCC).
 
 #endif /* defined( __has_attribute ) */
 
+#if !defined( HN_SIZEOF_PTR )
+#if defined( _SYNDEF_PTRSZ_64 )
+/* Denotes the size of a pointer at runtime, denominated in octets. */
+#define HN_SIZEOF_PTR 8
+#elif defined( _SYNDEF_PTRSZ_32 )
+/* Denotes the size of a pointer at runtime, denominated in octets. */
+#define HN_SIZEOF_PTR 4
+#elif defined( _SYNDEF_PTRSZ_16 )
+/* Denotes the size of a pointer at runtime, denominated in octets. */
+#define HN_SIZEOF_PTR 2
+#else
+#error Pointer size is not 64, 32 or 16 bits.
+#endif
+#endif /* !defined( HN_SIZEOF_PTR ) */
+
 /* fallback #defines in case attributes are not supported */
 
 #if !defined( HN_PACKED )
@@ -117,9 +132,6 @@ compatible compiler (either GCC, Clang, or FCC).
 
 enum
 {
-	/* Denotes the size of a pointer at runtime, denominated in octets.
-	 */
-	HN_SIZEOF_PTR = sizeof( __UINTPTR_TYPE__ ),
 	/* Denotes he "null pointer" constant: zero. */
 	HN_NULL = 0
 };
