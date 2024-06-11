@@ -35,6 +35,21 @@ compatible compiler (either GCC, Clang, or FCC).
 
 #endif /* defined( __has_attribute ) */
 
+#if !defined( HN_SIZEOF_PTR )
+#if defined( _SYNDEF_PTRSZ_64 )
+/* Denotes the size of a pointer at runtime, denominated in octets. */
+#define HN_SIZEOF_PTR 8
+#elif defined( _SYNDEF_PTRSZ_32 )
+/* Denotes the size of a pointer at runtime, denominated in octets. */
+#define HN_SIZEOF_PTR 4
+#elif defined( _SYNDEF_PTRSZ_16 )
+/* Denotes the size of a pointer at runtime, denominated in octets. */
+#define HN_SIZEOF_PTR 2
+#else
+#error Pointer size is not 64, 32 or 16 bits.
+#endif
+#endif /* !defined( HN_SIZEOF_PTR ) */
+
 /* fallback #defines in case attributes are not supported */
 
 #if !defined( HN_PACKED )
@@ -104,89 +119,29 @@ compatible compiler (either GCC, Clang, or FCC).
  * needed.
  */
 
-/* Gets a traversable pointer from an 8-bit knot. */
-#define HN_PTRFROMKNOT8( _k ) \
-	(__UINT8_TYPE__ *)( (__UINTPTR_TYPE__)( _k ) << 8 )
+#if !defined( HN_KNOT8_NORM )
+/* Normalise an 8-bit knot by zeroing out its lower bits. */
+#define HN_KNOT8_NORM( _kn ) \
+	(void *)( ( (__UINTPTR_TYPE__)( _kn ) >> 8 ) << 8 )
+#endif /* !defined( HN_KNOT8_NORM ) */
 
-/* Gets an 8-bit knot from a pointer that was created for use within
- * that knot. */
-#define HN_KNOT8FROMPTR( _p ) \
-	(hn_knot8)( (__UINTPTR_TYPE__)( _p ) >> 8 )
+#if !defined( HN_KNOT12_NORM )
+/* Normalise a 12-bit knot by zeroing out its lower bits. */
+#define HN_KNOT12_NORM( _kn ) \
+	(void *)( ( (__UINTPTR_TYPE__)( _kn ) >> 12 ) << 12 )
+#endif /* !defined( HN_KNOT12_NORM ) */
 
-/* Controlled increment of an 8-bit knot so that it overflows in a
- * predictable way like unsigned integers usually do. */
-#define HN_KNOT8PTR_INCR( _k, _n ) \
-	(void *)( ( ( (__UINTPTR_TYPE__)( _k ) >> 8 ) << 8 ) | \
-	( ( ( (__UINTPTR_TYPE__)( _k ) & 0xFF ) + ( _n ) ) & 0xFF ) )
+#if !defined( HN_KNOT16_NORM )
+/* Normalise a 16-bit knot by zeroing out its lower bits. */
+#define HN_KNOT16_NORM( _kn ) \
+	(void *)( ( (__UINTPTR_TYPE__)( _kn ) >> 16 ) << 16 )
+#endif /* !defined( HN_KNOT16_NORM ) */
 
-/* Controlled decrement of an 8-bit knot so that it overflows in a
- * predictable way like unsigned integers usually do. */
-#define HN_KNOT8PTR_DECR( _k, _n ) \
-	(void *)( ( ( (__UINTPTR_TYPE__)( _k ) >> 8 ) << 8 ) | \
-	( ( ( (__UINTPTR_TYPE__)( _k ) & 0xFF ) - ( _n ) ) & 0xFF ) )
-
-/* Gets a traversable pointer from a 12-bit knot. */
-#define HN_PTRFROMKNOT12( _k ) \
-	(__UINT8_TYPE__ *)( (__UINTPTR_TYPE__)( _k ) << 12 )
-
-/* Gets a 12-bit knot from a pointer that was created for use within
- * that knot. */
-#define HN_KNOT12FROMPTR( _p ) \
-	(hn_knot12)( (__UINTPTR_TYPE__)( _p ) >> 12 )
-
-/* Controlled increment of a 12-bit knot so that it overflows in a
- * predictable way like unsigned integers usually do. */
-#define HN_KNOT12PTR_INCR( _k, _n ) \
-	(void *)( ( ( (__UINTPTR_TYPE__)( _k ) >> 12 ) << 12 ) | \
-	( ( ( (__UINTPTR_TYPE__)( _k ) & 0xFFF ) + ( _n ) ) & 0xFFF ) )
-
-/* Controlled decrement of a 12-bit knot so that it overflows in a
- * predictable way like unsigned integers usually do. */
-#define HN_KNOT12PTR_DECR( _k, _n ) \
-	(void *)( ( ( (__UINTPTR_TYPE__)( _k ) >> 12 ) << 12 ) | \
-	( ( ( (__UINTPTR_TYPE__)( _k ) & 0xFFF ) - ( _n ) ) & 0xFFF ) )
-
-/* Gets a traversable pointer from a 16-bit knot. */
-#define HN_PTRFROMKNOT16( _k ) \
-	(__UINT8_TYPE__ *)( (__UINTPTR_TYPE__)( _k ) << 16 )
-
-/* Gets a 16-bit knot from a pointer that was created for use within
- * that knot. */
-#define HN_KNOT16FROMPTR( _p ) \
-	(hn_knot16)( (__UINTPTR_TYPE__)( _p ) >> 16 )
-
-/* Controlled increment of a 16-bit knot so that it overflows in a
- * predictable way like unsigned integers usually do. */
-#define HN_KNOT16PTR_INCR( _k, _n ) \
-	(void *)( ( ( (__UINTPTR_TYPE__)( _k ) >> 16 ) << 16 ) | \
-	( ( ( (__UINTPTR_TYPE__)( _k ) & 0xFFFF ) + ( _n ) ) & 0xFFFF ) )
-
-/* Controlled decrement of a 16-bit knot so that it overflows in a
- * predictable way like unsigned integers usually do. */
-#define HN_KNOT16PTR_DECR( _k, _n ) \
-	(void *)( ( ( (__UINTPTR_TYPE__)( _k ) >> 16 ) << 16 ) | \
-	( ( ( (__UINTPTR_TYPE__)( _k ) & 0xFFFF ) - ( _n ) ) & 0xFFFF ) )
-
-/* Gets a traversable pointer from a 20-bit knot. */
-#define HN_PTRFROMKNOT20( _k ) \
-	(__UINT8_TYPE__ *)( (__UINTPTR_TYPE__)( _k ) << 20 )
-
-/* Gets a 20-bit knot from a pointer that was created for use within
- * that knot. */
-#define HN_KNOT20FROMPTR( _p ) \
-	(hn_knot20)( (__UINTPTR_TYPE__)( _p ) >> 20 )
-
-/* Controlled increment of a 20-bit knot so that it overflows in a
- * predictable way like unsigned integers usually do. */
-#define HN_KNOT20PTR_INCR( _k, _n ) \
-	(void *)( ( ( (__UINTPTR_TYPE__)( _k ) >> 20 ) << 20 ) | \
-	( ( ( (__UINTPTR_TYPE__)( _k ) & 0xFFFFF ) + ( _n ) ) & 0xFFFFF ) )
-
-/* Controlled decrement of a 20-bit knot so that it overflows in a
- * predictable way like unsigned integers usually do. */
-#define HN_KNOT20PTR_DECR( _k, _n ) \
-	(void *)( ( ( (__UINTPTR_TYPE__)( _k ) >> 20 ) << 20 ) | \
-	( ( ( (__UINTPTR_TYPE__)( _k ) & 0xFFFFF ) - ( _n ) ) & 0xFFFFF ) )
+#if HN_SIZEOF_PTR > 2 && !defined( HN_KNOT20_NORM )
+/* Normalise a 20-bit knot by zeroing out its lower bits. */
+#define HN_KNOT20_NORM( _kn ) \
+	(void *)( ( (__UINTPTR_TYPE__)( _kn ) >> 20 ) << 20 )
+#endif /* !defined( HN_KNOT20_NORM ) */
 
 /* 8-bit memory knot addressing a contiguous block of 256 bytes. */
 typedef __UINT8_TYPE__ (* hn_knot8)[256] HN_TYPELESS;
@@ -198,108 +153,283 @@ typedef __UINT8_TYPE__ (* hn_knot16)[65536] HN_TYPELESS;
 typedef __UINT8_TYPE__ (* hn_knot20)[1048576] HN_TYPELESS;
 
 /* Sequential amalgam of 8-bit knots. */
-struct hn_amalsq8
+struct hn_am8seq
 {
 	/* Length of amalgam, denominated in elements. */
 	__UINTPTR_TYPE__ len;
 	/* Pointer to the first knot. The rest are assumed to follow in
 	 * memory. */
-	hn_knot8 * data;
-};
+	hn_knot8 data;
+}
+HN_TYPELESS;
 
 /* Sequential amalgam of 12-bit knots. */
-struct hn_amalsq12
+struct hn_am12seq
 {
 	/* Length of amalgam, denominated in elements. */
 	__UINTPTR_TYPE__ len;
 	/* Pointer to the first knot. The rest are assumed to follow in
 	 * memory. */
-	hn_knot12 * data;
-};
+	hn_knot12 data;
+}
+HN_TYPELESS;
 
 /* Sequential amalgam of 16-bit knots. */
-struct hn_amalsq16
+struct hn_am16seq
 {
 	/* Length of amalgam, denominated in elements. */
 	__UINTPTR_TYPE__ len;
 	/* Pointer to the first knot. The rest are assumed to follow in
 	 * memory. */
-	hn_knot16 * data;
-};
+	hn_knot16 data;
+}
+HN_TYPELESS;
 
+#if HN_SIZEOF_PTR > 2
 /* Sequential amalgam of 20-bit knots. */
-struct hn_amalsq20
+struct hn_am20seq
 {
 	/* Length of amalgam, denominated in elements. */
 	__UINTPTR_TYPE__ len;
 	/* Pointer to the first knot. The rest are assumed to follow in
 	 * memory. */
-	hn_knot20 * data;
-};
+	hn_knot20 data;
+}
+HN_TYPELESS;
+#endif /* HN_SIZEOF_PTR > 2 */
 
-/* Sparse amalgam of 8-bit knots. */
-struct hn_amalsp8
+/* Sparse amalgam of 8-bit knots on an 8-bit knot. */
+struct hn_am8kn8
 {
 	/* Length of amalgam, denominated in elements. */
 	__UINTPTR_TYPE__ len;
 	/* Flexible array head containing the beginning of the array of
 	 * pointers to the knots. */
-	hn_knot8 * data[0];
-};
+	hn_knot8 data[(256 / HN_SIZEOF_PTR) - 1];
+}
+HN_TYPELESS;
 
-/* Sparse amalgam of 12-bit knots. */
-struct hn_amalsp12
+/* Sparse amalgam of 8-bit knots on a 12-bit knot. */
+struct hn_am8kn12
 {
 	/* Length of amalgam, denominated in elements. */
 	__UINTPTR_TYPE__ len;
 	/* Flexible array head containing the beginning of the array of
 	 * pointers to the knots. */
-	hn_knot12 * data[0];
-};
+	hn_knot8 data[(4096 / HN_SIZEOF_PTR) - 1];
+}
+HN_TYPELESS;
 
-/* Sparse amalgam of 16-bit knots. */
-struct hn_amalsp16
+/* Sparse amalgam of 8-bit knots on a 16-bit knot. */
+struct hn_am8kn16
 {
 	/* Length of amalgam, denominated in elements. */
 	__UINTPTR_TYPE__ len;
 	/* Flexible array head containing the beginning of the array of
 	 * pointers to the knots. */
-	hn_knot16 * data[0];
-};
+	hn_knot8 data[(65536 / HN_SIZEOF_PTR) - 1];
+}
+HN_TYPELESS;
 
-/* Sparse amalgam of 20-bit knots. */
-struct hn_amalsp20
+#if HN_SIZEOF_PTR > 2
+/* Sparse amalgam of 8-bit knots on a 20-bit knot. */
+struct hn_am8kn20
 {
 	/* Length of amalgam, denominated in elements. */
 	__UINTPTR_TYPE__ len;
 	/* Flexible array head containing the beginning of the array of
 	 * pointers to the knots. */
-	hn_knot20 * data[0];
-};
+	hn_knot8 data[(1048576 / HN_SIZEOF_PTR) - 1];
+}
+HN_TYPELESS;
+#endif /* HN_SIZEOF_PTR > 2 */
+
+/* Sparse amalgam of 12-bit knots on an 8-bit knot. */
+struct hn_am12kn8
+{
+	/* Length of amalgam, denominated in elements. */
+	__UINTPTR_TYPE__ len;
+	/* Flexible array head containing the beginning of the array of
+	 * pointers to the knots. */
+	hn_knot12 data[(256 / HN_SIZEOF_PTR) - 1];
+}
+HN_TYPELESS;
+
+/* Sparse amalgam of 12-bit knots on a 12-bit knot. */
+struct hn_am12kn12
+{
+	/* Length of amalgam, denominated in elements. */
+	__UINTPTR_TYPE__ len;
+	/* Flexible array head containing the beginning of the array of
+	 * pointers to the knots. */
+	hn_knot12 data[(4096 / HN_SIZEOF_PTR) - 1];
+}
+HN_TYPELESS;
+
+/* Sparse amalgam of 12-bit knots on a 16-bit knot. */
+struct hn_am12kn16
+{
+	/* Length of amalgam, denominated in elements. */
+	__UINTPTR_TYPE__ len;
+	/* Flexible array head containing the beginning of the array of
+	 * pointers to the knots. */
+	hn_knot12 data[(65536 / HN_SIZEOF_PTR) - 1];
+}
+HN_TYPELESS;
+
+#if HN_SIZEOF_PTR > 2
+/* Sparse amalgam of 12-bit knots on a 20-bit knot. */
+struct hn_am12kn20
+{
+	/* Length of amalgam, denominated in elements. */
+	__UINTPTR_TYPE__ len;
+	/* Flexible array head containing the beginning of the array of
+	 * pointers to the knots. */
+	hn_knot12 data[(1048576 / HN_SIZEOF_PTR) - 1];
+}
+HN_TYPELESS;
+#endif /* HN_SIZEOF_PTR > 2 */
+
+/* Sparse amalgam of 16-bit knots on an 8-bit knot. */
+struct hn_am16kn8
+{
+	/* Length of amalgam, denominated in elements. */
+	__UINTPTR_TYPE__ len;
+	/* Flexible array head containing the beginning of the array of
+	 * pointers to the knots. */
+	hn_knot16 data[(256 / HN_SIZEOF_PTR) - 1];
+}
+HN_TYPELESS;
+
+/* Sparse amalgam of 16-bit knots on a 12-bit knot. */
+struct hn_am16kn12
+{
+	/* Length of amalgam, denominated in elements. */
+	__UINTPTR_TYPE__ len;
+	/* Flexible array head containing the beginning of the array of
+	 * pointers to the knots. */
+	hn_knot16 data[(4096 / HN_SIZEOF_PTR) - 1];
+}
+HN_TYPELESS;
+
+/* Sparse amalgam of 16-bit knots on a 16-bit knot. */
+struct hn_am16kn16
+{
+	/* Length of amalgam, denominated in elements. */
+	__UINTPTR_TYPE__ len;
+	/* Flexible array head containing the beginning of the array of
+	 * pointers to the knots. */
+	hn_knot16 data[(65536 / HN_SIZEOF_PTR) - 1];
+}
+HN_TYPELESS;
+
+#if HN_SIZEOF_PTR > 2
+/* Sparse amalgam of 16-bit knots on a 20-bit knot. */
+struct hn_am16kn20
+{
+	/* Length of amalgam, denominated in elements. */
+	__UINTPTR_TYPE__ len;
+	/* Flexible array head containing the beginning of the array of
+	 * pointers to the knots. */
+	hn_knot16 data[(1048576 / HN_SIZEOF_PTR) - 1];
+}
+HN_TYPELESS;
+
+/* Sparse amalgam of 20-bit knots on an 8-bit knot. */
+struct hn_am20kn8
+{
+	/* Length of amalgam, denominated in elements. */
+	__UINTPTR_TYPE__ len;
+	/* Flexible array head containing the beginning of the array of
+	 * pointers to the knots. */
+	hn_knot20 data[(256 / HN_SIZEOF_PTR) - 1];
+}
+HN_TYPELESS;
+
+/* Sparse amalgam of 20-bit knots on a 12-bit knot. */
+struct hn_am20kn12
+{
+	/* Length of amalgam, denominated in elements. */
+	__UINTPTR_TYPE__ len;
+	/* Flexible array head containing the beginning of the array of
+	 * pointers to the knots. */
+	hn_knot20 data[(4096 / HN_SIZEOF_PTR) - 1];
+}
+HN_TYPELESS;
+
+/* Sparse amalgam of 20-bit knots on a 16-bit knot. */
+struct hn_am20kn16
+{
+	/* Length of amalgam, denominated in elements. */
+	__UINTPTR_TYPE__ len;
+	/* Flexible array head containing the beginning of the array of
+	 * pointers to the knots. */
+	hn_knot20 data[(65536 / HN_SIZEOF_PTR) - 1];
+}
+HN_TYPELESS;
+
+/* Sparse amalgam of 20-bit knots on a 20-bit knot. */
+struct hn_am20kn20
+{
+	/* Length of amalgam, denominated in elements. */
+	__UINTPTR_TYPE__ len;
+	/* Flexible array head containing the beginning of the array of
+	 * pointers to the knots. */
+	hn_knot20 data[(1048576 / HN_SIZEOF_PTR) - 1];
+}
+HN_TYPELESS;
+#endif /* HN_SIZEOF_PTR > 2 */
 
 /* Sequential amalgam of 8-bit knots. */
-typedef struct hn_amalsq8 hn_amalsq8;
-
+typedef struct hn_am8seq hn_am8seq;
 /* Sequential amalgam of 12-bit knots. */
-typedef struct hn_amalsq12 hn_amalsq12;
-
+typedef struct hn_am12seq hn_am12seq;
 /* Sequential amalgam of 16-bit knots. */
-typedef struct hn_amalsq16 hn_amalsq16;
-
+typedef struct hn_am16seq hn_am16seq;
 /* Sequential amalgam of 20-bit knots. */
-typedef struct hn_amalsq20 hn_amalsq20;
+typedef struct hn_am20seq hn_am20seq;
 
-/* Sparse amalgam of 8-bit knots. */
-typedef struct hn_amalsp8 hn_amalsp8;
+/* Sparse amalgam of 8-bit knots on an 8-bit knot. */
+typedef struct hn_am8kn8 hn_am8kn8;
+/* Sparse amalgam of 8-bit knots on a 12-bit knot. */
+typedef struct hn_am8kn12 hn_am8kn12;
+/* Sparse amalgam of 8-bit knots on a 16-bit knot. */
+typedef struct hn_am8kn16 hn_am8kn16;
+#if HN_SIZEOF_PTR > 2
+/* Sparse amalgam of 8-bit knots on a 20-bit knot. */
+typedef struct hn_am8kn20 hn_am8kn20;
+#endif /* HN_SIZEOF_PTR > 2 */
 
-/* Sparse amalgam of 12-bit knots. */
-typedef struct hn_amalsp12 hn_amalsp12;
+/* Sparse amalgam of 12-bit knots on an 8-bit knot. */
+typedef struct hn_am12kn8 hn_am12kn8;
+/* Sparse amalgam of 12-bit knots on a 12-bit knot. */
+typedef struct hn_am12kn12 hn_am12kn12;
+/* Sparse amalgam of 12-bit knots on a 16-bit knot. */
+typedef struct hn_am12kn16 hn_am12kn16;
+#if HN_SIZEOF_PTR > 2
+/* Sparse amalgam of 12-bit knots on a 20-bit knot. */
+typedef struct hn_am12kn20 hn_am12kn20;
+#endif /* HN_SIZEOF_PTR > 2 */
 
-/* Sparse amalgam of 16-bit knots. */
-typedef struct hn_amalsp16 hn_amalsp16;
+/* Sparse amalgam of 16-bit knots on an 8-bit knot. */
+typedef struct hn_am16kn8 hn_am16kn8;
+/* Sparse amalgam of 16-bit knots on a 12-bit knot. */
+typedef struct hn_am16kn12 hn_am16kn12;
+/* Sparse amalgam of 16-bit knots on a 16-bit knot. */
+typedef struct hn_am16kn16 hn_am16kn16;
+#if HN_SIZEOF_PTR > 2
+/* Sparse amalgam of 16-bit knots on a 20-bit knot. */
+typedef struct hn_am16kn20 hn_am16kn20;
 
-/* Sparse amalgam of 20-bit knots. */
-typedef struct hn_amalsp20 hn_amalsp20;
+/* Sparse amalgam of 20-bit knots on an 8-bit knot. */
+typedef struct hn_am20kn8 hn_am20kn8;
+/* Sparse amalgam of 20-bit knots on a 12-bit knot. */
+typedef struct hn_am20kn12 hn_am20kn12;
+/* Sparse amalgam of 20-bit knots on a 16-bit knot. */
+typedef struct hn_am20kn16 hn_am20kn16;
+/* Sparse amalgam of 20-bit knots on a 20-bit knot. */
+typedef struct hn_am20kn20 hn_am20kn20;
+#endif /* HN_SIZEOF_PTR > 2 */
 
 #if !defined( _CFGOPT_NOSHORTHAND )
 
@@ -309,32 +439,61 @@ typedef __UINT8_TYPE__ (* knot8)[256] HN_TYPELESS;
 typedef __UINT8_TYPE__ (* knot12)[4096] HN_TYPELESS;
 /* 16-bit memory knot addressing a contiguous block of 64 kibibytes. */
 typedef __UINT8_TYPE__ (* knot16)[65536] HN_TYPELESS;
+#if HN_SIZEOF_PTR > 2
 /* 20-bit memory knot addressing a contiguous block of 1 mebibyte. */
 typedef __UINT8_TYPE__ (* knot20)[1048576] HN_TYPELESS;
+#endif /* HN_SIZEOF_PTR > 2 */
 
 /* Sequential amalgam of 8-bit knots. */
-typedef struct hn_amalsq8 amalsq8;
-
+typedef struct hn_am8seq am8seq;
 /* Sequential amalgam of 12-bit knots. */
-typedef struct hn_amalsq12 amalsq12;
-
+typedef struct hn_am12seq am12seq;
 /* Sequential amalgam of 16-bit knots. */
-typedef struct hn_amalsq16 amalsq16;
-
+typedef struct hn_am16seq am16seq;
 /* Sequential amalgam of 20-bit knots. */
-typedef struct hn_amalsq20 amalsq20;
+typedef struct hn_am20seq am20seq;
 
-/* Sparse amalgam of 8-bit knots. */
-typedef struct hn_amalsp8 amalsp8;
+/* Sparse amalgam of 8-bit knots on an 8-bit knot. */
+typedef struct hn_am8kn8 am8kn8;
+/* Sparse amalgam of 8-bit knots on a 12-bit knot. */
+typedef struct hn_am8kn12 am8kn12;
+/* Sparse amalgam of 8-bit knots on a 16-bit knot. */
+typedef struct hn_am8kn16 am8kn16;
+#if HN_SIZEOF_PTR > 2
+/* Sparse amalgam of 8-bit knots on a 20-bit knot. */
+typedef struct hn_am8kn20 am8kn20;
+#endif /* HN_SIZEOF_PTR > 2 */
 
-/* Sparse amalgam of 12-bit knots. */
-typedef struct hn_amalsp12 amalsp12;
+/* Sparse amalgam of 12-bit knots on an 8-bit knot. */
+typedef struct hn_am12kn8 am12kn8;
+/* Sparse amalgam of 12-bit knots on a 12-bit knot. */
+typedef struct hn_am12kn12 am12kn12;
+/* Sparse amalgam of 12-bit knots on a 16-bit knot. */
+typedef struct hn_am12kn16 am12kn16;
+#if HN_SIZEOF_PTR > 2
+/* Sparse amalgam of 12-bit knots on a 20-bit knot. */
+typedef struct hn_am12kn20 am12kn20;
+#endif /* HN_SIZEOF_PTR > 2 */
 
-/* Sparse amalgam of 16-bit knots. */
-typedef struct hn_amalsp16 amalsp16;
+/* Sparse amalgam of 16-bit knots on an 8-bit knot. */
+typedef struct hn_am16kn8 am16kn8;
+/* Sparse amalgam of 16-bit knots on a 12-bit knot. */
+typedef struct hn_am16kn12 am16kn12;
+/* Sparse amalgam of 16-bit knots on a 16-bit knot. */
+typedef struct hn_am16kn16 am16kn16;
+#if HN_SIZEOF_PTR > 2
+/* Sparse amalgam of 16-bit knots on a 20-bit knot. */
+typedef struct hn_am16kn20 am16kn20;
 
-/* Sparse amalgam of 20-bit knots. */
-typedef struct hn_amalsp20 amalsp20;
+/* Sparse amalgam of 20-bit knots on an 8-bit knot. */
+typedef struct hn_am20kn8 am20kn8;
+/* Sparse amalgam of 20-bit knots on a 12-bit knot. */
+typedef struct hn_am20kn12 am20kn12;
+/* Sparse amalgam of 20-bit knots on a 16-bit knot. */
+typedef struct hn_am20kn16 am20kn16;
+/* Sparse amalgam of 20-bit knots on a 20-bit knot. */
+typedef struct hn_am20kn20 am20kn20;
+#endif /* HN_SIZEOF_PTR > 2 */
 
 #endif /* !defined( _CFGOPT_NOSHORTHAND ) */
 
