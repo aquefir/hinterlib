@@ -1,7 +1,8 @@
 /*********************************************************************\
- *                      Hinterlib/Neopolitan 2.                      *
+ *                            Hinterlib 2                            *
  *                                                                   *
- *                  Copyright (C) 2019-2024 Aquefir                  *
+ *             Copyright (C) 2019-2024 Alexander Nicholi             *
+ *          Copyright (C) 2024-2025 Aquefir Consulting LLC.          *
  *           Released under Artisan Software Licence v1.1.           *
 \*********************************************************************/
 
@@ -25,7 +26,7 @@
 /* START sanity check */
 #if !defined( _SYNDEF_FOO ) || !defined( _CFGOPT_FOO )
 #error Your compiler is not configured correctly for using \
-Hinterlib/Neopolitan. Please ensure you are using Slick/Inbound and a \
+Hinterlib. Please ensure you are using Slick/Inbound and a \
 compatible compiler (either GCC, Clang, or FCC).
 #endif /* END sanity check */
 

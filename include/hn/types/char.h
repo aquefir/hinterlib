@@ -1,7 +1,8 @@
 /*********************************************************************\
- *                      Hinterlib/Neopolitan 2.                      *
+ *                            Hinterlib 2                            *
  *                                                                   *
- *                  Copyright (C) 2019-2024 Aquefir                  *
+ *             Copyright (C) 2019-2024 Alexander Nicholi             *
+ *          Copyright (C) 2024-2025 Aquefir Consulting LLC.          *
  *           Released under Artisan Software Licence v1.1.           *
 \*********************************************************************/
 
@@ -49,7 +50,7 @@ compatible compiler (either GCC, Clang, or FCC).
 #define HN_CHR_ISVALID( _chr ) (((_chr) >= 0) && ((_chr) <= 127))
 
 /* Helper function to check if a code point is valid Unicode. */
-#define HN_UCHR_ISVALID( _uchr) \
+#define HN_UCHR_ISVALID( _uchr ) \
 	((((hn_uchr)_uchr).hi >= 0) && (((hn_uchr)_uchr).hi <= 31) )
 
 #define HN_CHR_TRUNCATE( _chr ) ((_chr) &= 0x7F)
@@ -75,14 +76,14 @@ struct hn_uchr
 } HN_PACKED HN_TYPELESS;
 
 /* A single Unicode code point. */
-typedef struct hn_uchr hn_uchr HN_TYPELESS;
+typedef struct hn_uchr hn_uchr;
 
 #if !defined( _CFGOPT_NOSHORTHAND )
 
 /* A single ASCII character. */
 typedef __UINT8_TYPE__ chr HN_TYPELESS;
 /* A single Unicode code point. */
-typedef struct hn_uchr uchr HN_TYPELESS;
+typedef struct hn_uchr uchr;
 
 #endif /* !defined( _CFGOPT_NOSHORTHAND ) */
 
