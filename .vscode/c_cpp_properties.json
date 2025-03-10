@@ -10,6 +10,7 @@
 				"_SYNDEF_AMD64",
 				"_SYNDEF_LILENDIAN",
 				"_SYNDEF_WORDSZ_64",
+				"_SYNDEF_PTRSZ_64",
 				"_SYNDEF_LONGSZ_64",
 				"_SYNDEF_HAVE_I32",
 				"_SYNDEF_HAVE_I64",
@@ -23,8 +24,7 @@
 			],
 			"compilerPath": "/usr/bin/gcc",
 			"cStandard": "c89",
-			"cppStandard": "c++11",
-			"intelliSenseMode": "gcc-x64"
+			"cppStandard": "c++11"
 		}, {
 			"name": "Mac",
 			"includePath": [
@@ -36,6 +36,7 @@
 				"_SYNDEF_AMD64",
 				"_SYNDEF_LILENDIAN",
 				"_SYNDEF_WORDSZ_64",
+				"_SYNDEF_PTRSZ_64",
 				"_SYNDEF_LONGSZ_64",
 				"_SYNDEF_HAVE_I32",
 				"_SYNDEF_HAVE_I64",
@@ -49,8 +50,7 @@
 			],
 			"compilerPath": "/usr/bin/clang",
 			"cStandard": "c89",
-			"cppStandard": "c++11",
-			"intelliSenseMode": "clang-x64"
+			"cppStandard": "c++11"
 		}
 	],
 	"version": 4
