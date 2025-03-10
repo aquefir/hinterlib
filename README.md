@@ -98,8 +98,8 @@ necessary.
 
 ## Footnotes
 
-Hinterlib, Hinterlib/Neopolitan, and/or unilib v1.x were released under
-the BSD-2-Clause licence.
+Versions 1.x of Hinterlib, Hinterlib/Neopolitan, and/or unilib were
+released under the BSD-2-Clause licence.
 
 Starting with version 2.0, Hinterlib is now available under version 1.1
 of the Artisan Software Licence. See the COPYING file for full terms.
