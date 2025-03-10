@@ -1,20 +1,21 @@
 #######################################################################
-##                      Hinterlib/Neopolitan 2.                      ##
+##                            Hinterlib 2                            ##
 ##                                                                   ##
-##                  Copyright (C) 2019-2024 Aquefir                  ##
+##             Copyright (C) 2019-2024 Alexander Nicholi             ##
+##          Copyright (C) 2024-2025 Aquefir Consulting LLC.          ##
 ##           Released under Artisan Software Licence v1.1.           ##
 #######################################################################
 
-ifeq ($(strip $(AQ)),)
-$(error "AQ was not found in your environment. You need to install the Slick Makefiles from github.com/aquefir/slick to continue.")
+ifeq ($(strip $(BYBLOS)),)
+$(error "Byblos was not found in the environment. Please install the Byblos SDK from byblos.tohoku.ac to continue, or having done so ensure the environment variable is set in the shell rc.")
 endif
 
-include $(AQ)/lib/slick/base.mk
+include $(BYBLOS)/include/inbound/prologue.mk
 
-# name of project. used in output binary naming
-PROJECT := uni
+# name of project used in output binary naming
+PROJECT := hinter
 
-# put a ‘1’ for the desired target types to compile
+# put a '1' for the desired target types to compile
 EXEFILE :=
 SOFILE  :=
 AFILE   := 1
@@ -29,7 +30,7 @@ INCLUDEL := src
 LIBS    :=
 LIBDIRS :=
 
-# ‘3P’ are in-tree 3rd-party dependencies
+# '3P' are in-tree 3rd-party dependencies
 # 3PLIBDIR is the base directory
 # 3PLIBS is the folder names in the base directory for each library
 3PLIBDIR :=
@@ -111,4 +112,4 @@ PRVHFILES  := \
 	src/utf8.h
 
 # this defines all our usual targets
-include $(AQ)/lib/slick/targets.mk
+include $(BYBLOS)/include/inbound/epilogue.mk
