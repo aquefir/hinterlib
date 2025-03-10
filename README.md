@@ -1,4 +1,4 @@
-![Hinterlib](https://cdn2.arqadium.com/f/02e51f73418d4d7ba33559893035bddd/unknown.png)
+![Hinterlib](https://cdn.tohoku.ac/f/02e51f73418d4d7ba33559893035bddd/unknown.png)
 
 # Hinterlib
 
