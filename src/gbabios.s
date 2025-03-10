@@ -1,9 +1,10 @@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@                                 Hinterlib                                 @@
-@@                                                                           @@
-@@                      Copyright (C) 2019-2022 Aquefir                      @@
-@@                        Released under BSD-2-Clause                        @@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@                            Hinterlib 2                            @@
+@@                                                                   @@
+@@             Copyright (C) 2019-2024 Alexander Nicholi             @@
+@@          Copyright (C) 2024-2025 Aquefir Consulting LLC.          @@
+@@           Released under Artisan Software Licence v1.1.           @@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 .file "src/gbabios.s"
 .ident "AS: (devkitARM release 46) 2.27"
@@ -156,7 +157,8 @@ _bios_cpu_fast_set:
 	BX      LR
 
 @ === BgAffineSet [0Eh] ===============================================
-@ DECL: void _bios_bg_affine_set(const BgAffineSource *src, BgAffineDest *dst, s32 num);
+@ DECL: void _bios_bg_affine_set(const BgAffineSource *src, BgAffineDest
+@ *dst, s32 num);
 @ DESC:
 .balign 2, 0
 .globl _bios_bg_affine_set
@@ -167,7 +169,8 @@ _bios_bg_affine_set:
 	BX      LR
 
 @ === ObjAffineSet [0Fh] ==============================================
-@ DECL: void _bios_obj_affine_set(const ObjAffineSource *src, void *dst, s32 num, s32 offset);
+@ DECL: void _bios_obj_affine_set(const ObjAffineSource *src, void *dst,
+@ s32 num, s32 offset);
 @ DESC:
 .balign 2, 0
 .globl _bios_obj_affine_set
