@@ -45,7 +45,7 @@ Hinterlib is written in ANSI C, and always will be. The project uses
 [Slick Makefiles](https://aquefir.co/adp4) for tooling out the
 development process.
 
-## What’s in the box
+## What's in the box
 
 Hinterlib provides shorthands for all kinds of primitive data types.
 These are a good deal cleaner and quicker to type than those in
@@ -85,8 +85,9 @@ UTF-8 validation, conversion, and inspection routines are also
 available. There are also high-level `struct`s and function collections
 for automatically-memory-managed strings and generic arrays.
 
-Hinterlib also integrates a portable Mersenne–Twister 19937 algorithm
-(of the 64-bit variety), which is included as `<mt19937/random.h>`.
+Hinterlib also integrates a portable Mersenne&ndash;Twister 19937
+algorithm (of the 64-bit variety), which is included as
+`<mt19937/random.h>`.
 
 Command line argument parsing is among the more recent additions to the
 library. Another relatively new addition is the table module for
