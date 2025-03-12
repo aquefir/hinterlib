@@ -22,36 +22,16 @@ INCLUDES := include
 # "local" includes
 INCLUDEL := src
 
-# space-separated library name list
-LIBS    :=
-LIBDIRS :=
-
-# '3P' are in-tree 3rd-party dependencies
-# 3PLIBDIR is the base directory
-# 3PLIBS is the folder names in the base directory for each library
-3PLIBDIR :=
-3PLIBS   :=
-
 # sources
 SFILES.GBA := \
 	src/gbabios.s \
 	src/memcpy.s \
 	src/memset.s
-CFILES.GBA := \
-	src/gbahimem.c
 CFILES := \
-	src/arr.c \
-	src/clarg.c \
-	src/err.c \
-	src/evt.c \
-	src/futils.c \
-	src/log.c \
-	src/memory.c \
-	src/piper.c \
-	src/random.c \
-	src/str.c \
-	src/table.c \
-	src/utf8.c
+	src/alloc.c \
+	src/memops.c \
+	src/mmt.c \
+	src/nimb.c
 PUBHFILES := \
 	include/hn/types/base.h \
 	include/hn/types/char.h \
@@ -65,16 +45,7 @@ PUBHFILES := \
 	include/hn/endian.h \
 	include/hn/memops.h \
 	include/hn/nimb.h
-PRVHFILES := \
-	src/arr.h \
-	src/clarg.h \
-	src/evt.h \
-	src/gbabios.h \
-	src/gbahimem.h \
-	src/piper.h \
-	src/str.h \
-	src/table.h \
-	src/utf8.h
+PRVHFILES :=
 
 # this defines all our usual targets
 include etc/epilogue.mk
