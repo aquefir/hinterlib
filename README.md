@@ -38,7 +38,7 @@ This is broken up into several **focus areas**:
 
 These focus areas form the low-level foundation for both consumers of
 Hinterlib and Hinterlib itself in the context of higher level services.
-Such higher-level services includes in-memory tabular data management,
+Such higher-level services include in-memory tabular data management,
 text encoding and decoding, mechanicalist container provisions, and a
 cornucopia of mathematics utilities.
 
