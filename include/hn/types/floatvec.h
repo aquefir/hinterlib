@@ -11,9 +11,9 @@
 
 /* START sanity check */
 #if !defined( _SYNDEF_FOO ) || !defined( _CFGOPT_FOO )
-#error Your compiler is not configured correctly for using \
-Hinterlib/Neopolitan. Please ensure you are using Slick/Inbound and a \
-compatible compiler (either GCC, Clang, or FCC).
+#error Your compiler is not configured correctly for using Hinterlib. \
+Please ensure you are using the Inbound build system and a compatible \
+toolchain (GCC or Clang).
 #endif /* END sanity check */
 
 #if defined( _SYNDEF_HAVE_FP )
