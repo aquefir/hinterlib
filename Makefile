@@ -6,11 +6,7 @@
 ##           Released under Artisan Software Licence v1.1.           ##
 #######################################################################
 
-ifeq ($(strip $(BYBLOS)),)
-$(error "Byblos was not found in the environment. Please install the Byblos SDK from byblos.tohoku.ac to continue, or having done so ensure the environment variable is set in the shell rc.")
-endif
-
-include $(BYBLOS)/include/inbound/prologue.mk
+include etc/prologue.mk
 
 # name of project used in output binary naming
 PROJECT := hinter
@@ -43,7 +39,7 @@ SFILES.GBA := \
 	src/memset.s
 CFILES.GBA := \
 	src/gbahimem.c
-CFILES     := \
+CFILES := \
 	src/arr.c \
 	src/clarg.c \
 	src/err.c \
@@ -56,51 +52,20 @@ CFILES     := \
 	src/str.c \
 	src/table.c \
 	src/utf8.c
-PUBHFILES  := \
-	include/mt19937/random.h \
-	include/uni/types/opt/bound.h \
-	include/uni/types/opt/common.h \
-	include/uni/types/opt/complexf.h \
-	include/uni/types/opt/complexi.h \
-	include/uni/types/opt/float.h \
-	include/uni/types/opt/int.h \
-	include/uni/types/opt/point.h \
-	include/uni/types/opt/quant.h \
-	include/uni/types/opt/range.h \
-	include/uni/types/opt/vecf.h \
-	include/uni/types/opt/veci.h \
-	include/uni/types/bound.h \
-	include/uni/types/complexf.h \
-	include/uni/types/complexi.h \
-	include/uni/types/float.h \
-	include/uni/types/geo.h \
-	include/uni/types/int.h \
-	include/uni/types/mathprim.h \
-	include/uni/types/opt.h \
-	include/uni/types/options.h \
-	include/uni/types/point.h \
-	include/uni/types/quant.h \
-	include/uni/types/range.h \
-	include/uni/types/vec.h \
-	include/uni/types/vecf.h \
-	include/uni/types/veci.h \
-	include/uni/arr.h \
-	include/uni/ascii.h \
-	include/uni/chkmath.h \
-	include/uni/clarg.h \
-	include/uni/decl.h \
-	include/uni/endian.h \
-	include/uni/err.h \
-	include/uni/evt.h \
-	include/uni/futils.h \
-	include/uni/log.h \
-	include/uni/memory.h \
-	include/uni/piper.h \
-	include/uni/str.h \
-	include/uni/table.h \
-	include/uni/utf8.h \
-	include/uni/ver.h
-PRVHFILES  := \
+PUBHFILES := \
+	include/hn/types/base.h \
+	include/hn/types/char.h \
+	include/hn/types/float.h \
+	include/hn/types/floatvec.h \
+	include/hn/types/int.h \
+	include/hn/types/intvec.h \
+	include/hn/types/mem.h \
+	include/hn/alloc.h \
+	include/hn/buffer.h \
+	include/hn/endian.h \
+	include/hn/memops.h \
+	include/hn/nimb.h
+PRVHFILES := \
 	src/arr.h \
 	src/clarg.h \
 	src/evt.h \
@@ -112,4 +77,4 @@ PRVHFILES  := \
 	src/utf8.h
 
 # this defines all our usual targets
-include $(BYBLOS)/include/inbound/epilogue.mk
+include etc/epilogue.mk
