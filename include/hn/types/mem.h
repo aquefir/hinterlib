@@ -145,13 +145,13 @@ toolchain (GCC or Clang).
 #endif /* !defined( HN_KNOT20_NORM ) */
 
 /* 8-bit memory knot addressing a contiguous block of 256 bytes. */
-typedef __UINT8_TYPE__ (* hn_knot8)[256] HN_TYPELESS;
+typedef __UINT8_TYPE__ ( *hn_knot8 )[256] HN_TYPELESS;
 /* 12-bit memory knot addressing a contiguous block of 4096 bytes. */
-typedef __UINT8_TYPE__ (* hn_knot12)[4096] HN_TYPELESS;
+typedef __UINT8_TYPE__ ( *hn_knot12 )[4096] HN_TYPELESS;
 /* 16-bit memory knot addressing a contiguous block of 64 kibibytes. */
-typedef __UINT8_TYPE__ (* hn_knot16)[65536] HN_TYPELESS;
+typedef __UINT8_TYPE__ ( *hn_knot16 )[65536] HN_TYPELESS;
 /* 20-bit memory knot addressing a contiguous block of 1 mebibyte. */
-typedef __UINT8_TYPE__ (* hn_knot20)[1048576] HN_TYPELESS;
+typedef __UINT8_TYPE__ ( *hn_knot20 )[1048576] HN_TYPELESS;
 
 /* Sequential amalgam of 8-bit knots. */
 struct hn_am8seq
@@ -161,8 +161,7 @@ struct hn_am8seq
 	/* Pointer to the first knot. The rest are assumed to follow in
 	 * memory. */
 	hn_knot8 data;
-}
-HN_TYPELESS;
+} HN_TYPELESS;
 
 /* Sequential amalgam of 12-bit knots. */
 struct hn_am12seq
@@ -172,8 +171,7 @@ struct hn_am12seq
 	/* Pointer to the first knot. The rest are assumed to follow in
 	 * memory. */
 	hn_knot12 data;
-}
-HN_TYPELESS;
+} HN_TYPELESS;
 
 /* Sequential amalgam of 16-bit knots. */
 struct hn_am16seq
@@ -183,8 +181,7 @@ struct hn_am16seq
 	/* Pointer to the first knot. The rest are assumed to follow in
 	 * memory. */
 	hn_knot16 data;
-}
-HN_TYPELESS;
+} HN_TYPELESS;
 
 #if HN_SIZEOF_PTR > 2
 /* Sequential amalgam of 20-bit knots. */
@@ -195,8 +192,7 @@ struct hn_am20seq
 	/* Pointer to the first knot. The rest are assumed to follow in
 	 * memory. */
 	hn_knot20 data;
-}
-HN_TYPELESS;
+} HN_TYPELESS;
 #endif /* HN_SIZEOF_PTR > 2 */
 
 /* Sparse amalgam of 8-bit knots on an 8-bit knot. */
@@ -206,9 +202,8 @@ struct hn_am8kn8
 	__UINTPTR_TYPE__ len;
 	/* Flexible array head containing the beginning of the array of
 	 * pointers to the knots. */
-	hn_knot8 data[(256 / HN_SIZEOF_PTR) - 1];
-}
-HN_TYPELESS;
+	hn_knot8 data[( 256 / HN_SIZEOF_PTR ) - 1];
+} HN_TYPELESS;
 
 /* Sparse amalgam of 8-bit knots on a 12-bit knot. */
 struct hn_am8kn12
@@ -217,9 +212,8 @@ struct hn_am8kn12
 	__UINTPTR_TYPE__ len;
 	/* Flexible array head containing the beginning of the array of
 	 * pointers to the knots. */
-	hn_knot8 data[(4096 / HN_SIZEOF_PTR) - 1];
-}
-HN_TYPELESS;
+	hn_knot8 data[( 4096 / HN_SIZEOF_PTR ) - 1];
+} HN_TYPELESS;
 
 /* Sparse amalgam of 8-bit knots on a 16-bit knot. */
 struct hn_am8kn16
@@ -228,9 +222,8 @@ struct hn_am8kn16
 	__UINTPTR_TYPE__ len;
 	/* Flexible array head containing the beginning of the array of
 	 * pointers to the knots. */
-	hn_knot8 data[(65536 / HN_SIZEOF_PTR) - 1];
-}
-HN_TYPELESS;
+	hn_knot8 data[( 65536 / HN_SIZEOF_PTR ) - 1];
+} HN_TYPELESS;
 
 #if HN_SIZEOF_PTR > 2
 /* Sparse amalgam of 8-bit knots on a 20-bit knot. */
@@ -240,9 +233,8 @@ struct hn_am8kn20
 	__UINTPTR_TYPE__ len;
 	/* Flexible array head containing the beginning of the array of
 	 * pointers to the knots. */
-	hn_knot8 data[(1048576 / HN_SIZEOF_PTR) - 1];
-}
-HN_TYPELESS;
+	hn_knot8 data[( 1048576 / HN_SIZEOF_PTR ) - 1];
+} HN_TYPELESS;
 #endif /* HN_SIZEOF_PTR > 2 */
 
 /* Sparse amalgam of 12-bit knots on an 8-bit knot. */
@@ -252,9 +244,8 @@ struct hn_am12kn8
 	__UINTPTR_TYPE__ len;
 	/* Flexible array head containing the beginning of the array of
 	 * pointers to the knots. */
-	hn_knot12 data[(256 / HN_SIZEOF_PTR) - 1];
-}
-HN_TYPELESS;
+	hn_knot12 data[( 256 / HN_SIZEOF_PTR ) - 1];
+} HN_TYPELESS;
 
 /* Sparse amalgam of 12-bit knots on a 12-bit knot. */
 struct hn_am12kn12
@@ -263,9 +254,8 @@ struct hn_am12kn12
 	__UINTPTR_TYPE__ len;
 	/* Flexible array head containing the beginning of the array of
 	 * pointers to the knots. */
-	hn_knot12 data[(4096 / HN_SIZEOF_PTR) - 1];
-}
-HN_TYPELESS;
+	hn_knot12 data[( 4096 / HN_SIZEOF_PTR ) - 1];
+} HN_TYPELESS;
 
 /* Sparse amalgam of 12-bit knots on a 16-bit knot. */
 struct hn_am12kn16
@@ -274,9 +264,8 @@ struct hn_am12kn16
 	__UINTPTR_TYPE__ len;
 	/* Flexible array head containing the beginning of the array of
 	 * pointers to the knots. */
-	hn_knot12 data[(65536 / HN_SIZEOF_PTR) - 1];
-}
-HN_TYPELESS;
+	hn_knot12 data[( 65536 / HN_SIZEOF_PTR ) - 1];
+} HN_TYPELESS;
 
 #if HN_SIZEOF_PTR > 2
 /* Sparse amalgam of 12-bit knots on a 20-bit knot. */
@@ -286,9 +275,8 @@ struct hn_am12kn20
 	__UINTPTR_TYPE__ len;
 	/* Flexible array head containing the beginning of the array of
 	 * pointers to the knots. */
-	hn_knot12 data[(1048576 / HN_SIZEOF_PTR) - 1];
-}
-HN_TYPELESS;
+	hn_knot12 data[( 1048576 / HN_SIZEOF_PTR ) - 1];
+} HN_TYPELESS;
 #endif /* HN_SIZEOF_PTR > 2 */
 
 /* Sparse amalgam of 16-bit knots on an 8-bit knot. */
@@ -298,9 +286,8 @@ struct hn_am16kn8
 	__UINTPTR_TYPE__ len;
 	/* Flexible array head containing the beginning of the array of
 	 * pointers to the knots. */
-	hn_knot16 data[(256 / HN_SIZEOF_PTR) - 1];
-}
-HN_TYPELESS;
+	hn_knot16 data[( 256 / HN_SIZEOF_PTR ) - 1];
+} HN_TYPELESS;
 
 /* Sparse amalgam of 16-bit knots on a 12-bit knot. */
 struct hn_am16kn12
@@ -309,9 +296,8 @@ struct hn_am16kn12
 	__UINTPTR_TYPE__ len;
 	/* Flexible array head containing the beginning of the array of
 	 * pointers to the knots. */
-	hn_knot16 data[(4096 / HN_SIZEOF_PTR) - 1];
-}
-HN_TYPELESS;
+	hn_knot16 data[( 4096 / HN_SIZEOF_PTR ) - 1];
+} HN_TYPELESS;
 
 /* Sparse amalgam of 16-bit knots on a 16-bit knot. */
 struct hn_am16kn16
@@ -320,9 +306,8 @@ struct hn_am16kn16
 	__UINTPTR_TYPE__ len;
 	/* Flexible array head containing the beginning of the array of
 	 * pointers to the knots. */
-	hn_knot16 data[(65536 / HN_SIZEOF_PTR) - 1];
-}
-HN_TYPELESS;
+	hn_knot16 data[( 65536 / HN_SIZEOF_PTR ) - 1];
+} HN_TYPELESS;
 
 #if HN_SIZEOF_PTR > 2
 /* Sparse amalgam of 16-bit knots on a 20-bit knot. */
@@ -332,9 +317,8 @@ struct hn_am16kn20
 	__UINTPTR_TYPE__ len;
 	/* Flexible array head containing the beginning of the array of
 	 * pointers to the knots. */
-	hn_knot16 data[(1048576 / HN_SIZEOF_PTR) - 1];
-}
-HN_TYPELESS;
+	hn_knot16 data[( 1048576 / HN_SIZEOF_PTR ) - 1];
+} HN_TYPELESS;
 
 /* Sparse amalgam of 20-bit knots on an 8-bit knot. */
 struct hn_am20kn8
@@ -343,9 +327,8 @@ struct hn_am20kn8
 	__UINTPTR_TYPE__ len;
 	/* Flexible array head containing the beginning of the array of
 	 * pointers to the knots. */
-	hn_knot20 data[(256 / HN_SIZEOF_PTR) - 1];
-}
-HN_TYPELESS;
+	hn_knot20 data[( 256 / HN_SIZEOF_PTR ) - 1];
+} HN_TYPELESS;
 
 /* Sparse amalgam of 20-bit knots on a 12-bit knot. */
 struct hn_am20kn12
@@ -354,9 +337,8 @@ struct hn_am20kn12
 	__UINTPTR_TYPE__ len;
 	/* Flexible array head containing the beginning of the array of
 	 * pointers to the knots. */
-	hn_knot20 data[(4096 / HN_SIZEOF_PTR) - 1];
-}
-HN_TYPELESS;
+	hn_knot20 data[( 4096 / HN_SIZEOF_PTR ) - 1];
+} HN_TYPELESS;
 
 /* Sparse amalgam of 20-bit knots on a 16-bit knot. */
 struct hn_am20kn16
@@ -365,9 +347,8 @@ struct hn_am20kn16
 	__UINTPTR_TYPE__ len;
 	/* Flexible array head containing the beginning of the array of
 	 * pointers to the knots. */
-	hn_knot20 data[(65536 / HN_SIZEOF_PTR) - 1];
-}
-HN_TYPELESS;
+	hn_knot20 data[( 65536 / HN_SIZEOF_PTR ) - 1];
+} HN_TYPELESS;
 
 /* Sparse amalgam of 20-bit knots on a 20-bit knot. */
 struct hn_am20kn20
@@ -376,9 +357,8 @@ struct hn_am20kn20
 	__UINTPTR_TYPE__ len;
 	/* Flexible array head containing the beginning of the array of
 	 * pointers to the knots. */
-	hn_knot20 data[(1048576 / HN_SIZEOF_PTR) - 1];
-}
-HN_TYPELESS;
+	hn_knot20 data[( 1048576 / HN_SIZEOF_PTR ) - 1];
+} HN_TYPELESS;
 #endif /* HN_SIZEOF_PTR > 2 */
 
 /* Sequential amalgam of 8-bit knots. */
@@ -435,14 +415,14 @@ typedef struct hn_am20kn20 hn_am20kn20;
 #if !defined( _CFGOPT_NOSHORTHAND )
 
 /* 8-bit memory knot addressing a contiguous block of 256 bytes. */
-typedef __UINT8_TYPE__ (* knot8)[256] HN_TYPELESS;
+typedef __UINT8_TYPE__ ( *knot8 )[256] HN_TYPELESS;
 /* 12-bit memory knot addressing a contiguous block of 4096 bytes. */
-typedef __UINT8_TYPE__ (* knot12)[4096] HN_TYPELESS;
+typedef __UINT8_TYPE__ ( *knot12 )[4096] HN_TYPELESS;
 /* 16-bit memory knot addressing a contiguous block of 64 kibibytes. */
-typedef __UINT8_TYPE__ (* knot16)[65536] HN_TYPELESS;
+typedef __UINT8_TYPE__ ( *knot16 )[65536] HN_TYPELESS;
 #if HN_SIZEOF_PTR > 2
 /* 20-bit memory knot addressing a contiguous block of 1 mebibyte. */
-typedef __UINT8_TYPE__ (* knot20)[1048576] HN_TYPELESS;
+typedef __UINT8_TYPE__ ( *knot20 )[1048576] HN_TYPELESS;
 #endif /* HN_SIZEOF_PTR > 2 */
 
 /* Sequential amalgam of 8-bit knots. */

@@ -183,7 +183,7 @@ typedef enum hn_bl hn_bl;
 #define TRUE true
 #else
 /* Constant for true. */
-#define TRUE (!(FALSE))
+#define TRUE ( !( FALSE ) )
 #endif
 #endif /* !defined( TRUE ) */
 

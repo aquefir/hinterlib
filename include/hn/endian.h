@@ -40,29 +40,31 @@ toolchain (GCC or Clang).
 #if !defined( HN_ENDIAN_SWAP16 )
 /* Performs an endianness reversal on a 16-bit variable. */
 #define HN_ENDIAN_SWAP16( _val ) \
-	( ( (_val)&0x00FFu ) << 8 ) | ( ( (_val)&0xFF00u ) >> 8 )
+	( ( ( _val ) & 0x00FFu ) << 8 ) | \
+		( ( ( _val ) & 0xFF00u ) >> 8 )
 #endif /* !defined( HN_ENDIAN_SWAP16 ) */
 #if defined( _SYNDEF_HAVE_I32 )
 #if !defined( HN_ENDIAN_SWAP32 )
 /* Performs an endianness reversal on a 32-bit variable. */
 #define HN_ENDIAN_SWAP32( _val ) \
-	( ( (_val)&0x000000FFu ) << 24 ) | ( ( (_val)&0x0000FF00u ) << 8 ) \
-		| ( ( (_val)&0x00FF0000u ) >> 8 ) \
-		| ( ( (_val)&0xFF000000u ) >> 24 )
+	( ( ( _val ) & 0x000000FFu ) << 24 ) | \
+		( ( ( _val ) & 0x0000FF00u ) << 8 ) | \
+		( ( ( _val ) & 0x00FF0000u ) >> 8 ) | \
+		( ( ( _val ) & 0xFF000000u ) >> 24 )
 #endif /* !defined( HN_ENDIAN_SWAP32 ) */
 #endif /* defined( _SYNDEF_HAVE_I32 ) */
 #if defined( _SYNDEF_HAVE_I64 )
 #if !defined( HN_ENDIAN_SWAP64 )
 /* Performs an endianness reversal on a 64-bit variable. */
 #define HN_ENDIAN_SWAP64( _val ) \
-	( ( (_val)&0x00000000000000FFu ) << 56 ) | \
-		( ( (_val)&0x000000000000FF00u ) << 40 ) | \
-		( ( (_val)&0x0000000000FF0000u ) << 24 ) | \
-		( ( (_val)&0x00000000FF000000u ) << 8 ) | \
-		( ( (_val)&0x000000FF00000000u ) >> 8 ) | \
-		( ( (_val)&0x0000FF0000000000u ) >> 24 ) | \
-		( ( (_val)&0x00FF000000000000u ) >> 40 ) | \
-		( ( (_val)&0xFF00000000000000u ) >> 56 )
+	( ( ( _val ) & 0x00000000000000FFu ) << 56 ) | \
+		( ( ( _val ) & 0x000000000000FF00u ) << 40 ) | \
+		( ( ( _val ) & 0x0000000000FF0000u ) << 24 ) | \
+		( ( ( _val ) & 0x00000000FF000000u ) << 8 ) | \
+		( ( ( _val ) & 0x000000FF00000000u ) >> 8 ) | \
+		( ( ( _val ) & 0x0000FF0000000000u ) >> 24 ) | \
+		( ( ( _val ) & 0x00FF000000000000u ) >> 40 ) | \
+		( ( ( _val ) & 0xFF00000000000000u ) >> 56 )
 #endif /* !defined( HN_ENDIAN_SWAP64 ) */
 #endif /* defined( _SYNDEF_HAVE_I64 ) */
 

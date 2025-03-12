@@ -20,7 +20,8 @@ toolchain (GCC or Clang).
 
 #if __has_attribute( packed )
 #if !defined( HN_PACKED )
-/* Force the structure to be tightly packed into as few octets as possible.
+/* Force the structure to be tightly packed into as few octets as
+ * possible.
  */
 #define HN_PACKED __attribute__( ( packed ) )
 #endif /* !defined( HN_PACKED ) */
@@ -28,8 +29,8 @@ toolchain (GCC or Clang).
 
 #if __has_attribute( may_alias )
 #if !defined( HN_TYPELESS )
-/* Prevents the compiler from doing type analysis based optimisations on the
- * type, treating it as octet-addressable cast-friendly data. */
+/* Prevents the compiler from doing type analysis based optimisations on
+ * the type, treating it as octet-addressable cast-friendly data. */
 #define HN_TYPELESS __attribute__( ( may_alias ) )
 #endif /* !defined( HN_TYPELESS ) */
 #endif /* __has_attribute( may_alias ) */
@@ -47,15 +48,17 @@ toolchain (GCC or Clang).
 #endif /* !defined( HN_TYPELESS ) */
 
 /* Helper function to check if a character is valid ASCII. */
-#define HN_CHR_ISVALID( _chr ) (((_chr) >= 0) && ((_chr) <= 127))
+#define HN_CHR_ISVALID( _chr ) \
+	( ( ( _chr ) >= 0 ) && ( ( _chr ) <= 127 ) )
 
 /* Helper function to check if a code point is valid Unicode. */
 #define HN_UCHR_ISVALID( _uchr ) \
-	((((hn_uchr)_uchr).hi >= 0) && (((hn_uchr)_uchr).hi <= 31) )
+	( ( ( (hn_uchr)_uchr ).hi >= 0 ) && \
+		( ( (hn_uchr)_uchr ).hi <= 31 ) )
 
-#define HN_CHR_TRUNCATE( _chr ) ((_chr) &= 0x7F)
+#define HN_CHR_TRUNCATE( _chr ) ( ( _chr ) &= 0x7F )
 
-#define HN_UCHR_TRUNCATE( _uchr ) ((((hn_uchr)_uchr).hi &= 31))
+#define HN_UCHR_TRUNCATE( _uchr ) ( ( ( (hn_uchr)_uchr ).hi &= 31 ) )
 
 /* A single ASCII character. */
 typedef __UINT8_TYPE__ hn_chr HN_TYPELESS;
