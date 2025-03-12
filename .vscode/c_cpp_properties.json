@@ -24,7 +24,14 @@
 			],
 			"compilerPath": "/usr/bin/gcc",
 			"cStandard": "c89",
-			"cppStandard": "c++11"
+			"cppStandard": "c++11",
+			"browse": {
+				"limitSymbolsToIncludedHeaders": true,
+				"path": [
+					"${workspaceFolder}/include",
+					"${workspaceFolder}/src"
+				]
+			}
 		}, {
 			"name": "Mac",
 			"includePath": [
@@ -50,7 +57,14 @@
 			],
 			"compilerPath": "/usr/bin/clang",
 			"cStandard": "c89",
-			"cppStandard": "c++11"
+			"cppStandard": "c++11",
+			"browse": {
+				"limitSymbolsToIncludedHeaders": true,
+				"path": [
+					"${workspaceFolder}/include",
+					"${workspaceFolder}/src"
+				]
+			}
 		}
 	],
 	"version": 4
