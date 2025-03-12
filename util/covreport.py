@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-#######################################################################
-##                            Hinterlib 2                            ##
-##                                                                   ##
-##             Copyright (C) 2019-2024 Alexander Nicholi             ##
-##          Copyright (C) 2024-2025 Aquefir Consulting LLC.          ##
-##           Released under Artisan Software Licence v1.1.           ##
-#######################################################################
+########################################################################
+##                            Hinterlib v2                            ##
+##                                                                    ##
+##             Copyright (C) 2019-2024 Alexander Nicholi.             ##
+##           Copyright (C) 2024-2025 Aquefir Consulting LLC           ##
+##            Released under Artisan Software Licence v1.1            ##
+########################################################################
 
 def run(command):
 	import subprocess

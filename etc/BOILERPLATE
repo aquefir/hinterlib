@@ -3,23 +3,23 @@ headers.
 
 Boilerplate for C-like languages:
 
-/*********************************************************************\
- *                            Hinterlib 2                            *
- *                                                                   *
- *             Copyright (C) 2019-2024 Alexander Nicholi             *
- *          Copyright (C) 2024-2025 Aquefir Consulting LLC.          *
- *           Released under Artisan Software Licence v1.1.           *
-\*********************************************************************/
+/**********************************************************************\
+ *                            Hinterlib v2                            *
+ *                                                                    *
+ *             Copyright (C) 2019-2024 Alexander Nicholi.             *
+ *           Copyright (C) 2024-2025 Aquefir Consulting LLC           *
+ *            Released under Artisan Software Licence v1.1            *
+\**********************************************************************/
 
 Hash-based boilerplate (Python, POSIX shell, Makefile):
 
-#######################################################################
-##                            Hinterlib 2                            ##
-##                                                                   ##
-##             Copyright (C) 2019-2024 Alexander Nicholi             ##
-##          Copyright (C) 2024-2025 Aquefir Consulting LLC.          ##
-##           Released under Artisan Software Licence v1.1.           ##
-#######################################################################
+########################################################################
+##                            Hinterlib v2                            ##
+##                                                                    ##
+##             Copyright (C) 2019-2024 Alexander Nicholi.             ##
+##           Copyright (C) 2024-2025 Aquefir Consulting LLC           ##
+##            Released under Artisan Software Licence v1.1            ##
+########################################################################
 
 Additionally, a sanity check block to be placed at the top of every
 public API header:
