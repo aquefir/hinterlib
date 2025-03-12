@@ -12,7 +12,7 @@
 
 coverage.report
 *.prof*
-*.tes
+*.fmt
 *.o
 *.obj
 *.gcno
