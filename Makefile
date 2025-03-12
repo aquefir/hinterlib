@@ -41,7 +41,6 @@ PUBHFILES := \
 	include/hn/types/intvec.h \
 	include/hn/types/mem.h \
 	include/hn/alloc.h \
-	include/hn/buffer.h \
 	include/hn/endian.h \
 	include/hn/memops.h \
 	include/hn/nimb.h
