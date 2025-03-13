@@ -83,6 +83,11 @@ element type with the number of elements, like so:
 This is the preferred way to carry around common geometry primitives as
 often seen in game development with names like `Vec3` or `Point2`.
 
+Since version 2.0, Hinterlib offers these with its symbol prefix `hn_`.
+While the default behaviour is to also define the unqualified names seen
+above, one can opt out of this by defining the Inbound configuration
+option `NOSHORTHAND` (`-D_CFGOPT_NOSHORTHAND`).
+
 ## Footnotes
 
 Versions 1.x of Hinterlib, Hinterlib/Neopolitan, and/or unilib were
