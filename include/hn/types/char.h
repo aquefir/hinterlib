@@ -49,7 +49,8 @@ toolchain (GCC or Clang).
 
 /* Helper function to check if a character is valid ASCII. */
 #define HN_CHR_ISVALID( _chr ) \
-	( ( ( _chr ) >= 0 ) && ( ( _chr ) <= 127 ) )
+	( ( ( (__UINT8_TYPE__)_chr ) >= 0 ) && \
+		( ( (__UINT8_TYPE__)_chr ) <= 127 ) )
 
 /* Helper function to check if a code point is valid Unicode. */
 #define HN_UCHR_ISVALID( _uchr ) \
@@ -61,7 +62,7 @@ toolchain (GCC or Clang).
 #define HN_UCHR_TRUNCATE( _uchr ) ( ( ( (hn_uchr)_uchr ).hi &= 31 ) )
 
 /* A single ASCII character. */
-typedef __UINT8_TYPE__ hn_chr HN_TYPELESS;
+typedef char hn_chr HN_TYPELESS;
 /* A single Unicode code point. */
 struct hn_uchr
 {
@@ -84,7 +85,7 @@ typedef struct hn_uchr hn_uchr;
 #if !defined( _CFGOPT_NOSHORTHAND )
 
 /* A single ASCII character. */
-typedef __UINT8_TYPE__ chr HN_TYPELESS;
+typedef char chr HN_TYPELESS;
 /* A single Unicode code point. */
 typedef struct hn_uchr uchr;
 
