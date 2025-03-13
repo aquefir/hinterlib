@@ -41,7 +41,11 @@ PUBHFILES := \
 	include/hn/types/intvec.h \
 	include/hn/types/mem.h \
 	include/hn/alloc.h \
+	include/hn/conio.h \
 	include/hn/endian.h \
+	include/hn/err.h \
+	include/hn/file.h \
+	include/hn/log.h \
 	include/hn/memops.h \
 	include/hn/nimb.h
 PRVHFILES :=
