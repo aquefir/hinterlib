@@ -20,183 +20,179 @@ toolchain (GCC or Clang).
 #include "types/mem.h"
 
 /**
- * TITLE: Allocate an 8-bit knot
- * DESCRIPTION: Try to allocate an 8-bit knot, aborting on failure.
- * RETURNS: The allocated knot.
- * NOTES: This routine performs dynamic memory allocation that will
- *        need to be manually deallocated later with `hn_free( )`.
- * NOTES: This routine will die upon out-of-memory error.
+ *
+ * @brief Try to allocate an 8-bit knot, aborting on failure.
+ * @returns The allocated knot.
+ * @note This routine performs dynamic memory allocation that will need
+ *       to be manually deallocated later with `hn_free()`.
+ * @note This routine will die upon out-of-memory error.
  */
-hn_knot8 hn_allock8( void );
+hn_knot8 hn_allockn8( void );
 
 /**
- * TITLE: Allocate a 12-bit knot
- * DESCRIPTION: Try to allocate a 12-bit knot, aborting on failure.
- * RETURNS: The allocated knot.
- * NOTES: This routine performs dynamic memory allocation that will
- *        need to be manually deallocated later with `hn_free( )`.
- * NOTES: This routine will die upon out-of-memory error.
+ *
+ * @brief Try to allocate a 12-bit knot, aborting on failure.
+ * @returns The allocated knot.
+ * @note This routine performs dynamic memory allocation that will need
+ *       to be manually deallocated later with `hn_free()`.
+ * @note This routine will die upon out-of-memory error.
  */
-hn_knot12 hn_allock12( void );
+hn_knot12 hn_allockn12( void );
 
 /**
- * TITLE: Allocate a 16-bit knot
- * DESCRIPTION: Try to allocate a 16-bit knot, aborting on failure.
- * RETURNS: The allocated knot.
- * NOTES: This routine performs dynamic memory allocation that will
- *        need to be manually deallocated later with `hn_free( )`.
- * NOTES: This routine will die upon out-of-memory error.
+ *
+ * @brief Try to allocate a 16-bit knot, aborting on failure.
+ * @returns The allocated knot.
+ * @note This routine performs dynamic memory allocation that will need
+ *       to be manually deallocated later with `hn_free()`.
+ * @note This routine will die upon out-of-memory error.
  */
-hn_knot16 hn_allock16( void );
+hn_knot16 hn_allockn16( void );
 
 /**
- * TITLE: Allocate a 20-bit knot
- * DESCRIPTION: Try to allocate a 20-bit knot, aborting on failure.
- * RETURNS: The allocated knot.
- * NOTES: This routine performs dynamic memory allocation that will
- *        need to be manually deallocated later with `hn_free( )`.
- * NOTES: This routine will die upon out-of-memory error.
+ *
+ * @brief Try to allocate a 20-bit knot, aborting on failure.
+ * @returns The allocated knot.
+ * @note This routine performs dynamic memory allocation that will need
+ *       to be manually deallocated later with `hn_free()`.
+ * @note This routine will die upon out-of-memory error.
  */
-hn_knot20 hn_allock20( void );
+hn_knot20 hn_allockn20( void );
 
 /**
- * TITLE: Try to allocate an 8-bit knot
- * DESCRIPTION: Try to allocate an 8-bit knot, returning NULL on
- *              failure.
- * RETURNS: The allocated knot, or NULL on out-of-memory error.
- * NOTES: This routine performs dynamic memory allocation that will
- *        need to be manually deallocated later with `hn_free( )`.
+ *
+ * @brief Try to allocate an 8-bit knot, returning NULL on failure.
+ * @returns The allocated knot, or NULL on out-of-memory error.
+ * @note This routine performs dynamic memory allocation that will need
+ *       to be manually deallocated later with `hn_free()`.
  */
-hn_knot8 hn_tryallock8( void );
+hn_knot8 hn_tryallockn8( void );
 
 /**
- * TITLE: Try to allocate a 12-bit knot
- * DESCRIPTION: Try to allocate a 12-bit knot, returning NULL on
- *              failure.
- * RETURNS: The allocated knot, or NULL on out-of-memory error.
- * NOTES: This routine performs dynamic memory allocation that will
- *        need to be manually deallocated later with `hn_free( )`.
+ *
+ * @brief Try to allocate a 12-bit knot, returning NULL on failure.
+ * @returns The allocated knot, or NULL on out-of-memory error.
+ * @note This routine performs dynamic memory allocation that will need
+ *       to be manually deallocated later with `hn_free()`.
  */
-hn_knot12 hn_tryallock12( void );
+hn_knot12 hn_tryallockn12( void );
 
 /**
- * TITLE: Try to allocate a 16-bit knot
- * DESCRIPTION: Try to allocate a 16-bit knot, returning NULL on
- *              failure.
- * RETURNS: The allocated knot, or NULL on out-of-memory error.
- * NOTES: This routine performs dynamic memory allocation that will
- *        need to be manually deallocated later with `hn_free( )`.
+ *
+ * @brief Try to allocate a 16-bit knot, returning NULL on failure.
+ * @returns The allocated knot, or NULL on out-of-memory error.
+ * @note This routine performs dynamic memory allocation that will need
+ *       to be manually deallocated later with `hn_free()`.
  */
-hn_knot16 hn_tryallock16( void );
+hn_knot16 hn_tryallockn16( void );
 
 /**
- * TITLE: Try to allocate a 20-bit knot
- * DESCRIPTION: Try to allocate a 20-bit knot, returning NULL on
- *              failure.
- * RETURNS: The allocated knot, or NULL on out-of-memory error.
- * NOTES: This routine performs dynamic memory allocation that will
- *        need to be manually deallocated later with `hn_free( )`.
+ *
+ * @brief Try to allocate a 20-bit knot, returning NULL on failure.
+ * @returns The allocated knot, or NULL on out-of-memory error.
+ * @note This routine performs dynamic memory allocation that will need
+ *       to be manually deallocated later with `hn_free()`.
  */
-hn_knot20 hn_tryallock20( void );
+hn_knot20 hn_tryallockn20( void );
 
 /**
- * TITLE: Allocate a multitude of 8-bit knots
- * DESCRIPTION: Try to allocate a contiguous multitude of 8-bit knots,
- *              aborting on failure.
- * PARAMETER: The number of knots to allocate.
- * RETURNS: The allocated knot.
- * NOTES: This routine performs dynamic memory allocation that will
- *        need to be manually deallocated later with `hn_free( )`.
- * NOTES: This routine will die upon out-of-memory error.
+ *
+ * @brief Try to allocate a contiguous multitude of 8-bit knots,
+ *        aborting on failure.
+ * @param n The number of knots to allocate.
+ * @returns The allocated knot.
+ * @note This routine performs dynamic memory allocation that will need
+ *       to be manually deallocated later with `hn_free()`.
+ * @note This routine will die upon out-of-memory error.
  */
-hn_knot8 hn_allocmk8( hn_ptri );
+hn_knot8 hn_allocmkn8( hn_ptri );
 
 /**
- * TITLE: Allocate a multitude of 12-bit knots
- * DESCRIPTION: Try to allocate a contiguous multitude of 12-bit knots,
- *              aborting on failure.
- * PARAMETER: The number of knots to allocate.
- * RETURNS: The allocated knot.
- * NOTES: This routine performs dynamic memory allocation that will
- *        need to be manually deallocated later with `hn_free( )`.
- * NOTES: This routine will die upon out-of-memory error.
+ *
+ * @brief Try to allocate a contiguous multitude of 12-bit knots,
+ *        aborting on failure.
+ * @param n The number of knots to allocate.
+ * @returns The allocated knot.
+ * @note This routine performs dynamic memory allocation that will need
+ *       to be manually deallocated later with `hn_free()`.
+ * @note This routine will die upon out-of-memory error.
  */
-hn_knot12 hn_allocmk12( hn_ptri );
+hn_knot12 hn_allocmkn12( hn_ptri );
 
 /**
- * TITLE: Allocate a multitude of 16-bit knots
- * DESCRIPTION: Try to allocate a contiguous multitude of 16-bit knots,
- *              aborting on failure.
- * PARAMETER: The number of knots to allocate.
- * RETURNS: The allocated knot.
- * NOTES: This routine performs dynamic memory allocation that will
- *        need to be manually deallocated later with `hn_free( )`.
- * NOTES: This routine will die upon out-of-memory error.
+ *
+ * @brief Try to allocate a contiguous multitude of 16-bit knots,
+ *        aborting on failure.
+ * @param n The number of knots to allocate.
+ * @returns The allocated knot.
+ * @note This routine performs dynamic memory allocation that will need
+ *       to be manually deallocated later with `hn_free()`.
+ * @note This routine will die upon out-of-memory error.
  */
-hn_knot16 hn_allocmk16( hn_ptri );
+hn_knot16 hn_allocmkn16( hn_ptri );
 
 /**
- * TITLE: Allocate a multitude of 20-bit knots
- * DESCRIPTION: Try to allocate a contiguous multitude of 20-bit knots,
- *              aborting on failure.
- * PARAMETER: The number of knots to allocate.
- * RETURNS: The allocated knot.
- * NOTES: This routine performs dynamic memory allocation that will
- *        need to be manually deallocated later with `hn_free( )`.
- * NOTES: This routine will die upon out-of-memory error.
+ *
+ * @brief Try to allocate a contiguous multitude of 20-bit knots,
+ *        aborting on failure.
+ * @param n The number of knots to allocate.
+ * @returns The allocated knot.
+ * @note This routine performs dynamic memory allocation that will need
+ *       to be manually deallocated later with `hn_free()`.
+ * @note This routine will die upon out-of-memory error.
  */
-hn_knot20 hn_allocmk20( hn_ptri );
+hn_knot20 hn_allocmkn20( hn_ptri );
 
 /**
- * TITLE: Try to allocate a multitude of 8-bit knots
- * DESCRIPTION: Try to allocate a contiguous multitude of 8-bit knots,
- *              returning NULL upon failure.
- * PARAMETER: The number of knots to attempt allocating.
- * RETURNS: The allocated knot, or NULL on out-of-memory error.
- * NOTES: This routine performs dynamic memory allocation that will
- *        need to be manually deallocated later with `hn_free( )`.
+ *
+ * @brief Try to allocate a contiguous multitude of 8-bit knots,
+ *        returning NULL upon failure.
+ * @param n The number of knots to attempt allocating.
+ * @returns The allocated knot, or NULL on out-of-memory error.
+ * @note This routine performs dynamic memory allocation that will need
+ *       to be manually deallocated later with `hn_free()`.
  */
-hn_knot8 hn_tryallocmk8( hn_ptri );
+hn_knot8 hn_tryallocmkn8( hn_ptri );
 
 /**
- * TITLE: Try to allocate a multitude of 12-bit knots
- * DESCRIPTION: Try to allocate a contiguous multitude of 12-bit knots,
- *              returning NULL upon failure.
- * PARAMETER: The number of knots to attempt allocating.
- * RETURNS: The allocated knot, or NULL on out-of-memory error.
- * NOTES: This routine performs dynamic memory allocation that will
- *        need to be manually deallocated later with `hn_free( )`.
+ *
+ * @brief Try to allocate a contiguous multitude of 12-bit knots,
+ *        returning NULL upon failure.
+ * @param n The number of knots to attempt allocating.
+ * @returns The allocated knot, or NULL on out-of-memory error.
+ * @note This routine performs dynamic memory allocation that will need
+ *       to be manually deallocated later with `hn_free()`.
  */
-hn_knot12 hn_tryallocmk12( hn_ptri );
+hn_knot12 hn_tryallocmkn12( hn_ptri );
 
 /**
- * TITLE: Try to allocate a multitude of 16-bit knots
- * DESCRIPTION: Try to allocate a contiguous multitude of 16-bit knots,
- *              returning NULL upon failure.
- * PARAMETER: The number of knots to attempt allocating.
- * RETURNS: The allocated knot, or NULL on out-of-memory error.
- * NOTES: This routine performs dynamic memory allocation that will
- *        need to be manually deallocated later with `hn_free( )`.
+ *
+ * @brief Try to allocate a contiguous multitude of 16-bit knots,
+ *        returning NULL upon failure.
+ * @param n The number of knots to attempt allocating.
+ * @returns The allocated knot, or NULL on out-of-memory error.
+ * @note This routine performs dynamic memory allocation that will need
+ *       to be manually deallocated later with `hn_free()`.
  */
-hn_knot16 hn_tryallocmk16( hn_ptri );
+hn_knot16 hn_tryallocmkn16( hn_ptri );
 
 /**
- * TITLE: Try to allocate a multitude of 20-bit knots
- * DESCRIPTION: Try to allocate a contiguous multitude of 20-bit knots,
- *              returning NULL upon failure.
- * PARAMETER: The number of knots to attempt allocating.
- * RETURNS: The allocated knot, or NULL on out-of-memory error.
- * NOTES: This routine performs dynamic memory allocation that will
- *        need to be manually deallocated later with `hn_free( )`.
+ *
+ * @brief Try to allocate a contiguous multitude of 20-bit knots,
+ *        returning NULL upon failure.
+ * @param n The number of knots to attempt allocating.
+ * @return The allocated knot, or NULL on out-of-memory error.
+ * @note This routine performs dynamic memory allocation that will need
+ *       to be manually deallocated later with `hn_free()`.
  */
-hn_knot20 hn_tryallocmk20( hn_ptri );
+hn_knot20 hn_tryallocmkn20( hn_ptri );
 
 /**
- * TITLE: Free dynamic heap allocation
- * DESCRIPTION: Frees up memory allocated to a pointer returned by the
- *              heap allocator routine family.
- * PARAMETER: The pointer to the memory to free.
- * NOTES: This routine performs dynamic memory deallocation.
+ *
+ * @brief Frees up memory allocated to a pointer returned by the heap
+ *        allocator routine family.
+ * @param ptr The pointer to the memory to free.
+ * @note This routine performs dynamic memory deallocation.
  */
 void hn_free( void * );
 
