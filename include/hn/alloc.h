@@ -21,8 +21,8 @@ toolchain (GCC or Clang).
 
 /**
  *
- * @brief Try to allocate an 8-bit knot, returning NULL on failure.
- * @returns The allocated knot, or NULL on out-of-memory error.
+ * @brief Try to allocate an 8-bit knot, returning `NULL` on failure.
+ * @returns The allocated knot, or `NULL` on out-of-memory error.
  * @note This routine performs dynamic memory allocation that will need
  *       to be manually deallocated later with `hn_free()`.
  */
@@ -30,8 +30,8 @@ hn_knot8 hn_allockn8( void );
 
 /**
  *
- * @brief Try to allocate a 12-bit knot, returning NULL on failure.
- * @returns The allocated knot, or NULL on out-of-memory error.
+ * @brief Try to allocate a 12-bit knot, returning `NULL` on failure.
+ * @returns The allocated knot, or `NULL` on out-of-memory error.
  * @note This routine performs dynamic memory allocation that will need
  *       to be manually deallocated later with `hn_free()`.
  */
@@ -39,8 +39,8 @@ hn_knot12 hn_allockn12( void );
 
 /**
  *
- * @brief Try to allocate a 16-bit knot, returning NULL on failure.
- * @returns The allocated knot, or NULL on out-of-memory error.
+ * @brief Try to allocate a 16-bit knot, returning `NULL` on failure.
+ * @returns The allocated knot, or `NULL` on out-of-memory error.
  * @note This routine performs dynamic memory allocation that will need
  *       to be manually deallocated later with `hn_free()`.
  */
@@ -48,8 +48,8 @@ hn_knot16 hn_allockn16( void );
 
 /**
  *
- * @brief Try to allocate a 20-bit knot, returning NULL on failure.
- * @returns The allocated knot, or NULL on out-of-memory error.
+ * @brief Try to allocate a 20-bit knot, returning `NULL` on failure.
+ * @returns The allocated knot, or `NULL` on out-of-memory error.
  * @note This routine performs dynamic memory allocation that will need
  *       to be manually deallocated later with `hn_free()`.
  */
