@@ -110,6 +110,15 @@ toolchain (GCC or Clang).
  * 16-bit |  ~2.1MB | ~33.5MB |  ~537MB |   ~8.6GB
  * 20-bit | ~33.5MB |  ~537MB |  ~8.6GB |  ~137.4GB
  *
+ * Additionally, here are the memory capacities of 8-, 12- and 16-bit
+ * amalgams on 16-bit machines:
+ *
+ * Elem=> |  8-bit |  12-bit  |  16-bit
+ * -------+---------+---------+----------
+ *  8-bit |  ~32KB |  ~520KB  |  ~8.3MB
+ * 12-bit | ~524KB |  ~8.4MB  | ~134.1MB
+ * 16-bit | ~8.4MB | ~134.2MB |  ~2.1GB
+ *
  * These limits naturally do not apply to sequential amalgams, which
  * are only limited by the amount of installed memory. If you are
  * dealing with so much sparse data anyway, these structures can only
