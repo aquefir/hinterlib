@@ -67,7 +67,7 @@ hn_knot20 hn_allockn20( void );
 
 /**
  *
- * @brief Allocates a memory block from the heap in the same fashion as
+ * @brief Allocates a memory block from the heap in a similar fashion as
  *        `malloc()`.
  * @returns The allocated memory, or `NULL` on out-of-memory error.
  * @note This routine performs dynamic memory allocation that will need
