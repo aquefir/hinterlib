@@ -55,10 +55,8 @@ toolchain (GCC or Clang).
  * of their data as they see fit.
  *
  * The "Modular Memory Toolkit" provides several tools then:
- *  1. Amalgam devolution: avoid a full reallocation and copy of a knot
- *     by devolving a larger knot into a sequential amalgam of a smaller
- *     knot size, thereby only requiring a small allocation for new
- *     bookkeeping
+ *  1. Amalgam creation: create an amalgam given a destination knot and
+ *     a set of constituent knots
  *  2. Amalgam translation: transform amalgams of different base element
  *     sizes that use the same containing knot size
  *  3. Amalgam conversion: transform amalgams of the same base element
@@ -69,6 +67,11 @@ toolchain (GCC or Clang).
  *  6. Amalgam compression: combine multiple amalgams into one memory
  *     space by only honouring the value of their respective .len fields
  *     and allocating only as much storage as it denotes necessary
+ *  7. Amalgam selection: specify a slice of an amalgam to be duplicated
+ *     into a new knot
+ *
+ * The MMT expects users to perform all of their own memory management.
+ * The principal tools for this are in <hn/alloc.h>.
  */
 
 #endif /* INC_API__HN_MMT_H */
