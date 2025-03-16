@@ -69,6 +69,10 @@ hn_knot20 hn_allockn20( void );
  *
  * @brief Allocates a memory block from the heap in a similar fashion as
  *        `malloc()`.
+ * @param sz The amount of memory needing to be allocated, denominated
+ *        in octets. Must be greater than 0. If the value is less than
+ *        64 it will be promoted to be at least 64, to fit its alignment
+ *        guarantees.
  * @returns The allocated memory, or `NULL` on out-of-memory error.
  * @note This routine performs dynamic memory allocation that will need
  *       to be manually deallocated later with `hn_free()`.
