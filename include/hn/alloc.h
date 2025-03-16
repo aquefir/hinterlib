@@ -65,6 +65,18 @@ hn_knot20 hn_allockn20( void );
 
 /**
  *
+ * @brief Allocates a memory block from the heap in the same fashion as
+ *        `malloc()`.
+ * @returns The allocated memory, or `NULL` on out-of-memory error.
+ * @note This routine performs dynamic memory allocation that will need
+ *       to be manually deallocated later with `hn_free()`.
+ * @note The allocated memory will be aligned so the lowest 6 bits are
+ *       zero (ergo, aligned to the nearest whole 64 bytes).
+  */
+ void * hn_alloc( hn_ptri );
+
+/**
+ *
  * @brief Frees up memory allocated to a pointer returned by the heap
  *        allocator routine family.
  * @param ptr The pointer to the memory to free.
