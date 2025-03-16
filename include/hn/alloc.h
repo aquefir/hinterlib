@@ -25,6 +25,8 @@ toolchain (GCC or Clang).
  * @returns The allocated knot, or `NULL` on out-of-memory error.
  * @note This routine performs dynamic memory allocation that will need
  *       to be manually deallocated later with `hn_free()`.
+ * @note The allocated knot will be aligned so the lowest 8 bits are
+ *       zero (ergo, aligned to the nearest whole 256 bytes).
  */
 hn_knot8 hn_allockn8( void );
 
@@ -34,6 +36,8 @@ hn_knot8 hn_allockn8( void );
  * @returns The allocated knot, or `NULL` on out-of-memory error.
  * @note This routine performs dynamic memory allocation that will need
  *       to be manually deallocated later with `hn_free()`.
+ * @note The allocated knot will be aligned so the lowest 12 bits are
+ *       zero (ergo, aligned to the nearest whole 4 kibibytes).
  */
 hn_knot12 hn_allockn12( void );
 
@@ -43,6 +47,8 @@ hn_knot12 hn_allockn12( void );
  * @returns The allocated knot, or `NULL` on out-of-memory error.
  * @note This routine performs dynamic memory allocation that will need
  *       to be manually deallocated later with `hn_free()`.
+ * @note The allocated knot will be aligned so the lowest 16 bits are
+ *       zero (ergo, aligned to the nearest whole 64 kibibytes).
  */
 hn_knot16 hn_allockn16( void );
 
@@ -52,6 +58,8 @@ hn_knot16 hn_allockn16( void );
  * @returns The allocated knot, or `NULL` on out-of-memory error.
  * @note This routine performs dynamic memory allocation that will need
  *       to be manually deallocated later with `hn_free()`.
+ * @note The allocated knot will be aligned so the lowest 20 bits are
+ *       zero (ergo, aligned to the nearest whole 1 mebibyte).
  */
 hn_knot20 hn_allockn20( void );
 
