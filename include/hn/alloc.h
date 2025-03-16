@@ -52,6 +52,7 @@ hn_knot12 hn_allockn12( void );
  */
 hn_knot16 hn_allockn16( void );
 
+#if HN_SIZEOF_PTR > 2
 /**
  *
  * @brief Try to allocate a 20-bit knot, returning `NULL` on failure.
@@ -62,6 +63,7 @@ hn_knot16 hn_allockn16( void );
  *       zero (ergo, aligned to the nearest whole 1 mebibyte).
  */
 hn_knot20 hn_allockn20( void );
+#endif /* HN_SIZEOF_PTR > 2 */
 
 /**
  *
