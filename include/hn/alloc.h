@@ -72,8 +72,8 @@ hn_knot20 hn_allockn20( void );
  *       to be manually deallocated later with `hn_free()`.
  * @note The allocated memory will be aligned so the lowest 6 bits are
  *       zero (ergo, aligned to the nearest whole 64 bytes).
-  */
- void * hn_alloc( hn_ptri );
+ */
+void * hn_alloc( hn_ptri );
 
 /**
  *
