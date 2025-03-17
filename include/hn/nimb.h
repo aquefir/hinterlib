@@ -36,8 +36,21 @@ toolchain (GCC or Clang).
 #endif /* END sanity check */
 
 #include "types/base.h"
+#include "types/char.h"
 #include "types/int.h"
 #include "types/mem.h"
+
+enum hn_numbase
+{
+	HN_NUMBASE_BIN,
+	HN_NUMBASE_OCT,
+	HN_NUMBASE_DEC,
+	HN_NUMBASE_HEX,
+	HN_NUMBASE_DTH,
+	HN_NUMBASE_THR,
+	HN_NUMBASE_B64,
+	HN_MAX_NUMBASE
+};
 
 struct hn_nimb
 {
@@ -73,6 +86,9 @@ hn_bl hn_nimb_from32( hn_u32, hn_nimb * );
 hn_bl hn_nimb_from64( hn_u64, hn_nimb * );
 #endif /* defined( _SYNDEF_HAVE_I64 ) */
 
+/* Create a nimb from an ASCII character string. */
+hn_bl hn_nimb_fromstr( hn_chr *, enum hn_numbase, hn_nimb * );
+
 /* Create a 16-bit unsigned integer primitive from a nimb. */
 hn_bl hn_nimb_to16( hn_nimb *, hn_u16 * );
 
@@ -85,6 +101,9 @@ hn_bl hn_nimb_to32( hn_nimb *, hn_u32 * );
 /* Create a 64-bit unsigned integer primitive from a nimb. */
 hn_bl hn_nimb_to64( hn_nimb *, hn_u64 * );
 #endif /* defined( _SYNDEF_HAVE_I64 ) */
+
+/* Create an ASCII character string from a nimb. */
+hn_bl hn_nimb_tostr( hn_nimb *, enum hn_numbase, hn_chr * );
 
 /* Get the size of the nimb by traversing the sentinel bits therein. */
 hn_ptri hn_nimb_size( hn_nimb * );
