@@ -31,6 +31,7 @@ struct hn_fmode
 	hn_u32 approach : 2;
 	/* The + in the libc mode string. */
 	hn_u32 update : 1;
+	hn_u32 _padding : 29;
 } HN_PACKED;
 
 struct hn_file * hn_fstdin( void );
