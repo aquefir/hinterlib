@@ -63,7 +63,7 @@ hn_bl hn_fsetpos( struct hn_file *, struct hn_fpos * );
 
 hn_bl hn_fseek( struct hn_file *, hn_s64, enum hn_forigin );
 
-void hn_fclear( struct hn_file * );
+void hn_fclearerr( struct hn_file * );
 
 hn_bl hn_feof( struct hn_file * );
 
