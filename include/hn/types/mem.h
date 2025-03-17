@@ -162,48 +162,6 @@ typedef __UINT8_TYPE__ ( *hn_knot16 )[65536] HN_TYPELESS;
 /* 20-bit memory knot addressing a contiguous block of 1 mebibyte. */
 typedef __UINT8_TYPE__ ( *hn_knot20 )[1048576] HN_TYPELESS;
 
-/* Sequential amalgam of 8-bit knots. */
-struct hn_am8seq
-{
-	/* Length of amalgam, denominated in elements. */
-	__UINTPTR_TYPE__ len;
-	/* Pointer to the first knot. The rest are assumed to follow in
-	 * memory. */
-	hn_knot8 data;
-} HN_TYPELESS;
-
-/* Sequential amalgam of 12-bit knots. */
-struct hn_am12seq
-{
-	/* Length of amalgam, denominated in elements. */
-	__UINTPTR_TYPE__ len;
-	/* Pointer to the first knot. The rest are assumed to follow in
-	 * memory. */
-	hn_knot12 data;
-} HN_TYPELESS;
-
-/* Sequential amalgam of 16-bit knots. */
-struct hn_am16seq
-{
-	/* Length of amalgam, denominated in elements. */
-	__UINTPTR_TYPE__ len;
-	/* Pointer to the first knot. The rest are assumed to follow in
-	 * memory. */
-	hn_knot16 data;
-} HN_TYPELESS;
-
-#if HN_SIZEOF_PTR > 2
-/* Sequential amalgam of 20-bit knots. */
-struct hn_am20seq
-{
-	/* Length of amalgam, denominated in elements. */
-	__UINTPTR_TYPE__ len;
-	/* Pointer to the first knot. The rest are assumed to follow in
-	 * memory. */
-	hn_knot20 data;
-} HN_TYPELESS;
-#endif /* HN_SIZEOF_PTR > 2 */
-
 /* Sparse amalgam of 8-bit knots on an 8-bit knot. */
 struct hn_am8kn8
 {
