@@ -36,14 +36,52 @@ struct hn_log
 	hn_u32 ansi_col : 1;
 } HN_PACKED;
 
+/**
+ *
+ * @brief Group the logger's output for contextualisation.
+ * @param log The logger context to modify.
+ * @returns `HN_FALSE` if successful; `HN_TRUE` if the maximum number of
+ *          indent levels has already been reached (7).
+ */
 hn_bl hn_log_grp( struct hn_log * );
 
+/**
+ *
+ * @brief Ungroup the logger's output for contextualisation.
+ * @param log The logger context to modify.
+ * @returns `HN_FALSE` if successful; `HN_TRUE` if the number of indent
+ *          indent levels is already at zero (0).
+ */
 hn_bl hn_log_ungrp( struct hn_log * );
 
+/**
+ *
+ * @brief Write a line to log at the "info" urgency level.
+ * @param log The logger context to use.
+ * @param fmt The format string, using the ANSI C format specification.
+ *        See https://en.cppreference.com/w/c/io/fprintf for details.
+ * @param ... The parameters specified in the format sring, if any.
+ */
 void hn_log_info( struct hn_log *, const chr *, ... );
 
+/**
+ *
+ * @brief Write a line to log at the "warning" urgency level.
+ * @param log The logger context to use.
+ * @param fmt The format string, using the ANSI C format specification.
+ *        See https://en.cppreference.com/w/c/io/fprintf for details.
+ * @param ... The parameters specified in the format sring, if any.
+ */
 void hn_log_warn( struct hn_log *, const chr *, ... );
 
+/**
+ *
+ * @brief Write a line to log at the "error" urgency level.
+ * @param log The logger context to use.
+ * @param fmt The format string, using the ANSI C format specification.
+ *        See https://en.cppreference.com/w/c/io/fprintf for details.
+ * @param ... The parameters specified in the format sring, if any.
+ */
 void hn_log_err( struct hn_log *, const chr *, ... );
 
 #endif /* INC_API__HN_LOG_H */
