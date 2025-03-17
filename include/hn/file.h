@@ -17,7 +17,8 @@ enum hn_forigin
 {
 	HN_SEEK_SET,
 	HN_SEEK_CUR,
-	HN_SEEK_END
+	HN_SEEK_END,
+	HN_MAX_SEEK
 };
 
 struct hn_fpos;
