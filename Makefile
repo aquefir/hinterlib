@@ -42,6 +42,7 @@ PUBHFILES := \
 	include/hn/types/mem.h \
 	include/hn/alloc.h \
 	include/hn/conio.h \
+	include/hn/ct.h \
 	include/hn/endian.h \
 	include/hn/err.h \
 	include/hn/file.h \
