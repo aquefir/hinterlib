@@ -114,8 +114,8 @@ hn_ptri hn_readn_f( struct hn_file *, hn_chr *, hn_ptri );
  *       routines suffice to fully inform consumers about the program
  *       state.
  * @note Check EOF and error conditions whenever this routine returns
- *       less than `count` using `hn_feof()` and `hn_ferror()`,
- *       respectively.
+ *       less than `count` and `buf` doesn't end with a newline using
+ *       `hn_feof()` and `hn_ferror()`, respectively.
  */
 hn_ptri hn_readln_i( hn_chr *, hn_ptri );
 
@@ -136,8 +136,8 @@ hn_ptri hn_readln_i( hn_chr *, hn_ptri );
  *       routines suffice to fully inform consumers about the program
  *       state.
  * @note Check EOF and error conditions whenever this routine returns
- *       less than `count` using `hn_feof()` and `hn_ferror()`,
- *       respectively.
+ *       less than `count` and `buf` doesn't end with a newline using
+ *       `hn_feof()` and `hn_ferror()`, respectively.
  */
 hn_ptri hn_readln_f( struct hn_file *, hn_chr *, hn_ptri );
 
