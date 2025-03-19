@@ -11,10 +11,10 @@
 
 #include "types/base.h"
 
-/* TODO: Document this! */
-#if !defined( _CFGOPT_NOSTDIO )
 #include "conio.h"
-#else
+
+/* TODO: Document this! */
+#if defined( _CFGOPT_NOSTDIO )
 /* fake out */
 #define hn_wriln_e( x, y )
 #endif /* !defined( _CFGOPT_NOSTDIO ) */
