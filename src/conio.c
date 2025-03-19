@@ -74,7 +74,7 @@ void hn_wriln_o( const hn_chr * s, ... )
 	vfprintf( stdout, s, args );
 	va_end( args );
 
-	fprintf( stdout, "\n" );
+	fputs( "\n", stdout );
 	fflush( stdout );
 }
 
@@ -91,7 +91,7 @@ void hn_wriln_e( const hn_chr * s, ... )
 	vfprintf( stderr, s, args );
 	va_end( args );
 
-	fprintf( stderr, "\n" );
+	fputs( "\n", stderr );
 	fflush( stderr );
 }
 
@@ -108,7 +108,7 @@ void hn_wriln_f( struct hn_file * f, const hn_chr * s, ... )
 	vfprintf( (FILE *)f, s, args );
 	va_end( args );
 
-	fprintf( (FILE *)f, "\n" );
+	fputs( "\n", (FILE *)f );
 	fflush( (FILE *)f );
 }
 
