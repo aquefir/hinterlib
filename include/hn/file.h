@@ -32,10 +32,11 @@ struct hn_file;
 struct hn_fmode
 {
 	/* Base mode: 0 = r, 1 = w, 2 = a, 3 = x. */
-	hn_u32 approach : 2;
+	hn_ubf approach : 2;
 	/* The + in the libc mode string. */
-	hn_u32 update : 1;
-	hn_u32 _padding : 29;
+	hn_ubf update : 1;
+	hn_ubf : 13;
+	hn_ubf : 16;
 } HN_PACKED;
 
 #if !defined( _CFGOPT_NOSTDIO )
