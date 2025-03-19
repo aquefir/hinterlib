@@ -16,6 +16,16 @@ Please ensure you are using the Inbound build system and a compatible \
 toolchain (GCC or Clang).
 #endif /* END sanity check */
 
+#if !defined( NULL )
+#if defined( __cplusplus )
+/* Denotes he "null pointer" constant: zero. */
+#define NULL nullptr
+#else
+/* Denotes he "null pointer" constant: zero. */
+#define NULL 0
+#endif
+#endif /* !defined( NULL ) */
+
 #if defined( __has_attribute )
 
 #if __has_attribute( packed )
@@ -131,12 +141,6 @@ toolchain (GCC or Clang).
 #endif /* defined( __cplusplus ) */
 #endif /* !defined( HN_API ) */
 
-enum
-{
-	/* Denotes the "null pointer" constant: zero. */
-	HN_NULL = 0
-};
-
 /* A boolean type. */
 enum hn_bl
 {
@@ -164,16 +168,6 @@ typedef __INTPTR_TYPE__ hn_offs HN_TYPELESS;
 typedef enum hn_bl hn_bl;
 
 #if !defined( _CFGOPT_NOSHORTHAND )
-
-#if !defined( NULL )
-#if defined( __cplusplus )
-/* Denotes he "null pointer" constant: zero. */
-#define NULL nullptr
-#else
-/* Denotes he "null pointer" constant: zero. */
-#define NULL 0
-#endif
-#endif /* !defined( NULL ) */
 
 #if !defined( FALSE )
 #if defined( __cplusplus )
