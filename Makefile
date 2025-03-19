@@ -29,9 +29,7 @@ SFILES.GBA := \
 	src/memset.s
 CFILES := \
 	src/alloc.c \
-	src/memops.c \
-	src/mmt.c \
-	src/nimb.c
+	src/memops.c
 PUBHFILES := \
 	include/hn/types/base.h \
 	include/hn/types/char.h \
