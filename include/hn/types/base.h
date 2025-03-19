@@ -152,7 +152,7 @@ enum hn_bl
 
 /* Bitfield type which is deliberately imprecise in size to satisfy ANSI
  * C portability requirements (signed variant). */
-typedef signed int hn_ubf;
+typedef signed int hn_sbf;
 
 /* Bitfield type which is deliberately imprecise in size to satisfy ANSI
  * C portability requirements (unsigned variant). */
