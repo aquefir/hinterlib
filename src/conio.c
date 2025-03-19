@@ -10,6 +10,7 @@
 
 #if !defined( _CFGOPT_NOSTDIO )
 
+#include <stdarg.h>
 #include <stdio.h>
 
 void hn_wri_o( const hn_chr * s, ... )
