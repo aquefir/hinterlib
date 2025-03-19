@@ -198,15 +198,15 @@ struct hn_ct
 {
 	/* Type of container. See `enum hn_ct_type` for valid values.
 	 */
-	hn_u32 type : 8;
+	hn_ubf type : 8;
 	/* Equivalent to stdio's EOF notion. This also applies if an
 	 * iteration happening in reverse gets stopped at the beginning
 	 * of the container. */
-	hn_u32 reach_end : 1;
+	hn_ubf reach_end : 1;
 	/* Equivalent to stiod's ferror() status. */
-	hn_u32 outside_err : 1;
-	hn_u32 _reserved : 21;
-	hn_u32 _padding;
+	hn_ubf outside_err : 1;
+	hn_ubf : 6;
+	hn_ubf : 16;
 	union
 	{
 		void * flat;
