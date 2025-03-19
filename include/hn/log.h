@@ -43,7 +43,8 @@ struct hn_log
  * @brief Group the logger's output for contextualisation.
  * @param log The logger context to modify.
  * @returns `HN_FALSE` if successful; `HN_TRUE` if the maximum number of
- *          indent levels has already been reached (7).
+ *          indent levels has already been reached (7) or if the logger
+ *          context pointer provided is NULL.
  */
 hn_bl hn_log_grp( struct hn_log * );
 
@@ -52,7 +53,8 @@ hn_bl hn_log_grp( struct hn_log * );
  * @brief Ungroup the logger's output for contextualisation.
  * @param log The logger context to modify.
  * @returns `HN_FALSE` if successful; `HN_TRUE` if the number of indent
- *          indent levels is already at zero (0).
+ *          indent levels is already at zero (0) or if the logger
+ *          context pointer provided is NULL.
  */
 hn_bl hn_log_ungrp( struct hn_log * );
 
