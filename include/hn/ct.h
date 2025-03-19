@@ -207,6 +207,8 @@ struct hn_ct
 	hn_ubf outside_err : 1;
 	hn_ubf : 6;
 	hn_ubf : 16;
+	hn_ubf : 16;
+	hn_ubf : 16;
 	union
 	{
 		void * flat;
@@ -267,6 +269,54 @@ struct hn_ct
 	} idx HN_PACKED;
 } HN_PACKED;
 
+hn_bl hn_ct_init( hn_u16[4], enum hn_cr_type, hn_ptri, struct hn_ct * );
+
+hn_bl hn_ct_make( hn_u16[4], enum hn_cr_type, struct hn_ct * );
+
+hn_bl hn_ct_readu8( struct hn_ct *, hn_u8 * );
+
+hn_bl hn_ct_readu16( struct hn_ct *, hn_u16 * );
+
+#if defined( _SYNDEF_HAVE_I32 )
+hn_bl hn_ct_readu32( struct hn_ct *, hn_u32 * );
+#endif /* defined( _SYNDEF_HAVE_I32 ) */
+
+#if defined( _SYNDEF_HAVE_I64 )
+hn_bl hn_ct_readu64( struct hn_ct *, hn_u64 * );
+#endif /* defined( _SYNDEF_HAVE_I64 ) */
+
+hn_bl hn_ct_readk8( struct hn_ct *, hn_knot8 );
+
+hn_bl hn_ct_readk12( struct hn_ct *, hn_knot12 );
+
+hn_bl hn_ct_readk16( struct hn_ct *, hn_knot16 );
+
+#if HN_SIZEOF_PTR > 2
+hn_bl hn_ct_readk20( struct hn_ct *, hn_knot20 );
+#endif /* HN_SIZEOF_PTR > 2 */
+
+hn_bl hn_ct_writeu8( hn_u8, struct hn_ct * );
+
+hn_bl hn_ct_writeu16( hn_u16, struct hn_ct * );
+
+#if defined( _SYNDEF_HAVE_I32 )
+hn_bl hn_ct_writeu32( hn_u32, struct hn_ct * );
+#endif /* defined( _SYNDEF_HAVE_I32 ) */
+
+#if defined( _SYNDEF_HAVE_I64 )
+hn_bl hn_ct_writeu64( hn_u64, struct hn_ct * );
+#endif /* defined( _SYNDEF_HAVE_I64 ) */
+
+hn_bl hn_ct_writek8( hn_knot8, struct hn_ct * );
+
+hn_bl hn_ct_writek12( hn_knot12, struct hn_ct * );
+
+hn_bl hn_ct_writek16( hn_knot16, struct hn_ct * );
+
+#if HN_SIZEOF_PTR > 2
+hn_bl hn_ct_writek20( hn_knot20, struct hn_ct * );
+#endif /* HN_SIZEOF_PTR > 2 */
+
 hn_bl hn_ct_seek16( struct hn_ct *, hn_s16 );
 
 #if defined( _SYNDEF_HAVE_I32 )
@@ -276,5 +326,11 @@ hn_bl hn_ct_seek32( struct hn_ct *, hn_s32 );
 #if defined( _SYNDEF_HAVE_I64 )
 hn_bl hn_ct_seek64( struct hn_ct *, hn_s64 );
 #endif /* defined( _SYNDEF_HAVE_I64 ) */
+
+hn_bl hn_ct_extend( struct hn_ct *, hn_ptri );
+
+hn_bl hn_ct_shrink( struct hn_ct *, hn_ptri );
+
+void hn_ct_copy( struct hn_ct *, struct hn_ct * );
 
 #endif /* INC_API__HN_CT_H */
