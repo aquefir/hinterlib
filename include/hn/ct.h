@@ -38,54 +38,25 @@ toolchain (GCC or Clang).
 
 enum hn_cr_kind
 {
-	HN_IFT_KIND_FLAT,
-	HN_IFT_KIND_AM8D1,
-	HN_IFT_KIND_AM12D1,
-	HN_IFT_KIND_AM16D1,
-	HN_IFT_KIND_AM20D1,
-	HN_IFT_KIND_AM8D2,
-	HN_IFT_KIND_AM12D2,
-	HN_IFT_KIND_AM16D2,
-	HN_IFT_KIND_AM20D2,
-	HN_IFT_KIND_AM8D3,
-	HN_IFT_KIND_AM12D3,
-	HN_IFT_KIND_AM16D3,
-	HN_IFT_KIND_AM20D3,
-	HN_IFT_KIND_AM8D4,
-	HN_IFT_KIND_AM12D4,
-	HN_IFT_KIND_AM16D4,
-	HN_IFT_KIND_AM20D4,
-	HN_IFT_KIND_FILE,
-	HN_MAX_IFT_KIND
-};
-
-/* Container. */
-struct hn_ct
-{
-	/* Type of container. See `enum hn_ift_kind` for valid values.
-	 */
-	hn_u32 kind : 8;
-	union
-	{
-		void * flat;
-		hn_am8d1 * am8d1;
-		hn_am12d1 * am12d1;
-		hn_am16d1 * am16d1;
-		hn_am20d1 * am20d1;
-		hn_am8d2 * am8d2;
-		hn_am12d2 * am12d2;
-		hn_am16d2 * am16d2;
-		hn_am20d2 * am20d2;
-		hn_am8d3 * am8d3;
-		hn_am12d3 * am12d3;
-		hn_am16d3 * am16d3;
-		hn_am20d3 * am20d3;
-		hn_am8d4 * am8d4;
-		hn_am12d4 * am12d4;
-		hn_am16d4 * am16d4;
-		hn_am20d4 * am20d4;
-		struct hn_file * file;
-	} u;
+	HN_CT_KIND_FLAT,
+	HN_CT_KIND_AM8D1,
+	HN_CT_KIND_AM12D1,
+	HN_CT_KIND_AM16D1,
+	HN_CT_KIND_AM20D1,
+	HN_CT_KIND_AM8D2,
+	HN_CT_KIND_AM12D2,
+	HN_CT_KIND_AM16D2,
+	HN_CT_KIND_AM20D2,
+	HN_CT_KIND_AM8D3,
+	HN_CT_KIND_AM12D3,
+	HN_CT_KIND_AM16D3,
+	HN_CT_KIND_AM20D3,
+	HN_CT_KIND_AM8D4,
+	HN_CT_KIND_AM12D4,
+	HN_CT_KIND_AM16D4,
+	HN_CT_KIND_AM20D4,
+	HN_CT_KIND_FILE,
+	HN_MAX_CT_KIND
 };
 
 struct hn_ct_i_flat
@@ -222,9 +193,11 @@ struct hn_ct_i_file
 	struct hn_fpos * pos;
 } HN_PACKED;
 
-/* Infinitude index. */
-struct hn_ct_i
+/* Container. */
+struct hn_ct
 {
+	/* Type of container. See `enum hn_ct_kind` for valid values.
+	 */
 	hn_u32 kind : 8;
 	hn_u32 _reserved : 24;
 	union
