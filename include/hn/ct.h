@@ -16,11 +16,11 @@ Please ensure you are using the Inbound build system and a compatible \
 toolchain (GCC or Clang).
 #endif /* END sanity check */
 
-#include <hn/types/base.h>
-#include <hn/types/int.h>
-#include <hn/types/mem.h>
+#include "types/base.h"
+#include "types/int.h"
+#include "types/mem.h"
 
-#include <hn/file.h>
+#include "file.h"
 
 /**
  * Container - polymorphic data storage
