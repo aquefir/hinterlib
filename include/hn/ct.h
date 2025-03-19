@@ -213,19 +213,27 @@ struct hn_ct
 		hn_am8d1 * am8d1;
 		hn_am12d1 * am12d1;
 		hn_am16d1 * am16d1;
+#if HN_SIZEOF_PTR > 2
 		hn_am20d1 * am20d1;
+#endif /* HN_SIZEOF_PTR > 2 */
 		hn_am8d2 * am8d2;
 		hn_am12d2 * am12d2;
 		hn_am16d2 * am16d2;
+#if HN_SIZEOF_PTR > 2
 		hn_am20d2 * am20d2;
+#endif /* HN_SIZEOF_PTR > 2 */
 		hn_am8d3 * am8d3;
 		hn_am12d3 * am12d3;
 		hn_am16d3 * am16d3;
+#if HN_SIZEOF_PTR > 2
 		hn_am20d3 * am20d3;
+#endif /* HN_SIZEOF_PTR > 2 */
 		hn_am8d4 * am8d4;
 		hn_am12d4 * am12d4;
 		hn_am16d4 * am16d4;
+#if HN_SIZEOF_PTR > 2
 		hn_am20d4 * am20d4;
+#endif /* HN_SIZEOF_PTR > 2 */
 		struct hn_file * file;
 	} data HN_PACKED;
 	union
@@ -234,19 +242,27 @@ struct hn_ct
 		struct hn_ct_i_am8d1 am8d1;
 		struct hn_ct_i_am12d1 am12d1;
 		struct hn_ct_i_am16d1 am16d1;
+#if HN_SIZEOF_PTR > 2
 		struct hn_ct_i_am20d1 am20d1;
+#endif /* HN_SIZEOF_PTR > 2 */
 		struct hn_ct_i_am8d2 am8d2;
 		struct hn_ct_i_am12d2 am12d2;
 		struct hn_ct_i_am16d2 am16d2;
+#if HN_SIZEOF_PTR > 2
 		struct hn_ct_i_am20d2 am20d2;
+#endif /* HN_SIZEOF_PTR > 2 */
 		struct hn_ct_i_am8d3 am8d3;
 		struct hn_ct_i_am12d3 am12d3;
 		struct hn_ct_i_am16d3 am16d3;
+#if HN_SIZEOF_PTR > 2
 		struct hn_ct_i_am20d3 am20d3;
+#endif /* HN_SIZEOF_PTR > 2 */
 		struct hn_ct_i_am8d4 am8d4;
 		struct hn_ct_i_am12d4 am12d4;
 		struct hn_ct_i_am16d4 am16d4;
+#if HN_SIZEOF_PTR > 2
 		struct hn_ct_i_am20d4 am20d4;
+#endif /* HN_SIZEOF_PTR > 2 */
 		struct hn_ct_i_file file;
 	} idx HN_PACKED;
 } HN_PACKED;
