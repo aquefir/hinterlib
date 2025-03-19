@@ -26,16 +26,17 @@ struct hn_log
 	/* Text prefixed to log items sent at the level "error". */
 	hn_chr prefix_err[16];
 	/* Tracks the indentation level for grouping and ungrouping. */
-	hn_u32 indent_lvl : 3;
+	hn_ubf indent_lvl : 3;
 	/* Whether to allow the high bit to be set, as it is with UTF-8.
 	 */
-	hn_u32 allow_msb : 1;
+	hn_ubf allow_msb : 1;
 	/* Whether to show log items sent at the level of "info". */
-	hn_u32 show_info : 1;
+	hn_ubf show_info : 1;
 	/* Whether to show items sent at the level of "warning". */
-	hn_u32 show_warn : 1;
+	hn_ubf show_warn : 1;
 	/* Whether to colour output using ANSI escape sequences. */
-	hn_u32 ansi_col : 1;
+	hn_ubf ansi_col : 1;
+	hn_ubf : 9;
 } HN_PACKED;
 
 /**
