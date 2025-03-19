@@ -11,7 +11,9 @@ serving as the backbone of the ongoing
 
 Originally it was named `unilib` for lack of a better name, and the 1.x
 API still reflects this with its symbol prefix `uni_`. Since version 2.0
-Hinterlib uses the prefix `hn_` instead.
+Hinterlib uses the prefix `hn_` instead. Legend has it that it documents
+our secret unrequited love for Hacker News&hellip; we can neither
+confirm nor deny that.
 
 ## Tell me more!
 
