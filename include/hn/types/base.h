@@ -133,7 +133,7 @@ toolchain (GCC or Clang).
 
 enum
 {
-	/* Denotes he "null pointer" constant: zero. */
+	/* Denotes the "null pointer" constant: zero. */
 	HN_NULL = 0
 };
 
@@ -145,6 +145,14 @@ enum hn_bl
 	/* Constant for true. */
 	HN_TRUE = 1
 };
+
+/* Bitfield type which is deliberately imprecise in size to satisfy ANSI
+ * C portability requirements (signed variant). */
+typedef signed int hn_ubf;
+
+/* Bitfield type which is deliberately imprecise in size to satisfy ANSI
+ * C portability requirements (unsigned variant). */
+typedef unsigned int hn_ubf;
 
 /* An unsigned integer sized the same as a machine address, for
  * pointers. */
@@ -186,6 +194,14 @@ typedef enum hn_bl hn_bl;
 #define TRUE ( !( FALSE ) )
 #endif
 #endif /* !defined( TRUE ) */
+
+/* Bitfield type which is deliberately imprecise in size to satisfy ANSI
+ * C portability requirements (signed variant). */
+typedef signed int sbf;
+
+/* Bitfield type which is deliberately imprecise in size to satisfy ANSI
+ * C portability requirements (unsigned variant). */
+typedef unsigned int ubf;
 
 /* An unsigned integer sized the same as a machine address, for
  * pointers. */
