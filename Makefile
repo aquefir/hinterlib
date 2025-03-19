@@ -31,6 +31,7 @@ CFILES := \
 	src/alloc.c \
 	src/conio.c \
 	src/err.c \
+	src/file.c \
 	src/memops.c
 PUBHFILES := \
 	include/hn/types/base.h \
