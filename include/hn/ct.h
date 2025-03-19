@@ -36,27 +36,27 @@ toolchain (GCC or Clang).
  * or iterators/ranges in genericised systems languages.
  */
 
-enum hn_cr_kind
+enum hn_cr_type
 {
-	HN_CT_KIND_FLAT,
-	HN_CT_KIND_AM8D1,
-	HN_CT_KIND_AM12D1,
-	HN_CT_KIND_AM16D1,
-	HN_CT_KIND_AM20D1,
-	HN_CT_KIND_AM8D2,
-	HN_CT_KIND_AM12D2,
-	HN_CT_KIND_AM16D2,
-	HN_CT_KIND_AM20D2,
-	HN_CT_KIND_AM8D3,
-	HN_CT_KIND_AM12D3,
-	HN_CT_KIND_AM16D3,
-	HN_CT_KIND_AM20D3,
-	HN_CT_KIND_AM8D4,
-	HN_CT_KIND_AM12D4,
-	HN_CT_KIND_AM16D4,
-	HN_CT_KIND_AM20D4,
-	HN_CT_KIND_FILE,
-	HN_MAX_CT_KIND
+	HN_CT_TYPE_FLAT,
+	HN_CT_TYPE_AM8D1,
+	HN_CT_TYPE_AM12D1,
+	HN_CT_TYPE_AM16D1,
+	HN_CT_TYPE_AM20D1,
+	HN_CT_TYPE_AM8D2,
+	HN_CT_TYPE_AM12D2,
+	HN_CT_TYPE_AM16D2,
+	HN_CT_TYPE_AM20D2,
+	HN_CT_TYPE_AM8D3,
+	HN_CT_TYPE_AM12D3,
+	HN_CT_TYPE_AM16D3,
+	HN_CT_TYPE_AM20D3,
+	HN_CT_TYPE_AM8D4,
+	HN_CT_TYPE_AM12D4,
+	HN_CT_TYPE_AM16D4,
+	HN_CT_TYPE_AM20D4,
+	HN_CT_TYPE_FILE,
+	HN_MAX_CT_TYPE
 };
 
 struct hn_ct_i_flat
@@ -196,9 +196,9 @@ struct hn_ct_i_file
 /* Container. */
 struct hn_ct
 {
-	/* Type of container. See `enum hn_ct_kind` for valid values.
+	/* Type of container. See `enum hn_ct_type` for valid values.
 	 */
-	hn_u32 kind : 8;
+	hn_u32 type : 8;
 	hn_u32 _reserved : 24;
 	union
 	{
