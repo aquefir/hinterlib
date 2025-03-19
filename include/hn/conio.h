@@ -38,6 +38,9 @@ void hn_wri_e( const hn_chr *, ... );
  * @param s The format string, using the ANSI C format specification.
  *        See https://en.cppreference.com/w/c/io/fprintf for details.
  * @param ... The parameters specified in the format sring, if any.
+ * @note This routine is meant for interactive terminals and the UNIX
+ *       piping that may be layered on top. For general-purpose binary
+ *       file I/O, see `<hn/file.h>` instead.
  */
 void hn_wri_f( struct hn_file *, const hn_chr *, ... );
 
@@ -66,6 +69,9 @@ void hn_wriln_e( const hn_chr *, ... );
  * @param s The format string, using the ANSI C format specification.
  *        See https://en.cppreference.com/w/c/io/fprintf for details.
  * @param ... The parameters specified in the format sring, if any.
+ * @note This routine is meant for interactive terminals and the UNIX
+ *       piping that may be layered on top. For general-purpose binary
+ *       file I/O, see `<hn/file.h>` instead.
  */
 void hn_wriln_f( struct hn_file *, const hn_chr *, ... );
 
@@ -92,6 +98,9 @@ hn_ptri hn_readn_i( hn_chr *, hn_ptri );
  * @param count The number of octets to read from the file.
  * @returns The number of octets actually read into `buf`, which may be
  *          anywhere from 0 to `count`.
+ * @note This routine is meant for interactive terminals and the UNIX
+ *       piping that may be layered on top. For general-purpose binary
+ *       file I/O, see `<hn/file.h>` instead.
  * @note Check EOF and error conditions whenever this routine returns
  *       less than `count` using `hn_feof()` and `hn_ferror()`,
  *       respectively.
@@ -135,6 +144,9 @@ hn_ptri hn_readln_i( hn_chr *, hn_ptri );
  *       it, along with EOF and error checking as in the `hn_readn_*()`
  *       routines suffice to fully inform consumers about the program
  *       state.
+ * @note This routine is meant for interactive terminals and the UNIX
+ *       piping that may be layered on top. For general-purpose binary
+ *       file I/O, see `<hn/file.h>` instead.
  * @note Check EOF and error conditions whenever this routine returns
  *       less than `count` and `buf` doesn't end with a newline using
  *       `hn_feof()` and `hn_ferror()`, respectively.
