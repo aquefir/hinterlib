@@ -9,6 +9,8 @@
 #ifndef INC_API__HN_LOG_H
 #define INC_API__HN_LOG_H
 
+#if !defined( _CFGOPT_NOSTDIO )
+
 #include "file.h"
 #include "types/char.h"
 #include "types/int.h"
@@ -83,5 +85,7 @@ void hn_log_warn( struct hn_log *, const chr *, ... );
  * @param ... The parameters specified in the format sring, if any.
  */
 void hn_log_err( struct hn_log *, const chr *, ... );
+
+#endif /* !defined( _CFGOPT_NOSTDIO ) */
 
 #endif /* INC_API__HN_LOG_H */

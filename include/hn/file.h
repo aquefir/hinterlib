@@ -38,6 +38,7 @@ struct hn_fmode
 	hn_u32 _padding : 29;
 } HN_PACKED;
 
+#if !defined( _CFGOPT_NOSTDIO )
 /* Return the file handle for standard input, or `stdin`. */
 struct hn_file * hn_fstdin( void );
 
@@ -46,6 +47,7 @@ struct hn_file * hn_fstdout( void );
 
 /* Return the file handle for standard error, or `stderr`. */
 struct hn_file * hn_fstderr( void );
+#endif /* !defined( _CFGOPT_NOSTDIO ) */
 
 /**
  *
