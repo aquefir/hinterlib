@@ -15,16 +15,21 @@
 #include "types/char.h"
 #include "types/int.h"
 
+enum
+{
+	HN_LOG_PREFIX_SZ = 16
+};
+
 struct hn_log
 {
 	/* File handle the log items are sent to using standard I/O. */
 	struct hn_file * f;
 	/* Text prefixed to log items sent at the level of "info". */
-	hn_chr prefix_info[16];
+	hn_chr prefix_info[HN_LOG_PREFIX_SZ];
 	/* Text prefixed to log items sent at the level of "warning". */
-	hn_chr prefix_warn[16];
+	hn_chr prefix_warn[HN_LOG_PREFIX_SZ];
 	/* Text prefixed to log items sent at the level "error". */
-	hn_chr prefix_err[16];
+	hn_chr prefix_err[HN_LOG_PREFIX_SZ];
 	/* Tracks the indentation level for grouping and ungrouping. */
 	hn_ubf indent_lvl : 3;
 	/* Whether to allow the high bit to be set, as it is with UTF-8.
