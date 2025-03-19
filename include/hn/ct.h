@@ -251,4 +251,14 @@ struct hn_ct
 	} idx HN_PACKED;
 } HN_PACKED;
 
+hn_bl hn_ct_i_seek16( struct hn_ct *, hn_s16 );
+
+#if defined( _SYNDEF_HAVE_I32 )
+hn_bl hn_ct_i_seek32( struct hn_ct *, hn_s32 );
+#endif /* defined( _SYNDEF_HAVE_I32 ) */
+
+#if defined( _SYNDEF_HAVE_I64 )
+hn_bl hn_ct_i_seek64( struct hn_ct *, hn_s64 );
+#endif /* defined( _SYNDEF_HAVE_I64 ) */
+
 #endif /* INC_API__HN_CT_H */
