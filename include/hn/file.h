@@ -102,7 +102,8 @@ hn_bl hn_fflush( struct hn_file * );
  *
  * @brief Change the internal buffer used for a file handle's I/O.
  * @param f File handle to change the internal buffer of.
- * @param buf New internal buffer for the file handle to use.
+ * @param buf New internal buffer for the file handle to use. If this is
+ *        a `NULL` pointer, buffering is turned off.
  * @returns `HN_FALSE` if successful, `HN_TRUE` if not.
  * @note `hn_ferror()` may have useful information if this routine
  *       fails.
