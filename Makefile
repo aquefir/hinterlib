@@ -30,6 +30,7 @@ SFILES.GBA := \
 CFILES := \
 	src/alloc.c \
 	src/conio.c \
+	src/err.c \
 	src/memops.c
 PUBHFILES := \
 	include/hn/types/base.h \
