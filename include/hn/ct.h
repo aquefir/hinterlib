@@ -215,9 +215,9 @@ struct hn_ct
 	/* Type of container. See `enum hn_ct_type` for valid values.
 	 */
 	hn_ubf type : 8;
-	/* Equivalent to `<stdio.h>`'s EOF notion. This also applies if an
-	 * iteration happening in reverse gets stopped at the beginning
-	 * of the container. */
+	/* Equivalent to `<stdio.h>`'s EOF notion. This also applies if
+	 * an iteration happening in reverse gets stopped at the
+	 * beginning of the container. */
 	hn_ubf reach_end : 1;
 	/* Equivalent to `<stdio.h>`'s `ferror()` status. */
 	hn_ubf outside_err : 1;
