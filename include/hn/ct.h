@@ -66,58 +66,58 @@ struct hn_ct_i_flat
 
 struct hn_ct_i_am8d1
 {
-	hn_u32 n : 8;
-	hn_u32 _padding1 : 24;
+	hn_ubf n : 8;
+	hn_ubf : 24;
 	hn_u16 idx[1];
-	hn_u16 _padding2[3];
+	hn_u16 _padding[3];
 } HN_PACKED;
 
 struct hn_ct_i_am12d1
 {
-	hn_u32 n : 12;
-	hn_u32 _padding1 : 20;
+	hn_ubf n : 12;
+	hn_ubf : 20;
 	hn_u16 idx[1];
-	hn_u16 _padding2[3];
+	hn_u16 _padding[3];
 } HN_PACKED;
 
 struct hn_ct_i_am16d1
 {
-	hn_u32 n : 16;
-	hn_u32 _padding1 : 16;
+	hn_ubf n : 16;
+	hn_ubf : 16;
 	hn_u16 idx[1];
-	hn_u16 _padding2[3];
+	hn_u16 _padding[3];
 } HN_PACKED;
 
 struct hn_ct_i_am20d1
 {
-	hn_u32 n : 20;
-	hn_u32 _padding1 : 12;
+	hn_ubf n : 20;
+	hn_ubf : 12;
 	hn_u16 idx[1];
-	hn_u16 _padding2[3];
+	hn_u16 _padding[3];
 } HN_PACKED;
 
 struct hn_ct_i_am8d2
 {
-	hn_u32 n : 8;
-	hn_u32 _padding1 : 24;
+	hn_ubf n : 8;
+	hn_ubf : 24;
 	hn_u16 idx[2];
-	hn_u16 _padding2[2];
+	hn_u16 _padding[2];
 } HN_PACKED;
 
 struct hn_ct_i_am12d2
 {
-	hn_u32 n : 12;
-	hn_u32 _padding1 : 20;
+	hn_ubf n : 12;
+	hn_ubf : 20;
 	hn_u16 idx[2];
-	hn_u16 _padding2[2];
+	hn_u16 _padding[2];
 } HN_PACKED;
 
 struct hn_ct_i_am16d2
 {
-	hn_u32 n : 16;
-	hn_u32 _padding1 : 16;
+	hn_ubf n : 16;
+	hn_ubf : 16;
 	hn_u16 idx[2];
-	hn_u16 _padding2[2];
+	hn_u16 _padding[2];
 } HN_PACKED;
 
 struct hn_ct_i_am20d2
@@ -125,66 +125,66 @@ struct hn_ct_i_am20d2
 	hn_u32 n : 20;
 	hn_u32 _padding1 : 12;
 	hn_u16 idx[2];
-	hn_u16 _padding2[2];
+	hn_u16 _padding[2];
 } HN_PACKED;
 
 struct hn_ct_i_am8d3
 {
-	hn_u32 n : 8;
-	hn_u32 _padding1 : 24;
+	hn_ubf n : 8;
+	hn_ubf : 24;
 	hn_u16 idx[3];
-	hn_u16 _padding2;
+	hn_u16 _padding;
 } HN_PACKED;
 
 struct hn_ct_i_am12d3
 {
-	hn_u32 n : 12;
-	hn_u32 _padding1 : 20;
+	hn_ubf n : 12;
+	hn_ubf : 20;
 	hn_u16 idx[3];
-	hn_u16 _padding2;
+	hn_u16 _padding;
 } HN_PACKED;
 
 struct hn_ct_i_am16d3
 {
-	hn_u32 n : 16;
-	hn_u32 _padding1 : 16;
+	hn_ubf n : 16;
+	hn_ubf : 16;
 	hn_u16 idx[3];
-	hn_u16 _padding2;
+	hn_u16 _padding;
 } HN_PACKED;
 
 struct hn_ct_i_am20d3
 {
-	hn_u32 n : 20;
-	hn_u32 _padding1 : 12;
+	hn_ubf n : 20;
+	hn_ubf : 12;
 	hn_u16 idx[3];
-	hn_u16 _padding2;
+	hn_u16 _padding;
 } HN_PACKED;
 
 struct hn_ct_i_am8d4
 {
-	hn_u32 n : 8;
-	hn_u32 _padding : 24;
+	hn_ubf n : 8;
+	hn_ubf _padding : 24;
 	hn_u16 idx[4];
 } HN_PACKED;
 
 struct hn_ct_i_am12d4
 {
-	hn_u32 n : 12;
-	hn_u32 _padding : 20;
+	hn_ubf n : 12;
+	hn_ubf _padding : 20;
 	hn_u16 idx[4];
 } HN_PACKED;
 
 struct hn_ct_i_am16d4
 {
-	hn_u32 n : 16;
-	hn_u32 _padding : 16;
+	hn_ubf n : 16;
+	hn_ubf _padding : 16;
 	hn_u16 idx[4];
 } HN_PACKED;
 
 struct hn_ct_i_am20d4
 {
-	hn_u32 n : 20;
-	hn_u32 _padding : 12;
+	hn_ubf n : 20;
+	hn_ubf _padding : 12;
 	hn_u16 idx[4];
 } HN_PACKED;
 
