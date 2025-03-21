@@ -30,6 +30,7 @@ SFILES.GBA := \
 CFILES := \
 	src/alloc.c \
 	src/conio.c \
+	src/ct.c \
 	src/err.c \
 	src/file.c \
 	src/log.c \
