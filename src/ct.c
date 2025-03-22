@@ -11,8 +11,7 @@
 #include <hn/checked.h>
 #include <hn/err.h>
 
-const u8 ct_bits[HN_MAX_CT_TYPE] = {
-	0,
+const u8 ct_bits[HN_MAX_CT_TYPE] = { 0,
 	8,
 	12,
 	16,
@@ -29,8 +28,7 @@ const u8 ct_bits[HN_MAX_CT_TYPE] = {
 	12,
 	16,
 	20,
-	0
-};
+	0 };
 
 hn_bl hn_ct_init( hn_u16 sz[4],
 	enum hn_ct_type type,
