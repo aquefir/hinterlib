@@ -59,6 +59,15 @@ enum hn_ct_type
 	HN_MAX_CT_TYPE
 };
 
+enum hn_ct_file_type
+{
+	HN_CT_FILE_TYPE_NORMAL,
+	HN_CT_FILE_TYPE_STDIN,
+	HN_CT_FILE_TYPE_STDOUT,
+	HN_CT_FILE_TYPE_STDERR,
+	HN_MAX_CT_FILE_TYPE
+};
+
 struct hn_ct_i_flat
 {
 	hn_ptri n;
@@ -209,6 +218,17 @@ struct hn_ct_i_file
 	struct hn_fpos * pos;
 } HN_PACKED;
 
+struct hn_ct_file
+{
+	hn_ubf type : 2;
+	hn_ubf : 14;
+	hn_ubf : 16;
+	hn_ubf : 16;
+	hn_ubf : 16;
+	/* Reference to a char[HN_PATHMAX] for the file path. */
+	hn_chr (*path)[HN_PATHMAX + 1];
+} HN_PACKED;
+
 /* Container. */
 struct hn_ct
 {
@@ -252,7 +272,7 @@ struct hn_ct
 #if HN_SIZEOF_PTR > 2
 		hn_am20d4 * am20d4;
 #endif /* HN_SIZEOF_PTR > 2 */
-		struct hn_file * file;
+		struct hn_ct_file * file;
 	} data HN_PACKED;
 	union
 	{
