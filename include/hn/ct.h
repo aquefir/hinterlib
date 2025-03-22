@@ -36,7 +36,7 @@ toolchain (GCC or Clang).
  * or iterators/ranges in genericised systems languages.
  */
 
-enum hn_cr_type
+enum hn_ct_type
 {
 	HN_CT_TYPE_FLAT,
 	HN_CT_TYPE_AM8D1,
@@ -285,9 +285,9 @@ struct hn_ct
 	} idx HN_PACKED;
 } HN_PACKED;
 
-hn_bl hn_ct_init( hn_u16[4], enum hn_cr_type, hn_ptri, struct hn_ct * );
+hn_bl hn_ct_init( hn_u16[4], enum hn_ct_type, hn_ptri, struct hn_ct * );
 
-hn_bl hn_ct_make( hn_u16[4], enum hn_cr_type, struct hn_ct ** );
+hn_bl hn_ct_make( hn_u16[4], enum hn_ct_type, struct hn_ct ** );
 
 hn_bl hn_ct_readu8( struct hn_ct *, hn_u8 * );
 
