@@ -66,7 +66,7 @@ hn_bl hn_ct_init( hn_u16 sz[4],
 			HN_CHK_RETV( tst == HN_FALSE, HN_TRUE );
 		}
 
-		tmp += sizeof( struct hn_ct );
+		tmp += sizeof( *ct );
 
 		HN_CHK_RETV( tmp <= ct_sz, HN_TRUE );
 	}
