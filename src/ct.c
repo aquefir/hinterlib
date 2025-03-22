@@ -11,46 +11,36 @@
 #include <hn/checked.h>
 #include <hn/err.h>
 
-static u8 bitsfromtype( enum hn_cr_type type )
-{
-	switch( type )
-	{
-	case HN_CT_TYPE_AM8D1:
-	case HN_CT_TYPE_AM8D2:
-	case HN_CT_TYPE_AM8D3:
-	case HN_CT_TYPE_AM8D4:
-		return 8;
-	case HN_CT_TYPE_AM12D1:
-	case HN_CT_TYPE_AM12D2:
-	case HN_CT_TYPE_AM12D3:
-	case HN_CT_TYPE_AM12D4:
-		return 12;
-	case HN_CT_TYPE_AM16D1:
-	case HN_CT_TYPE_AM16D2:
-	case HN_CT_TYPE_AM16D3:
-	case HN_CT_TYPE_AM16D4:
-		return 16;
-	case HN_CT_TYPE_AM20D1:
-	case HN_CT_TYPE_AM20D2:
-	case HN_CT_TYPE_AM20D3:
-	case HN_CT_TYPE_AM20D4:
-		return 20;
-	case HN_CT_TYPE_FLAT:
-	case HN_CT_TYPE_FILE:
-	default:
-		return 0;
-	}
-}
+const u8 ct_bits[HN_MAX_CT_TYPE] = {
+	0,
+	8,
+	12,
+	16,
+	20,
+	8,
+	12,
+	16,
+	20,
+	8,
+	12,
+	16,
+	20,
+	8,
+	12,
+	16,
+	20,
+	0
+};
 
 hn_bl hn_ct_init( hn_u16 sz[4],
-	enum hn_cr_type type,
+	enum hn_ct_type type,
 	hn_ptri ct_sz,
 	struct hn_ct * ct )
 {
 	if( type != HN_CT_TYPE_FILE )
 	{
+		const ptri base_sz = 1 << (ptri)ct_bits[type];
 		ptri tmp;
-		const ptri base_sz = 1 << (ptri)bitsfromtype( type );
 		bl tst;
 
 		/* this approach is for flat memory model machines with
