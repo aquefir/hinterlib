@@ -13,6 +13,13 @@
 #include "types/char.h"
 #include "types/int.h"
 
+enum
+{
+	/* Maximum number of octets (not characters!) in a file path.
+	 * This is 64 KiB - 1 to hold the NUL terminus in 64 KiB. */
+	HN_PATHMAX = 65535
+};
+
 /* Specify the origin of a file handle seek operation. */
 enum hn_forigin
 {
