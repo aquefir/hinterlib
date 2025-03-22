@@ -37,6 +37,8 @@ hn_bl hn_ct_init( hn_u16 sz[4],
 	hn_ptri ct_sz,
 	struct hn_ct * ct )
 {
+	HN_CHK_RETV( type < HN_MAX_CT_TYPE, HN_TRUE );
+
 	if( type != HN_CT_TYPE_FILE )
 	{
 		const ptri base_sz = 1 << (ptri)ct_bits[type];
