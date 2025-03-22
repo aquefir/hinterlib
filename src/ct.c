@@ -66,8 +66,14 @@ hn_bl hn_ct_init( hn_u16 sz[4],
 		HN_CHK_RETV( tst == HN_FALSE, HN_TRUE );
 		tst = HN_CHECKED_MUL( (ptri)sz[3], tmp, &tmp );
 		HN_CHK_RETV( tst == HN_FALSE, HN_TRUE );
-		tst = HN_CHECKED_MUL( (ptri)base_sz, tmp, &tmp );
-		HN_CHK_RETV( tst == HN_FALSE, HN_TRUE );
+
+		/* save the trouble on flat backings */
+		if( base_sz > 1 )
+		{
+			tst = HN_CHECKED_MUL(
+				(ptri)base_sz, tmp, &tmp );
+			HN_CHK_RETV( tst == HN_FALSE, HN_TRUE );
+		}
 
 		tmp += sizeof( struct hn_ct );
 
