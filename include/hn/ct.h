@@ -226,7 +226,7 @@ struct hn_ct_file
 	hn_ubf : 16;
 	hn_ubf : 16;
 	/* Reference to a char[HN_PATHMAX] for the file path. */
-	hn_chr (*path)[HN_PATHMAX + 1];
+	hn_chr ( *path )[HN_PATHMAX + 1];
 } HN_PACKED;
 
 /* Container. */
