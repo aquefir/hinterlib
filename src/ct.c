@@ -14,7 +14,7 @@
 
 typedef void ( *init_subroutine )( struct hn_ct * );
 
-const init_subroutine init_sub[HN_MAX_CT_TYPE] = { init_flat,
+static const init_subroutine init_sub[HN_MAX_CT_TYPE] = { init_flat,
 	init_am8d1,
 	init_am12d1,
 	init_am16d1,
@@ -33,7 +33,7 @@ const init_subroutine init_sub[HN_MAX_CT_TYPE] = { init_flat,
 	init_am20d4,
 	init_file };
 
-const u8 ct_bits[HN_MAX_CT_TYPE] = { 0,
+static const u8 ct_bits[HN_MAX_CT_TYPE] = { 0,
 	8,
 	12,
 	16,
@@ -52,44 +52,44 @@ const u8 ct_bits[HN_MAX_CT_TYPE] = { 0,
 	20,
 	0 };
 
-void init_flat( struct hn_ct * ct )
+static void init_flat( struct hn_ct * ct )
 {
 	ct->data.flat = (u8 *)ct + sizeof( *ct );
 }
 
-void init_am8d1( struct hn_ct * ct ) {}
+static void init_am8d1( struct hn_ct * ct ) {}
 
-void init_am12d1( struct hn_ct * ct ) {}
+static void init_am12d1( struct hn_ct * ct ) {}
 
-void init_am16d1( struct hn_ct * ct ) {}
+static void init_am16d1( struct hn_ct * ct ) {}
 
-void init_am20d1( struct hn_ct * ct ) {}
+static void init_am20d1( struct hn_ct * ct ) {}
 
-void init_am8d2( struct hn_ct * ct ) {}
+static void init_am8d2( struct hn_ct * ct ) {}
 
-void init_am12d2( struct hn_ct * ct ) {}
+static void init_am12d2( struct hn_ct * ct ) {}
 
-void init_am16d2( struct hn_ct * ct ) {}
+static void init_am16d2( struct hn_ct * ct ) {}
 
-void init_am20d2( struct hn_ct * ct ) {}
+static void init_am20d2( struct hn_ct * ct ) {}
 
-void init_am8d3( struct hn_ct * ct ) {}
+static void init_am8d3( struct hn_ct * ct ) {}
 
-void init_am12d3( struct hn_ct * ct ) {}
+static void init_am12d3( struct hn_ct * ct ) {}
 
-void init_am16d3( struct hn_ct * ct ) {}
+static void init_am16d3( struct hn_ct * ct ) {}
 
-void init_am20d3( struct hn_ct * ct ) {}
+static void init_am20d3( struct hn_ct * ct ) {}
 
-void init_am8d4( struct hn_ct * ct ) {}
+static void init_am8d4( struct hn_ct * ct ) {}
 
-void init_am12d4( struct hn_ct * ct ) {}
+static void init_am12d4( struct hn_ct * ct ) {}
 
-void init_am16d4( struct hn_ct * ct ) {}
+static void init_am16d4( struct hn_ct * ct ) {}
 
-void init_am20d4( struct hn_ct * ct ) {}
+static void init_am20d4( struct hn_ct * ct ) {}
 
-void init_file( struct hn_ct * ct ) {}
+static void init_file( struct hn_ct * ct ) {}
 
 hn_bl hn_ct_init( hn_u16 sz[4],
 	enum hn_ct_type type,
