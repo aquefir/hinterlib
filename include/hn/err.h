@@ -473,6 +473,17 @@ enum
 	HN_ERR_ID_EWOULDBLOCK = HN_ERR_ID_EAGAIN
 };
 
+struct hn_err
+{
+	/* Distinguish between errors and mere information. */
+	hn_ubf fatal : 1;
+	/* See `enum hn_err_id`. Matched to Linux `<errno.h>`. */
+	hn_ubf id : 8;
+	hn_ubf : 7;
+	/* For downstream to define and build string tables for. */
+	hn_ubf xid : 16;
+} HN_TYPELESS HN_PACKED;
+
 /**
  *
  * @brief Terminate program execution immediately.
