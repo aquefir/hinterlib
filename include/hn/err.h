@@ -461,7 +461,7 @@ enum hn_err_id
 	/* Operation not possible due to RF-kill */
 	HN_ERR_ID_ERFKILL = 132,
 	/* Maximum conventional error ID, exclusive */
-	HN_MAX_ERR_ID     = 133,
+	HN_MAX_ERR_ID = 133,
 	/* Extended error ID in use, see `.xid` */
 	HN_ERR_ID_XTENDED = 255
 };
