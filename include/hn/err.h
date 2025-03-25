@@ -262,7 +262,6 @@ enum hn_err_id
 	HN_ERR_ID_EDOM = 33,
 	/* Math result not representable */
 	HN_ERR_ID_ERANGE = 34,
-
 	/* Resource deadlock would occur */
 	HN_ERR_ID_EDEADLK = 35,
 	/* File name too long */
@@ -461,16 +460,19 @@ enum hn_err_id
 
 	/* Operation not possible due to RF-kill */
 	HN_ERR_ID_ERFKILL = 132,
-	HN_MAX_ERR_ID     = 254,
-	HN_ERR_ID_XTENDED = 255
+	/* Maximum conventional error ID, exclusive */
+	HN_MAX_ERR_ID     = 255
 };
 
-/* supplemental for enum hn_err_id since there are duplicates */
+/* supplemental for `enum hn_err_id` since there are duplicates */
 enum
 {
+	/* Resource deadlock would occur */
 	HN_ERR_ID_EDEADLOCK = HN_ERR_ID_EDEADLK,
 	/* Operation would block */
-	HN_ERR_ID_EWOULDBLOCK = HN_ERR_ID_EAGAIN
+	HN_ERR_ID_EWOULDBLOCK = HN_ERR_ID_EAGAIN,
+	/* Extended error ID in use, see `.xid` */
+	HN_ERR_ID_XTENDED = HN_MAX_ERR_ID
 };
 
 struct hn_err
