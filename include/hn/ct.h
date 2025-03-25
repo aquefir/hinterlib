@@ -363,10 +363,6 @@ hn_bl hn_ct_seek32( struct hn_ct *, hn_s32 );
 hn_bl hn_ct_seek64( struct hn_ct *, hn_s64 );
 #endif /* defined( _SYNDEF_HAVE_I64 ) */
 
-hn_bl hn_ct_extend( struct hn_ct *, hn_ptri );
-
-hn_bl hn_ct_shrink( struct hn_ct *, hn_ptri );
-
 void hn_ct_copy( struct hn_ct *, struct hn_ct * );
 
 #endif /* INC_API__HN_CT_H */
