@@ -461,7 +461,9 @@ enum hn_err_id
 	/* Operation not possible due to RF-kill */
 	HN_ERR_ID_ERFKILL = 132,
 	/* Maximum conventional error ID, exclusive */
-	HN_MAX_ERR_ID     = 255
+	HN_MAX_ERR_ID     = 133,
+	/* Extended error ID in use, see `.xid` */
+	HN_ERR_ID_XTENDED = 255
 };
 
 /* supplemental for `enum hn_err_id` since there are duplicates */
@@ -471,8 +473,6 @@ enum
 	HN_ERR_ID_EDEADLOCK = HN_ERR_ID_EDEADLK,
 	/* Operation would block */
 	HN_ERR_ID_EWOULDBLOCK = HN_ERR_ID_EAGAIN,
-	/* Extended error ID in use, see `.xid` */
-	HN_ERR_ID_XTENDED = HN_MAX_ERR_ID
 };
 
 struct hn_err
