@@ -486,6 +486,8 @@ struct hn_err
 	hn_ubf xid : 16;
 } HN_TYPELESS HN_PACKED;
 
+extern const hn_chr * const hn_err_id_strings[HN_MAX_ERR_ID];
+
 /**
  *
  * @brief Terminate program execution immediately.
