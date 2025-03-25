@@ -22,7 +22,7 @@
  *        See https://en.cppreference.com/w/c/io/fprintf for details.
  * @param ... The parameters specified in the format sring, if any.
  */
-void hn_wri_o( const hn_chr *, ... );
+HN_API void hn_wri_o( const hn_chr *, ... );
 
 /**
  *
@@ -31,7 +31,7 @@ void hn_wri_o( const hn_chr *, ... );
  *        See https://en.cppreference.com/w/c/io/fprintf for details.
  * @param ... The parameters specified in the format sring, if any.
  */
-void hn_wri_e( const hn_chr *, ... );
+HN_API void hn_wri_e( const hn_chr *, ... );
 
 /**
  *
@@ -44,7 +44,7 @@ void hn_wri_e( const hn_chr *, ... );
  *       piping that may be layered on top. For general-purpose binary
  *       file I/O, see `<hn/file.h>` instead.
  */
-void hn_wri_f( struct hn_file *, const hn_chr *, ... );
+HN_API void hn_wri_f( struct hn_file *, const hn_chr *, ... );
 
 /**
  *
@@ -53,7 +53,7 @@ void hn_wri_f( struct hn_file *, const hn_chr *, ... );
  *        See https://en.cppreference.com/w/c/io/fprintf for details.
  * @param ... The parameters specified in the format sring, if any.
  */
-void hn_wriln_o( const hn_chr *, ... );
+HN_API void hn_wriln_o( const hn_chr *, ... );
 
 /**
  *
@@ -62,7 +62,7 @@ void hn_wriln_o( const hn_chr *, ... );
  *        See https://en.cppreference.com/w/c/io/fprintf for details.
  * @param ... The parameters specified in the format sring, if any.
  */
-void hn_wriln_e( const hn_chr *, ... );
+HN_API void hn_wriln_e( const hn_chr *, ... );
 
 /**
  *
@@ -75,7 +75,7 @@ void hn_wriln_e( const hn_chr *, ... );
  *       piping that may be layered on top. For general-purpose binary
  *       file I/O, see `<hn/file.h>` instead.
  */
-void hn_wriln_f( struct hn_file *, const hn_chr *, ... );
+HN_API void hn_wriln_f( struct hn_file *, const hn_chr *, ... );
 
 /**
  *
@@ -89,7 +89,7 @@ void hn_wriln_f( struct hn_file *, const hn_chr *, ... );
  *       less than `count` using `hn_feof()` and `hn_ferror()`,
  *       respectively.
  */
-hn_ptri hn_readn_i( hn_chr *, hn_ptri );
+HN_API hn_ptri hn_readn_i( hn_chr *, hn_ptri );
 
 /**
  *
@@ -107,7 +107,7 @@ hn_ptri hn_readn_i( hn_chr *, hn_ptri );
  *       less than `count` using `hn_feof()` and `hn_ferror()`,
  *       respectively.
  */
-hn_ptri hn_readn_f( struct hn_file *, hn_chr *, hn_ptri );
+HN_API hn_ptri hn_readn_f( struct hn_file *, hn_chr *, hn_ptri );
 
 /**
  *
@@ -128,7 +128,7 @@ hn_ptri hn_readn_f( struct hn_file *, hn_chr *, hn_ptri );
  *       less than `count` and `buf` doesn't end with a newline using
  *       `hn_feof()` and `hn_ferror()`, respectively.
  */
-hn_ptri hn_readln_i( hn_chr *, hn_ptri );
+HN_API hn_ptri hn_readln_i( hn_chr *, hn_ptri );
 
 /**
  *
@@ -153,7 +153,7 @@ hn_ptri hn_readln_i( hn_chr *, hn_ptri );
  *       less than `count` and `buf` doesn't end with a newline using
  *       `hn_feof()` and `hn_ferror()`, respectively.
  */
-hn_ptri hn_readln_f( struct hn_file *, hn_chr *, hn_ptri );
+HN_API hn_ptri hn_readln_f( struct hn_file *, hn_chr *, hn_ptri );
 
 #endif /* !defined( _CFGOPT_NOSTDIO ) */
 

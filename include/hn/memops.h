@@ -27,7 +27,7 @@ toolchain (GCC or Clang).
  * @param buf_sz The length of the buffer, denominated in octets.
  * @param buf The pointer to the memory buffer.
  */
-void hn_memset( hn_u8, hn_ptri, void * );
+HN_API void hn_memset( hn_u8, hn_ptri, void * );
 
 /**
  *
@@ -38,7 +38,7 @@ void hn_memset( hn_u8, hn_ptri, void * );
  * @param dst The pointer to the destination memory buffer, the
  *        contents of which must be at least as large as @param src_sz.
  */
-void hn_memcpy( void *, hn_ptri, void * );
+HN_API void hn_memcpy( void *, hn_ptri, void * );
 
 /**
  *
@@ -51,6 +51,6 @@ void hn_memcpy( void *, hn_ptri, void * );
  * @note Both buffers must be the same size, as inequality can be
  *       inferred without deep comparison if they differ.
  */
-hn_bl hn_memequ( void *, hn_ptri, void * );
+HN_API hn_bl hn_memequ( void *, hn_ptri, void * );
 
 #endif /* INC_API__HN_MEMOPS_H */

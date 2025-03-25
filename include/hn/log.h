@@ -52,7 +52,7 @@ struct hn_log
  *          indent levels has already been reached (7) or if the logger
  *          context pointer provided is NULL.
  */
-hn_bl hn_log_grp( struct hn_log * );
+HN_API hn_bl hn_log_grp( struct hn_log * );
 
 /**
  *
@@ -62,7 +62,7 @@ hn_bl hn_log_grp( struct hn_log * );
  *          indent levels is already at zero (0) or if the logger
  *          context pointer provided is NULL.
  */
-hn_bl hn_log_ungrp( struct hn_log * );
+HN_API hn_bl hn_log_ungrp( struct hn_log * );
 
 /**
  *
@@ -72,7 +72,7 @@ hn_bl hn_log_ungrp( struct hn_log * );
  *        See https://en.cppreference.com/w/c/io/fprintf for details.
  * @param ... The parameters specified in the format sring, if any.
  */
-void hn_log_info( struct hn_log *, const chr *, ... );
+HN_API void hn_log_info( struct hn_log *, const chr *, ... );
 
 /**
  *
@@ -82,7 +82,7 @@ void hn_log_info( struct hn_log *, const chr *, ... );
  *        See https://en.cppreference.com/w/c/io/fprintf for details.
  * @param ... The parameters specified in the format sring, if any.
  */
-void hn_log_warn( struct hn_log *, const chr *, ... );
+HN_API void hn_log_warn( struct hn_log *, const chr *, ... );
 
 /**
  *
@@ -92,7 +92,7 @@ void hn_log_warn( struct hn_log *, const chr *, ... );
  *        See https://en.cppreference.com/w/c/io/fprintf for details.
  * @param ... The parameters specified in the format sring, if any.
  */
-void hn_log_err( struct hn_log *, const chr *, ... );
+HN_API void hn_log_err( struct hn_log *, const chr *, ... );
 
 #endif /* !defined( _CFGOPT_NOSTDIO ) */
 

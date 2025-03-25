@@ -48,13 +48,13 @@ struct hn_fmode
 
 #if !defined( _CFGOPT_NOSTDIO )
 /* Return the file handle for standard input, or `stdin`. */
-struct hn_file * hn_fstdin( void );
+HN_API struct hn_file * hn_fstdin( void );
 
 /* Return the file handle for standard output, or `stdout`. */
-struct hn_file * hn_fstdout( void );
+HN_API struct hn_file * hn_fstdout( void );
 
 /* Return the file handle for standard error, or `stderr`. */
-struct hn_file * hn_fstderr( void );
+HN_API struct hn_file * hn_fstderr( void );
 #endif /* !defined( _CFGOPT_NOSTDIO ) */
 
 /**
@@ -66,7 +66,7 @@ struct hn_file * hn_fstderr( void );
  * @note `hn_ferror()` may have useful information if this routine
  *       fails.
  */
-struct hn_file * hn_fopen( const hn_chr *, struct hn_fmode );
+HN_API struct hn_file * hn_fopen( const hn_chr *, struct hn_fmode );
 
 /**
  *
@@ -82,7 +82,7 @@ struct hn_file * hn_fopen( const hn_chr *, struct hn_fmode );
  *       by parameter is no longer valid and should be discarded. It
  *       should also not be flushed or closed by the caller.
  */
-struct hn_file * hn_freopen(
+HN_API struct hn_file * hn_freopen(
 	const hn_chr *, struct hn_fmode, struct hn_file * );
 
 /**
@@ -93,7 +93,7 @@ struct hn_file * hn_freopen(
  * @note `hn_ferror()` may have useful information if this routine
  *       fails.
  */
-hn_bl hn_fclose( struct hn_file * );
+HN_API hn_bl hn_fclose( struct hn_file * );
 
 /**
  *
@@ -103,7 +103,7 @@ hn_bl hn_fclose( struct hn_file * );
  * @note `hn_ferror()` may have useful information if this routine
  *       fails.
  */
-hn_bl hn_fflush( struct hn_file * );
+HN_API hn_bl hn_fflush( struct hn_file * );
 
 /**
  *
@@ -117,11 +117,11 @@ hn_bl hn_fflush( struct hn_file * );
  * @note To properly allocate a sufficiently sized internal buffer,
  *       first call `hn_fgetbufsz()`.
  */
-hn_bl hn_fsetbuf( struct hn_file *, hn_u8 * );
+HN_API hn_bl hn_fsetbuf( struct hn_file *, hn_u8 * );
 
 /* Returns the size of an internal stdio buffer, denominated in octets.
  */
-hn_ptri hn_fgetbufsz( void );
+HN_API hn_ptri hn_fgetbufsz( void );
 
 /**
  *
@@ -135,7 +135,7 @@ hn_ptri hn_fgetbufsz( void );
  *       less than `buf_sz` using `hn_feof()` and `hn_ferror()`,
  *       respectively.
  */
-hn_ptri hn_fread( hn_u8 *, hn_ptri, struct hn_file * );
+HN_API hn_ptri hn_fread( hn_u8 *, hn_ptri, struct hn_file * );
 
 /**
  *
@@ -149,7 +149,7 @@ hn_ptri hn_fread( hn_u8 *, hn_ptri, struct hn_file * );
  *       less than `buf_sz` using `hn_feof()` and `hn_ferror()`,
  *       respectively.
  */
-hn_ptri hn_fwrite( hn_u8 *, hn_ptri, struct hn_file * );
+HN_API hn_ptri hn_fwrite( hn_u8 *, hn_ptri, struct hn_file * );
 
 /**
  *
@@ -159,7 +159,7 @@ hn_ptri hn_fwrite( hn_u8 *, hn_ptri, struct hn_file * );
  * @note `hn_ferror()` may have useful information if this routine
  *       fails.
  */
-struct hn_fpos * hn_fgetpos( struct hn_file * );
+HN_API struct hn_fpos * hn_fgetpos( struct hn_file * );
 
 /**
  *
@@ -170,7 +170,7 @@ struct hn_fpos * hn_fgetpos( struct hn_file * );
  * @note `hn_ferror()` may have useful information if this routine
  *       fails.
  */
-hn_bl hn_fsetpos( struct hn_fpos *, struct hn_file * );
+HN_API hn_bl hn_fsetpos( struct hn_fpos *, struct hn_file * );
 
 /**
  *
@@ -182,7 +182,7 @@ hn_bl hn_fsetpos( struct hn_fpos *, struct hn_file * );
  * @note `hn_ferror()` may have useful information if this routine
  *       fails.
  */
-hn_bl hn_fseek16( struct hn_file *, hn_s16, enum hn_forigin );
+HN_API hn_bl hn_fseek16( struct hn_file *, hn_s16, enum hn_forigin );
 
 #if defined( _SYNDEF_HAVE_I32 )
 
@@ -196,7 +196,7 @@ hn_bl hn_fseek16( struct hn_file *, hn_s16, enum hn_forigin );
  * @note `hn_ferror()` may have useful information if this routine
  *       fails.
  */
-hn_bl hn_fseek32( struct hn_file *, hn_s32, enum hn_forigin );
+HN_API hn_bl hn_fseek32( struct hn_file *, hn_s32, enum hn_forigin );
 
 #endif /* defined( _SYNDEF_HAVE_I32 ) */
 
@@ -212,17 +212,17 @@ hn_bl hn_fseek32( struct hn_file *, hn_s32, enum hn_forigin );
  * @note `hn_ferror()` may have useful information if this routine
  *       fails.
  */
-hn_bl hn_fseek64( struct hn_file *, hn_s64, enum hn_forigin );
+HN_API hn_bl hn_fseek64( struct hn_file *, hn_s64, enum hn_forigin );
 
 #endif /* defined( _SYNDEF_HAVE_I64 ) */
 
 /* Clear any error conditions set upon a file handle. */
-void hn_fclearerr( struct hn_file * );
+HN_API void hn_fclearerr( struct hn_file * );
 
 /* Check if a file handle has its EOF condition set. */
-hn_bl hn_feof( struct hn_file * );
+HN_API hn_bl hn_feof( struct hn_file * );
 
 /* Check if a file handle has its error condition set. */
-hn_bl hn_ferror( struct hn_file * );
+HN_API hn_bl hn_ferror( struct hn_file * );
 
 #endif /* INC_API__HN_FILE_H */

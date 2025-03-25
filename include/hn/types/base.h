@@ -26,6 +26,15 @@ toolchain (GCC or Clang).
 #endif
 #endif /* !defined( NULL ) */
 
+#if !defined( HN_API )
+#if defined( __cplusplus )
+#define HN_API extern "C"
+#else /* !defined( __cplusplus ) */
+/* not empty in ANSI C due to semantic implications with `inline` */
+#define HN_API extern
+#endif /* defined( __cplusplus ) */
+#endif /* !defined( HN_API ) */
+
 #if defined( __has_attribute )
 
 #if __has_attribute( packed )

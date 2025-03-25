@@ -494,6 +494,6 @@ extern const hn_chr * const hn_err_id_strings[HN_MAX_ERR_ID];
  * @note Internally this routine uses libc's abort() routine where
  *       available, falling back to its own implementation otherwise.
  */
-HN_NORETURN void hn_die( void );
+HN_API HN_NORETURN void hn_die( void );
 
 #endif /* INC_API__HN_ERR_H */

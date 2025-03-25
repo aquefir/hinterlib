@@ -28,7 +28,7 @@ toolchain (GCC or Clang).
  * @note The allocated knot will be aligned so the lowest 8 bits are
  *       zero (ergo, aligned to the nearest whole 256 bytes).
  */
-hn_knot8 hn_allockn8( void );
+HN_API hn_knot8 hn_allockn8( void );
 
 /**
  *
@@ -39,7 +39,7 @@ hn_knot8 hn_allockn8( void );
  * @note The allocated knot will be aligned so the lowest 12 bits are
  *       zero (ergo, aligned to the nearest whole 4 kibibytes).
  */
-hn_knot12 hn_allockn12( void );
+HN_API hn_knot12 hn_allockn12( void );
 
 /**
  *
@@ -50,7 +50,7 @@ hn_knot12 hn_allockn12( void );
  * @note The allocated knot will be aligned so the lowest 16 bits are
  *       zero (ergo, aligned to the nearest whole 64 kibibytes).
  */
-hn_knot16 hn_allockn16( void );
+HN_API hn_knot16 hn_allockn16( void );
 
 #if HN_SIZEOF_PTR > 2
 /**
@@ -62,7 +62,7 @@ hn_knot16 hn_allockn16( void );
  * @note The allocated knot will be aligned so the lowest 20 bits are
  *       zero (ergo, aligned to the nearest whole 1 mebibyte).
  */
-hn_knot20 hn_allockn20( void );
+HN_API hn_knot20 hn_allockn20( void );
 #endif /* HN_SIZEOF_PTR > 2 */
 
 /**
@@ -79,7 +79,7 @@ hn_knot20 hn_allockn20( void );
  * @note The allocated memory will be aligned so the lowest 6 bits are
  *       zero (ergo, aligned to the nearest whole 64 bytes).
  */
-void * hn_alloc( hn_ptri );
+HN_API void * hn_alloc( hn_ptri );
 
 /**
  *
@@ -88,6 +88,6 @@ void * hn_alloc( hn_ptri );
  * @param ptr The pointer to the memory to free.
  * @note This routine performs dynamic memory deallocation.
  */
-void hn_free( void * );
+HN_API void hn_free( void * );
 
 #endif /* INC_API__HN_ALLOC_H */
