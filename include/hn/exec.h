@@ -20,7 +20,7 @@
  *        `HN_PATHMAX` + 1 octets in size (i.e. 64KiB).
  * @returns `HN_FALSE` on success, `HN_TRUE` on failure.
  */
-hn_bl hn_execpath( hn_chr[HN_PATHMAX + 1] );
+HN_API hn_bl hn_execpath( hn_chr[HN_PATHMAX + 1] );
 
 /**
  *
@@ -29,7 +29,7 @@ hn_bl hn_execpath( hn_chr[HN_PATHMAX + 1] );
  *        `HN_PATHMAX` + 1 octets in size (i.e. 64KiB).
  * @returns `HN_FALSE` on success, `HN_TRUE` on failure.
  */
-hn_bl hn_getcwd( hn_chr[HN_PATHMAX + 1] );
+HN_API hn_bl hn_getcwd( hn_chr[HN_PATHMAX + 1] );
 
 /**
  *
@@ -38,7 +38,7 @@ hn_bl hn_getcwd( hn_chr[HN_PATHMAX + 1] );
  *        a relative or an absolute path.
  * @returns `HN_FALSE` on success, `HN_TRUE` on failure.
  */
-hn_bl hn_setcwd( hn_chr * );
+HN_API hn_bl hn_setcwd( hn_chr * );
 
 /**
  *
@@ -50,7 +50,7 @@ hn_bl hn_setcwd( hn_chr * );
  *        terminate the output string with a `NUL` character.
  * @returns `HN_FALSE` on success, `HN_TRUE` on failure.
  */
-hn_bl hn_getenv( hn_chr *, hn_chr *, hn_ptri );
+HN_API hn_bl hn_getenv( hn_chr *, hn_chr *, hn_ptri );
 
 /**
  *
@@ -68,6 +68,6 @@ hn_bl hn_getenv( hn_chr *, hn_chr *, hn_ptri );
  *       the current program's run, and only in the execution context of
  *       that program.
  */
-hn_bl hn_setenv( hn_chr *, hn_chr *, hn_bl );
+HN_API hn_bl hn_setenv( hn_chr *, hn_chr *, hn_bl );
 
 #endif /* INC_API__HN_EXEC_H */
