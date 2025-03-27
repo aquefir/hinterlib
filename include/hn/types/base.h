@@ -176,6 +176,13 @@ typedef __INTPTR_TYPE__ hn_offs HN_TYPELESS;
 /* A boolean type. */
 typedef enum hn_bl hn_bl;
 
+enum
+{
+	/* Maximum number of octets (not characters!) in a file path.
+	 * This is 64 KiB - 1 to hold the NUL terminus in 64 KiB. */
+	HN_PATHMAX = 65535
+};
+
 #if !defined( _CFGOPT_NOSHORTHAND )
 
 #if !defined( FALSE )
