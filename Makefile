@@ -49,6 +49,7 @@ PUBHFILES := \
 	include/hn/ct.h \
 	include/hn/endian.h \
 	include/hn/err.h \
+	include/hn/exec.h \
 	include/hn/file.h \
 	include/hn/log.h \
 	include/hn/memops.h \
