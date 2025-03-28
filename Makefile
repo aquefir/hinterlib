@@ -22,11 +22,6 @@ INCLUDES := include
 # "local" includes
 INCLUDEL := src
 
-# sources
-SFILES.GBA := \
-	src/gbabios.s \
-	src/memcpy.s \
-	src/memset.s
 CFILES := \
 	src/alloc.c \
 	src/conio.c \
