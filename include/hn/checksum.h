@@ -296,6 +296,15 @@ hn_bl hn_md6_512( struct hn_ct *, hn_u8 ( * )[64] );
 
 /**
  *
+ * @brief Secure Hash Algorithm 0
+ * @param c Container of data to perform the algorithm upon.
+ * @param o Reference to array to deposit the result into.
+ * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
+ */
+hn_bl hn_sha0( struct hn_ct *, hn_u8 ( * )[20] );
+
+/**
+ *
  * @brief Secure Hash Algorithm 1
  * @param c Container of data to perform the algorithm upon.
  * @param o Reference to array to deposit the result into.
