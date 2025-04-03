@@ -233,6 +233,15 @@ hn_bl hn_adler32( struct hn_ct *, hn_u8 ( * )[4] );
 
 /**
  *
+ * @brief Message Digest 2 hashing function
+ * @param c Container of data to perform the algorithm upon.
+ * @param o Reference to array to deposit the result into.
+ * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
+ */
+hn_bl hn_md2( struct hn_ct *, hn_u8 ( * )[16] );
+
+/**
+ *
  * @brief Message Digest 4 hashing function
  * @param c Container of data to perform the algorithm upon.
  * @param o Reference to array to deposit the result into.
