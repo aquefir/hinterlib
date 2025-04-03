@@ -40,6 +40,7 @@ PUBHFILES := \
 	include/hn/types/mem.h \
 	include/hn/alloc.h \
 	include/hn/checked.h \
+	include/hn/checksum.h \
 	include/hn/conio.h \
 	include/hn/ct.h \
 	include/hn/endian.h \
