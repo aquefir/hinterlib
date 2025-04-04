@@ -21,7 +21,7 @@
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_crc16( struct hn_ct *, hn_u8 ( * )[2] );
+HN_API hn_bl hn_crc16( struct hn_ct *, hn_u8 ( * )[2] );
 
 /**
  *
@@ -30,7 +30,7 @@ hn_bl hn_crc16( struct hn_ct *, hn_u8 ( * )[2] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_crc16a( struct hn_ct *, hn_u8 ( * )[2] );
+HN_API hn_bl hn_crc16a( struct hn_ct *, hn_u8 ( * )[2] );
 
 /**
  *
@@ -39,7 +39,7 @@ hn_bl hn_crc16a( struct hn_ct *, hn_u8 ( * )[2] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_crc16b( struct hn_ct *, hn_u8 ( * )[2] );
+HN_API hn_bl hn_crc16b( struct hn_ct *, hn_u8 ( * )[2] );
 
 /**
  *
@@ -48,7 +48,7 @@ hn_bl hn_crc16b( struct hn_ct *, hn_u8 ( * )[2] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_crc16c( struct hn_ct *, hn_u8 ( * )[2] );
+HN_API hn_bl hn_crc16c( struct hn_ct *, hn_u8 ( * )[2] );
 
 /**
  *
@@ -57,7 +57,7 @@ hn_bl hn_crc16c( struct hn_ct *, hn_u8 ( * )[2] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_crc16d( struct hn_ct *, hn_u8 ( * )[2] );
+HN_API hn_bl hn_crc16d( struct hn_ct *, hn_u8 ( * )[2] );
 
 /**
  *
@@ -66,7 +66,7 @@ hn_bl hn_crc16d( struct hn_ct *, hn_u8 ( * )[2] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_crc16i( struct hn_ct *, hn_u8 ( * )[2] );
+HN_API hn_bl hn_crc16i( struct hn_ct *, hn_u8 ( * )[2] );
 
 /**
  *
@@ -75,7 +75,7 @@ hn_bl hn_crc16i( struct hn_ct *, hn_u8 ( * )[2] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_crc16m( struct hn_ct *, hn_u8 ( * )[2] );
+HN_API hn_bl hn_crc16m( struct hn_ct *, hn_u8 ( * )[2] );
 
 /**
  *
@@ -84,7 +84,7 @@ hn_bl hn_crc16m( struct hn_ct *, hn_u8 ( * )[2] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_crc16p( struct hn_ct *, hn_u8 ( * )[2] );
+HN_API hn_bl hn_crc16p( struct hn_ct *, hn_u8 ( * )[2] );
 
 /**
  *
@@ -93,7 +93,7 @@ hn_bl hn_crc16p( struct hn_ct *, hn_u8 ( * )[2] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_crc16r( struct hn_ct *, hn_u8 ( * )[2] );
+HN_API hn_bl hn_crc16r( struct hn_ct *, hn_u8 ( * )[2] );
 
 /**
  *
@@ -102,7 +102,7 @@ hn_bl hn_crc16r( struct hn_ct *, hn_u8 ( * )[2] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_crc16t( struct hn_ct *, hn_u8 ( * )[2] );
+HN_API hn_bl hn_crc16t( struct hn_ct *, hn_u8 ( * )[2] );
 
 /**
  *
@@ -112,7 +112,7 @@ hn_bl hn_crc16t( struct hn_ct *, hn_u8 ( * )[2] );
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  * @note This variant is optimal for payloads <= 64 bits.
  */
-hn_bl hn_crc16y( struct hn_ct *, hn_u8 ( * )[2] );
+HN_API hn_bl hn_crc16y( struct hn_ct *, hn_u8 ( * )[2] );
 
 /**
  *
@@ -121,7 +121,7 @@ hn_bl hn_crc16y( struct hn_ct *, hn_u8 ( * )[2] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_crc24( struct hn_ct *, hn_u8 ( * )[3] );
+HN_API hn_bl hn_crc24( struct hn_ct *, hn_u8 ( * )[3] );
 
 /**
  *
@@ -130,7 +130,7 @@ hn_bl hn_crc24( struct hn_ct *, hn_u8 ( * )[3] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_crc24r( struct hn_ct *, hn_u8 ( * )[3] );
+HN_API hn_bl hn_crc24r( struct hn_ct *, hn_u8 ( * )[3] );
 
 /**
  *
@@ -139,7 +139,7 @@ hn_bl hn_crc24r( struct hn_ct *, hn_u8 ( * )[3] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_crc24w( struct hn_ct *, hn_u8 ( * )[3] );
+HN_API hn_bl hn_crc24w( struct hn_ct *, hn_u8 ( * )[3] );
 
 /**
  *
@@ -148,7 +148,7 @@ hn_bl hn_crc24w( struct hn_ct *, hn_u8 ( * )[3] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_crc32( struct hn_ct *, hn_u8 ( * )[4] );
+HN_API hn_bl hn_crc32( struct hn_ct *, hn_u8 ( * )[4] );
 
 /**
  *
@@ -157,7 +157,7 @@ hn_bl hn_crc32( struct hn_ct *, hn_u8 ( * )[4] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_crc32c( struct hn_ct *, hn_u8 ( * )[4] );
+HN_API hn_bl hn_crc32c( struct hn_ct *, hn_u8 ( * )[4] );
 
 /**
  *
@@ -166,7 +166,7 @@ hn_bl hn_crc32c( struct hn_ct *, hn_u8 ( * )[4] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_crc32k28( struct hn_ct *, hn_u8 ( * )[4] );
+HN_API hn_bl hn_crc32k28( struct hn_ct *, hn_u8 ( * )[4] );
 
 /**
  *
@@ -175,7 +175,7 @@ hn_bl hn_crc32k28( struct hn_ct *, hn_u8 ( * )[4] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_crc32k30( struct hn_ct *, hn_u8 ( * )[4] );
+HN_API hn_bl hn_crc32k30( struct hn_ct *, hn_u8 ( * )[4] );
 
 /**
  *
@@ -184,7 +184,7 @@ hn_bl hn_crc32k30( struct hn_ct *, hn_u8 ( * )[4] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_crc40( struct hn_ct *, hn_u8 ( * )[5] );
+HN_API hn_bl hn_crc40( struct hn_ct *, hn_u8 ( * )[5] );
 
 /**
  *
@@ -193,7 +193,7 @@ hn_bl hn_crc40( struct hn_ct *, hn_u8 ( * )[5] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_crc64e( struct hn_ct *, hn_u8 ( * )[8] );
+HN_API hn_bl hn_crc64e( struct hn_ct *, hn_u8 ( * )[8] );
 
 /**
  *
@@ -202,7 +202,7 @@ hn_bl hn_crc64e( struct hn_ct *, hn_u8 ( * )[8] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_crc64i( struct hn_ct *, hn_u8 ( * )[8] );
+HN_API hn_bl hn_crc64i( struct hn_ct *, hn_u8 ( * )[8] );
 
 /**
  *
@@ -211,7 +211,7 @@ hn_bl hn_crc64i( struct hn_ct *, hn_u8 ( * )[8] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_crc64n( struct hn_ct *, hn_u8 ( * )[8] );
+HN_API hn_bl hn_crc64n( struct hn_ct *, hn_u8 ( * )[8] );
 
 /**
  *
@@ -220,7 +220,7 @@ hn_bl hn_crc64n( struct hn_ct *, hn_u8 ( * )[8] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_fletcher16( struct hn_ct *, hn_u8 ( * )[2] );
+HN_API hn_bl hn_fletcher16( struct hn_ct *, hn_u8 ( * )[2] );
 
 /**
  *
@@ -229,7 +229,7 @@ hn_bl hn_fletcher16( struct hn_ct *, hn_u8 ( * )[2] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_adler32( struct hn_ct *, hn_u8 ( * )[4] );
+HN_API hn_bl hn_adler32( struct hn_ct *, hn_u8 ( * )[4] );
 
 /**
  *
@@ -238,7 +238,7 @@ hn_bl hn_adler32( struct hn_ct *, hn_u8 ( * )[4] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_md2( struct hn_ct *, hn_u8 ( * )[16] );
+HN_API hn_bl hn_md2( struct hn_ct *, hn_u8 ( * )[16] );
 
 /**
  *
@@ -247,7 +247,7 @@ hn_bl hn_md2( struct hn_ct *, hn_u8 ( * )[16] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_md4( struct hn_ct *, hn_u8 ( * )[16] );
+HN_API hn_bl hn_md4( struct hn_ct *, hn_u8 ( * )[16] );
 
 /**
  *
@@ -256,7 +256,7 @@ hn_bl hn_md4( struct hn_ct *, hn_u8 ( * )[16] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_md5( struct hn_ct *, hn_u8 ( * )[16] );
+HN_API hn_bl hn_md5( struct hn_ct *, hn_u8 ( * )[16] );
 
 /**
  *
@@ -265,7 +265,7 @@ hn_bl hn_md5( struct hn_ct *, hn_u8 ( * )[16] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_md6_224( struct hn_ct *, hn_u8 ( * )[28] );
+HN_API hn_bl hn_md6_224( struct hn_ct *, hn_u8 ( * )[28] );
 
 /**
  *
@@ -274,7 +274,7 @@ hn_bl hn_md6_224( struct hn_ct *, hn_u8 ( * )[28] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_md6_256( struct hn_ct *, hn_u8 ( * )[32] );
+HN_API hn_bl hn_md6_256( struct hn_ct *, hn_u8 ( * )[32] );
 
 /**
  *
@@ -283,7 +283,7 @@ hn_bl hn_md6_256( struct hn_ct *, hn_u8 ( * )[32] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_md6_384( struct hn_ct *, hn_u8 ( * )[48] );
+HN_API hn_bl hn_md6_384( struct hn_ct *, hn_u8 ( * )[48] );
 
 /**
  *
@@ -292,7 +292,7 @@ hn_bl hn_md6_384( struct hn_ct *, hn_u8 ( * )[48] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_md6_512( struct hn_ct *, hn_u8 ( * )[64] );
+HN_API hn_bl hn_md6_512( struct hn_ct *, hn_u8 ( * )[64] );
 
 /**
  *
@@ -301,7 +301,7 @@ hn_bl hn_md6_512( struct hn_ct *, hn_u8 ( * )[64] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_sha0( struct hn_ct *, hn_u8 ( * )[20] );
+HN_API hn_bl hn_sha0( struct hn_ct *, hn_u8 ( * )[20] );
 
 /**
  *
@@ -310,7 +310,7 @@ hn_bl hn_sha0( struct hn_ct *, hn_u8 ( * )[20] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_sha1( struct hn_ct *, hn_u8 ( * )[20] );
+HN_API hn_bl hn_sha1( struct hn_ct *, hn_u8 ( * )[20] );
 
 /**
  *
@@ -319,7 +319,7 @@ hn_bl hn_sha1( struct hn_ct *, hn_u8 ( * )[20] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_sha2_224( struct hn_ct *, hn_u8 ( * )[28] );
+HN_API hn_bl hn_sha2_224( struct hn_ct *, hn_u8 ( * )[28] );
 
 /**
  *
@@ -328,7 +328,7 @@ hn_bl hn_sha2_224( struct hn_ct *, hn_u8 ( * )[28] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_sha2_256( struct hn_ct *, hn_u8 ( * )[32] );
+HN_API hn_bl hn_sha2_256( struct hn_ct *, hn_u8 ( * )[32] );
 
 /**
  *
@@ -337,7 +337,7 @@ hn_bl hn_sha2_256( struct hn_ct *, hn_u8 ( * )[32] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_sha2_384( struct hn_ct *, hn_u8 ( * )[48] );
+HN_API hn_bl hn_sha2_384( struct hn_ct *, hn_u8 ( * )[48] );
 
 /**
  *
@@ -346,7 +346,7 @@ hn_bl hn_sha2_384( struct hn_ct *, hn_u8 ( * )[48] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_sha2_512( struct hn_ct *, hn_u8 ( * )[64] );
+HN_API hn_bl hn_sha2_512( struct hn_ct *, hn_u8 ( * )[64] );
 
 /**
  *
@@ -355,7 +355,7 @@ hn_bl hn_sha2_512( struct hn_ct *, hn_u8 ( * )[64] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_sha2_512_224( struct hn_ct *, hn_u8 ( * )[28] );
+HN_API hn_bl hn_sha2_512_224( struct hn_ct *, hn_u8 ( * )[28] );
 
 /**
  *
@@ -364,7 +364,7 @@ hn_bl hn_sha2_512_224( struct hn_ct *, hn_u8 ( * )[28] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_sha2_512_256( struct hn_ct *, hn_u8 ( * )[32] );
+HN_API hn_bl hn_sha2_512_256( struct hn_ct *, hn_u8 ( * )[32] );
 
 /**
  *
@@ -373,7 +373,7 @@ hn_bl hn_sha2_512_256( struct hn_ct *, hn_u8 ( * )[32] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_sha3_224( struct hn_ct *, hn_u8 ( * )[28] );
+HN_API hn_bl hn_sha3_224( struct hn_ct *, hn_u8 ( * )[28] );
 
 /**
  *
@@ -382,7 +382,7 @@ hn_bl hn_sha3_224( struct hn_ct *, hn_u8 ( * )[28] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_sha3_256( struct hn_ct *, hn_u8 ( * )[32] );
+HN_API hn_bl hn_sha3_256( struct hn_ct *, hn_u8 ( * )[32] );
 
 /**
  *
@@ -391,7 +391,7 @@ hn_bl hn_sha3_256( struct hn_ct *, hn_u8 ( * )[32] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_sha3_384( struct hn_ct *, hn_u8 ( * )[48] );
+HN_API hn_bl hn_sha3_384( struct hn_ct *, hn_u8 ( * )[48] );
 
 /**
  *
@@ -400,7 +400,7 @@ hn_bl hn_sha3_384( struct hn_ct *, hn_u8 ( * )[48] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_sha3_512( struct hn_ct *, hn_u8 ( * )[64] );
+HN_API hn_bl hn_sha3_512( struct hn_ct *, hn_u8 ( * )[64] );
 
 /**
  *
@@ -409,7 +409,7 @@ hn_bl hn_sha3_512( struct hn_ct *, hn_u8 ( * )[64] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_shake128( struct hn_ct *, hn_u8 ( * )[16] );
+HN_API hn_bl hn_shake128( struct hn_ct *, hn_u8 ( * )[16] );
 
 /**
  *
@@ -418,6 +418,6 @@ hn_bl hn_shake128( struct hn_ct *, hn_u8 ( * )[16] );
  * @param o Reference to array to deposit the result into.
  * @returns `HN_FALSE` on success, or `HN_TRUE` on failure.
  */
-hn_bl hn_shake256( struct hn_ct *, hn_u8 ( * )[32] );
+HN_API hn_bl hn_shake256( struct hn_ct *, hn_u8 ( * )[32] );
 
 #endif /* INC_API__HN_CHECKSUM_H */
