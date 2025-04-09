@@ -861,6 +861,7 @@ clean:
 	@$(RM) $(.L_OFILES.WINNT32)
 	@$(RM) $(.L_OFILES.WINNT64)
 	@$(RM) $(FMTFILES)
+	@$(RM) debug.log
 
 # Auto-format the sources.
 
