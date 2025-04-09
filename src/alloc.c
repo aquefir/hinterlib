@@ -15,7 +15,7 @@
 hn_knot8 hn_allockn8( void )
 {
 	hn_knot8 ret = NULL;
-	const int r  = posix_memalign( &ret, 1 << 8, 1 << 8 );
+	const int r  = posix_memalign( (void **)&ret, 1 << 8, 1 << 8 );
 
 	return r == 0 ? ret : NULL;
 }
@@ -23,7 +23,7 @@ hn_knot8 hn_allockn8( void )
 hn_knot12 hn_allockn12( void )
 {
 	hn_knot12 ret = NULL;
-	const int r   = posix_memalign( &ret, 1 << 12, 1 << 12 );
+	const int r = posix_memalign( (void **)&ret, 1 << 12, 1 << 12 );
 
 	return r == 0 ? ret : NULL;
 }
@@ -31,7 +31,7 @@ hn_knot12 hn_allockn12( void )
 hn_knot16 hn_allockn16( void )
 {
 	hn_knot16 ret = NULL;
-	const int r   = posix_memalign( &ret, 1 << 16, 1 << 16 );
+	const int r = posix_memalign( (void **)&ret, 1 << 16, 1 << 16 );
 
 	return r == 0 ? ret : NULL;
 }
@@ -40,7 +40,7 @@ hn_knot16 hn_allockn16( void )
 hn_knot20 hn_allockn20( void )
 {
 	hn_knot20 ret = NULL;
-	const int r   = posix_memalign( &ret, 1 << 20, 1 << 20 );
+	const int r = posix_memalign( (void **)&ret, 1 << 20, 1 << 20 );
 
 	return r == 0 ? ret : NULL;
 }
@@ -56,8 +56,8 @@ void * hn_alloc( hn_ptri sz )
 	{
 		void * ret = NULL;
 		/* never gonna get less than 64 bytes */
-		const int r =
-			posix_memalign( &ret, 64, sz < 64 ? 64 : sz );
+		const int r = posix_memalign(
+			(void **)&ret, 64, sz < 64 ? 64 : sz );
 
 		return r == 0 ? ret : NULL;
 	}
