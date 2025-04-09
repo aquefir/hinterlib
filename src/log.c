@@ -58,7 +58,7 @@ void hn_log_info( struct hn_log * log, const chr * fmt, ... )
 		fputs( "\t", stderr );
 	}
 
-	fprintf( "%s", prefix );
+	fprintf( stderr, "%s", prefix );
 
 	va_start( args, fmt );
 	vfprintf( stderr, fmt, args );
@@ -87,7 +87,7 @@ void hn_log_warn( struct hn_log * log, const chr * fmt, ... )
 		fputs( "\t", stderr );
 	}
 
-	fprintf( "%s", prefix );
+	fprintf( stderr, "%s", prefix );
 
 	va_start( args, fmt );
 	vfprintf( stderr, fmt, args );
@@ -116,7 +116,7 @@ void hn_log_err( struct hn_log * log, const chr * fmt, ... )
 		fputs( "\t", stderr );
 	}
 
-	fprintf( "%s", prefix );
+	fprintf( stderr, "%s", prefix );
 
 	va_start( args, fmt );
 	vfprintf( stderr, fmt, args );
