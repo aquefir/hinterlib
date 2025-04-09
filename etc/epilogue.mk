@@ -781,25 +781,25 @@ check: $(.L_TARGETS)
 %.s.o: %.s $(INB_DEBUGLOG)
 	$(call .FN_FILE,S,$@)
 	@$(AS) -o $@ $(ASFLAGS) $(.K_ASDEFINE) $(.K_ASINCLUDE) $< \
-		2>&1 >>$(INB_DEBUGLOG)
+		2>>$(INB_DEBUGLOG)
 
 # C
 %.c.o: %.c $(INB_DEBUGLOG)
 	$(call .FN_FILE,C,$@)
 	@$(CC) -c -o $@ $(CFLAGS) $(.K_DEFINE) $(.K_INCLUDE) $< \
-		2>&1 >>$(INB_DEBUGLOG)
+		2>>$(INB_DEBUGLOG)
 
 # C++
 %.cpp.o: %.cpp $(INB_DEBUGLOG)
 	$(call .FN_FILE,CXX,$@)
 	@$(CXX) -c -o $@ $(CXXFLAGS) $(.K_DEFINE) $(.K_INCLUDE) $< \
-		2>&1 >>$(INB_DEBUGLOG)
+		2>>$(INB_DEBUGLOG)
 
 # Objective-C
 %.m.o: %.m $(INB_DEBUGLOG)
 	$(call .FN_FILE,OBJC,$@)
 	@$(CC) -c -o $@ $(OBJCFLAGS) $(.K_DEFINE) $(.K_INCLUDE) $< \
-		2>&1 >>$(INB_DEBUGLOG)
+		2>>$(INB_DEBUGLOG)
 
 # Static library recipe.
 
