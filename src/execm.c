@@ -19,9 +19,9 @@
 
 bl hn_execpath( chr p[HN_PATHMAX + 1] )
 {
-	u32 sz          = HN_PATHMAX;
-	chr * const buf = hn_allockn16( );
-	const int r     = _NSGetExecutablePath( buf, &sz );
+	u32 sz           = HN_PATHMAX;
+	const knot16 buf = hn_allockn16( );
+	const int r      = _NSGetExecutablePath( (chr *)buf, &sz );
 
 	HN_CHK_GOTO( buf != NULL, fail );
 	HN_CHK_GOTO( r == 0, fail );
@@ -32,7 +32,7 @@ bl hn_execpath( chr p[HN_PATHMAX + 1] )
 	/* dereference symlinks first, as we cannot assume dirname( ) is
 	 * smart */
 	{
-		chr * const ret = realpath( buf, p );
+		chr * const ret = realpath( (const chr *)buf, p );
 		HN_CHK_GOTO( ret == p, fail );
 
 		dirname( p );
