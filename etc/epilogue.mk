@@ -779,6 +779,7 @@ check: $(.L_TARGETS)
 
 # Assembly
 %.s.o: %.s
+%.asm.o: $.asm
 	$(call .FN_FILE,S,$@)
 	@$(AS) -o $@ $(ASFLAGS) $(.K_ASDEFINE) $(.K_ASINCLUDE) $< \
 		2>>$(INB_DEBUGLOG)
@@ -791,6 +792,9 @@ check: $(.L_TARGETS)
 
 # C++
 %.cpp.o: %.cpp
+%.cc.o: %.cc
+%.cxx.o: %.cxx
+%.c++.o: $.c++
 	$(call .FN_FILE,CXX,$@)
 	@$(CXX) -c -o $@ $(CXXFLAGS) $(.K_DEFINE) $(.K_INCLUDE) $< \
 		2>>$(INB_DEBUGLOG)
