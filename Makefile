@@ -22,6 +22,12 @@ INCLUDES := include
 # "local" includes
 INCLUDEL := src
 
+CFILES.LINUX64 := \
+	src/execl.c
+CFILES.LINUX32 = $(CFILES.LINUX64)
+CFILES.DARWIN86 := \
+	src/execm.c
+CFILES.DARWINM1 = $(CFILES.DARWIN86)
 CFILES := \
 	src/alloc.c \
 	src/conio.c \
