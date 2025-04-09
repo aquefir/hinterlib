@@ -26,7 +26,7 @@ bl hn_execpath( chr p[HN_PATHMAX + 1] )
 	HN_CHK_GOTO( buf != NULL, fail );
 	HN_CHK_GOTO( r == 0, fail );
 
-	/* zero out the result buffer */
+	/* zero out the result buffer to make NUL termination easy */
 	hn_memset( 0, HN_PATHMAX + 1, p );
 
 	/* dereference symlinks first, as we cannot assume dirname( ) is
