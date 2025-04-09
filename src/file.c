@@ -55,7 +55,7 @@ struct hn_file * hn_fopen( const hn_chr * path, struct hn_fmode mode )
 		/* account for the possibility of "w+" */
 		const u32 ofs = mode.update ? 2 : 1;
 		/* add 'x' to the end for exclusive write */
-		cmode[ofs] == mode.approach == 3 ? 'x' : '\0';
+		cmode[ofs] = mode.approach == 3 ? 'x' : '\0';
 	}
 
 	return (struct hn_file *)fopen( path, (const char *)cmode );
@@ -99,7 +99,7 @@ struct hn_file * hn_freopen( const hn_chr * path,
 		/* account for the possibility of "w+" */
 		const u32 ofs = mode.update ? 2 : 1;
 		/* add 'x' to the end for exclusive write */
-		cmode[ofs] == mode.approach == 3 ? 'x' : '\0';
+		cmode[ofs] = mode.approach == 3 ? 'x' : '\0';
 	}
 #endif
 #endif
