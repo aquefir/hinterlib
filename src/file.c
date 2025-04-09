@@ -136,6 +136,8 @@ hn_bl hn_fsetbuf( struct hn_file * file, hn_u8 * buf )
 	}
 
 	setbuf( (FILE *)file, (char *)buf );
+
+	return HN_FALSE;
 }
 
 hn_ptri hn_fgetbufsz( void ) { return BUFSIZ; }
