@@ -24,7 +24,6 @@ struct hn_file * hn_fstderr( void ) { return (struct hn_file *)stderr; }
 struct hn_file * hn_fopen( const hn_chr * path, struct hn_fmode mode )
 {
 	chr cmode[4];
-	u32 ofs;
 
 	if( path == NULL )
 	{
@@ -52,10 +51,12 @@ struct hn_file * hn_fopen( const hn_chr * path, struct hn_fmode mode )
 
 	cmode[1] = mode.update ? '+' : '\0';
 
-	/* account for the possibility of "w+" */
-	ofs = mode.update ? 2 : 1;
-	/* add 'x' to the end for exclusive write */
-	cmode[ofs] == mode.approach == 3 ? 'x' : '\0';
+	{
+		/* account for the possibility of "w+" */
+		const u32 ofs = mode.update ? 2 : 1;
+		/* add 'x' to the end for exclusive write */
+		cmode[ofs] == mode.approach == 3 ? 'x' : '\0';
+	}
 
 	return (struct hn_file *)fopen( path, (const char *)cmode );
 }
