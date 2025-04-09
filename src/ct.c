@@ -12,6 +12,25 @@
 #include <hn/err.h>
 #include <hn/memops.h>
 
+static void init_flat( struct hn_ct * );
+static void init_am8d1( struct hn_ct * );
+static void init_am12d1( struct hn_ct * );
+static void init_am16d1( struct hn_ct * );
+static void init_am20d1( struct hn_ct * );
+static void init_am8d2( struct hn_ct * );
+static void init_am12d2( struct hn_ct * );
+static void init_am16d2( struct hn_ct * );
+static void init_am20d2( struct hn_ct * );
+static void init_am8d3( struct hn_ct * );
+static void init_am12d3( struct hn_ct * );
+static void init_am16d3( struct hn_ct * );
+static void init_am20d3( struct hn_ct * );
+static void init_am8d4( struct hn_ct * );
+static void init_am12d4( struct hn_ct * );
+static void init_am16d4( struct hn_ct * );
+static void init_am20d4( struct hn_ct * );
+static void init_file( struct hn_ct * );
+
 typedef void ( *init_subroutine )( struct hn_ct * );
 
 static const init_subroutine init_sub[HN_MAX_CT_TYPE] = { init_flat,
