@@ -27,6 +27,7 @@ CFILES := \
 	src/conio.c \
 	src/ct.c \
 	src/err.c \
+	src/exec.c \
 	src/file.c \
 	src/log.c \
 	src/memops.c
