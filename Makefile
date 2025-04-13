@@ -13,7 +13,7 @@ PROJECT := hinter
 
 # put a '1' for the desired target types to compile
 EXEFILE :=
-SOFILE  :=
+SOFILE  := 1
 AFILE   := 1
 
 # space-separated path list for #includes
