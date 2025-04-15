@@ -41,9 +41,9 @@ HN_API hn_ptri hn_strasz( hn_chr ** );
 
 HN_API hn_ptri hn_ustrasz( hn_uchr ** );
 
-HN_API hn_chr ** hn_stradup( hn_chr ** );
+HN_API hn_ptri hn_stracpy( hn_chr **, hn_chr ** );
 
-HN_API hn_uchr ** hn_ustradup( hn_uchr ** );
+HN_API hn_ptri hn_ustracpy( hn_uchr **, hn_uchr ** );
 
 HN_API hn_uchr ** hn_stra2ustra( hn_chr ** );
 
