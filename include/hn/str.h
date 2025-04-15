@@ -45,8 +45,9 @@ HN_API hn_ptri hn_stracpy( hn_chr **, hn_chr ** );
 
 HN_API hn_ptri hn_ustracpy( hn_uchr **, hn_uchr ** );
 
-HN_API hn_uchr ** hn_stra2ustra( hn_chr ** );
+HN_API hn_ptri hn_stra2ustra( hn_chr **, hn_uchr ** );
 
-HN_API hn_chr ** hn_ustra2stra( hn_uchr **, struct hn_asciify_opts );
+HN_API hn_ptri hn_ustra2stra(
+	hn_uchr **, struct hn_asciify_opts, hn_chr ** );
 
 #endif /* INC_API__HN_STR_H */
