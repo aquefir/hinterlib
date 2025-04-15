@@ -56,7 +56,8 @@ PUBHFILES := \
 	include/hn/file.h \
 	include/hn/log.h \
 	include/hn/memops.h \
-	include/hn/nimb.h
+	include/hn/nimb.h \
+	include/hn/str.h
 PRVHFILES :=
 
 # this defines all our usual targets
