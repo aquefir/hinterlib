@@ -50,4 +50,9 @@ HN_API hn_ptri hn_stra2ustra( hn_chr **, hn_uchr ** );
 HN_API hn_ptri hn_ustra2stra(
 	hn_uchr **, struct hn_asciify_opts, hn_chr ** );
 
+HN_API hn_ptri hn_strsplit( hn_chr *, hn_chr *, hn_ptri, hn_chr ** );
+
+HN_API hn_ptri hn_ustrsplit(
+	hn_uchr *, hn_uchr *, hn_ptri, hn_uchr ** );
+
 #endif /* INC_API__HN_STR_H */
