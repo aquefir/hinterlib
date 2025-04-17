@@ -374,6 +374,23 @@ typedef struct hn_am16d4 hn_am16d4;
 typedef struct hn_am20d4 hn_am20d4;
 #endif /* HN_SIZEOF_PTR > 2 */
 
+/* Custom allocator options structure. */
+struct hn_malloc_opts
+{
+	/* Exponent for alignment in `log(2)`. Can align up to 2GiB. */
+	hn_ubf alignment : 5;
+	/* Whether allocator is the x variant (succeeds or dies). */
+	hn_ubf succeedordie : 1;
+	hn_ubf : 10;
+	hn_ubf : 16;
+};
+
+/* Allocation subroutine signature for custom allocators. */
+typedef void * ( *hn_malloc_f )( hn_ptri );
+
+/* Deallocation subroutine signature for custom allocators. */
+typedef void ( *hn_free_f )( void * );
+
 #if !defined( _CFGOPT_NOSHORTHAND )
 
 /* 8-bit memory knot addressing a contiguous block of 256 bytes. */
