@@ -20,6 +20,15 @@ enum hn_asciify_method
 	HN_MAX_ASCIIFY_METHOD
 };
 
+enum hn_strsplit_delim
+{
+	HN_STRSPLIT_DELIM_NONE,
+	HN_STRSPLIT_DELIM_SUFFIX,
+	HN_STRSPLIT_DELIM_PREFIX,
+	HN_STRSPLIT_DELIM_BOTH,
+	HN_MAX_STRSPLIT_DELIM
+};
+
 struct hn_asciify_opts
 {
 	hn_ubf method : 2;
@@ -152,6 +161,8 @@ HN_API hn_ptri hn_ustra2stra(
  * @brief Split an ASCII string by a delimiter.
  * @param str The string to split.
  * @param delim Delimiter string to search for and split by.
+ * @param delim_opt Whether to include the delimiter at the end of each
+ *        string, beginning of each string, both, or neither.
  * @param max Maximum number of splits to perform, or zero for unlimited
  *        splitting.
  * @param stra The string array to write to, or `NULL` if one merely
@@ -163,13 +174,19 @@ HN_API hn_ptri hn_ustra2stra(
  *          the output string array, including `NUL` terminators in each
  *          string and a `NULL` terminator for the array.
  */
-HN_API hn_ptri hn_strsplit( hn_chr *, hn_chr *, hn_ptri, hn_chr ** );
+HN_API hn_ptri hn_strsplit( hn_chr *,
+	hn_chr *,
+	enum hn_strsplit_delim,
+	hn_ptri,
+	hn_chr ** );
 
 /**
  *
  * @brief Split a Unicode unistring by a delimiter.
  * @param ustr The unistring to split.
  * @param delim Delimiter unistring to search for and split by.
+ * @param delim_opt Whether to include the delimiter at the end of each
+ *        unistring, beginning of each unistring, both, or neither.
  * @param max Maximum number of splits to perform, or zero for unlimited
  *        splitting.
  * @param ustra The unistring array to write to, or `NULL` if one merely
@@ -181,8 +198,11 @@ HN_API hn_ptri hn_strsplit( hn_chr *, hn_chr *, hn_ptri, hn_chr ** );
  *          the output unistring array, including `NUL` terminators in
  *          each unistring and a `NULL` terminator for the array.
  */
-HN_API hn_ptri hn_ustrsplit(
-	hn_uchr *, hn_uchr *, hn_ptri, hn_uchr ** );
+HN_API hn_ptri hn_ustrsplit( hn_uchr *,
+	hn_uchr *,
+	enum hn_strsplit_delim,
+	hn_ptri,
+	hn_uchr ** );
 
 /**
  *
