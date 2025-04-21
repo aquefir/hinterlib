@@ -55,4 +55,8 @@ HN_API hn_ptri hn_strsplit( hn_chr *, hn_chr *, hn_ptri, hn_chr ** );
 HN_API hn_ptri hn_ustrsplit(
 	hn_uchr *, hn_uchr *, hn_ptri, hn_uchr ** );
 
+HN_API hn_ptri hn_strjoin( hn_chr **, hn_chr *, hn_chr * );
+
+HN_API hn_ptri hn_ustrjoin( hn_uchr **, hn_uchr *, hn_uchr * );
+
 #endif /* INC_API__HN_STR_H */
