@@ -20,7 +20,7 @@ enum hn_asciify_method
 	HN_MAX_ASCIIFY_METHOD
 };
 
-enum hn_strsplit_delim
+enum hn_strsplit_delimincl
 {
 	HN_STRSPLIT_DELIM_NONE,
 	HN_STRSPLIT_DELIM_SUFFIX,
@@ -176,7 +176,7 @@ HN_API hn_ptri hn_ustra2stra(
  */
 HN_API hn_ptri hn_strsplit( hn_chr *,
 	hn_chr *,
-	enum hn_strsplit_delim,
+	enum hn_strsplit_delimincl,
 	hn_ptri,
 	hn_chr ** );
 
@@ -200,7 +200,7 @@ HN_API hn_ptri hn_strsplit( hn_chr *,
  */
 HN_API hn_ptri hn_ustrsplit( hn_uchr *,
 	hn_uchr *,
-	enum hn_strsplit_delim,
+	enum hn_strsplit_delimincl,
 	hn_ptri,
 	hn_uchr ** );
 
