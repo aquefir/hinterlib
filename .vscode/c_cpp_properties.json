@@ -6,7 +6,7 @@
 				"${workspaceFolder}/src"
 			],
 			"defines": [
-				"_SYNDEF_DARWIN",
+				"_SYNDEF_LINUX",
 				"_SYNDEF_AMD64",
 				"_SYNDEF_LILENDIAN",
 				"_SYNDEF_WORDSZ_64",
