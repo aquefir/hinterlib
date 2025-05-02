@@ -1,0 +1,6 @@
+---
+If:
+   PathMatch: (src/.+\.(c|h)|include/.+\.h)
+CompileFlags:
+   Add:
+   - '-include etc/syndef.h'
