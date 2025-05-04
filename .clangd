@@ -3,7 +3,6 @@ If:
    PathMatch: include/.+\.h
 CompileFlags:
    Add:
-   - '-nostdinc'
    - '-xc'
 ---
 If:
