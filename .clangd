@@ -1,6 +1,13 @@
 ---
 If:
-   PathMatch: (src/.+\.(c|h)|include/.+\.h)
+   PathMatch: include/.+\.h
 CompileFlags:
    Add:
-   - '-include etc/syndef.h'
+   - '-nostdinc'
+   - '-xc'
+---
+If:
+   PathMatch: src/.+\.[ch]
+CompileFlags:
+   Add:
+   - '-xc'
