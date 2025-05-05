@@ -4,3 +4,6 @@ If:
 CompileFlags:
    Add:
    - '-xc'
+InlayHints:
+   Designators: No
+   ParameterNames: No
