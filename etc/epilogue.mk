@@ -632,6 +632,24 @@ endif
 
 .L_OFILES := $(.L_OFILES.COMMON) $(.L_OFILES.$(TP))
 
+# IntelliSense schematic temporary artefacts.
+SCHFILES := $(patsubst %,%.sch,$(CFILES) $(CPPFILES) $(MFILES) \
+	$(PUBHFILES) $(PRVHFILES) $(CFILES.AGBHB) $(CPPFILES.AGBHB) \
+	$(CFILES.AGBSP) $(CPPFILES.AGBSP) \
+	$(CFILES.DARWIN86) $(CPPFILES.DARWIN86) $(MFILES.DARWIN86) \
+	$(CFILES.DARWINM1) $(CPPFILES.DARWINM1) $(MFILES.DARWINM1) \
+	$(CFILES.FREEBSD) $(CPPFILES.FREEBSD) \
+	$(CFILES.IBMPC) $(CPPFILES.IBMPC) \
+	$(CFILES.ILLUMOS) $(CPPFILES.ILLUMOS) \
+	$(CFILES.LINUX32) $(CPPFILES.LINUX32) \
+	$(CFILES.LINUX64) $(CPPFILES.LINUX64) \
+	$(CFILES.OPENBSD) $(CPPFILES.OPENBSD) \
+	$(CFILES.PCDOS) $(CPPFILES.PCDOS) \
+	$(CFILES.WIN311) $(CPPFILES.WIN311) \
+	$(CFILES.WIN95) $(CPPFILES.WIN95) \
+	$(CFILES.WINNT32) $(CPPFILES.WINNT32) \
+	$(CFILES.WINNT64) $(CPPFILES.WINNT64))
+
 # Auto-formatter temporary artefacts.
 FMTFILES := $(patsubst %,%.fmt,$(CFILES) $(CPPFILES) $(MFILES) \
 	$(PUBHFILES) $(PRVHFILES) $(CFILES.AGBHB) $(CPPFILES.AGBHB) \
@@ -659,11 +677,14 @@ endif
 
 ## Define the target recipes.
 
-.PHONY: debug release check clean format
+.PHONY: debug release check schema clean format
 # Remove all default implicit rules by emptying the suffixes builtin
 # This causes false circular dependencies with multi-dotted file
 # extensions if we don't do this
 .SUFFIXES:
+
+# schema generation uses stdio so it can't be parallelised easily
+.NOTPARALLEL: schema
 
 ## Debug build
 ## useful for: normal testing, valgrind, LLDB
@@ -761,6 +782,44 @@ check: $(.L_TARGETS)
 	@cat $< | $(FMT) $(FMTFLAGS) > $@
 	@mv $@ $<
 
+# C
+%.c.sch: %.c
+	$(call .FN_FILE,SCH,$<)
+	@$(ECHO) -n '{"directory":"$(shell pwd)",' >> compile_commands.json
+	@$(ECHO) -n '"command":"' >> compile_commands.json
+	@$(ECHO) -n '$(CC) -c -o $@ $(CFLAGS) ' >> compile_commands.json
+	@$(ECHO) -n '$(.K_DEFINE) $(.K_INCLUDE) $<' >> compile_commands.json
+	@$(ECHO) -n '","file":"$<"},' >> compile_commands.json
+
+# C++
+%.cpp.sch: %.cpp
+%.cc.sch: %.cc
+%.cxx.sch: %.cxx
+%.c++.sch: %.c++
+	$(call .FN_FILE,SCH,$<)
+	@$(ECHO) -n '{"directory":"$(shell pwd)",' >> compile_commands.json
+	@$(ECHO) -n '"command":"' >> compile_commands.json
+	@$(ECHO) -n '$(CC) -c -o $@ $(CFLAGS) ' >> compile_commands.json
+	@$(ECHO) -n '$(.K_DEFINE) $(.K_INCLUDE) $<' >> compile_commands.json
+	@$(ECHO) -n '","file":"$<"},' >> compile_commands.json
+
+# Objective-C
+%.m.sch: %.m
+	$(call .FN_FILE,SCH,$<)
+	@$(ECHO) -n '{"directory":"$(shell pwd)",' >> compile_commands.json
+	@$(ECHO) -n '"command":"' >> compile_commands.json
+	@$(ECHO) -n '$(CC) -c -o $@ $(CFLAGS) ' >> compile_commands.json
+	@$(ECHO) -n '$(.K_DEFINE) $(.K_INCLUDE) $<' >> compile_commands.json
+	@$(ECHO) -n '","file":"$<"},' >> compile_commands.json
+
+%.h.sch: %.h
+	$(call .FN_FILE,SCH,$<)
+	@$(ECHO) -n '{"directory":"$(shell pwd)",' >> compile_commands.json
+	@$(ECHO) -n '"command":"' >> compile_commands.json
+	@$(ECHO) -n '$(CC) -c -o $@ $(CFLAGS) ' >> compile_commands.json
+	@$(ECHO) -n '$(.K_DEFINE) $(.K_INCLUDE) $<' >> compile_commands.json
+	@$(ECHO) -n '","file":"$<"},' >> compile_commands.json
+
 # Ofile recipes.
 
 # Assembly
@@ -824,6 +883,17 @@ ifneq ($(strip $(.L_OFILES)),)
 	@$(REALSTRIP) -s $@ \
 		2>&1 >>$(INB_DEBUGLOG)
 endif
+
+# Generate compile_commands.json for clangd.
+
+schema-start:
+	@$(ECHO) -n '[' > compile_commands.json
+
+schema: schema-start $(SCHFILES) schema-end
+
+schema-end:
+	@truncate -s-1 compile_commands.json
+	@$(ECHO) -n ']' >> compile_commands.json
 
 # Clean the repository.
 
