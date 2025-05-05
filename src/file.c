@@ -51,12 +51,16 @@ struct hn_file * hn_fopen( const hn_chr * path, struct hn_fmode mode )
 
 	cmode[1] = mode.update ? '+' : '\0';
 
+#ifdef __STDC_VERSION__
+#if __STDC_VERSION__ >= 201112L
 	{
 		/* account for the possibility of "w+" */
 		const u32 ofs = mode.update ? 2 : 1;
 		/* add 'x' to the end for exclusive write */
 		cmode[ofs] = mode.approach == 3 ? 'x' : '\0';
 	}
+#endif
+#endif
 
 	return (struct hn_file *)fopen( path, (const char *)cmode );
 }
