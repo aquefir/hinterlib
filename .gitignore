@@ -8,12 +8,14 @@
 
 /data
 /debug.log
+/compile_commands.json
 3rdparty/*
 !3rdparty/README
 
 coverage.report
 *.prof*
 *.fmt
+*.sch
 *.o
 *.obj
 *.gcno
