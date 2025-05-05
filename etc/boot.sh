@@ -8,8 +8,6 @@
 echo=/bin/echo;
 command -v gecho && echo=gecho;
 command -v stdbuf && echo="stdbuf -o0 ${echo}";
-test "$1" = '-q' && echo="${echo} >/dev/null";
-test "$1" = '--quiet' && echo="${echo} >/dev/null";
 
 if test "$CC" = '' && ! command -v cc 2>&1 >/dev/null; then
 	${echo} "An ANSI C compiler under the name 'cc' is required to be";
@@ -18,6 +16,9 @@ if test "$CC" = '' && ! command -v cc 2>&1 >/dev/null; then
 	${echo} 'variable $CC.';
 	exit 2;
 fi
+
+test "$1" = '-q' && echo="${echo} >/dev/null";
+test "$1" = '--quiet' && echo="${echo} >/dev/null";
 
 test "$CC" = '' && CC=cc;
 
