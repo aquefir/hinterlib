@@ -5,7 +5,7 @@
 ## Written by Alexander Nicholi <//nich.fi/>
 ## Copyright (C) 2025 Aquefir Consulting LLC <//aquefir.co/>
 
-echo=/bin/echo;
+echo=/bin/echo; # avoid shell builtins
 command -v gecho && echo=gecho; # for macOS
 command -v stdbuf && echo="stdbuf -o0 ${echo}";
 
