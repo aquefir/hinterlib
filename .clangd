@@ -1,12 +1,6 @@
 ---
 If:
-   PathMatch: include/.+\.h
-CompileFlags:
-   Add:
-   - '-xc'
----
-If:
-   PathMatch: src/.+\.[ch]
+   PathMatch: (include/.+\.h|src/.+\.[ch])
 CompileFlags:
    Add:
    - '-xc'
