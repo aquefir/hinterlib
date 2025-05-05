@@ -133,17 +133,6 @@ else
 .L_LDFLAGS += $(LDFLAGS)
 endif
 
-# SYNDEFS
-.L_SYNDEFS := $(SYNDEFS.$(TP))
-ifeq ($(origin SYNDEFS),undefined)
-# nop
-else ifeq ($(origin SYNDEFS),default)
-# nop
-else
-# environment [override], file, command line, override, automatic
-.L_SYNDEFS += $(SYNDEFS)
-endif
-
 ## Override the *FLAGS variables if requested and such *FLAGS are
 ## nonempty
 
@@ -242,7 +231,6 @@ CXXFLAGS  := $(.L_CXXFLAGS)
 OBJCFLAGS := $(.L_OBJCFLAGS)
 ARFLAGS   := $(.L_ARFLAGS)
 LDFLAGS   := $(.L_LDFLAGS)
-SYNDEFS   := $(.L_SYNDEFS)
 
 ## Add built-in libs and #includes
 
@@ -403,22 +391,19 @@ ifeq ($(TP),IBMPC)
 .K_INCLUDE := -i=$(SYSROOT)/include $(patsubst %,-i=%,$(INCLUDES) \
 	$(SYSROOT)/lib $(.K_INCLUDES.$(HP).$(TP)) $(INCLUDEL))
 .K_ASINCLUDE := $(.K_INCLUDE)
-.K_DEFINE := $(patsubst %,-d%,$(DEFINES) _CFGOPT_FOO) \
-	$(patsubst %,-d_SYNDEF_%,$(SYNDEFS))
+.K_DEFINE := $(patsubst %,-d%,$(DEFINES))
 .K_ASDEFINE := $(.K_DEFINE)
 else ifeq ($(TP),PCDOS)
 .K_INCLUDE := -i=$(SYSROOT)/include $(patsubst %,-i=%,$(INCLUDES) \
 	$(SYSROOT)/lib $(.K_INCLUDES.$(HP).$(TP)) $(INCLUDEL))
 .K_ASINCLUDE := $(.K_INCLUDE)
-.K_DEFINE := $(patsubst %,-d%,$(DEFINES) _CFGOPT_FOO) \
-	$(patsubst %,-d_SYNDEF_%,$(SYNDEFS))
+.K_DEFINE := $(patsubst %,-d%,$(DEFINES))
 .K_ASDEFINE := $(.K_DEFINE)
 else ifeq ($(TP),WIN311)
 .K_INCLUDE := -i=$(SYSROOT)/include $(patsubst %,-i=%,$(INCLUDES) \
 	$(SYSROOT)/lib $(.K_INCLUDES.$(HP).$(TP)) $(INCLUDEL))
 .K_ASINCLUDE := $(.K_INCLUDE)
-.K_DEFINE := $(patsubst %,-d%,$(DEFINES) _CFGOPT_FOO) \
-	$(patsubst %,-d_SYNDEF_%,$(SYNDEFS))
+.K_DEFINE := $(patsubst %,-d%,$(DEFINES))
 .K_ASDEFINE := $(.K_DEFINE)
 else
 .K_INCLUDE := -isystem $(TROOT)/include $(patsubst %,-isystem \
@@ -427,11 +412,9 @@ else
 .K_ASINCLUDE := -I$(TROOT)/include $(patsubst %,-I%,$(INCLUDES) \
 	$(SYSROOT)/lib $(.K_INCLUDES.$(HP).$(TP)) $(INCLUDEL))
 .K_DEFINE := \
-	$(patsubst %,-D%,$(DEFINES) _CFGOPT_FOO) \
-	$(patsubst %,-D_SYNDEF_%,$(SYNDEFS) FOO)
+	$(patsubst %,-D%,$(DEFINES))
 .K_ASDEFINE := \
-	$(patsubst %,--defsym %=1,$(DEFINES) _CFGOPT_FOO) \
-	$(patsubst %,--defsym _SYNDEF_%=1,$(SYNDEFS) FOO)
+	$(patsubst %,--defsym %=1,$(DEFINES)) \
 endif
 
 ## Name the targets.
