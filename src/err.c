@@ -8,6 +8,6 @@
 
 #include <hn/err.h>
 
-#include <stdlib.h>
+#include <stdlib.h> /* IWYU pragma: keep */
 
 HN_NORETURN void hn_die( void ) { abort( ); }
