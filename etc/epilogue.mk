@@ -679,7 +679,7 @@ endif
 .PHONY: debug release check clean format
 # Remove all default implicit rules by emptying the suffixes builtin
 # This causes false circular dependencies with multi-dotted file
-# extensionsif we don't do this
+# extensions if we don't do this
 .SUFFIXES:
 
 ## Debug build
@@ -760,6 +760,9 @@ check: $(.L_TARGETS)
 
 # C++
 %.cpp.fmt: %.cpp
+%.cc.fmt: %.cc
+%.cxx.fmt: %.cxx
+%.c++.fmt: %.c++
 	$(call .FN_FILE,FMT,$<)
 	@cat $< | $(FMT) $(FMTFLAGS) > $@
 	@mv $@ $<
