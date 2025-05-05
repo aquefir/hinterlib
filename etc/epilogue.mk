@@ -414,7 +414,7 @@ else
 .K_DEFINE := \
 	$(patsubst %,-D%,$(DEFINES))
 .K_ASDEFINE := \
-	$(patsubst %,--defsym %=1,$(DEFINES)) \
+	$(patsubst %,--defsym %=1,$(DEFINES))
 endif
 
 ## Name the targets.
