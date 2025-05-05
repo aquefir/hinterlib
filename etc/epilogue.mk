@@ -42,7 +42,7 @@ else
 endif # $(origin INB_DEBUGLOG)
 
 # Set the origin-dependent values of the new variable.
-INB_DEBUGLOG.O_DEFAULT := debug.log
+INB_DEBUGLOG.O_DEFAULT := build.log
 INB_DEBUGLOG.O_CUSTOM := $(INB_DEBUGLOG)
 
 # Finally, set the variable.
