@@ -6,7 +6,7 @@
 ## Copyright (C) 2025 Aquefir Consulting LLC <//aquefir.co/>
 
 echo=/bin/echo;
-command -v gecho && echo=gecho;
+command -v gecho && echo=gecho; # for macOS
 command -v stdbuf && echo="stdbuf -o0 ${echo}";
 
 if test "$CC" = '' && ! command -v cc 2>&1 >/dev/null; then
