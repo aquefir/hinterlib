@@ -26,7 +26,7 @@ CONTRIBUTION REQUIREMENTS
  1. You agree to licence your work, which includes all changes to all
     files checked into version control, under version 1.1 of the Artisan
     Software Licence, which can be read in full in the Appendix of this
-    document or online at <https://aquefir.co/asl>
+    document or online at <https://aquefir.co/asl>.
  2. Before opening a "pull request", make sure that all code files are
     auto-formatted. Often, clangd can do this for you via your editor,
     but if it doesn't, simply run `make format`. The `clang-format`
