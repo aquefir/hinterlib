@@ -391,19 +391,19 @@ ifeq ($(TP),IBMPC)
 .K_INCLUDE := -i=$(SYSROOT)/include $(patsubst %,-i=%,$(INCLUDES) \
 	$(SYSROOT)/lib $(.K_INCLUDES.$(HP).$(TP)) $(INCLUDEL))
 .K_ASINCLUDE := $(.K_INCLUDE)
-.K_DEFINE := $(patsubst %,-d%,$(DEFINES))
+.K_DEFINE := $(patsubst %,-d%,$(DEFINES)) $(patsubst %,-d%,$(BITBOUND))
 .K_ASDEFINE := $(.K_DEFINE)
 else ifeq ($(TP),PCDOS)
 .K_INCLUDE := -i=$(SYSROOT)/include $(patsubst %,-i=%,$(INCLUDES) \
 	$(SYSROOT)/lib $(.K_INCLUDES.$(HP).$(TP)) $(INCLUDEL))
 .K_ASINCLUDE := $(.K_INCLUDE)
-.K_DEFINE := $(patsubst %,-d%,$(DEFINES))
+.K_DEFINE := $(patsubst %,-d%,$(DEFINES)) $(patsubst %,-d%,$(BITBOUND))
 .K_ASDEFINE := $(.K_DEFINE)
 else ifeq ($(TP),WIN311)
 .K_INCLUDE := -i=$(SYSROOT)/include $(patsubst %,-i=%,$(INCLUDES) \
 	$(SYSROOT)/lib $(.K_INCLUDES.$(HP).$(TP)) $(INCLUDEL))
 .K_ASINCLUDE := $(.K_INCLUDE)
-.K_DEFINE := $(patsubst %,-d%,$(DEFINES))
+.K_DEFINE := $(patsubst %,-d%,$(DEFINES)) $(patsubst %,-d%,$(BITBOUND))
 .K_ASDEFINE := $(.K_DEFINE)
 else
 .K_INCLUDE := -isystem $(TROOT)/include $(patsubst %,-isystem \
@@ -411,10 +411,8 @@ else
 	$(patsubst %,-iquote %,$(INCLUDEL))
 .K_ASINCLUDE := -I$(TROOT)/include $(patsubst %,-I%,$(INCLUDES) \
 	$(SYSROOT)/lib $(.K_INCLUDES.$(HP).$(TP)) $(INCLUDEL))
-.K_DEFINE := \
-	$(patsubst %,-D%,$(DEFINES))
-.K_ASDEFINE := \
-	$(patsubst %,--defsym %=1,$(DEFINES))
+.K_DEFINE := $(patsubst %,-D%,$(DEFINES)) $(patsubst %,-D%,$(BITBOUND))
+.K_ASDEFINE := $(patsubst %,--defsym %=1,$(DEFINES))
 endif
 
 ## Name the targets.
