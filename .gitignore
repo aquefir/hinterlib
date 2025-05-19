@@ -8,6 +8,7 @@
 
 /data
 /*.log
+/.cache
 /compile_commands.json
 3rdparty/*
 !3rdparty/README
