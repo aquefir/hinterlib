@@ -66,7 +66,28 @@ Simply run `make schema` to create it.
 GitHub does not support OpenPGP at all and will create an unsigned
 commit which you will either have to redo or we will have to throw out.
 3. In light of the coherent commit policy, you should still try to keep
-works-in-progress remotely synced. There are two ways to do this:
-	1. committing and pushing them temporarily and rolling them back for
-	fixes, **or**
-	2. using `git stash`.
+works-in-progress remotely synced. The way we recommend accomplishing
+this is as follows:
+	1. If you are a maintainer, create a separate branch for your work on
+	the main repository; if you are a contributor, create that branch on
+	your own GitHub &ldquo;fork&rdquo;.
+		- Do not perform any work on a `master` branch anywhere!
+		- Understand that you are the custodian of that branch; think of
+		yourself as the arbiter of its commit history.
+	2. Perform your work targeting that branch, making _proper commits_
+	as outlined in [Contribution requirements &sect;&sect;
+	5.1](#contribution-requirements), and creating
+	&ldquo;work-in-progress&rdquo; commits for any partially-completed
+	work at the end of the work day.
+	3. At the start of the next work day, roll back those unfinished
+	commits by doing `git reset HEAD~$1` where `$1` is the number of
+	unfinished commits.
+	4. Rewrite the branch&rsquo;s history with the next day&rsquo;s
+	commits, including unfinished ones, by doing
+	`git push --force-with-lease`. This is preferable to a simple
+	`git push --force` as it won&rsquo;t overwrite anyone else&rsquo;s
+	work in case another collaborator pushed to your branch without
+	notifying you. We recommend `alias`ing `git push --force-with-lease`
+	in your shell.
+	5. Continue working as usual and repeat steps 2, 3 and 4 each day
+	until the &ldquo;pull request&rdquo; is complete.
