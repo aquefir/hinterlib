@@ -9,57 +9,8 @@
 #ifndef INC_API__HN_TYPES_MEM_H
 #define INC_API__HN_TYPES_MEM_H
 
-/* START sanity check */
-#if !defined( _SYNDEF_FOO ) || !defined( _CFGOPT_FOO )
-#error Your compiler is not configured correctly for using Hinterlib. \
-Please ensure you are using the Inbound build system and a compatible \
-toolchain (GCC or Clang).
-#endif /* END sanity check */
-
-#if defined( __has_attribute )
-
-#if __has_attribute( packed )
-#if !defined( HN_PACKED )
-/* Force the structure to be tightly packed into as few octets as
- * possible. */
-#define HN_PACKED __attribute__( ( packed ) )
-#endif /* !defined( HN_PACKED ) */
-#endif /* __has_attribute( packed ) */
-
-#if __has_attribute( may_alias )
-#if !defined( HN_TYPELESS )
-/* Prevents the compiler from doing type analysis based optimisations
- * on the type, treating it as octet-addressable cast-friendly data. */
-#define HN_TYPELESS __attribute__( ( may_alias ) )
-#endif /* !defined( HN_TYPELESS ) */
-#endif /* __has_attribute( may_alias ) */
-
-#endif /* defined( __has_attribute ) */
-
-#if !defined( HN_SIZEOF_PTR )
-#if defined( _SYNDEF_PTRSZ_64 )
-/* Denotes the size of a pointer at runtime, denominated in octets. */
-#define HN_SIZEOF_PTR 8
-#elif defined( _SYNDEF_PTRSZ_32 )
-/* Denotes the size of a pointer at runtime, denominated in octets. */
-#define HN_SIZEOF_PTR 4
-#elif defined( _SYNDEF_PTRSZ_16 )
-/* Denotes the size of a pointer at runtime, denominated in octets. */
-#define HN_SIZEOF_PTR 2
-#else
-#error Pointer size is not 64, 32 or 16 bits.
-#endif
-#endif /* !defined( HN_SIZEOF_PTR ) */
-
-/* fallback #defines in case attributes are not supported */
-
-#if !defined( HN_PACKED )
-#define HN_PACKED
-#endif /* !defined( HN_PACKED ) */
-
-#if !defined( HN_TYPELESS )
-#define HN_TYPELESS
-#endif /* !defined( HN_TYPELESS ) */
+#include "base.h"
+#include "int.h"
 
 /**
  * Software Modular Memory Technique
