@@ -16,8 +16,6 @@ Please ensure you are using the Inbound build system and a compatible \
 toolchain (GCC or Clang).
 #endif /* END sanity check */
 
-#if defined( _SYNDEF_HAVE_FP )
-
 /* Double-precision IEEE 754 floating-point number. */
 typedef double hn_f64;
 /* Single-precision IEEE 754 floating-point number. */
@@ -31,7 +29,5 @@ typedef double f64;
 typedef float f32;
 
 #endif /* !defined( _CFGOPT_NOSHORTHAND ) */
-
-#endif /* defined( _SYNDEF_HAVE_FP ) */
 
 #endif /* INC_API__HN_TYPES_FLOAT_H */
