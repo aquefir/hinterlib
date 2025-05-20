@@ -762,8 +762,20 @@ check: $(.L_TARGETS)
 
 # C++
 %.cpp.fmt: %.cpp
+	$(call .FN_FILE,FMT,$<)
+	@cat $< | $(FMT) $(FMTFLAGS) > $@
+	@mv $@ $<
+
 %.cc.fmt: %.cc
+	$(call .FN_FILE,FMT,$<)
+	@cat $< | $(FMT) $(FMTFLAGS) > $@
+	@mv $@ $<
+
 %.cxx.fmt: %.cxx
+	$(call .FN_FILE,FMT,$<)
+	@cat $< | $(FMT) $(FMTFLAGS) > $@
+	@mv $@ $<
+
 %.c++.fmt: %.c++
 	$(call .FN_FILE,FMT,$<)
 	@cat $< | $(FMT) $(FMTFLAGS) > $@
@@ -791,8 +803,29 @@ check: $(.L_TARGETS)
 
 # C++
 %.cpp.sch: %.cpp
+	$(call .FN_FILE,SCH,$<)
+	@$(ECHO) -n '{"directory":"$(shell pwd)",' >> compile_commands.json
+	@$(ECHO) -n '"command":"' >> compile_commands.json
+	@$(ECHO) -n '$(CC) -c -o $@ $(CFLAGS) ' >> compile_commands.json
+	@$(ECHO) -n '$(.K_DEFINE) $(.K_INCLUDE) $<' >> compile_commands.json
+	@$(ECHO) -n '","file":"$<"},' >> compile_commands.json
+
 %.cc.sch: %.cc
+	$(call .FN_FILE,SCH,$<)
+	@$(ECHO) -n '{"directory":"$(shell pwd)",' >> compile_commands.json
+	@$(ECHO) -n '"command":"' >> compile_commands.json
+	@$(ECHO) -n '$(CC) -c -o $@ $(CFLAGS) ' >> compile_commands.json
+	@$(ECHO) -n '$(.K_DEFINE) $(.K_INCLUDE) $<' >> compile_commands.json
+	@$(ECHO) -n '","file":"$<"},' >> compile_commands.json
+
 %.cxx.sch: %.cxx
+	$(call .FN_FILE,SCH,$<)
+	@$(ECHO) -n '{"directory":"$(shell pwd)",' >> compile_commands.json
+	@$(ECHO) -n '"command":"' >> compile_commands.json
+	@$(ECHO) -n '$(CC) -c -o $@ $(CFLAGS) ' >> compile_commands.json
+	@$(ECHO) -n '$(.K_DEFINE) $(.K_INCLUDE) $<' >> compile_commands.json
+	@$(ECHO) -n '","file":"$<"},' >> compile_commands.json
+
 %.c++.sch: %.c++
 	$(call .FN_FILE,SCH,$<)
 	@$(ECHO) -n '{"directory":"$(shell pwd)",' >> compile_commands.json
@@ -822,6 +855,10 @@ check: $(.L_TARGETS)
 
 # Assembly
 %.s.o: %.s
+	$(call .FN_FILE,S,$@)
+	@$(AS) -o $@ $(ASFLAGS) $(.K_ASDEFINE) $(.K_ASINCLUDE) $< \
+		2>>$(INB_DEBUGLOG)
+
 %.asm.o: $.asm
 	$(call .FN_FILE,S,$@)
 	@$(AS) -o $@ $(ASFLAGS) $(.K_ASDEFINE) $(.K_ASINCLUDE) $< \
@@ -835,8 +872,20 @@ check: $(.L_TARGETS)
 
 # C++
 %.cpp.o: %.cpp
+	$(call .FN_FILE,CXX,$@)
+	@$(CXX) -c -o $@ $(CXXFLAGS) $(.K_DEFINE) $(.K_INCLUDE) $< \
+		2>>$(INB_DEBUGLOG)
+
 %.cc.o: %.cc
+	$(call .FN_FILE,CXX,$@)
+	@$(CXX) -c -o $@ $(CXXFLAGS) $(.K_DEFINE) $(.K_INCLUDE) $< \
+		2>>$(INB_DEBUGLOG)
+
 %.cxx.o: %.cxx
+	$(call .FN_FILE,CXX,$@)
+	@$(CXX) -c -o $@ $(CXXFLAGS) $(.K_DEFINE) $(.K_INCLUDE) $< \
+		2>>$(INB_DEBUGLOG)
+
 %.c++.o: $.c++
 	$(call .FN_FILE,CXX,$@)
 	@$(CXX) -c -o $@ $(CXXFLAGS) $(.K_DEFINE) $(.K_INCLUDE) $< \
