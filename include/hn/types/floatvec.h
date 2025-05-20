@@ -26,51 +26,51 @@
 
 /* 2-wide vector of double-precision IEEE 754 floating-point numbers.
  */
-typedef double hn_f64v2 HN_VECSIZE( 16 );
+typedef HN_VECTOR( double, hn_f64v2, 16 );
 /* 4-wide vector of double-precision IEEE 754 floating-point numbers.
  */
-typedef double hn_f64v4 HN_VECSIZE( 32 );
+typedef HN_VECTOR( double, hn_f64v4, 32 );
 /* 8-wide vector of double-precision IEEE 754 floating-point numbers.
  */
-typedef double hn_f64v8 HN_VECSIZE( 64 );
+typedef HN_VECTOR( double, hn_f64v8, 64 );
 
 /* 2-wide vector of single-precision IEEE 754 floating-point numbers.
  */
-typedef float hn_f32v2 HN_VECSIZE( 8 );
+typedef HN_VECTOR( float, hn_f32v2, 8 );
 /* 4-wide vector of single-precision IEEE 754 floating-point numbers.
  */
-typedef float hn_f32v4 HN_VECSIZE( 16 );
+typedef HN_VECTOR( float, hn_f32v4, 16 );
 /* 8-wide vector of single-precision IEEE 754 floating-point numbers.
  */
-typedef float hn_f32v8 HN_VECSIZE( 32 );
+typedef HN_VECTOR( float, hn_f32v8, 32 );
 /* 16-wide vector of single-precision IEEE 754 floating-point numbers.
  */
-typedef float hn_f32v16 HN_VECSIZE( 64 );
+typedef HN_VECTOR( float, hn_f32v16, 64 );
 
 #if !defined( _CFGOPT_NOSHORTHAND )
 
 /* 2-wide vector of double-precision IEEE 754 floating-point numbers.
  */
-typedef double f64v2 HN_VECSIZE( 16 );
+typedef HN_VECTOR( double, f64v2, 16 );
 /* 4-wide vector of double-precision IEEE 754 floating-point numbers.
  */
-typedef double f64v4 HN_VECSIZE( 32 );
+typedef HN_VECTOR( double, f64v4, 32 );
 /* 8-wide vector of double-precision IEEE 754 floating-point numbers.
  */
-typedef double f64v8 HN_VECSIZE( 64 );
+typedef HN_VECTOR( double, f64v8, 64 );
 
 /* 2-wide vector of single-precision IEEE 754 floating-point numbers.
  */
-typedef float f32v2 HN_VECSIZE( 8 );
+typedef HN_VECTOR( float, f32v2, 8 );
 /* 4-wide vector of single-precision IEEE 754 floating-point numbers.
  */
-typedef float f32v4 HN_VECSIZE( 16 );
+typedef HN_VECTOR( float, f32v4, 16 );
 /* 8-wide vector of single-precision IEEE 754 floating-point numbers.
  */
-typedef float f32v8 HN_VECSIZE( 32 );
+typedef HN_VECTOR( float, f32v8, 32 );
 /* 16-wide vector of single-precision IEEE 754 floating-point numbers.
  */
-typedef float f32v16 HN_VECSIZE( 64 );
+typedef HN_VECTOR( float, f32v16, 64 );
 
 #endif /* !defined( _CFGOPT_NOSHORTHAND ) */
 
