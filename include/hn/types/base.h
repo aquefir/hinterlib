@@ -106,7 +106,11 @@
 /* fallback #defines in case attributes are not supported */
 
 #if !defined( HN_PACKED )
+#if defined( HN_CC_TCC )
+#define HN_PACKED __attribute__( ( packed ) )
+#else
 #define HN_PACKED
+#endif /* defined( HN_CC_TCC ) */
 #endif /* !defined( HN_PACKED ) */
 
 #if !defined( HN_TYPELESS )
@@ -126,7 +130,11 @@
 #endif /* !defined( HN_PURE ) */
 
 #if !defined( HN_ALIGN )
+#if defined( HN_CC_TCC )
+#define HN_ALIGN( _n ) __attribute__( ( aligned( _n ) ) )
+#else
 #define HN_ALIGN( _n )
+#endif /* defined( HN_CC_TCC ) */
 #endif /* !defined( HN_ALIGN ) */
 
 #if !defined( HN_DEPRECATED )
