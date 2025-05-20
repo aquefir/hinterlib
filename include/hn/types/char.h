@@ -35,7 +35,12 @@
 /* fallback #defines in case attributes are not supported */
 
 #if !defined( HN_PACKED )
+/* special case to take advantage of TinyCC supporting packed */
+#if defined( HN_CC_TCC )
+#define HN_PACKED __attribute__( ( packed ) )
+#else
 #define HN_PACKED
+#endif /* defined( HN_CC_TCC ) */
 #endif /* !defined( HN_PACKED ) */
 
 /* HACK: the linter doesn't understand conditional compilation and so
