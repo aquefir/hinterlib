@@ -325,6 +325,36 @@ typedef struct hn_am16d4 hn_am16d4;
 typedef struct hn_am20d4 hn_am20d4;
 #endif /* HN_SIZEOF_PTR > 2 */
 
+enum hn_dimcount
+{
+	HN_DIMCOUNT_1,
+	HN_DIMCOUNT_2,
+	HN_DIMCOUNT_3,
+	HN_DIMCOUNT_4,
+	HN_MAX_DIMCOUNT
+};
+
+enum hn_knotbase
+{
+	HN_KNOTBASE_8,
+	HN_KNOTBASE_12,
+	HN_KNOTBASE_16,
+	HN_KNOTBASE_20,
+	HN_MAX_KNOTBASE
+};
+
+/* Amalgam shape description structure. */
+struct hn_amalgam
+{
+	/* HIGH if underlying memory is physically contiguous by address;
+	 * LOW if potentially sparse. */
+	hn_ubf contiguous : 1;
+	/* Dimension count; see `enum hn_dimcount` for valid values. */
+	hn_ubf dimcount : 2;
+	/* Knot base; see `enum hn_knotbase` for valid values. */
+	hn_ubf knotbase : 2;
+};
+
 /* Custom allocator options structure. */
 struct hn_malloc_opts
 {
