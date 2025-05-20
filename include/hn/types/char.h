@@ -38,6 +38,11 @@
 #define HN_PACKED
 #endif /* !defined( HN_PACKED ) */
 
+/* HACK: the linter doesn't understand conditional compilation and so
+ * it thinks "def.h" is never used. it is with TinyCC above. */
+#define _FOO_API__CHAR_H INC_API__HN_TYPES_DEF_H
+#undef _FOO_API__CHAR_H
+
 #if !defined( HN_TYPELESS )
 #define HN_TYPELESS
 #endif /* !defined( HN_TYPELESS ) */
