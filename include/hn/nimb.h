@@ -28,13 +28,6 @@
  * use compressed amalgams with this ABI.
  */
 
-/* START sanity check */
-#if !defined( _SYNDEF_FOO ) || !defined( _CFGOPT_FOO )
-#error Your compiler is not configured correctly for using Hinterlib. \
-Please ensure you are using the Inbound build system and a compatible \
-toolchain (GCC or Clang).
-#endif /* END sanity check */
-
 #include "types/base.h"
 #include "types/char.h"
 #include "types/int.h"
