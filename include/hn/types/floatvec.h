@@ -9,15 +9,6 @@
 #ifndef INC_API__HN_TYPES_FLOATVEC_H
 #define INC_API__HN_TYPES_FLOATVEC_H
 
-/* START sanity check */
-#if !defined( _SYNDEF_FOO ) || !defined( _CFGOPT_FOO )
-#error Your compiler is not configured correctly for using Hinterlib. \
-Please ensure you are using the Inbound build system and a compatible \
-toolchain (GCC or Clang).
-#endif /* END sanity check */
-
-#if defined( _SYNDEF_HAVE_FP )
-
 #if defined( __has_attribute )
 #if __has_attribute( vector_size )
 #if !defined( HN_VECSIZE )
