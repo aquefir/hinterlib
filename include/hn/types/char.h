@@ -9,12 +9,7 @@
 #ifndef INC_API__HN_TYPES_CHAR_H
 #define INC_API__HN_TYPES_CHAR_H
 
-/* START sanity check */
-#if !defined( _SYNDEF_FOO ) || !defined( _CFGOPT_FOO )
-#error Your compiler is not configured correctly for using Hinterlib. \
-Please ensure you are using the Inbound build system and a compatible \
-toolchain (GCC or Clang).
-#endif /* END sanity check */
+#include "def.h"
 
 #if defined( __has_attribute )
 
