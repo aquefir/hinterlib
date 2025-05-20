@@ -9,12 +9,7 @@
 #ifndef INC_API__HN_TYPES_BASE_H
 #define INC_API__HN_TYPES_BASE_H
 
-/* START sanity check */
-#if !defined( _SYNDEF_FOO ) || !defined( _CFGOPT_FOO )
-#error Your compiler is not configured correctly for using Hinterlib. \
-Please ensure you are using the Inbound build system and a compatible \
-toolchain (GCC or Clang).
-#endif /* END sanity check */
+#include "def.h"
 
 #if !defined( NULL )
 #if defined( __cplusplus )
@@ -94,13 +89,13 @@ toolchain (GCC or Clang).
 #endif /* defined( __has_attribute ) */
 
 #if !defined( HN_SIZEOF_PTR )
-#if defined( _SYNDEF_PTRSZ_64 )
+#if defined( HN_PTRSZ_64 )
 /* Denotes the size of a pointer at runtime, denominated in octets. */
 #define HN_SIZEOF_PTR 8
-#elif defined( _SYNDEF_PTRSZ_32 )
+#elif defined( HN_PTRSZ_32 )
 /* Denotes the size of a pointer at runtime, denominated in octets. */
 #define HN_SIZEOF_PTR 4
-#elif defined( _SYNDEF_PTRSZ_16 )
+#elif defined( HN_PTRSZ_16 )
 /* Denotes the size of a pointer at runtime, denominated in octets. */
 #define HN_SIZEOF_PTR 2
 #else
