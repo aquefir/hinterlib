@@ -20,3 +20,16 @@ and help guides.
 If your editor leverages the `clangd` language server, Inbound provides
 a `make schema` phony target to generate its requisite JSON command
 database.
+
+Hinterlib requires the use of one of the following ANSI C compilers:
+- [GCC](https://gcc.gnu.org/)
+- [Clang](https://clang.llvm.org/)
+- [MSVC](https://visualstudio.microsoft.com/)
+- [TinyCC](https://download.savannah.gnu.org/releases/tinycc/)
+- [Pacific
+C](https://cowlark.com/old-compilers/index.html#pacific-c-751-i86)
+- [Digital Mars
+C](https://www.digitalmars.com/download/freecompiler.html)
+- [FCC](https://kb.xion.mt/Feeble_C_compiler)
+- [PCC](https://github.com/IanHarvey/pcc)
+- [Small Device C compiler](https://sdcc.sourceforge.net/)
