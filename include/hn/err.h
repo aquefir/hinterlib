@@ -9,9 +9,9 @@
 #ifndef INC_API__HN_ERR_H
 #define INC_API__HN_ERR_H
 
-#include "types/base.h"
-
 #include "conio.h"
+#include "types/base.h"
+#include "types/char.h"
 
 /* TODO: Document this! */
 #if defined( _CFGOPT_NOSTDIO )
