@@ -21,7 +21,7 @@
  * @note The allocated knot will be aligned so the lowest 8 bits are
  *       zero (ergo, aligned to the nearest whole 256 bytes).
  */
-HN_API hn_knot8 hn_allockn8( void );
+HN_API hn_knot8 hn_allock8( void );
 
 /**
  *
@@ -32,7 +32,7 @@ HN_API hn_knot8 hn_allockn8( void );
  * @note The allocated knot will be aligned so the lowest 12 bits are
  *       zero (ergo, aligned to the nearest whole 4 kibibytes).
  */
-HN_API hn_knot12 hn_allockn12( void );
+HN_API hn_knot12 hn_allock12( void );
 
 /**
  *
@@ -43,7 +43,7 @@ HN_API hn_knot12 hn_allockn12( void );
  * @note The allocated knot will be aligned so the lowest 16 bits are
  *       zero (ergo, aligned to the nearest whole 64 kibibytes).
  */
-HN_API hn_knot16 hn_allockn16( void );
+HN_API hn_knot16 hn_allock16( void );
 
 #if HN_SIZEOF_PTR > 2
 /**
@@ -55,7 +55,7 @@ HN_API hn_knot16 hn_allockn16( void );
  * @note The allocated knot will be aligned so the lowest 20 bits are
  *       zero (ergo, aligned to the nearest whole 1 mebibyte).
  */
-HN_API hn_knot20 hn_allockn20( void );
+HN_API hn_knot20 hn_allock20( void );
 #endif /* HN_SIZEOF_PTR > 2 */
 
 /**
