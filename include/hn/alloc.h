@@ -12,6 +12,10 @@
 #include "types/base.h"
 #include "types/mem.h"
 
+#if defined( __STDC__ )
+#include <alloca.h>
+#endif
+
 /**
  *
  * @brief Try to allocate an 8-bit knot, returning `NULL` on failure.
