@@ -68,18 +68,18 @@ amalgams. The main benefit is that they are a good deal cleaner-looking
 and quicker to type out than those provided by `<stdint.h>`. Observe:
 
 ```c
-	/* the "standard" way using C99 (!!!) stdint.h */
-	uint32_t, int16_t, uint8_t, uint64_t, ...
+/* the "standard" way using C99 (!!!) stdint.h */
+uint32_t, int16_t, uint8_t, uint64_t, ...
 
-	/* the Hinterlib equivalent, using only ANSI C =) */
-	u32, s16, u8, u64, ...
+/* the Hinterlib equivalent, using only ANSI C =) */
+u32, s16, u8, u64, ...
 ```
 
 Hinterlib denotes vector aggregates (for SIMD) by combining its base
 element type with the number of elements, like so:
 
 ```c
-	u32v2 a; /* vector type of two u32s */
+u32v2 a; /* vector type of two u32s */
 ```
 
 This is the preferred way to carry around common geometry primitives as
