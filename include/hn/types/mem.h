@@ -324,22 +324,22 @@ typedef struct hn_am16d4 hn_am16d4;
 typedef struct hn_am20d4 hn_am20d4;
 #endif /* HN_SIZEOF_PTR > 2 */
 
-enum hn_dimcount
+enum hn_amaldim
 {
-	HN_DIMCOUNT_1,
-	HN_DIMCOUNT_2,
-	HN_DIMCOUNT_3,
-	HN_DIMCOUNT_4,
-	HN_MAX_DIMCOUNT
+	HN_AMALDIM_1,
+	HN_AMALDIM_2,
+	HN_AMALDIM_3,
+	HN_AMALDIM_4,
+	HN_MAX_AMALDIM
 };
 
-enum hn_knotbase
+enum hn_baseknotsz
 {
-	HN_KNOTBASE_8,
-	HN_KNOTBASE_12,
-	HN_KNOTBASE_16,
-	HN_KNOTBASE_20,
-	HN_MAX_KNOTBASE
+	HN_BASEKNOTSZ_8,
+	HN_BASEKNOTSZ_12,
+	HN_BASEKNOTSZ_16,
+	HN_BASEKNOTSZ_20,
+	HN_MAX_BASEKNOTSZ
 };
 
 /* Amalgam shape description structure. */
@@ -348,10 +348,12 @@ struct hn_amalgam
 	/* HIGH if underlying memory is physically contiguous by address;
 	 * LOW if potentially sparse. */
 	hn_ubf contiguous : 1;
-	/* Dimension count; see `enum hn_dimcount` for valid values. */
-	hn_ubf dimcount : 2;
-	/* Knot base; see `enum hn_knotbase` for valid values. */
-	hn_ubf knotbase : 2;
+	/* Dimension count; see `enum hn_amaldim` for valid values. */
+	hn_ubf dim_count : 2;
+	/* Knot base; see `enum hn_baseknotsz` for valid values. */
+	hn_ubf baseknot_sz : 2;
+	hn_ubf : 11;
+	hn_ubf : 16;
 };
 
 /* Custom allocator options structure. */
