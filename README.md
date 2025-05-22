@@ -1,6 +1,6 @@
 # Hinterlib
 
-![Hinterlib](https://cdn.tohoku.ac/f/02e51f73418d4d7ba33559893035bddd/unknown.png)
+![Hinterlib](https://cdn.tohoku.ac/hn-banner.jpg)
 
 **Hinterlib** is a `libc` surrogate and supplemental support library not
 unlike [GLib](https://docs.gtk.org/glib/) or
