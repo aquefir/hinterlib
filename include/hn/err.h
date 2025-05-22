@@ -9,7 +9,6 @@
 #ifndef INC_API__HN_ERR_H
 #define INC_API__HN_ERR_H
 
-#include "conio.h"
 #include "types/base.h"
 #include "types/char.h"
 
@@ -19,7 +18,7 @@
 #define HN_ERR_WRILN( _s )
 #else
 #define HN_ERR_WRILN( _s ) hn_wriln_e( "%s", ( _s ) )
-#endif /* !defined( _CFGOPT_NOSTDIO ) */
+#endif /* defined( _CFGOPT_NOSTDIO ) */
 
 #if !defined( HN_CHK_DIE )
 /* Assert an expression, otherwise die. */
