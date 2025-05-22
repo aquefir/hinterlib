@@ -496,4 +496,9 @@ extern const hn_chr * const hn_err_id_strings[HN_MAX_ERR_ID];
  */
 HN_API HN_NORETURN void hn_die( void );
 
+#if defined( _CFGOPT_NOSTDIO )
+/* Remove it before anyone finds out */
+#undef hn_wriln_e
+#endif /* !defined( _CFGOPT_NOSTDIO ) */
+
 #endif /* INC_API__HN_ERR_H */
