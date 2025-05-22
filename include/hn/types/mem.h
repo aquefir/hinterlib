@@ -20,64 +20,81 @@
  * amalgam: a small collection of metadata used to string knots
  *          together into larger pieces of structured memory
  *
- * Hinterlib's heap allocators will not provide arbitrary stretches of
- * memory upon request as this does not bode well with machines that
- * do not provide the incredibly energy-intensive virtual memory
- * provisions via an MMU. To help fight the incidence of fragmentation
- * without such smoke-and-mirrors, the allocators instead will give
- * callers a knot of memory of a certain size. With masking of higher
- * bits, this knot can be looped over in a circular fashion at quite a
- * negligible computational cost.
+ * While Hinterlib does provide a typical flat heap allocator with a
+ * modest alignment of 64 octets, this is prone to fragmentation on many
+ * systems where the energy-intensive machinations of an MMU giving it
+ * virtual addresses does not exist. To help prevent fragmentation while
+ * ensuring full control of memory management to the API consumer, a
+ * technique called "software modular memory" has been invented.
  *
- * Container implementations will work on amalgams of these building
- * blocks, which may be sequential (i.e. contiguous) or sparse.
- * Amalgams have a length, an element size, and a pointer dataset: in
- * sequential amalgams, the pointer dataset is merely one pointer to
- * the head of the sequence of knots, while in sparse amalgams, the
- * pointer dataset is an array of pointers to each knot in sequence.
+ * Small, fixed size allocations are strung together as elements of a
+ * linked list and treated by the program as a coherent structure of a
+ * larger block of memory. These small, fixed size allocations are
+ * called "knots" and they come in sizes of 8, 12, 16 and 20 bits for
+ * capacities of 256, 4096, 65535 and 1048576 bytes, respectively.
  *
- * Amalgams themselves would either occupy automatic storage or reside
- * in a knot in their own right. Sparse amalgams may need larger knots
- * to hold their full pointer lists. For reference:
- *   - 8-knots => 63 (32-bit) / 31 (64-bit) elements
- *   - 12-knots => 1023 (32-bit) / 511 (64-bit) elements
- *   - 16-knots => 16383 (32-bit) / 8191 (64-bit) elements
- *   - 20-knots => 262143 (32-bit) / 131071 (64-bit) elements
+ * To bind these knots together, a small metadata structure that should
+ * fit in all practicable machine registers (no more than 16 bits) is
+ * used. This is called an "amalgam" and it holds the information on how
+ * many dimensions are ultimately to be found in its contents, and from
+ * there it can be deduced by examining the knot headers what the
+ * ultimate size of the amalgamated memory allocation is. Amalgams refer
+ * to anywhere from 1 to 4 layers, or dimensions, of 16-bit knots,
+ * beneath which is a knot of any size that contains all of the user
+ * data. This knot bearing the data is called the "base knot".
  *
- * We can then chart this to see total memory capacity of every kind of
- * sparse amalgam. First is on 32-bit machines, then on 64-bit:
+ * With up to 4 dimensions, the tables below show the maximum capacity
+ * of amalgams with various base sizes on machines of various memory
+ * space sizes. Actual sizes are very slightly (sub-linearly) less as
+ * each amalgam consumes one element at the start to hold its size.
  *
- * Elem=> |  8-bit  |  12-bit |  16-bit | 20-bit
- * -------+---------+---------+---------+-----------
- *  8-bit |  ~16KB  |  ~258KB |   ~4MB  |   ~66MB
- * 12-bit |  ~261KB |  ~4.2MB |  ~67MB  |  ~1073MB
- * 16-bit |  ~4.2MB |  ~67MB  | ~1074MB |  ~17.2GB
- * 20-bit | ~67.1MB | ~1074MB | ~17.2GB |  ~274.9GB
+ * 16-BIT MEMORY SPACE :-
+ *     | BASE KNOT
+ * DIM |    8   |   12   |    16  |    20
+ *  1  |   8MiB | 128MiB |   2GiB |  32GiB
+ *  2  | 256GiB |   4TiB |  64TiB |   1PiB
+ *  3  |   8PiB | 128PiB |   2EiB |  32EiB
+ *  4  | 256EiB |   4ZiB |  64ZiB |   1YiB
  *
- * Elem=> |  8-bit  |  12-bit |  16-bit | 20-bit
- * -------+---------+---------+---------+-----------
- *  8-bit |   ~8KB  |  ~129KB |   ~2MB  |   ~33MB
- * 12-bit |  ~131KB |  ~2.1MB | ~33.5MB |  ~535.8MB
- * 16-bit |  ~2.1MB | ~33.5MB |  ~537MB |   ~8.6GB
- * 20-bit | ~33.5MB |  ~537MB |  ~8.6GB |  ~137.4GB
+ * 32-BIT MEMORY SPACE :-
+ *     | BASE KNOT
+ * DIM |    8   |   12   |   16   |    20
+ *  1  |   4MiB |  64MiB |   1GiB |   16GiB
+ *  2  |  64GiB |   1TiB |  16TiB |  256TiB
+ *  3  |   1PiB |  16PiB | 256PiB |    4EiB
+ *  4  |  16EiB | 256EiB |   4ZiB |   64ZiB
  *
- * Additionally, here are the memory capacities of 8-, 12- and 16-bit
- * amalgams on 16-bit machines:
+ * 64-BIT MEMORY SPACE :-
+ *     | BASE KNOT
+ * DIM |    8   |   12   |   16   |    20
+ *  1  |   2MiB |  32MiB | 512MiB |   8GiB
+ *  2  |  16GiB | 256GiB |   4TiB |  64TiB
+ *  3  | 128TiB |   2PiB |  32PiB | 512PiB
+ *  4  |   1EiB |  16EiB | 256EiB |   4ZiB
  *
- * Elem=> |  8-bit |  12-bit  |  16-bit
- * -------+---------+---------+----------
- *  8-bit |  ~32KB |  ~520KB  |  ~8.3MB
- * 12-bit | ~524KB |  ~8.4MB  | ~134.1MB
- * 16-bit | ~8.4MB | ~134.2MB |  ~2.1GB
+ * From this, several things become apparent:
+ *  1. Even in the worst case on 64-bit machines, amalgams with 20-bit
+ *     base knots outperform flat pointers in sheer addressability,
+ *     providing 2^72 bits over a theoretical maximum of 2^64 addresses
+ *     and a practical maximum of 2^48 addresses.
+ *  2. Overall, smaller pointer sizes are better for addressibility:
+ *     16-bit machines provide 20^80 addresses with 4 dimensions.
+ *  3. Adding an interface boundary to the transition between knots
+ *     makes addressing such vast sums of memory practical, as it can be
+ *     implemented arbitrarily to change out any number of backing
+ *     devices while maintaining coherence for the program.
  *
- * These limits naturally do not apply to sequential amalgams, which
- * are only limited by the amount of installed memory. If you are
- * dealing with so much sparse data anyway, these structures can only
- * impose a linear at worst cost basis for use, which is negligible
- * compared to the overall cost of using a linked list strategy to
- * handle large data anyway. More robust solutions will invariably
- * require transforming such sparse data into contiguous runs where
- * needed.
+ * While this interface is only for defining the structures of software
+ * modular memory, implementations should nonetheless follow a few
+ * rules:
+ *  1. When allocating knots, they must be self-aligned; that is, they
+ *     begin on a memory addressing boundary that matches their size.
+ *     This allows one to simply zero out the lower bits according to
+ *     its size and the result is the beginning of the knot.
+ *  2. A knot should always be fully allocated according to its size and
+ *     dumbly addressable sequentially. Any non-continuity must be
+ *     transparent to the program, and should be nonexistent if the
+ *     efficiency gains from this technique are desired.
  */
 
 #if !defined( HN_KNOT8_NORM )
