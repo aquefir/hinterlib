@@ -13,7 +13,6 @@
 
 #include "file.h"
 #include "types/char.h"
-#include "types/int.h"
 
 enum
 {
