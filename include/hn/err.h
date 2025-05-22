@@ -16,7 +16,13 @@
 #if defined( _CFGOPT_NOSTDIO )
 /* fake out */
 #define HN_ERR_WRILN( _s )
-#else
+#else /* !defined( _CFGOPT_NOSTDIO ) */
+#include "conio.h"
+
+/* HACK: Use a symbol to please the linter */
+#define _FOO_API__HN_ERR_H INC_API__HN_CONIO_H
+#undef _FOO_API__HN_ERR_H
+
 #define HN_ERR_WRILN( _s ) hn_wriln_e( "%s", ( _s ) )
 #endif /* defined( _CFGOPT_NOSTDIO ) */
 
