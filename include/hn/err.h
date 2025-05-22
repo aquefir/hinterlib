@@ -472,7 +472,7 @@ enum
 	/* Resource deadlock would occur */
 	HN_ERR_ID_EDEADLOCK = HN_ERR_ID_EDEADLK,
 	/* Operation would block */
-	HN_ERR_ID_EWOULDBLOCK = HN_ERR_ID_EAGAIN,
+	HN_ERR_ID_EWOULDBLOCK = HN_ERR_ID_EAGAIN
 };
 
 struct hn_err
