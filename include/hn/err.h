@@ -16,7 +16,9 @@
 /* TODO: Document this! */
 #if defined( _CFGOPT_NOSTDIO )
 /* fake out */
-#define hn_wriln_e( x, y )
+#define HN_ERR_WRILN( _s )
+#else
+#define HN_ERR_WRILN( _s ) hn_wriln_e( "%s", ( _s ) )
 #endif /* !defined( _CFGOPT_NOSTDIO ) */
 
 #if !defined( HN_CHK_DIE )
@@ -29,7 +31,7 @@
 		} \
 		else \
 		{ \
-			hn_wriln_e( "%s", ( _hn_failstr ) ); \
+			HN_ERR_WRILN( _hn_failstr ); \
 			hn_die( ); \
 		} \
 	} while( 0 )
@@ -60,7 +62,7 @@
 		} \
 		else \
 		{ \
-			hn_wriln_e( "%s", ( _hn_failstr ) ); \
+			HN_ERR_WRILN( _hn_failstr ); \
 			return; \
 		} \
 	} while( 0 )
@@ -91,7 +93,7 @@
 		} \
 		else \
 		{ \
-			hn_wriln_e( "%s", ( _hn_failstr ) ); \
+			HN_ERR_WRILN( _hn_failstr ); \
 			return ( _hn_failval ); \
 		} \
 	} while( 0 )
@@ -122,7 +124,7 @@
 		} \
 		else \
 		{ \
-			hn_wriln_e( "%s", ( _hn_failstr ) ); \
+			HN_ERR_WRILN( _hn_failstr ); \
 			break; \
 		} \
 	} while( 0 )
@@ -153,7 +155,7 @@
 		} \
 		else \
 		{ \
-			hn_wriln_e( "%s", ( _hn_failstr ) ); \
+			HN_ERR_WRILN( _hn_failstr ); \
 			continue; \
 		} \
 	} while( 0 )
@@ -184,7 +186,7 @@
 		} \
 		else \
 		{ \
-			hn_wriln_e( "%s", ( _hn_failstr ) ); \
+			HN_ERR_WRILN( _hn_failstr ); \
 			goto _hn_label; \
 		} \
 	} while( 0 )
@@ -495,10 +497,5 @@ extern const hn_chr * const hn_err_id_strings[HN_MAX_ERR_ID];
  *       available, falling back to its own implementation otherwise.
  */
 HN_API HN_NORETURN void hn_die( void );
-
-#if defined( _CFGOPT_NOSTDIO )
-/* Remove it before anyone finds out */
-#undef hn_wriln_e
-#endif /* !defined( _CFGOPT_NOSTDIO ) */
 
 #endif /* INC_API__HN_ERR_H */
