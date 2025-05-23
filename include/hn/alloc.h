@@ -29,6 +29,22 @@ HN_API hn_knot8 hn_allock8( void );
 
 /**
  *
+ * @brief Try to allocate several 8-bit knots at once.
+ * @param n How many 8-bit knots to allocate in total.
+ * @param ret Array of 8-bit knots to write the allocation result into,
+ *        sized to hold at least `n` 8-bit knots.
+ * @returns The number of 8-bit knots actually allocated and written.
+ * @note This routine performs dynamic memory allocation that will need
+ *       to be manually deallocated later with `hn_free()`.
+ * @note Each knot is allocated separately for the purposes of later
+ *       calls to `hn_free()`.
+ * @note Each allocated knot will be aligned so the lowest 8 bits are
+ *       zero (ergo, aligned to the nearest whole 256 bytes).
+ */
+HN_API hn_ptri hn_allock8a( hn_ptri, hn_knot8 * );
+
+/**
+ *
  * @brief Try to allocate a 12-bit knot, returning `NULL` on failure.
  * @returns The allocated knot, or `NULL` on out-of-memory error.
  * @note This routine performs dynamic memory allocation that will need
@@ -37,6 +53,22 @@ HN_API hn_knot8 hn_allock8( void );
  *       zero (ergo, aligned to the nearest whole 4 kibibytes).
  */
 HN_API hn_knot12 hn_allock12( void );
+
+/**
+ *
+ * @brief Try to allocate several 12-bit knots at once.
+ * @param n How many 12-bit knots to allocate in total.
+ * @param ret Array of 12-bit knots to write the allocation result into,
+ *        sized to hold at least `n` 12-bit knots.
+ * @returns The number of 12-bit knots actually allocated and written.
+ * @note This routine performs dynamic memory allocation that will need
+ *       to be manually deallocated later with `hn_free()`.
+ * @note Each knot is allocated separately for the purposes of later
+ *       calls to `hn_free()`.
+ * @note Each allocated knot will be aligned so the lowest 12 bits are
+ *       zero (ergo, aligned to the nearest whole 4 kibibytes).
+ */
+HN_API hn_ptri hn_allock12a( hn_ptri, hn_knot12 * );
 
 /**
  *
@@ -49,6 +81,22 @@ HN_API hn_knot12 hn_allock12( void );
  */
 HN_API hn_knot16 hn_allock16( void );
 
+/**
+ *
+ * @brief Try to allocate several 16-bit knots at once.
+ * @param n How many 16-bit knots to allocate in total.
+ * @param ret Array of 16-bit knots to write the allocation result into,
+ *        sized to hold at least `n` 16-bit knots.
+ * @returns The number of 16-bit knots actually allocated and written.
+ * @note This routine performs dynamic memory allocation that will need
+ *       to be manually deallocated later with `hn_free()`.
+ * @note Each knot is allocated separately for the purposes of later
+ *       calls to `hn_free()`.
+ * @note Each allocated knot will be aligned so the lowest 16 bits are
+ *       zero (ergo, aligned to the nearest whole 64 kibibytes).
+ */
+HN_API hn_ptri hn_allock16a( hn_ptri, hn_knot16 * );
+
 #if HN_SIZEOF_PTR > 2
 /**
  *
@@ -60,6 +108,22 @@ HN_API hn_knot16 hn_allock16( void );
  *       zero (ergo, aligned to the nearest whole 1 mebibyte).
  */
 HN_API hn_knot20 hn_allock20( void );
+
+/**
+ *
+ * @brief Try to allocate several 20-bit knots at once.
+ * @param n How many 20-bit knots to allocate in total.
+ * @param ret Array of 20-bit knots to write the allocation result into,
+ *        sized to hold at least `n` 20-bit knots.
+ * @returns The number of 20-bit knots actually allocated and written.
+ * @note This routine performs dynamic memory allocation that will need
+ *       to be manually deallocated later with `hn_free()`.
+ * @note Each knot is allocated separately for the purposes of later
+ *       calls to `hn_free()`.
+ * @note Each allocated knot will be aligned so the lowest 20 bits are
+ *       zero (ergo, aligned to the nearest whole 1 mebibytes).
+ */
+HN_API hn_ptri hn_allock20a( hn_ptri, hn_knot20 * );
 #endif /* HN_SIZEOF_PTR > 2 */
 
 /**
