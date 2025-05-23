@@ -55,6 +55,7 @@ PUBHFILES := \
 	include/hn/err.h \
 	include/hn/exec.h \
 	include/hn/file.h \
+	include/hn/himem.h \
 	include/hn/log.h \
 	include/hn/memops.h \
 	include/hn/nimb.h \
