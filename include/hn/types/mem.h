@@ -78,8 +78,12 @@
  *     providing 2^72 bits over a theoretical maximum of 2^64 addresses
  *     and a practical maximum of 2^48 addresses.
  *  2. Overall, smaller pointer sizes are better for addressibility:
- *     16-bit machines provide 20^80 addresses with 4 dimensions.
- *  3. Adding an interface boundary to the transition between knots
+ *     16-bit machines provide 20^76 addresses with 4 dimensions. They
+ *     are also the least wasteful when using smaller base knot sizes.
+ *  3. For a given dimension count, 16-bit pointers with 16-bit base
+ *     knots provide as much addressability as 32-bit pointers with
+ *     20-bit base knots.
+ *  4. Adding an interface boundary to the transition between knots
  *     makes addressing such vast sums of memory practical, as it can be
  *     implemented arbitrarily to change out any number of backing
  *     devices while maintaining coherence for the program.
