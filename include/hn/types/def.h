@@ -17,17 +17,17 @@
  * @param pat Patch version number (0-65535).
  */
 #define HN_MAKE_CCVERSION( maj, min, pat ) \
-	((((maj) & 0xFF) << 24) | \
-	(((min) & 0xFF) << 16) | \
-	((pat) & 0xFFFF))
+	( ( ( ( maj ) & 0xFF ) << 24 ) | \
+		( ( ( min ) & 0xFF ) << 16 ) | ( ( pat ) & 0xFFFF ) )
 #endif /* !defined( HN_MAKE_CCVERSION ) */
 
 #if !defined( HN_CCVERSION )
 #if defined( __clang__ )
 #if defined( __clang_patchlevel__ )
 #define HN_CCVERSION \
-	HN_MAKE_CCVERSION( __clang_major__, __clang_minor__, \
-	__clang_patchlevel__ )
+	HN_MAKE_CCVERSION( __clang_major__, \
+		__clang_minor__, \
+		__clang_patchlevel__ )
 #else /* !defined( __clang_patchlevel__ ) */
 #define HN_CCVERSION \
 	HN_MAKE_CCVERSION( __clang_major__, __clang_minor__, 0 )
@@ -36,19 +36,21 @@
 #elif defined( __GNUC__ )
 #if defined( __GNUC_PATCHLEVEL__ )
 #define HN_CCVERSION \
-	HN_MAKE_CCVERSION( __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__ )
+	HN_MAKE_CCVERSION( \
+		__GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__ )
 #else /* !defined( __GNUC_PATCHLEVEL__ ) */
-#define HN_CCVERSION \
-	HN_MAKE_CCVERSION( __GNUC__, __GNUC_MINOR__, 0 )
+#define HN_CCVERSION HN_MAKE_CCVERSION( __GNUC__, __GNUC_MINOR__, 0 )
 #endif /* defined( __GNUC_PATCHLEVEL__ ) */
 #elif defined( __INTEL_COMPILER )
 #define HN_CCVERSION \
-	HN_MAKE_CCVERSION( __INTEL_COMPILER << 8, __INTEL_COMPILER, \
-	__INTEL_COMPILER_UPDATE )
+	HN_MAKE_CCVERSION( __INTEL_COMPILER << 8, \
+		__INTEL_COMPILER, \
+		__INTEL_COMPILER_UPDATE )
 #elif defined( _MSC_FULL_VER )
 #define HN_CCVERSION \
 	HN_MAKE_CCVERSION( _MSC_FULL_VER / 1000000, \
-	( _MSC_FULL_VER % 1000000 ) / 10000, _MSC_FULL_VER % 10000 )
+		( _MSC_FULL_VER % 1000000 ) / 10000, \
+		_MSC_FULL_VER % 10000 )
 #elif defined( _MSC_VER )
 #define HN_CCVERSION \
 	HN_MAKE_CCVERSION( _MSC_VER / 100, _MSC_VER % 100, 0 )
@@ -65,20 +67,21 @@
 	__DMC__ & 0xF )
 #elif defined( __SDCC )
 #define HN_CCVERSION \
-	HN_MAKE_CCVERSION( __SDCC_VERSION_MAJOR, __SDCC_VERSION_MINOR, \
-	__SDCC_VERSION_PATCH )
-#else /* !defined( __clang__ ) && !defined( __GNUC__ ) &&
-	!defined( __INTEL_COMPILER ) && !defined( _MSC_FULL_VER ) &&
-	!defined( _MSC_VER ) && !defined( __TINYC__ ) &&
-	!defined( __PACIFIC__ ) && !defined( __BORLANDC__ ) &&
+	HN_MAKE_CCVERSION( __SDCC_VERSION_MAJOR, \
+		__SDCC_VERSION_MINOR, \
+		__SDCC_VERSION_PATCH )
+#else /* !defined( __clang__ ) && !defined( __GNUC__ ) && \
+	!defined( __INTEL_COMPILER ) && !defined( _MSC_FULL_VER ) && \
+	!defined( _MSC_VER ) && !defined( __TINYC__ ) && \
+	!defined( __PACIFIC__ ) && !defined( __BORLANDC__ ) && \
 	!defined( __DMC__ ) && !defined( __SDCC ) */
 #error Hinterlib requires the use of one of the following compilers: \
 GCC, Clang, MSVC, TinyCC, Pacific C, Digital Mars C, FCC, PCC, or the \
 Small Device C compiler.
-#endif /* defined( __clang__ ) || defined( __GNUC__ ) ||
-	defined( __INTEL_COMPILER ) || defined( _MSC_FULL_VER ) ||
-	defined( _MSC_VER ) || defined( __TINYC__ ) ||
-	defined( __PACIFIC__ ) || defined( __BORLANDC__ ) ||
+#endif /* defined( __clang__ ) || defined( __GNUC__ ) || \
+	defined( __INTEL_COMPILER ) || defined( _MSC_FULL_VER ) || \
+	defined( _MSC_VER ) || defined( __TINYC__ ) || \
+	defined( __PACIFIC__ ) || defined( __BORLANDC__ ) || \
 	defined( __DMC__ ) || defined( __SDCC ) */
 #endif /* !defined( HN_CCVERSION ) */
 
@@ -127,7 +130,7 @@ Small Device C compiler.
 #if !defined( HN_PLATFORM_UNIX )
 /* Hinterlib counts macOS/iOS as Unices even though compilers don't. */
 #if defined( unix ) || defined( __unix ) || defined( __unix__ ) || \
-( defined( __APPLE__ ) && defined( __MACH__ ) )
+	( defined( __APPLE__ ) && defined( __MACH__ ) )
 #define HN_PLATFORM_UNIX
 #endif
 #endif /* !defined( HN_PLATFORM_UNIX ) */
@@ -215,7 +218,7 @@ Small Device C compiler.
 
 #if !defined( HN_PLATFORM_WINDOWS )
 #if defined( _WIN16 ) || defined( _WIN32 ) || defined( __CYGWIN__ ) || \
-defined( __WINDOWS__ )
+	defined( __WINDOWS__ )
 #define HN_PLATFORM_WINDOWS
 #endif
 #endif /* !defined( HN_PLATFORM_WINDOWS ) */
@@ -228,7 +231,7 @@ defined( __WINDOWS__ )
 
 #if !defined( HN_ARCH_ARM32 )
 #if defined( __arm__ ) || defined( __thumb__ ) || defined( _M_ARM ) || \
-defined( _M_ARMT )
+	defined( _M_ARMT )
 #define HN_ARCH_ARM32
 #endif
 #endif /* !defined( HN_ARCH_ARM32 ) */
@@ -241,24 +244,24 @@ defined( _M_ARMT )
 
 #if !defined( HN_ARCH_ARMV5 )
 #if defined( __ARM_ARCH_5__ ) || defined( __ARM_ARCH_5E__ ) || \
-defined( __ARM_ARCH_5T__ ) || defined( __ARM_ARCH_5TE__ ) || \
-defined( __ARM_ARCH_5TEJ__ )
+	defined( __ARM_ARCH_5T__ ) || defined( __ARM_ARCH_5TE__ ) || \
+	defined( __ARM_ARCH_5TEJ__ )
 #define HN_ARCH_ARMV5
 #endif
 #endif /* !defined( HN_ARCH_ARMV5 ) */
 
 #if !defined( HN_ARCH_ARMV6 )
 #if defined( __ARM_ARCH_6__ ) || defined( __ARM_ARCH_6J__ ) || \
-defined( __ARM_ARCH_6K__ ) || defined( __ARM_ARCH_6Z__ ) || \
-defined( __ARM_ARCH_6ZK__ ) || defined( __ARM_ARCH_6T2__ )
+	defined( __ARM_ARCH_6K__ ) || defined( __ARM_ARCH_6Z__ ) || \
+	defined( __ARM_ARCH_6ZK__ ) || defined( __ARM_ARCH_6T2__ )
 #define HN_ARCH_ARMV6
 #endif
 #endif /* !defined( HN_ARCH_ARMV6 ) */
 
 #if !defined( HN_ARCH_ARMV7 )
 #if defined( __ARM_ARCH_7__ ) || defined( __ARM_ARCH_7A__ ) || \
-defined( __ARM_ARCH_7R__ ) || defined( __ARM_ARCH_7M__ ) || \
-defined( __ARM_ARCH_7S__ )
+	defined( __ARM_ARCH_7R__ ) || defined( __ARM_ARCH_7M__ ) || \
+	defined( __ARM_ARCH_7S__ )
 #define HN_ARCH_ARMV7
 #endif
 #endif /* !defined( HN_ARCH_ARMV7 ) */
@@ -337,23 +340,24 @@ defined( __ARM_ARCH_7S__ )
 
 #if !defined( HN_HAVE_I32 )
 #if ( defined( __SIZEOF_LONG__ ) && __SIZEOF_LONG__ >= 4 ) || \
-( defined( __SIZEOF_INT__ ) && __SIZEOF_INT__ >= 4 )
+	( defined( __SIZEOF_INT__ ) && __SIZEOF_INT__ >= 4 )
 #define HN_HAVE_I32
 #endif
 #endif /* !defined( HN_HAVE_I32 ) */
 
 #if !defined( HN_HAVE_I64 )
 #if ( defined( __SIZEOF_INT__ ) && __SIZEOF_INT__ >= 8 ) || \
-( defined( __SIZEOF_LONG__ ) && __SIZEOF_LONG__ >= 8 ) || \
-( defined( __SIZEOF_LONG_LONG__ ) && __SIZEOF_LONG_LONG__ >= 8 ) || \
-( defined( __SIZEOF_POINTER__ ) && __SIZEOF_POINTER__ >= 8 )
+	( defined( __SIZEOF_LONG__ ) && __SIZEOF_LONG__ >= 8 ) || \
+	( defined( __SIZEOF_LONG_LONG__ ) && \
+		__SIZEOF_LONG_LONG__ >= 8 ) || \
+	( defined( __SIZEOF_POINTER__ ) && __SIZEOF_POINTER__ >= 8 )
 #define HN_HAVE_I64
 #endif
 #endif /* !defined( HN_HAVE_I64 ) */
 
 #if !defined( HN_LILENDIAN )
 #if defined( __BYTE_ORDER__ ) && \
-__BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
+	__BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
 #define HN_LILENDIAN
 #endif
 #endif /* !defined( HN_LILENDIAN ) */
@@ -372,35 +376,35 @@ __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
 
 #if !defined( HN_PTRSZ_16 )
 #if ( defined( _BB_PSZ ) && _BB_PSZ == 2 ) || \
-( defined( __POINTER_WIDTH__ ) && __POINTER_WIDTH__ == 16 )
+	( defined( __POINTER_WIDTH__ ) && __POINTER_WIDTH__ == 16 )
 #define HN_PTRSZ_16
 #endif
 #endif /* !defined( HN_PTRSZ_16 ) */
 
 #if !defined( HN_PTRSZ_32 )
 #if ( defined( _BB_PSZ ) && _BB_PSZ == 4 ) || \
-( defined( __POINTER_WIDTH__ ) && __POINTER_WIDTH__ == 32 )
+	( defined( __POINTER_WIDTH__ ) && __POINTER_WIDTH__ == 32 )
 #define HN_PTRSZ_32
 #endif
 #endif /* !defined( HN_PTRSZ_32 ) */
 
 #if !defined( HN_PTRSZ_64 )
 #if ( defined( _BB_PSZ ) && _BB_PSZ == 8 ) || \
-( defined( __POINTER_WIDTH__ ) && __POINTER_WIDTH__ == 64 )
+	( defined( __POINTER_WIDTH__ ) && __POINTER_WIDTH__ == 64 )
 #define HN_PTRSZ_64
 #endif
 #endif /* !defined( HN_PTRSZ_64 ) */
 
 #if !defined( HN_LONGSZ_32 )
 #if ( defined( _BB_LSZ ) && _BB_LSZ == 4 ) || \
-( defined( __LONG_WIDTH__ ) && __LONG_WIDTH__ == 32 )
+	( defined( __LONG_WIDTH__ ) && __LONG_WIDTH__ == 32 )
 #define HN_LONGSZ_32
 #endif
 #endif /* !defined( HN_LONGSZ_32 ) */
 
 #if !defined( HN_LONGSZ_64 )
 #if ( defined( _BB_LSZ ) && _BB_LSZ == 8 ) || \
-( defined( __LONG_WIDTH__ ) && __LONG_WIDTH__ == 64 )
+	( defined( __LONG_WIDTH__ ) && __LONG_WIDTH__ == 64 )
 #define HN_LONGSZ_64
 #endif
 #endif /* !defined( HN_LONGSZ_64 ) */
@@ -410,20 +414,20 @@ __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
 #if defined( HN_HAVE_I32 )
 #if !defined( __INT32_TYPE__ )
 #if ( defined( _BB_ISZ ) && _BB_ISZ == 4 ) || \
-( defined( __SIZEOF_INT__ ) && __SIZEOF_INT__ == 4 )
+	( defined( __SIZEOF_INT__ ) && __SIZEOF_INT__ == 4 )
 #define __INT32_TYPE__ int
 #elif ( defined( _BB_LSZ ) && _BB_LSZ == 4 ) || \
-( defined( __SIZEOF_LONG__ ) && __SIZEOF_LONG__ == 4 )
+	( defined( __SIZEOF_LONG__ ) && __SIZEOF_LONG__ == 4 )
 #define __INT32_TYPE__ long int
 #endif
 #endif /* !defined( __INT32_TYPE__ ) */
 
 #if !defined( __UINT32_TYPE__ )
 #if ( defined( _BB_ISZ ) && _BB_ISZ == 4 ) || \
-( defined( __SIZEOF_INT__ ) && __SIZEOF_INT__ == 4 )
+	( defined( __SIZEOF_INT__ ) && __SIZEOF_INT__ == 4 )
 #define __UINT32_TYPE__ unsigned int
 #elif ( defined( _BB_LSZ ) && _BB_LSZ == 4 ) || \
-( defined( __SIZEOF_LONG__ ) && __SIZEOF_LONG__ == 4 )
+	( defined( __SIZEOF_LONG__ ) && __SIZEOF_LONG__ == 4 )
 #define __UINT32_TYPE__ long unsigned int
 #endif
 #endif /* !defined( __UINT32_TYPE__ ) */
@@ -432,10 +436,10 @@ __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
 #if defined( HN_HAVE_I64 )
 #if !defined( __INT64_TYPE__ )
 #if ( defined( _BB_ISZ ) && _BB_ISZ == 8 ) || \
-( defined( __SIZEOF_INT__ ) && __SIZEOF_INT__ == 8 )
+	( defined( __SIZEOF_INT__ ) && __SIZEOF_INT__ == 8 )
 #define __INT64_TYPE__ int
 #elif ( defined( _BB_LSZ ) && _BB_LSZ == 8 ) || \
-( defined( __SIZEOF_LONG__ ) && __SIZEOF_LONG__ == 8 )
+	( defined( __SIZEOF_LONG__ ) && __SIZEOF_LONG__ == 8 )
 #define __INT64_TYPE__ long int
 #elif defined( __SIZEOF_LONG_LONG__ ) && __SIZEOF_LONG_LONG__ == 8
 #define __INT64_TYPE__ long long int
@@ -444,10 +448,10 @@ __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
 
 #if !defined( __UINT64_TYPE__ )
 #if ( defined( _BB_ISZ ) && _BB_ISZ == 8 ) || \
-( defined( __SIZEOF_INT__ ) && __SIZEOF_INT__ == 8 )
+	( defined( __SIZEOF_INT__ ) && __SIZEOF_INT__ == 8 )
 #define __UINT64_TYPE__ unsigned int
 #elif ( defined( _BB_LSZ ) && _BB_LSZ == 8 ) || \
-( defined( __SIZEOF_LONG__ ) && __SIZEOF_LONG__ == 8 )
+	( defined( __SIZEOF_LONG__ ) && __SIZEOF_LONG__ == 8 )
 #define __UINT64_TYPE__ long unsigned int
 #elif defined( __SIZEOF_LONG_LONG__ ) && __SIZEOF_LONG_LONG__ == 8
 #define __UINT64_TYPE__ long long unsigned int
