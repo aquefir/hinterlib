@@ -17,14 +17,12 @@
 #include <mach-o/dyld.h>
 #include <stdlib.h>
 
-bl hn_execpath( chr p[HN_PATHMAX + 1] )
+static bl _execpath2( chr p[HN_PATHMAX + 1], knot16 buf )
 {
-	u32 sz           = HN_PATHMAX;
-	const knot16 buf = hn_allockn16( );
-	const int r      = _NSGetExecutablePath( (chr *)buf, &sz );
+	u32 sz      = HN_PATHMAX;
+	const int r = _NSGetExecutablePath( (chr *)buf, &sz );
 
-	HN_CHK_GOTO( buf != NULL, fail );
-	HN_CHK_GOTO( r == 0, fail );
+	HN_CHK_RETV( r == 0, HN_TRUE );
 
 	/* zero out the result buffer to make NUL termination easy */
 	hn_memset( 0, HN_PATHMAX + 1, p );
@@ -33,15 +31,32 @@ bl hn_execpath( chr p[HN_PATHMAX + 1] )
 	 * smart */
 	{
 		chr * const ret = realpath( (const chr *)buf, p );
-		HN_CHK_GOTO( ret == p, fail );
+		HN_CHK_RETV( ret == p, HN_TRUE );
 
 		dirname( p );
 	}
 
-	hn_free( buf );
 	return HN_FALSE;
+}
 
-fail:
-	hn_free( buf );
-	return HN_TRUE;
+static bl _execpath1( chr p[HN_PATHMAX + 1] )
+{
+	const knot16 buf = hn_allock16( );
+
+	HN_CHK_RETV( buf != NULL, HN_TRUE );
+
+	{
+		const bl r = _execpath2( p, buf );
+
+		hn_free( buf );
+
+		return r;
+	}
+}
+
+bl hn_execpath( chr p[HN_PATHMAX + 1] )
+{
+	HN_CHK_RETV( p != NULL, HN_TRUE );
+
+	return _execpath1( p );
 }
