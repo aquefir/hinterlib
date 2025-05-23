@@ -381,8 +381,8 @@ enum hn_baseknotsz
 /* Amalgam shape description structure. */
 struct hn_amalgam
 {
-	/* HIGH if underlying memory is physically contiguous by address;
-	 * LOW if potentially sparse. */
+	/* HIGH if underlying memory is physically contiguous by
+	 * address; LOW if potentially sparse. */
 	hn_ubf contiguous : 1;
 	/* Dimension count; see `enum hn_amaldim` for valid values. */
 	hn_ubf dim_count : 2;
