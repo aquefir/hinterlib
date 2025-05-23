@@ -50,11 +50,11 @@
  *
  * 16-BIT MEMORY SPACE :-
  *     | BASE KNOT
- * DIM |    8   |   12   |    16  |    20
- *  1  |   8MiB | 128MiB |   2GiB |  32GiB
- *  2  | 256GiB |   4TiB |  64TiB |   1PiB
- *  3  |   8PiB | 128PiB |   2EiB |  32EiB
- *  4  | 256EiB |   4ZiB |  64ZiB |   1YiB
+ * DIM |    8   |   12   |    16
+ *  1  |   8MiB | 128MiB |   2GiB
+ *  2  | 256GiB |   4TiB |  64TiB
+ *  3  |   8PiB | 128PiB |   2EiB
+ *  4  | 256EiB |   4ZiB |  64ZiB
  *
  * 32-BIT MEMORY SPACE :-
  *     | BASE KNOT
