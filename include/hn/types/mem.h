@@ -297,6 +297,22 @@ struct hn_am20d4
 } HN_TYPELESS;
 #endif /* HN_SIZEOF_PTR > 2 */
 
+/* Offset particle of an amalgam. */
+struct hn_amoffs
+{
+#if HN_SIZEOF_PTR == 2
+	hn_ubf n : 15 HN_PACKED;
+	hn_ubf : 1 HN_PACKED;
+#elif HN_SIZEOF_PTR == 4
+	hn_ubf n : 14 HN_PACKED;
+	hn_ubf : 2 HN_PACKED;
+#elif HN_SIZEOF_PTR == 8
+	/* Amalgam offset. */
+	hn_ubf n : 13 HN_PACKED;
+	hn_ubf : 3 HN_PACKED;
+#endif /* HN_SIZEOF_PTR */
+};
+
 /* Sparse 1D amalgam of 8-bit knots. */
 typedef struct hn_am8d1 hn_am8d1;
 /* Sparse 1D amalgam of 12-bit knots. */
@@ -340,6 +356,9 @@ typedef struct hn_am16d4 hn_am16d4;
 /* Sparse 4D amalgam of 20-bit knots. */
 typedef struct hn_am20d4 hn_am20d4;
 #endif /* HN_SIZEOF_PTR > 2 */
+
+/* Offset particle of an amalgam. */
+typedef struct hn_amoffs hn_amoffs;
 
 enum hn_amaldim
 {
@@ -446,6 +465,9 @@ typedef struct hn_am16d4 am16d4;
 /* Sparse 4D amalgam of 20-bit knots. */
 typedef struct hn_am20d4 am20d4;
 #endif /* HN_SIZEOF_PTR > 2 */
+
+/* Offset particle of an amalgam. */
+typedef struct hn_amoffs amoffs;
 
 #endif /* !defined( _CFGOPT_NOSHORTHAND ) */
 
