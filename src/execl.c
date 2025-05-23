@@ -14,6 +14,8 @@
 
 bl hn_execpath( chr p[HN_PATHMAX + 1] )
 {
+	HN_CHK_RETV( p != NULL, HN_TRUE );
+
 	hn_memset( 0, HN_PATHMAX + 1, p );
 
 	{
