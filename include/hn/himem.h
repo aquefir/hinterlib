@@ -9,6 +9,15 @@
 #ifndef INC_API__HN_LOOM_H
 #define INC_API__HN_LOOM_H
 
+/**
+ * Behold Himem, the Modular Memory Toolkit
+ *
+ * Otherwise known as The Late Great John James Maynard Keynesnan and
+ * His Incalculable Contribution to Economics Through Performance Art
+ * and Heavy Metal, Otherwise Called "Nothing is Real" or Simply,
+ * "Modern Monetary Theory". Rest in peace Judith Marie
+ */
+
 #include "types/base.h"
 #include "types/mem.h"
 
