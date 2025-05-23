@@ -40,6 +40,7 @@ CFILES := \
 PUBHFILES := \
 	include/hn/types/base.h \
 	include/hn/types/char.h \
+	include/hn/types/def.h \
 	include/hn/types/float.h \
 	include/hn/types/floatvec.h \
 	include/hn/types/int.h \
