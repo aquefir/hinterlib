@@ -485,13 +485,13 @@ enum
 struct hn_err
 {
 	/* Distinguish between errors and mere information. */
-	hn_ubf fatal : 1;
+	hn_ubf fatal : 1 HN_PACKED;
 	/* See `enum hn_err_id`. Matched to Linux `<errno.h>`. */
-	hn_ubf id : 8;
-	hn_ubf : 7;
+	hn_ubf id : 8 HN_PACKED;
+	hn_ubf : 7 HN_PACKED;
 	/* For downstream to define and build string tables for. */
-	hn_ubf xid : 16;
-} HN_TYPELESS HN_PACKED;
+	hn_ubf xid : 16 HN_PACKED;
+} HN_TYPELESS;
 
 extern const hn_chr * const hn_err_id_strings[HN_MAX_ERR_ID];
 
