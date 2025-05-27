@@ -23,6 +23,24 @@
 
 #include "err.h"
 
+/* increment amalgam */
+HN_API struct hn_err hn_himem_inc(
+	/* reference to amalgam */
+	void *,
+	/* dynamic typing information for amalgam */
+	struct hn_amalgam,
+	/* amalgam offset to store the result */
+	hn_amoffs * );
+
+/* decrement amalgam */
+HN_API struct hn_err hn_himem_dec(
+	/* reference to amalgam */
+	void *,
+	/* dynamic typing information for amalgam */
+	struct hn_amalgam,
+	/* amalgam offset to store the result */
+	hn_amoffs * );
+
 HN_API struct hn_err hn_himem_deepcopy(
 	/* reference to input amalgam */
 	void *,
