@@ -31,9 +31,8 @@
 #include "types/base.h"
 #include "types/char.h"
 #include "types/int.h"
-#include "types/mem.h"
 
-#include <hn/ct.h>
+#include "ct.h"
 
 enum hn_numbase
 {
