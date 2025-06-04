@@ -56,8 +56,6 @@ HN_API struct hn_err hn_himem_appendk(
 	void *,
 	/* dynamic typing information for input amalgam */
 	struct hn_amalgam,
-	/* target dimension level to append knot at */
-	enum hn_amaldim,
 	/* reference to knot to append to the amalgam */
 	void * );
 
@@ -66,8 +64,6 @@ HN_API struct hn_err hn_himem_insertk(
 	void *,
 	/* dynamic typing information for input amalgam */
 	struct hn_amalgam,
-	/* target dimension level to insert knot at */
-	enum hn_amaldim,
 	/* offset in target dimension to insert knot at */
 	hn_amoffs *,
 	/* reference to knot to insert into the amalgam */
@@ -78,8 +74,6 @@ HN_API struct hn_err hn_himem_deletek(
 	void *,
 	/* dynamic typing information for input amalgam */
 	struct hn_amalgam,
-	/* target dimension level to delete knot from */
-	enum hn_amaldim,
 	/* offset in target dimension to delete knot from */
 	hn_amoffs * );
 
