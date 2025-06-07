@@ -29,6 +29,7 @@ CFILES.DARWIN86 := \
 	src/execm.c
 CFILES.DARWINM1 = $(CFILES.DARWIN86)
 CFILES := \
+	src/himem/appendk.c \
 	src/alloc.c \
 	src/conio.c \
 	src/ct.c \
@@ -56,6 +57,7 @@ PUBHFILES := \
 	include/hn/exec.h \
 	include/hn/file.h \
 	include/hn/himem.h \
+	include/hn/ini.h \
 	include/hn/log.h \
 	include/hn/memops.h \
 	include/hn/nimb.h \
