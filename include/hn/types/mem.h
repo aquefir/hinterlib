@@ -375,15 +375,6 @@ enum hn_max_amoffs
 #endif /* HN_SIZEOF_PTR */
 };
 
-enum hn_amaldim
-{
-	HN_AMALDIM_1,
-	HN_AMALDIM_2,
-	HN_AMALDIM_3,
-	HN_AMALDIM_4,
-	HN_MAX_AMALDIM
-};
-
 enum hn_baseknotsz
 {
 	HN_BASEKNOTSZ_8,
@@ -396,11 +387,14 @@ enum hn_baseknotsz
 /* Amalgam shape description structure. */
 struct hn_amalgam
 {
-	/* Dimension count; see `enum hn_amaldim` for valid values. */
-	hn_ubf dim_count : 2;
 	/* Knot base; see `enum hn_baseknotsz` for valid values. */
 	hn_ubf baseknot_sz : 2;
-	hn_ubf : 12;
+	/* Number of subdivisions; this is the number of dimensions
+	 * minus one (one-dimensional amalgams have zero subdivisions).
+	 */
+	hn_ubf subdiv_ct : 2;
+	hn_ubf : 2;
+	hn_ubf : 10;
 	hn_ubf : 16;
 };
 
