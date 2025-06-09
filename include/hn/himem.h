@@ -15,7 +15,8 @@
  * Otherwise known as The Late Great John James Maynard Keynesnan and
  * His Incalculable Contribution to Economics Through Performance Art
  * and Heavy Metal, Otherwise Called "Nothing is Real" or Simply,
- * "Modern Monetary Theory". Rest in peace Judith Marie
+ * "Modern Monetary Theory". Rest in peace Judith Marie. Strawberry
+ * Fields Forever ...
  */
 
 #include "types/base.h"
