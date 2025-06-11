@@ -364,7 +364,7 @@ typedef struct hn_am20d4 hn_am20d4;
 /* Offset particle of an amalgam. */
 typedef struct hn_amoffs hn_amoffs;
 
-enum hn_max_amoffs
+enum hn_max_amalgam_elems
 {
 #if HN_SIZEOF_PTR == 2
 	HN_MAX_AMALGAM_ELEMS = 32768
