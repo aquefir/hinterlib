@@ -64,5 +64,7 @@ PUBHFILES := \
 	include/hn/str.h
 PRVHFILES :=
 
+LDFLAGS := -fuse-ld=lld
+
 # this defines all our usual targets
 include etc/epilogue.mk
