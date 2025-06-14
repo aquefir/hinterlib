@@ -210,16 +210,17 @@ struct hn_err hn_himem_appendk(
 	void * am_, struct hn_amalgam am_opts, void * k_ )
 {
 	struct hn_err ret;
-	bl r;
 
 	hn_memset( 0, sizeof ret, &ret );
 
 	HN_CHK_GOTO( am_ != NULL, inval );
 	HN_CHK_GOTO( k_ != NULL, inval );
 
-	r = _appendk[am_opts.subdiv_ct]( am_, k_ );
+	{
+		const bl r = _appendk[am_opts.subdiv_ct]( am_, k_ );
 
-	HN_CHK_GOTO( r == HN_FALSE, nomem );
+		HN_CHK_GOTO( r == HN_FALSE, nomem );
+	}
 
 	goto finish;
 
