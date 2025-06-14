@@ -217,7 +217,7 @@ struct hn_err hn_himem_appendk(
 	HN_CHK_GOTO( am_ != NULL, inval );
 	HN_CHK_GOTO( k_ != NULL, inval );
 
-	r = _appendk[am_opts.subdiv_ct + 1]( am_, k_ );
+	r = _appendk[am_opts.subdiv_ct]( am_, k_ );
 
 	HN_CHK_GOTO( r == HN_FALSE, nomem );
 
