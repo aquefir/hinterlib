@@ -34,6 +34,7 @@ static bl _appendk_d1( void * am_, void * k )
 	}
 
 	am->data[am->len] = k;
+	am->len += 1;
 
 	return HN_FALSE;
 }
