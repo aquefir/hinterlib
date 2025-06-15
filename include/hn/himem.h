@@ -6,8 +6,8 @@
  *            Released under Artisan Software Licence v1.1            *
 \**********************************************************************/
 
-#ifndef INC_API__HN_LOOM_H
-#define INC_API__HN_LOOM_H
+#ifndef INC_API__HN_HIMEM_H
+#define INC_API__HN_HIMEM_H
 
 /**
  * Behold Himem, the Modular Memory Toolkit
@@ -282,4 +282,4 @@ HN_API struct hn_err hn_himem_writek20(
 	struct hn_amalgam );
 #endif /* HN_SIZEOF_PTR > 2 */
 
-#endif /* INC_API__HN_LOOM_H */
+#endif /* INC_API__HN_HIMEM_H */
