@@ -30,6 +30,7 @@ CFILES.DARWIN86 := \
 CFILES.DARWINM1 = $(CFILES.DARWIN86)
 CFILES := \
 	src/himem/appendk.c \
+	src/himem/dec.c \
 	src/himem/inc.c \
 	src/alloc.c \
 	src/conio.c \
