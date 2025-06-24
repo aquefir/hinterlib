@@ -242,17 +242,17 @@ static bl _appendk_d4( void * am_, void * k )
 }
 
 struct hn_err hn_himem_appendk(
-	void * am_, struct hn_amalgam am_opts, void * k_ )
+	void * am, struct hn_amalgam am_opts, void * k )
 {
 	struct hn_err ret;
 
 	hn_memset( 0, sizeof ret, &ret );
 
-	HN_CHK_GOTO( am_ != NULL, inval );
-	HN_CHK_GOTO( k_ != NULL, inval );
+	HN_CHK_GOTO( am != NULL, inval );
+	HN_CHK_GOTO( k != NULL, inval );
 
 	{
-		const bl r = _appendk[am_opts.subdiv_ct]( am_, k_ );
+		const bl r = _appendk[am_opts.subdiv_ct]( am, k );
 
 		HN_CHK_GOTO( r == HN_FALSE, nomem );
 	}
