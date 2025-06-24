@@ -32,6 +32,7 @@ CFILES := \
 	src/himem/appendk.c \
 	src/himem/dec.c \
 	src/himem/inc.c \
+	src/himem/insertk.c \
 	src/alloc.c \
 	src/conio.c \
 	src/ct.c \
@@ -39,7 +40,8 @@ CFILES := \
 	src/exec.c \
 	src/file.c \
 	src/log.c \
-	src/memops.c
+	src/memops.c \
+	src/str.c
 PUBHFILES := \
 	include/hn/types/base.h \
 	include/hn/types/char.h \
@@ -62,6 +64,7 @@ PUBHFILES := \
 	include/hn/ini.h \
 	include/hn/log.h \
 	include/hn/memops.h \
+	include/hn/minmax.h \
 	include/hn/nimb.h \
 	include/hn/str.h
 PRVHFILES :=
