@@ -20,17 +20,14 @@ static bl _insertk_d3( void *, amoffs *, void * );
 static bl _insertk_d4( void *, amoffs *, void * );
 
 static _insertk_f const _insertk[] = {
-	&_insertk_d1,
-	&_insertk_d2,
-	&_insertk_d3,
-	&_insertk_d4
-};
+	&_insertk_d1, &_insertk_d2, &_insertk_d3, &_insertk_d4 };
 
 static void _insert( am16d1 * am, u16 offs, void * k )
 {
 	ptri i;
 
-	for(i = am->len; i >= offs; --i)
+	/* step 1: move the second half of the amalgam forward by one */
+	for( i = am->len; i >= offs; --i )
 	{}
 }
 
@@ -69,17 +66,14 @@ static void _chk_offs( u8 subdiv_ct, volatile amoffs * offs )
 	const u8 lim = subdiv_ct + 1;
 	u8 i;
 
-	for(i = 0; i < lim; ++i)
+	for( i = 0; i < lim; ++i )
 	{
 		(void)offs[i].n;
 	}
 }
 
 struct hn_err hn_himem_insertk(
-	void * am,
-	struct hn_amalgam am_opts,
-	amoffs * offs,
-	void * k )
+	void * am, struct hn_amalgam am_opts, amoffs * offs, void * k )
 {
 	struct hn_err ret;
 
@@ -97,12 +91,12 @@ struct hn_err hn_himem_insertk(
 
 inval:
 	ret.fatal = 1;
-	ret.id = HN_ERR_ID_EINVAL;
+	ret.id    = HN_ERR_ID_EINVAL;
 	goto finish;
 
 nomem:
 	ret.fatal = 1;
-	ret.id = HN_ERR_ID_ENOMEM;
+	ret.id    = HN_ERR_ID_ENOMEM;
 
 finish:
 	return ret;
