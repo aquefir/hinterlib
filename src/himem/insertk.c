@@ -27,15 +27,20 @@ static void _insert( am16d1 * am, u16 offs, void * k )
 	ptri i;
 
 	/* step 1: move the second half of the amalgam forward by one */
-	for( i = am->len; i >= offs; --i )
-	{}
+	for( i = am->len - 1; i >= offs; --i )
+	{
+		am->data[i + 1] = am->data[i];
+	}
+
+	/* emplace the knot into the new hole opened up */
+	am->data[offs] = k;
 }
 
 static bl _insertk_d1( void * am_, amoffs * offs, void * k_ )
 {
 	am16d1 * const am = am_;
 
-	if( am->len >= HN_MAX_AMALGAM_ELEMS )
+	if( am->len >= HN_MAX_AMALGAM_ELEMS - 1 )
 	{
 		/* out of memory */
 		return HN_TRUE;
@@ -48,6 +53,16 @@ static bl _insertk_d1( void * am_, amoffs * offs, void * k_ )
 
 static bl _insertk_d2( void * am_, amoffs * offs, void * k_ )
 {
+	am16d1 * const am = am_;
+
+	if( am->len >= HN_MAX_AMALGAM_ELEMS - 1 )
+	{
+		/* out of memory */
+		return HN_TRUE;
+	}
+
+	_insert( am, offs[0].n, k_ );
+
 	return HN_FALSE;
 }
 
