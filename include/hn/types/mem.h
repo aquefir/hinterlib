@@ -367,11 +367,11 @@ typedef struct hn_amoffs hn_amoffs;
 enum hn_max_amalgam_elems
 {
 #if HN_SIZEOF_PTR == 2
-	HN_MAX_AMALGAM_ELEMS = 32768
+	HN_MAX_AMALGAM_ELEMS = 32767
 #elif HN_SIZEOF_PTR == 4
-	HN_MAX_AMALGAM_ELEMS = 16384
+	HN_MAX_AMALGAM_ELEMS = 16383
 #elif HN_SIZEOF_PTR == 8
-	HN_MAX_AMALGAM_ELEMS = 8192
+	HN_MAX_AMALGAM_ELEMS = 8191
 #endif /* HN_SIZEOF_PTR */
 };
 
