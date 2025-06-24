@@ -35,6 +35,10 @@ editor, but if it doesn&rsquo;t, simply run `make format`. The
 `clang-format` process can be pretty slow to start; you can speed it up
 with the `-j` flag (e.g. `make format -j$(nproc)` on most Unices, or
 `make format -j$(sysctl -n hw.ncpu)` on macOS).
+	- For non-code text files, or for code files in languages that are
+	  not checked into an auto-formatting policy, simply ensure that the
+	  file is line-limited to 72 character columns. CJK characters count
+	  as two such characters for limiting purposes.
 3. Make sure all commits are signed using your OpenPGP keypair.
 4. Make sure your signing key is publicly available on a PGP keyserver
 (e.g. `keys.openpgp.org`, `keyserver.ubuntu.com` or
