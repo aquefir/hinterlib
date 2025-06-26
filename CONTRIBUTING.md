@@ -93,5 +93,5 @@ this is as follows:
 	work in case another collaborator pushed to your branch without
 	notifying you. We recommend `alias`ing `git push --force-with-lease`
 	in your shell.
-	5. Continue working as usual and repeat steps 2, 3 and 4 each day
-	until the &ldquo;pull request&rdquo; is complete.
+	5. Continue working as usual and repeat the previous three steps each
+	day until the &ldquo;pull request&rdquo; is complete.
