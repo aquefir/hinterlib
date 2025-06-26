@@ -24,9 +24,9 @@ static bl _inc1( am16d2 * am, u16 dimct, amoffs * ofs )
 	/* populate a list of amalgams as selected by offset */
 	for( i = 0; i < dimct; ++i )
 	{
-		if( ofs[i].n + 1 >= HN_MAX_AMALGAM_ELEMS )
+		if( ofs[i].n + 1 >= HN_AMALGAM_MAX_ELEMS )
 		{
-			ofs[i].n = HN_MAX_AMALGAM_ELEMS - 1;
+			ofs[i].n = HN_AMALGAM_MAX_ELEMS - 1;
 		}
 
 		if( ofs[i].n + 1 >= last_am->len )
@@ -43,7 +43,7 @@ static bl _inc1( am16d2 * am, u16 dimct, amoffs * ofs )
 	 */
 	for( i = dimct; i > 0; --i )
 	{
-		if( ofs[i - 1].n < HN_MAX_AMALGAM_ELEMS - 1 )
+		if( ofs[i - 1].n < HN_AMALGAM_MAX_ELEMS - 1 )
 		{
 			ofs[i - 1].n += 1;
 			incr = HN_TRUE;

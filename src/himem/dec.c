@@ -24,9 +24,9 @@ static bl _dec1( am16d2 * am, u16 dimct, amoffs * ofs )
 	/* populate a list of amalgams as selected by offset */
 	for( i = 0; i < dimct; ++i )
 	{
-		if( ofs[i].n + 1 >= HN_MAX_AMALGAM_ELEMS )
+		if( ofs[i].n + 1 >= HN_AMALGAM_MAX_ELEMS )
 		{
-			ofs[i].n = HN_MAX_AMALGAM_ELEMS - 1;
+			ofs[i].n = HN_AMALGAM_MAX_ELEMS - 1;
 		}
 
 		if( ofs[i].n + 1 >= last_am->len )
@@ -61,7 +61,7 @@ static bl _dec1( am16d2 * am, u16 dimct, amoffs * ofs )
 	/* propagate subtraction carry through the rest of the offset */
 	for( ; i < dimct; ++i )
 	{
-		ofs[i].n = HN_MAX_AMALGAM_ELEMS - 1;
+		ofs[i].n = HN_AMALGAM_MAX_ELEMS - 1;
 	}
 
 	return HN_FALSE;
