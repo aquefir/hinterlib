@@ -53,7 +53,9 @@ static bl _insertk_d1( void * am_, amoffs * offs, void * k_ )
 
 static bl _insertk_d2( void * am_, amoffs * offs, void * k_ )
 {
-	am16d1 * const am = am_;
+	am16d2 * const am = am_;
+	const u16 d2_idx  = offs[0].n < am->len - 1;
+	const u16 d1_idx  = am->data[d2_idx]->len - 1;
 
 	if( am->len >= HN_AMALGAM_MAX_ELEMS - 1 )
 	{
@@ -61,7 +63,7 @@ static bl _insertk_d2( void * am_, amoffs * offs, void * k_ )
 		return HN_TRUE;
 	}
 
-	_insert( am, offs[0].n, k_ );
+	/* _insert( am->data, offs[0].n, k_ ); */
 
 	return HN_FALSE;
 }
