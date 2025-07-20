@@ -355,6 +355,12 @@ Small Device C compiler.
 #endif
 #endif /* !defined( HN_HAVE_I64 ) */
 
+#if !defined( HN_HAVE_I128 )
+#if defined( __SIZEOF_INT128__ )
+#define HN_HAVE_I128
+#endif
+#endif /* !defined( HN_HAVE_I128 ) */
+
 #if !defined( HN_LILENDIAN )
 #if defined( __BYTE_ORDER__ ) && \
 	__BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__

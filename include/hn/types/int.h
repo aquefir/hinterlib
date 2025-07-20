@@ -11,6 +11,10 @@
 
 #include "def.h"
 
+#if defined( HN_HAVE_I128 )
+/* Signed 128-bit integer. */
+typedef signed __int128 hn_s128;
+#endif /* defined( HN_HAVE_I128 ) */
 #if defined( HN_HAVE_I64 )
 /* Signed 64-bit integer. */
 typedef __INT64_TYPE__ hn_s64;
@@ -23,6 +27,10 @@ typedef __INT32_TYPE__ hn_s32;
 typedef __INT16_TYPE__ hn_s16;
 /* Signed 8-bit integer. */
 typedef __INT8_TYPE__ hn_s8;
+#if defined( HN_HAVE_I128 )
+/* Signed 128-bit integer. */
+typedef unsigned __int128 hn_u128;
+#endif /* defined( HN_HAVE_I128 ) */
 #if defined( HN_HAVE_I64 )
 /* Unsigned 64-bit integer. */
 typedef __UINT64_TYPE__ hn_u64;
@@ -38,6 +46,10 @@ typedef __UINT8_TYPE__ hn_u8;
 
 #if !defined( _CFGOPT_NOSHORTHAND )
 
+#if defined( HN_HAVE_I128 )
+/* Signed 128-bit integer. */
+typedef signed __int128 s128;
+#endif /* defined( HN_HAVE_I128 ) */
 #if defined( HN_HAVE_I64 )
 /* Signed 64-bit integer. */
 typedef __INT64_TYPE__ s64;
@@ -50,6 +62,10 @@ typedef __INT32_TYPE__ s32;
 typedef __INT16_TYPE__ s16;
 /* Signed 8-bit integer. */
 typedef __INT8_TYPE__ s8;
+#if defined( HN_HAVE_I128 )
+/* Signed 128-bit integer. */
+typedef unsigned __int128 u128;
+#endif /* defined( HN_HAVE_I128 ) */
 #if defined( HN_HAVE_I64 )
 /* Unsigned 64-bit integer. */
 typedef __UINT64_TYPE__ u64;
