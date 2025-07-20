@@ -286,9 +286,9 @@ Small Device C compiler.
 
 #if !defined( HN_ARCH_IA16 )
 #if defined( _M_I86 ) && !defined( _M_I386 )
-#define HN_ARCH_IA32
+#define HN_ARCH_IA16
 #endif
-#endif /* !defined( HN_ARCH_IA32 ) */
+#endif /* !defined( HN_ARCH_IA16 ) */
 
 #if !defined( HN_ARCH_IA32 )
 #if defined( __i386__ ) || defined( _M_IX86 )
