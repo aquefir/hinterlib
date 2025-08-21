@@ -1,12 +1,11 @@
 # Hinterlib
 
-![Hinterlib](https://cdn.tohoku.ac/hn-banner.jpg)
+![Hinterlib][0]
 
 **Hinterlib** is a `libc` surrogate and support library not unlike
-[GLib](https://docs.gtk.org/glib/). It boasts greater provision than
-other such libraries for old and embedded targets, and is thus serving
-as the backbone of the [Sirius DOS](https://kb.xion.mt/Sirius_DOS)
-research project.
+[GLib][1]. It boasts greater provision than other such libraries for old
+and embedded targets, and is thus serving as the backbone of the
+[Sirius DOS][2] research project.
 
 Originally it was named `unilib` for lack of a better name, and the 1.x
 API still reflects this with its symbol prefix `uni_`. Since version 2.0
@@ -17,9 +16,9 @@ confirm nor deny that.
 ## Introduction
 
 Hinterlib is one of the most heavily developed projects under the
-[Aquefir namesake](https://aquefir.co/). As a `libc` surrogate it exists
-to jumpstart ANSI C program development &ndash; therefore, it has a few
-broad &lsquo;focus areas&rsquo;:
+[Aquefir namesake][3]. As a `libc` surrogate it exists to jumpstart ANSI
+C program development &ndash; therefore, it has a few broad
+&lsquo;focus areas&rsquo;:
 
 1. Shorthanded type system
 	- basic types like pointers and booleans
@@ -182,7 +181,7 @@ integral and floating-point arithmetic.
 
 Memory knot types are provided with addressability ranging from 8 to 24
 bits in 4-bit steps. These are the basic building blocks of the novel
-[software modular memory](https://archive.ph/EnNKK) technique.
+[software modular memory][4] technique.
 
 Amalgams provide dimension-based scalability to memory knots with up to
 4 dimensions built into Hinterlib. These data types are best used with
@@ -270,7 +269,7 @@ Hinterlib provides a functionally congruent wrapper over the classic
 `FILE*`-based streaming I/O utilities of `libc`. This wrapper provides
 more clarity in its routine type signatures by employing an opaque
 structure pointer directly with no macro or `typedef` business, using
-shorthands for integrals in seek subroutine parameters, a pure data
+shorthands for integrals in seek subroutine parameters, a [pure data][5]
 mode structure in place of `libc`&rsquo;s string representation, and
 friendly utility functions for getting a hold of standard I/O handles
 and manipulating the internal standard I/O buffer. All of this is found
@@ -283,10 +282,10 @@ using pure data structures. All of this is found in `<hn/log.h>`.
 ### Modular memory toolkit
 
 Hinterlib provides a module called Himem for managing amalgams and knots
-_a la_ [software modular memory](https://archive.ph/EnNKK). This is used
-by other high level modules in Hinterlib and is to be used by downstream
-software to help simplify the abstractions involved without compromising
-opacity of the underlying data.
+_a la_ [software modular memory][4]. This is used by other high level
+modules in Hinterlib and is to be used by downstream software to help
+simplify the abstractions involved without compromising opacity of the
+underlying data.
 
 ### Non-generic general-purpose containers
 
@@ -299,16 +298,15 @@ including even residing on the stack, as full user control of allocation
 is preserved by the interface design.
 
 Instead of trying to supplicate a nonexistent abstract type system, it
-provides [mechanicalist](https://archive.ph/UOuG1) views of the
-underlying data&rsquo;s dimensionality and the quantities and limits
-thereof, giving meaningful boundaries for users to ensure validity of
-data elements directly.
+provides [mechanicalist][6] views of the underlying data&rsquo;s
+dimensionality and the quantities and limits thereof, giving meaningful
+boundaries for users to ensure validity of data elements directly.
 
 In addition to this concreteness, Hinterlib&rsquo;s container toolkit
-tries to distinguish [abstract data types](https://archive.ph/TBjSM)
-from so-called data structures so that it is straightforward to select
-arbitrary algorithms that implement the former&rsquo;s desired semantics
-regardless of the data type being targeted with it.
+tries to distinguish [abstract data types][7] from so-called data
+structures so that it is straightforward to select arbitrary algorithms
+that implement the former&rsquo;s desired semantics regardless of the
+data type being targeted with it.
 
 ### Operating system polyfills
 
@@ -361,7 +359,7 @@ various common mathematical functions.
 Hinterlib provides C subroutines for parsing and serialising INI type
 configuration files with various compatibility options for both
 Microsoft Windows and Unix style config files. Additionally, it provides
-tools to validate INI files against so-called [INI schemas][1], which
+tools to validate INI files against so-called [INI schemas][8], which
 also recognise said compatibility options in the course of running the
 validation algorithm.
 
@@ -375,16 +373,15 @@ of the Artisan Software Licence. See the COPYING file for full terms.
 
 ### Origin of the name
 
-[Razib Khan](https://x.com/razibkhan) [wrote](https://archive.ph/CFwmZ)
-about the genetic history of those inhabiting the Italian peninsula. In
-it he showed that during the height of imperial Rome, an intense
-cosmopolitanism attracted an incredible lineage of rulers from as far
-away as Syria around the time of its decline. Remarkably, when Rome
-depopulated in late antiquity to a mere 30,000 people, the inhabitants
-were the same genetically as those who had lived in Italy before the
-Roman Empire, as Etruscans. The rural *hinterland* proved more lasting
-in our genetics, as those cosmopolitan people lived and died in Rome
-leaving no trace of their lineage.
+[Razib Khan][9] [wrote][10] about the genetic history of those
+inhabiting the Italian peninsula. In it he showed that during the height
+of imperial Rome, an intense cosmopolitanism attracted an incredible
+lineage of rulers from as far away as Syria around the time of its
+decline. Remarkably, when Rome depopulated in late antiquity to a mere
+30,000 people, the inhabitants were the same genetically as those who
+had lived in Italy before the Roman Empire, as Etruscans. The rural
+*hinterland* proved more lasting in our genetics, as those cosmopolitan
+people lived and died in Rome leaving no trace of their lineage.
 
 In the time between Hinterlib 2 and the original `unilib`, Hinterlib was
 actually one half of a hybrid fork called **Hinterlib/Neopolitan**. This
@@ -396,4 +393,14 @@ the &ldquo;Actually Portable Executable&rdquo; format&rsquo;s reference
 implementation, &ldquo;Cosmopolitan&rdquo;. In contrast to Neopolitan,
 regular `unilib` was renamed to **Hinterlib**.
 
-[1]:https://gist.github.com/nicholatian/05cae747b0d3a8928c85c12d65187ff3
+[0]:https://cdn.tohoku.ac/hn-banner.jpg
+[1]:https://docs.gtk.org/glib/
+[2]:https://kb.xion.mt/Sirius_DOS
+[3]:https://aquefir.co/
+[4]:https://archive.ph/EnNKK
+[5]:https://archive.ph/V0SAQ
+[6]:https://archive.ph/UOuG1
+[7]:https://archive.ph/TBjSM
+[8]:https://gist.github.com/nicholatian/05cae747b0d3a8928c85c12d65187ff3
+[9]:https://www.razibkhan.com/
+[10]:https://archive.ph/CFwmZ
