@@ -24,7 +24,7 @@ broad &lsquo;focus areas&rsquo;:
 1. Shorthanded type system
 	- basic types like pointers and booleans
 	- character types for ASCII and Unicode
-	- integral types up to 64 bits
+	- integral types up to 128 bits
 	- floating-point types up to double precision
 	- SIMD vector types for both integrals and floating-points
 	- modular memory type primitives
