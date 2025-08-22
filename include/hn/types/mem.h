@@ -50,7 +50,7 @@
  *
  * 16-BIT MEMORY SPACE :-
  *     | BASE KNOT
- * DIM |    8   |   12   |    16
+ * DIM |    8   |   12   |   16
  *  1  |   8MiB | 128MiB |   2GiB
  *  2  | 256GiB |   4TiB |  64TiB
  *  3  |   8PiB | 128PiB |   2EiB
@@ -58,19 +58,19 @@
  *
  * 32-BIT MEMORY SPACE :-
  *     | BASE KNOT
- * DIM |    8   |   12   |   16   |    20
- *  1  |   4MiB |  64MiB |   1GiB |   16GiB
- *  2  |  64GiB |   1TiB |  16TiB |  256TiB
- *  3  |   1PiB |  16PiB | 256PiB |    4EiB
- *  4  |  16EiB | 256EiB |   4ZiB |   64ZiB
+ * DIM |    8   |   12   |   16   |   20   |   24
+ *  1  |   4MiB |  64MiB |   1GiB |  16GiB | 256GiB
+ *  2  |  64GiB |   1TiB |  16TiB | 256TiB |  4EiB
+ *  3  |   1PiB |  16PiB | 256PiB |   4EiB |  64ZiB
+ *  4  |  16EiB | 256EiB |   4ZiB |  64ZiB |  1YiB
  *
  * 64-BIT MEMORY SPACE :-
  *     | BASE KNOT
- * DIM |    8   |   12   |   16   |    20
- *  1  |   2MiB |  32MiB | 512MiB |   8GiB
- *  2  |  16GiB | 256GiB |   4TiB |  64TiB
- *  3  | 128TiB |   2PiB |  32PiB | 512PiB
- *  4  |   1EiB |  16EiB | 256EiB |   4ZiB
+ * DIM |    8   |   12   |   16   |   20   |   24
+ *  1  |   2MiB |  32MiB | 512MiB |   8GiB | 128GiB
+ *  2  |  16GiB | 256GiB |   4TiB |  64TiB |  1EiB
+ *  3  | 128TiB |   2PiB |  32PiB | 512PiB |  8ZiB
+ *  4  |   1EiB |  16EiB | 256EiB |   4ZiB |  64ZiB
  *
  * From this, several things become apparent:
  *  1. Even in the worst case on 64-bit machines, amalgams with 20-bit
