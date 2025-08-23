@@ -70,7 +70,7 @@
  *  1  |   2MiB |  32MiB | 512MiB |   8GiB | 128GiB
  *  2  |  16GiB | 256GiB |   4TiB |  64TiB |  1EiB
  *  3  | 128TiB |   2PiB |  32PiB | 512PiB |  8ZiB
- *  4  |   1EiB |  16EiB | 256EiB |   4ZiB |  64ZiB
+ *  4  |   1EiB |  16EiB | 256EiB |   4ZiB | 128ZiB
  *
  * From this, several things become apparent:
  *  1. Even in the worst case on 64-bit machines, amalgams with 20-bit
