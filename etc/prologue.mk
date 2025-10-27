@@ -451,7 +451,7 @@ STRIP.DARWIN86.WINNT64 := $(BREW)/bin/x86_64-w64-mingw32-strip
 # Utilities
 PL.DARWIN86      := $(BREW)/bin/perl # brew perl
 PY.DARWIN86      := $(BREW)/bin/python3
-FMT.DARWIN86     := $(BREW)/bin/clang-format
+FMT.DARWIN86     := $(BREW)/bin/uncrustify
 LINT.DARWIN86    := $(BREW)/bin/cppcheck
 INSTALL.DARWIN86 := $(BREW)/opt/coreutils/bin/ginstall # GNU coreutils
 ECHO.DARWIN86    := $(BREW)/opt/coreutils/bin/gecho
@@ -594,7 +594,7 @@ STRIP.DARWINM1.WINNT64 := $(BREW)/bin/x86_64-w64-mingw32-strip
 # Utilities
 PL.DARWINM1      := $(BREW)/bin/perl # brew perl
 PY.DARWINM1      := $(BREW)/bin/python3
-FMT.DARWINM1     := $(BREW)/bin/clang-format
+FMT.DARWINM1     := $(BREW)/bin/uncrustify
 LINT.DARWINM1    := $(BREW)/bin/cppcheck
 INSTALL.DARWINM1 := $(BREW)/opt/coreutils/bin/ginstall # GNU coreutils
 ECHO.DARWINM1    := $(BREW)/opt/coreutils/bin/gecho
@@ -737,7 +737,7 @@ STRIP.LINUX64.WINNT64 := /usr/bin/x86_64-w64-mingw32-strip
 # Utilities
 PL.LINUX64      := /usr/bin/perl
 PY.LINUX64      := /usr/bin/python3
-FMT.LINUX64     := /usr/bin/clang-format
+FMT.LINUX64     := /usr/bin/uncrustify
 LINT.LINUX64    := /usr/bin/cppcheck
 INSTALL.LINUX64 := /usr/bin/install
 ECHO.LINUX64    := /bin/echo # not a bashism
@@ -1305,7 +1305,7 @@ SYNDEFS.WINNT32  := WINDOWS IA32 WINNT LILENDIAN PTRSZ_32 HAVE_I64 \
 SYNDEFS.WINNT64  := WINDOWS AMD64 WINNT LILENDIAN PTRSZ_64 HAVE_I64 \
 	HAVE_I32 HAVE_FP FP_SOFT LONGSZ_32
 
-FMTFLAGS := -style=file:etc/clang-format.yml
+FMTFLAGS := --mtime -q -c etc/uncrust.cfg
 
 # Make builds deterministic when using LLVM or GNU C/C++ compilers.
 # These are the environment variables necessary; see CFLAGS and

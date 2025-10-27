@@ -757,39 +757,39 @@ check: $(.L_OFILES)
 # C
 %.c.fmt: %.c
 	$(call .FN_FILE,FMT,$<)
-	@cat $< | $(FMT) $(FMTFLAGS) > $@
+	@cat $< | $(FMT) $(FMTFLAGS) -l C > $@
 	@mv $@ $<
 
 # C++
 %.cpp.fmt: %.cpp
 	$(call .FN_FILE,FMT,$<)
-	@cat $< | $(FMT) $(FMTFLAGS) > $@
+	@cat $< | $(FMT) $(FMTFLAGS) -l CPP > $@
 	@mv $@ $<
 
 %.cc.fmt: %.cc
 	$(call .FN_FILE,FMT,$<)
-	@cat $< | $(FMT) $(FMTFLAGS) > $@
+	@cat $< | $(FMT) $(FMTFLAGS) -l CPP > $@
 	@mv $@ $<
 
 %.cxx.fmt: %.cxx
 	$(call .FN_FILE,FMT,$<)
-	@cat $< | $(FMT) $(FMTFLAGS) > $@
+	@cat $< | $(FMT) $(FMTFLAGS) -l CPP > $@
 	@mv $@ $<
 
 %.c++.fmt: %.c++
 	$(call .FN_FILE,FMT,$<)
-	@cat $< | $(FMT) $(FMTFLAGS) > $@
+	@cat $< | $(FMT) $(FMTFLAGS) -l CPP > $@
 	@mv $@ $<
 
 # Objective-C
 %.m.fmt: %.m
 	$(call .FN_FILE,FMT,$<)
-	@cat $< | $(FMT) $(FMTFLAGS) > $@
+	@cat $< | $(FMT) $(FMTFLAGS) -l OC > $@
 	@mv $@ $<
 
 %.h.fmt: %.h
 	$(call .FN_FILE,FMT,$<)
-	@cat $< | $(FMT) $(FMTFLAGS) > $@
+	@cat $< | $(FMT) $(FMTFLAGS) -l OC+ > $@
 	@mv $@ $<
 
 # C
