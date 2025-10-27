@@ -35,7 +35,7 @@
 #if __has_attribute( packed )
 #if !defined( HN_PACKED )
 /* Force the structure to be tightly packed into as few octets as
- * possible. */
+   possible. */
 #define HN_PACKED __attribute__( ( packed ) )
 #endif /* !defined( HN_PACKED ) */
 #endif /* __has_attribute( packed ) */
@@ -43,7 +43,7 @@
 #if __has_attribute( may_alias )
 #if !defined( HN_TYPELESS )
 /* Prevents the compiler from doing type analysis based optimisations
- * on the type, treating it as octet-addressable cast-friendly data. */
+   on the type, treating it as octet-addressable cast-friendly data. */
 #define HN_TYPELESS __attribute__( ( may_alias ) )
 #endif /* !defined( HN_TYPELESS ) */
 #endif /* __has_attribute( may_alias ) */
@@ -163,15 +163,15 @@ enum hn_bl
 };
 
 /* Bitfield type which is deliberately imprecise in size to satisfy ANSI
- * C portability requirements (signed variant). */
+   C portability requirements (signed variant). */
 typedef signed int hn_sbf;
 
 /* Bitfield type which is deliberately imprecise in size to satisfy ANSI
- * C portability requirements (unsigned variant). */
+   C portability requirements (unsigned variant). */
 typedef unsigned int hn_ubf;
 
 /* An unsigned integer sized the same as a machine address, for
- * pointers. */
+   pointers. */
 typedef __UINTPTR_TYPE__ hn_ptri HN_TYPELESS;
 /* A signed integer sized the same as a machine pointer, for offsets.
  */
@@ -182,7 +182,7 @@ typedef enum hn_bl hn_bl;
 enum
 {
 	/* Maximum number of octets (not characters!) in a file path.
-	 * This is 64 KiB - 1 to hold the NUL terminus in 64 KiB. */
+	   This is 64 KiB - 1 to hold the NUL terminus in 64 KiB. */
 	HN_PATHMAX = 65535
 };
 
@@ -209,15 +209,15 @@ enum
 #endif /* !defined( TRUE ) */
 
 /* Bitfield type which is deliberately imprecise in size to satisfy ANSI
- * C portability requirements (signed variant). */
+   C portability requirements (signed variant). */
 typedef signed int sbf;
 
 /* Bitfield type which is deliberately imprecise in size to satisfy ANSI
- * C portability requirements (unsigned variant). */
+   C portability requirements (unsigned variant). */
 typedef unsigned int ubf;
 
 /* An unsigned integer sized the same as a machine address, for
- * pointers. */
+   pointers. */
 typedef __UINTPTR_TYPE__ ptri HN_TYPELESS;
 /* A signed integer sized the same as a machine pointer, for offsets.
  */

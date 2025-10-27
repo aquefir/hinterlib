@@ -84,7 +84,7 @@ HN_API struct hn_err hn_himem_read8(
 	/* dynamic typing information for input amalgam */
 	struct hn_amalgam,
 	/* knot offset in amalgam to read from, interpreted as an array
-	 * sized to the number of dimensions inherent to the amalgam */
+	   sized to the number of dimensions inherent to the amalgam */
 	hn_amoffs *,
 	/* data offset within selected knot to read from */
 	hn_ptri,
@@ -97,7 +97,7 @@ HN_API struct hn_err hn_himem_read16(
 	/* dynamic typing information for input amalgam */
 	struct hn_amalgam,
 	/* knot offset in amalgam to read from, interpreted as an array
-	 * sized to the number of dimensions inherent to the amalgam */
+	   sized to the number of dimensions inherent to the amalgam */
 	hn_amoffs *,
 	/* data offset within selected knot to read from */
 	hn_ptri,
@@ -111,7 +111,7 @@ HN_API struct hn_err hn_himem_read32(
 	/* dynamic typing information for input amalgam */
 	struct hn_amalgam,
 	/* knot offset in amalgam to read from, interpreted as an array
-	 * sized to the number of dimensions inherent to the amalgam */
+	   sized to the number of dimensions inherent to the amalgam */
 	hn_amoffs *,
 	/* data offset within selected knot to read from */
 	hn_ptri,
@@ -126,7 +126,7 @@ HN_API struct hn_err hn_himem_read64(
 	/* dynamic typing information for input amalgam */
 	struct hn_amalgam,
 	/* knot offset in amalgam to read from, interpreted as an array
-	 * sized to the number of dimensions inherent to the amalgam */
+	   sized to the number of dimensions inherent to the amalgam */
 	hn_amoffs *,
 	/* data offset within selected knot to read from */
 	hn_ptri,
@@ -140,7 +140,7 @@ HN_API struct hn_err hn_himem_readk8(
 	/* dynamic typing information for input amalgam */
 	struct hn_amalgam,
 	/* knot offset in amalgam to read from, interpreted as an array
-	 * sized to the number of dimensions inherent to the amalgam */
+	   sized to the number of dimensions inherent to the amalgam */
 	hn_amoffs *,
 	/* reference to output data */
 	hn_knot8 );
@@ -151,7 +151,7 @@ HN_API struct hn_err hn_himem_readk12(
 	/* dynamic typing information for input amalgam */
 	struct hn_amalgam,
 	/* knot offset in amalgam to read from, interpreted as an array
-	 * sized to the number of dimensions inherent to the amalgam */
+	   sized to the number of dimensions inherent to the amalgam */
 	hn_amoffs *,
 	/* reference to output data */
 	hn_knot12 );
@@ -174,7 +174,7 @@ HN_API struct hn_err hn_himem_readk20(
 	/* dynamic typing information for input amalgam */
 	struct hn_amalgam,
 	/* knot offset in amalgam to read from, interpreted as an array
-	 * sized to the number of dimensions inherent to the amalgam */
+	   sized to the number of dimensions inherent to the amalgam */
 	hn_amoffs *,
 	/* reference to output data */
 	hn_knot20 );
@@ -184,7 +184,7 @@ HN_API struct hn_err hn_himem_write8(
 	/* input data */
 	u8,
 	/* knot offset in amalgam to write to, interpreted as an array
-	 * sized to the number of dimensions inherent to the amalgam */
+	   sized to the number of dimensions inherent to the amalgam */
 	hn_amoffs *,
 	/* data offset within selected knot to write to */
 	hn_ptri,
@@ -197,7 +197,7 @@ HN_API struct hn_err hn_himem_write16(
 	/* input data */
 	u16,
 	/* knot offset in amalgam to write to, interpreted as an array
-	 * sized to the number of dimensions inherent to the amalgam */
+	   sized to the number of dimensions inherent to the amalgam */
 	hn_amoffs *,
 	/* data offset within selected knot to write to */
 	hn_ptri,
@@ -211,7 +211,7 @@ HN_API struct hn_err hn_himem_write32(
 	/* input data */
 	u32,
 	/* knot offset in amalgam to write to, interpreted as an array
-	 * sized to the number of dimensions inherent to the amalgam */
+	   sized to the number of dimensions inherent to the amalgam */
 	hn_amoffs *,
 	/* data offset within selected knot to write to */
 	hn_ptri,
@@ -226,7 +226,7 @@ HN_API struct hn_err hn_himem_write64(
 	/* input data */
 	u64,
 	/* knot offset in amalgam to write to, interpreted as an array
-	 * sized to the number of dimensions inherent to the amalgam */
+	   sized to the number of dimensions inherent to the amalgam */
 	hn_amoffs *,
 	/* data offset within selected knot to write to */
 	hn_ptri,
@@ -240,7 +240,7 @@ HN_API struct hn_err hn_himem_writek8(
 	/* input data */
 	hn_knot8,
 	/* knot offset in amalgam to write to, interpreted as an array
-	 * sized to the number of dimensions inherent to the amalgam */
+	   sized to the number of dimensions inherent to the amalgam */
 	hn_amoffs *,
 	/* reference to the amalgam to write to */
 	void *,
@@ -251,7 +251,7 @@ HN_API struct hn_err hn_himem_writek12(
 	/* input data */
 	hn_knot12,
 	/* knot offset in amalgam to write to, interpreted as an array
-	 * sized to the number of dimensions inherent to the amalgam */
+	   sized to the number of dimensions inherent to the amalgam */
 	hn_amoffs *,
 	/* reference to the amalgam to write to */
 	void *,
@@ -262,7 +262,7 @@ HN_API struct hn_err hn_himem_writek16(
 	/* input data */
 	hn_knot16,
 	/* knot offset in amalgam to write to, interpreted as an array
-	 * sized to the number of dimensions inherent to the amalgam */
+	   sized to the number of dimensions inherent to the amalgam */
 	hn_amoffs *,
 	/* reference to the amalgam to write to */
 	void *,
@@ -274,7 +274,7 @@ HN_API struct hn_err hn_himem_writek20(
 	/* input data */
 	hn_knot20,
 	/* knot offset in amalgam to write to, interpreted as an array
-	 * sized to the number of dimensions inherent to the amalgam */
+	   sized to the number of dimensions inherent to the amalgam */
 	hn_amoffs *,
 	/* reference to the amalgam to write to */
 	void *,

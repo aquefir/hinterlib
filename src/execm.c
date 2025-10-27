@@ -28,7 +28,7 @@ static bl _execpath2( chr p[HN_PATHMAX + 1], knot16 buf )
 	hn_memset( 0, HN_PATHMAX + 1, p );
 
 	/* dereference symlinks first, as we cannot assume dirname( ) is
-	 * smart */
+	   smart */
 	{
 		chr * const ret = realpath( (const chr *)buf, p );
 		HN_CHK_RETV( ret == p, HN_TRUE );

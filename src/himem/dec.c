@@ -39,7 +39,7 @@ static bl _dec1( am16d2 * am, u16 dimct, amoffs * ofs )
 	}
 
 	/* start from the innermost and go out, performing the decrement
-	 * on the first non-full offset segment. carry will happen later
+	   on the first non-full offset segment. carry will happen later
 	 */
 	for( i = dimct; i > 0; --i )
 	{

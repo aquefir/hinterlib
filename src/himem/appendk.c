@@ -15,9 +15,9 @@
 #include <hn/types/mem.h>
 
 /* some notes about the append subroutines:
- * - ENOMEM can mean either the amalgam is exhausted as a container, OR
- *   that the allocator regime has been exhausted upon a failed call to
- *   allocate a knot. Do not assume that ENOMEM only means the latter!
+   - ENOMEM can mean either the amalgam is exhausted as a container, OR
+     that the allocator regime has been exhausted upon a failed call to
+     allocate a knot. Do not assume that ENOMEM only means the latter!
  */
 
 typedef bl ( *_appendk_f )( void *, void * );
@@ -105,7 +105,7 @@ static bl _appendk_d3( void * am_, void * k )
 		HN_CHK_RETV( am->data[d3_idx + 1] != NULL, HN_TRUE );
 
 		/* create a 1st dimension amalgam using a knot16
-		 * and add it into the new 2nd dimension amalgam */
+		   and add it into the new 2nd dimension amalgam */
 		am->data[d3_idx + 1]->data[0] =
 			(am16d1 *)hn_allock16( );
 		am->data[d3_idx + 1]->len = 1;
@@ -168,7 +168,7 @@ static bl _appendk_d4( void * am_, void * k )
 		HN_CHK_RETV( am->data[d4_idx + 1] != NULL, HN_TRUE );
 
 		/* create a 2nd dimension amalgam using a knot16
-		 * and add it into the new 3rd dimension amalgam */
+		   and add it into the new 3rd dimension amalgam */
 		am->data[d4_idx + 1]->data[0] =
 			(am16d2 *)hn_allock16( );
 		HN_CHK_RETV( am->data[d4_idx + 1]->data[0] != NULL,
@@ -176,7 +176,7 @@ static bl _appendk_d4( void * am_, void * k )
 		am->data[d4_idx + 1]->len = 1;
 
 		/* create a 1st dimension amalgam using a knot16
-		 * and add it into the new 2nd dimension amalgam */
+		   and add it into the new 2nd dimension amalgam */
 		am->data[d4_idx + 1]->data[0]->data[0] =
 			(am16d1 *)hn_allock16( );
 		HN_CHK_RETV(
@@ -201,7 +201,7 @@ static bl _appendk_d4( void * am_, void * k )
 		HN_CHK_RETV( data[idx] != NULL, HN_TRUE );
 
 		/* create a 1st dimension amalgam using a knot16
-		 * and add it into the new 2nd dimension amalgam */
+		   and add it into the new 2nd dimension amalgam */
 		data[idx]->data[0] = (am16d1 *)hn_allock16( );
 		HN_CHK_RETV( data[idx]->data[0] != NULL, HN_TRUE );
 		data[idx]->len = 1;

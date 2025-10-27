@@ -48,11 +48,11 @@ enum hn_numbase
 };
 
 /* Initialise the sentinel bits of a new nimb in memory of a given
- * size. */
+   size. */
 HN_API hn_bl hn_nimb_init( hn_ptri, hn_bl, struct hn_ct * );
 
 /* Propagate the sentinel bits through the nimb's underlying memory to
- * occupy a new physical storage size. */
+   occupy a new physical storage size. */
 HN_API hn_bl hn_nimb_resize( hn_ptri, struct hn_ct * );
 
 /* Create a nimb from a 16-bit unsigned integer primitive. */

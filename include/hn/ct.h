@@ -229,8 +229,8 @@ struct hn_ct
 	 */
 	hn_ubf type : 8;
 	/* Equivalent to `<stdio.h>`'s EOF notion. This also applies if
-	 * an iteration happening in reverse gets stopped at the
-	 * beginning of the container. */
+	   an iteration happening in reverse gets stopped at the
+	   beginning of the container. */
 	hn_ubf reach_end : 1;
 	/* Equivalent to `<stdio.h>`'s `ferror()` status. */
 	hn_ubf outside_err : 1;

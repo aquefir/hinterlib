@@ -126,12 +126,11 @@ hn_bl hn_ct_init( hn_u16 sz[4],
 		bl tst;
 
 		/* this approach is for flat memory model machines with
-		 * no greater provisions for memory banking (i.e. 32-
-		 * and 64-bit mainstream computers). Eventually, this
-		 * dumb multiplicative logic can be special-cased on
-		 * processors with banking tools to utilise those tools
-		 * to handle more memory than is addressable :)
-		 */
+		   no greater provisions for memory banking (i.e. 32-
+		   and 64-bit mainstream computers). Eventually, this
+		   dumb multiplicative logic can be special-cased on
+		   processors with banking tools to utilise those tools
+		   to handle more memory than is addressable :) */
 		tst = HN_CHECKED_MUL( (ptri)sz[0], (ptri)sz[1], &tmp );
 		HN_CHK_RETV( tst == HN_FALSE, HN_TRUE );
 		tst = HN_CHECKED_MUL( (ptri)sz[2], tmp, &tmp );

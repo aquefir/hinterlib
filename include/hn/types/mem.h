@@ -176,7 +176,7 @@ struct hn_am8d1
 	/* Length of amalgam, denominated in elements. */
 	hn_ptri len;
 	/* Flexible array head containing the beginning of the array of
-	 * pointers to the knots. */
+	   pointers to the knots. */
 	hn_knot8 data[HN_AMALGAM_MAX_ELEMS];
 } HN_TYPELESS;
 
@@ -186,7 +186,7 @@ struct hn_am12d1
 	/* Length of amalgam, denominated in elements. */
 	hn_ptri len;
 	/* Flexible array head containing the beginning of the array of
-	 * pointers to the knots. */
+	   pointers to the knots. */
 	hn_knot12 data[HN_AMALGAM_MAX_ELEMS];
 } HN_TYPELESS;
 
@@ -196,7 +196,7 @@ struct hn_am16d1
 	/* Length of amalgam, denominated in elements. */
 	hn_ptri len;
 	/* Flexible array head containing the beginning of the array of
-	 * pointers to the knots. */
+	   pointers to the knots. */
 	hn_knot16 data[HN_AMALGAM_MAX_ELEMS];
 } HN_TYPELESS;
 
@@ -207,7 +207,7 @@ struct hn_am20d1
 	/* Length of amalgam, denominated in elements. */
 	hn_ptri len;
 	/* Flexible array head containing the beginning of the array of
-	 * pointers to the knots. */
+	   pointers to the knots. */
 	hn_knot20 data[HN_AMALGAM_MAX_ELEMS];
 } HN_TYPELESS;
 
@@ -217,7 +217,7 @@ struct hn_am24d1
 	/* Length of amalgam, denominated in elements. */
 	hn_ptri len;
 	/* Flexible array head containing the beginning of the array of
-	 * pointers to the knots. */
+	   pointers to the knots. */
 	hn_knot24 data[HN_AMALGAM_MAX_ELEMS];
 } HN_TYPELESS;
 #endif /* HN_SIZEOF_PTR > 2 */
@@ -228,7 +228,7 @@ struct hn_am8d2
 	/* Length of amalgam, denominated in elements. */
 	hn_ptri len;
 	/* Flexible array head containing the beginning of the array of
-	 * pointers to the knots. */
+	   pointers to the knots. */
 	struct hn_am8d1 * data[HN_AMALGAM_MAX_ELEMS];
 } HN_TYPELESS;
 
@@ -238,7 +238,7 @@ struct hn_am12d2
 	/* Length of amalgam, denominated in elements. */
 	hn_ptri len;
 	/* Flexible array head containing the beginning of the array of
-	 * pointers to the knots. */
+	   pointers to the knots. */
 	struct hn_am12d1 * data[HN_AMALGAM_MAX_ELEMS];
 } HN_TYPELESS;
 
@@ -248,7 +248,7 @@ struct hn_am16d2
 	/* Length of amalgam, denominated in elements. */
 	hn_ptri len;
 	/* Flexible array head containing the beginning of the array of
-	 * pointers to the knots. */
+	   pointers to the knots. */
 	struct hn_am16d1 * data[HN_AMALGAM_MAX_ELEMS];
 } HN_TYPELESS;
 
@@ -259,7 +259,7 @@ struct hn_am20d2
 	/* Length of amalgam, denominated in elements. */
 	hn_ptri len;
 	/* Flexible array head containing the beginning of the array of
-	 * pointers to the knots. */
+	   pointers to the knots. */
 	struct hn_am20d1 * data[HN_AMALGAM_MAX_ELEMS];
 } HN_TYPELESS;
 
@@ -269,7 +269,7 @@ struct hn_am24d2
 	/* Length of amalgam, denominated in elements. */
 	hn_ptri len;
 	/* Flexible array head containing the beginning of the array of
-	 * pointers to the knots. */
+	   pointers to the knots. */
 	struct hn_am24d1 * data[HN_AMALGAM_MAX_ELEMS];
 } HN_TYPELESS;
 #endif /* HN_SIZEOF_PTR > 2 */
@@ -280,7 +280,7 @@ struct hn_am8d3
 	/* Length of amalgam, denominated in elements. */
 	hn_ptri len;
 	/* Flexible array head containing the beginning of the array of
-	 * pointers to the knots. */
+	   pointers to the knots. */
 	struct hn_am8d2 * data[HN_AMALGAM_MAX_ELEMS];
 } HN_TYPELESS;
 
@@ -290,7 +290,7 @@ struct hn_am12d3
 	/* Length of amalgam, denominated in elements. */
 	hn_ptri len;
 	/* Flexible array head containing the beginning of the array of
-	 * pointers to the knots. */
+	   pointers to the knots. */
 	struct hn_am12d2 * data[HN_AMALGAM_MAX_ELEMS];
 } HN_TYPELESS;
 
@@ -300,7 +300,7 @@ struct hn_am16d3
 	/* Length of amalgam, denominated in elements. */
 	hn_ptri len;
 	/* Flexible array head containing the beginning of the array of
-	 * pointers to the knots. */
+	   pointers to the knots. */
 	struct hn_am16d2 * data[HN_AMALGAM_MAX_ELEMS];
 } HN_TYPELESS;
 
@@ -311,7 +311,7 @@ struct hn_am20d3
 	/* Length of amalgam, denominated in elements. */
 	hn_ptri len;
 	/* Flexible array head containing the beginning of the array of
-	 * pointers to the knots. */
+	   pointers to the knots. */
 	struct hn_am20d2 * data[HN_AMALGAM_MAX_ELEMS];
 } HN_TYPELESS;
 
@@ -321,7 +321,7 @@ struct hn_am24d3
 	/* Length of amalgam, denominated in elements. */
 	hn_ptri len;
 	/* Flexible array head containing the beginning of the array of
-	 * pointers to the knots. */
+	   pointers to the knots. */
 	struct hn_am24d2 * data[HN_AMALGAM_MAX_ELEMS];
 } HN_TYPELESS;
 #endif /* HN_SIZEOF_PTR > 2 */
@@ -332,7 +332,7 @@ struct hn_am8d4
 	/* Length of amalgam, denominated in elements. */
 	hn_ptri len;
 	/* Flexible array head containing the beginning of the array of
-	 * pointers to the knots. */
+	   pointers to the knots. */
 	struct hn_am8d3 * data[HN_AMALGAM_MAX_ELEMS];
 } HN_TYPELESS;
 
@@ -342,7 +342,7 @@ struct hn_am12d4
 	/* Length of amalgam, denominated in elements. */
 	hn_ptri len;
 	/* Flexible array head containing the beginning of the array of
-	 * pointers to the knots. */
+	   pointers to the knots. */
 	struct hn_am12d3 * data[HN_AMALGAM_MAX_ELEMS];
 } HN_TYPELESS;
 
@@ -352,7 +352,7 @@ struct hn_am16d4
 	/* Length of amalgam, denominated in elements. */
 	hn_ptri len;
 	/* Flexible array head containing the beginning of the array of
-	 * pointers to the knots. */
+	   pointers to the knots. */
 	struct hn_am16d3 * data[HN_AMALGAM_MAX_ELEMS];
 } HN_TYPELESS;
 
@@ -363,7 +363,7 @@ struct hn_am20d4
 	/* Length of amalgam, denominated in elements. */
 	hn_ptri len;
 	/* Flexible array head containing the beginning of the array of
-	 * pointers to the knots. */
+	   pointers to the knots. */
 	struct hn_am20d3 * data[HN_AMALGAM_MAX_ELEMS];
 } HN_TYPELESS;
 
@@ -373,7 +373,7 @@ struct hn_am24d4
 	/* Length of amalgam, denominated in elements. */
 	hn_ptri len;
 	/* Flexible array head containing the beginning of the array of
-	 * pointers to the knots. */
+	   pointers to the knots. */
 	struct hn_am24d3 * data[HN_AMALGAM_MAX_ELEMS];
 } HN_TYPELESS;
 #endif /* HN_SIZEOF_PTR > 2 */
@@ -446,7 +446,7 @@ struct hn_amalgam
 	/* Knot base; see `enum hn_baseknotsz` for valid values. */
 	hn_ubf baseknot_sz : 3;
 	/* Number of subdivisions; this is the number of dimensions
-	 * minus one (one-dimensional amalgams have zero subdivisions).
+	   minus one (one-dimensional amalgams have zero subdivisions).
 	 */
 	hn_ubf subdiv_ct : 2;
 	hn_ubf : 2;
