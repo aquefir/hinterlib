@@ -63,7 +63,7 @@
 	HN_MAKE_CCVERSION( __BORLANDC__ >> 8, __BORLANDC__ & 0xFF, 0 )
 #elif defined( __DMC__ )
 #define HN_CCVERSION \
-	HN_MAKE_CCVERSION( __DMC__ >> 8, ( __DMC__ >> 4 ) & 0xF,
+	HN_MAKE_CCVERSION( __DMC__ >> 8, ( __DMC__ >> 4 ) & 0xF, \
 	__DMC__ & 0xF )
 #elif defined( __SDCC )
 #define HN_CCVERSION \
