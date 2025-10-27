@@ -8,10 +8,9 @@
 
 #define _XOPEN_SOURCE 500
 
-#include <hn/exec.h>
-
 #include <hn/alloc.h>
 #include <hn/err.h>
+#include <hn/exec.h>
 #include <hn/memops.h>
 #include <libgen.h>
 #include <mach-o/dyld.h>
@@ -20,7 +19,7 @@
 static bl _execpath2( chr p[HN_PATHMAX + 1], knot16 buf )
 {
 	u32 sz      = HN_PATHMAX;
-	const int r = _NSGetExecutablePath( (chr *)buf, &sz );
+	const int r = _NSGetExecutablePath((chr *)buf, &sz );
 
 	HN_CHK_RETV( r == 0, HN_TRUE );
 
@@ -30,7 +29,7 @@ static bl _execpath2( chr p[HN_PATHMAX + 1], knot16 buf )
 	/* dereference symlinks first, as we cannot assume dirname( ) is
 	   smart */
 	{
-		chr * const ret = realpath( (const chr *)buf, p );
+		chr * const ret = realpath((const chr *)buf, p );
 		HN_CHK_RETV( ret == p, HN_TRUE );
 
 		dirname( p );

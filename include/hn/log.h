@@ -9,8 +9,7 @@
 #ifndef INC_API__HN_LOG_H
 #define INC_API__HN_LOG_H
 
-#if !defined( _CFGOPT_NOSTDIO )
-
+#if !defined(_CFGOPT_NOSTDIO)
 #include "file.h"
 #include "types/char.h"
 
@@ -41,7 +40,8 @@ struct hn_log
 	/* Whether to colour output using ANSI escape sequences. */
 	hn_ubf ansi_col : 1;
 	hn_ubf : 9;
-} HN_PACKED;
+}
+HN_PACKED;
 
 /**
  *
@@ -92,7 +92,6 @@ HN_API void hn_log_warn( struct hn_log *, const chr *, ... );
  * @param ... The parameters specified in the format sring, if any.
  */
 HN_API void hn_log_err( struct hn_log *, const chr *, ... );
-
 #endif /* !defined( _CFGOPT_NOSTDIO ) */
 
 #endif /* INC_API__HN_LOG_H */

@@ -11,20 +11,20 @@
 
 #include "base.h"
 
-#if defined( __has_attribute )
+#if defined(__has_attribute)
 #if __has_attribute( vector_size )
-#if !defined( HN_VECTOR )
+#if !defined(HN_VECTOR)
 #define HN_VECTOR( _b, _a, _n ) _b _a HN_VECSIZE( _n )
 #endif /* !defined( HN_VECTOR ) */
 #endif /* __has_attribute( vector_size ) */
 #endif /* defined( __has_attribute ) */
 
 /* Define the vector as a plain array if vector support is absent. */
-#if !defined( HN_VECTOR )
+#if !defined(HN_VECTOR)
 #define HN_VECTOR( _b, _a, _n ) _b[_n] _a
 #endif /* !defined( HN_VECTOR ) */
 
-#if defined( HN_HAVE_I64 )
+#if defined(HN_HAVE_I64)
 /* 2-wide vector of signed 64-bit integers. */
 typedef HN_VECTOR( __INT64_TYPE__, __INT64_TYPE__v2, 16 );
 /* 4-wide vector of signed 64-bit integers. */
@@ -33,7 +33,7 @@ typedef HN_VECTOR( __INT64_TYPE__, __INT64_TYPE__v4, 32 );
 typedef HN_VECTOR( __INT64_TYPE__, __INT64_TYPE__v8, 64 );
 #endif /* defined( HN_HAVE_I64 ) */
 
-#if defined( HN_HAVE_I32 )
+#if defined(HN_HAVE_I32)
 /* 2-wide vector of signed 32-bit integers. */
 typedef HN_VECTOR( __INT32_TYPE__, hn_s32v2, 8 );
 /* 4-wide vector of signed 32-bit integers. */
@@ -68,7 +68,7 @@ typedef HN_VECTOR( __INT8_TYPE__, hn_s8v32, 32 );
 /* 64-wide vector of signed 8-bit integers. */
 typedef HN_VECTOR( __INT8_TYPE__, hn_s8v64, 64 );
 
-#if defined( HN_HAVE_I64 )
+#if defined(HN_HAVE_I64)
 /* 2-wide vector of unsigned 64-bit integers. */
 typedef HN_VECTOR( __UINT64_TYPE__, hn_u64v2, 16 );
 /* 4-wide vector of unsigned 64-bit integers. */
@@ -77,7 +77,7 @@ typedef HN_VECTOR( __UINT64_TYPE__, hn_u64v4, 32 );
 typedef HN_VECTOR( __UINT64_TYPE__, hn_u64v8, 64 );
 #endif /* defined( HN_HAVE_I64 ) */
 
-#if defined( HN_HAVE_I32 )
+#if defined(HN_HAVE_I32)
 /* 2-wide vector of unsigned 32-bit integers. */
 typedef HN_VECTOR( __UINT32_TYPE__, hn_u32v2, 8 );
 /* 4-wide vector of unsigned 32-bit integers. */
@@ -112,9 +112,8 @@ typedef HN_VECTOR( __UINT8_TYPE__, hn_u8v32, 32 );
 /* 64-wide vector of unsigned 8-bit integers. */
 typedef HN_VECTOR( __UINT8_TYPE__, hn_u8v64, 64 );
 
-#if !defined( _CFGOPT_NOSHORTHAND )
-
-#if defined( HN_HAVE_I64 )
+#if !defined(_CFGOPT_NOSHORTHAND)
+#if defined(HN_HAVE_I64)
 /* 2-wide vector of signed 64-bit integers. */
 typedef HN_VECTOR( __INT64_TYPE__, s64v2, 16 );
 /* 4-wide vector of signed 64-bit integers. */
@@ -123,7 +122,7 @@ typedef HN_VECTOR( __INT64_TYPE__, s64v4, 32 );
 typedef HN_VECTOR( __INT64_TYPE__, s64v8, 64 );
 #endif /* defined( HN_HAVE_I64 ) */
 
-#if defined( HN_HAVE_I32 )
+#if defined(HN_HAVE_I32)
 /* 2-wide vector of signed 32-bit integers. */
 typedef HN_VECTOR( __INT32_TYPE__, s32v2, 8 );
 /* 4-wide vector of signed 32-bit integers. */
@@ -158,7 +157,7 @@ typedef HN_VECTOR( __INT8_TYPE__, s8v32, 32 );
 /* 64-wide vector of signed 8-bit integers. */
 typedef HN_VECTOR( __INT8_TYPE__, s8v64, 64 );
 
-#if defined( HN_HAVE_I64 )
+#if defined(HN_HAVE_I64)
 /* 2-wide vector of unsigned 64-bit integers. */
 typedef HN_VECTOR( __UINT64_TYPE__, u64v2, 16 );
 /* 4-wide vector of unsigned 64-bit integers. */
@@ -167,7 +166,7 @@ typedef HN_VECTOR( __UINT64_TYPE__, u64v4, 32 );
 typedef HN_VECTOR( __UINT64_TYPE__, u64v8, 64 );
 #endif /* defined( HN_HAVE_I64 ) */
 
-#if defined( HN_HAVE_I32 )
+#if defined(HN_HAVE_I32)
 /* 2-wide vector of unsigned 32-bit integers. */
 typedef HN_VECTOR( __UINT32_TYPE__, u32v2, 8 );
 /* 4-wide vector of unsigned 32-bit integers. */
@@ -201,7 +200,6 @@ typedef HN_VECTOR( __UINT8_TYPE__, u8v16, 16 );
 typedef HN_VECTOR( __UINT8_TYPE__, u8v32, 32 );
 /* 64-wide vector of unsigned 8-bit integers. */
 typedef HN_VECTOR( __UINT8_TYPE__, u8v64, 64 );
-
 #endif /* !defined( _CFGOPT_NOSHORTHAND ) */
 
 #endif /* INC_API__HN_TYPES_INTVEC_H */

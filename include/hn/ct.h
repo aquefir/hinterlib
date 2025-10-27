@@ -9,11 +9,10 @@
 #ifndef INC_API__HN_CT_H
 #define INC_API__HN_CT_H
 
+#include "file.h"
 #include "types/base.h"
 #include "types/int.h"
 #include "types/mem.h"
-
-#include "file.h"
 
 /**
  * Container - polymorphic data storage
@@ -64,7 +63,8 @@ enum hn_ct_file_type
 struct hn_ct_i_flat
 {
 	hn_ptri n;
-} HN_PACKED;
+}
+HN_PACKED;
 
 struct hn_ct_i_am8d1
 {
@@ -73,7 +73,8 @@ struct hn_ct_i_am8d1
 	hn_ubf : 16;
 	hn_u16 idx[1];
 	hn_u16 _padding[3];
-} HN_PACKED;
+}
+HN_PACKED;
 
 struct hn_ct_i_am12d1
 {
@@ -82,7 +83,8 @@ struct hn_ct_i_am12d1
 	hn_ubf : 16;
 	hn_u16 idx[1];
 	hn_u16 _padding[3];
-} HN_PACKED;
+}
+HN_PACKED;
 
 struct hn_ct_i_am16d1
 {
@@ -90,7 +92,8 @@ struct hn_ct_i_am16d1
 	hn_ubf : 16;
 	hn_u16 idx[1];
 	hn_u16 _padding[3];
-} HN_PACKED;
+}
+HN_PACKED;
 
 #if HN_SIZEOF_PTR > 2
 struct hn_ct_i_am20d1
@@ -99,7 +102,8 @@ struct hn_ct_i_am20d1
 	hn_ubf : 12;
 	hn_u16 idx[1];
 	hn_u16 _padding[3];
-} HN_PACKED;
+}
+HN_PACKED;
 #endif /* HN_SIZEOF_PTR > 2 */
 
 struct hn_ct_i_am8d2
@@ -109,7 +113,8 @@ struct hn_ct_i_am8d2
 	hn_ubf : 16;
 	hn_u16 idx[2];
 	hn_u16 _padding[2];
-} HN_PACKED;
+}
+HN_PACKED;
 
 struct hn_ct_i_am12d2
 {
@@ -118,7 +123,8 @@ struct hn_ct_i_am12d2
 	hn_ubf : 16;
 	hn_u16 idx[2];
 	hn_u16 _padding[2];
-} HN_PACKED;
+}
+HN_PACKED;
 
 struct hn_ct_i_am16d2
 {
@@ -126,7 +132,8 @@ struct hn_ct_i_am16d2
 	hn_ubf : 16;
 	hn_u16 idx[2];
 	hn_u16 _padding[2];
-} HN_PACKED;
+}
+HN_PACKED;
 
 #if HN_SIZEOF_PTR > 2
 struct hn_ct_i_am20d2
@@ -135,7 +142,8 @@ struct hn_ct_i_am20d2
 	hn_u32 _padding1 : 12;
 	hn_u16 idx[2];
 	hn_u16 _padding[2];
-} HN_PACKED;
+}
+HN_PACKED;
 #endif /* HN_SIZEOF_PTR > 2 */
 
 struct hn_ct_i_am8d3
@@ -145,7 +153,8 @@ struct hn_ct_i_am8d3
 	hn_ubf : 16;
 	hn_u16 idx[3];
 	hn_u16 _padding;
-} HN_PACKED;
+}
+HN_PACKED;
 
 struct hn_ct_i_am12d3
 {
@@ -154,7 +163,8 @@ struct hn_ct_i_am12d3
 	hn_ubf : 16;
 	hn_u16 idx[3];
 	hn_u16 _padding;
-} HN_PACKED;
+}
+HN_PACKED;
 
 struct hn_ct_i_am16d3
 {
@@ -162,7 +172,8 @@ struct hn_ct_i_am16d3
 	hn_ubf : 16;
 	hn_u16 idx[3];
 	hn_u16 _padding;
-} HN_PACKED;
+}
+HN_PACKED;
 
 #if HN_SIZEOF_PTR > 2
 struct hn_ct_i_am20d3
@@ -171,7 +182,8 @@ struct hn_ct_i_am20d3
 	hn_ubf : 12;
 	hn_u16 idx[3];
 	hn_u16 _padding;
-} HN_PACKED;
+}
+HN_PACKED;
 #endif /* HN_SIZEOF_PTR > 2 */
 
 struct hn_ct_i_am8d4
@@ -180,7 +192,8 @@ struct hn_ct_i_am8d4
 	hn_ubf : 8;
 	hn_ubf : 16;
 	hn_u16 idx[4];
-} HN_PACKED;
+}
+HN_PACKED;
 
 struct hn_ct_i_am12d4
 {
@@ -188,14 +201,16 @@ struct hn_ct_i_am12d4
 	hn_ubf : 4;
 	hn_ubf : 16;
 	hn_u16 idx[4];
-} HN_PACKED;
+}
+HN_PACKED;
 
 struct hn_ct_i_am16d4
 {
 	hn_ubf n : 16;
 	hn_ubf : 16;
 	hn_u16 idx[4];
-} HN_PACKED;
+}
+HN_PACKED;
 
 #if HN_SIZEOF_PTR > 2
 struct hn_ct_i_am20d4
@@ -203,13 +218,14 @@ struct hn_ct_i_am20d4
 	hn_ubf n : 20;
 	hn_ubf : 12;
 	hn_u16 idx[4];
-} HN_PACKED;
-
+}
+HN_PACKED;
 #endif /* HN_SIZEOF_PTR > 2 */
 struct hn_ct_i_file
 {
 	struct hn_fpos * pos;
-} HN_PACKED;
+}
+HN_PACKED;
 
 struct hn_ct_file
 {
@@ -219,8 +235,9 @@ struct hn_ct_file
 	hn_ubf : 16;
 	hn_ubf : 16;
 	/* Reference to a char[HN_PATHMAX] for the file path. */
-	hn_chr ( *path )[HN_PATHMAX + 1];
-} HN_PACKED;
+	hn_chr( *path )[HN_PATHMAX + 1];
+}
+HN_PACKED;
 
 /* Container. */
 struct hn_ct
@@ -266,7 +283,8 @@ struct hn_ct
 		hn_am20d4 * am20d4;
 #endif /* HN_SIZEOF_PTR > 2 */
 		struct hn_ct_file * file;
-	} data HN_PACKED;
+	}
+	data HN_PACKED;
 	union
 	{
 		struct hn_ct_i_flat flat;
@@ -295,8 +313,10 @@ struct hn_ct
 		struct hn_ct_i_am20d4 am20d4;
 #endif /* HN_SIZEOF_PTR > 2 */
 		struct hn_ct_i_file file;
-	} idx HN_PACKED;
-} HN_PACKED;
+	}
+	idx HN_PACKED;
+}
+HN_PACKED;
 
 HN_API hn_bl hn_ct_init(
 	hn_u16[4], enum hn_ct_type, hn_ptri, struct hn_ct * );
@@ -307,11 +327,11 @@ HN_API hn_bl hn_ct_readu8( struct hn_ct *, hn_u8 * );
 
 HN_API hn_bl hn_ct_readu16( struct hn_ct *, hn_u16 * );
 
-#if defined( _SYNDEF_HAVE_I32 )
+#if defined(_SYNDEF_HAVE_I32)
 HN_API hn_bl hn_ct_readu32( struct hn_ct *, hn_u32 * );
 #endif /* defined( _SYNDEF_HAVE_I32 ) */
 
-#if defined( _SYNDEF_HAVE_I64 )
+#if defined(_SYNDEF_HAVE_I64)
 HN_API hn_bl hn_ct_readu64( struct hn_ct *, hn_u64 * );
 #endif /* defined( _SYNDEF_HAVE_I64 ) */
 
@@ -329,11 +349,11 @@ HN_API hn_bl hn_ct_writeu8( hn_u8, struct hn_ct * );
 
 HN_API hn_bl hn_ct_writeu16( hn_u16, struct hn_ct * );
 
-#if defined( _SYNDEF_HAVE_I32 )
+#if defined(_SYNDEF_HAVE_I32)
 HN_API hn_bl hn_ct_writeu32( hn_u32, struct hn_ct * );
 #endif /* defined( _SYNDEF_HAVE_I32 ) */
 
-#if defined( _SYNDEF_HAVE_I64 )
+#if defined(_SYNDEF_HAVE_I64)
 HN_API hn_bl hn_ct_writeu64( hn_u64, struct hn_ct * );
 #endif /* defined( _SYNDEF_HAVE_I64 ) */
 
@@ -349,11 +369,11 @@ HN_API hn_bl hn_ct_writek20( hn_knot20, struct hn_ct * );
 
 HN_API hn_bl hn_ct_seek16( struct hn_ct *, hn_s16 );
 
-#if defined( _SYNDEF_HAVE_I32 )
+#if defined(_SYNDEF_HAVE_I32)
 HN_API hn_bl hn_ct_seek32( struct hn_ct *, hn_s32 );
 #endif /* defined( _SYNDEF_HAVE_I32 ) */
 
-#if defined( _SYNDEF_HAVE_I64 )
+#if defined(_SYNDEF_HAVE_I64)
 HN_API hn_bl hn_ct_seek64( struct hn_ct *, hn_s64 );
 #endif /* defined( _SYNDEF_HAVE_I64 ) */
 

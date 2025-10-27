@@ -6,10 +6,9 @@
  *            Released under Artisan Software Licence v1.1            *
 \**********************************************************************/
 
-#include <hn/himem.h>
-
 #include <hn/alloc.h>
 #include <hn/err.h>
+#include <hn/himem.h>
 #include <hn/memops.h>
 #include <hn/types/int.h>
 #include <hn/types/mem.h>
@@ -20,21 +19,23 @@
      allocate a knot. Do not assume that ENOMEM only means the latter!
  */
 
-typedef bl ( *_appendk_f )( void *, void * );
+typedef bl (* _appendk_f)( void *, void * );
 
 static bl _appendk_d1( void *, void * );
 static bl _appendk_d2( void *, void * );
 static bl _appendk_d3( void *, void * );
 static bl _appendk_d4( void *, void * );
 
-static _appendk_f const _appendk[] = {
-	&_appendk_d1, &_appendk_d2, &_appendk_d3, &_appendk_d4 };
+static _appendk_f const _appendk[] =
+{
+	&_appendk_d1, &_appendk_d2, &_appendk_d3, &_appendk_d4
+};
 
 static bl _appendk_d1( void * am_, void * k )
 {
 	am16d1 * const am = am_;
 
-	if( am->len >= HN_AMALGAM_MAX_ELEMS )
+	if(am->len >= HN_AMALGAM_MAX_ELEMS)
 	{
 		/* out of memory */
 		return HN_TRUE;
@@ -53,14 +54,14 @@ static bl _appendk_d2( void * am_, void * k )
 	const u16 d2_idx  = am->len - 1;
 	const u16 d1_idx  = am->data[d2_idx]->len - 1;
 
-	if( d2_idx + 1 >= HN_AMALGAM_MAX_ELEMS &&
-		d1_idx + 1 >= HN_AMALGAM_MAX_ELEMS )
+	if((d2_idx + 1 >= HN_AMALGAM_MAX_ELEMS) && (d1_idx + 1 >=
+	                                            HN_AMALGAM_MAX_ELEMS))
 	{
 		/* out of memory */
 		return HN_TRUE;
 	}
 
-	if( d1_idx + 1 >= HN_AMALGAM_MAX_ELEMS )
+	if(d1_idx + 1 >= HN_AMALGAM_MAX_ELEMS)
 	{
 		/* create a 1st dimension amalgam using a knot16 */
 		am->data[d2_idx + 1] = (am16d1 *)hn_allock16( );
@@ -89,16 +90,16 @@ static bl _appendk_d3( void * am_, void * k )
 	const u16 d2_idx  = am->data[d3_idx]->len - 1;
 	const u16 d1_idx  = am->data[d3_idx]->data[d2_idx]->len - 1;
 
-	if( d3_idx + 1 >= HN_AMALGAM_MAX_ELEMS &&
-		d2_idx + 1 >= HN_AMALGAM_MAX_ELEMS &&
-		d1_idx + 1 >= HN_AMALGAM_MAX_ELEMS )
+	if((d3_idx + 1 >= HN_AMALGAM_MAX_ELEMS) && (d2_idx + 1 >=
+	                                            HN_AMALGAM_MAX_ELEMS)
+	   && (d1_idx + 1 >= HN_AMALGAM_MAX_ELEMS))
 	{
 		/* out of memory */
 		return HN_TRUE;
 	}
 
-	if( d1_idx + 1 >= HN_AMALGAM_MAX_ELEMS &&
-		d2_idx + 1 >= HN_AMALGAM_MAX_ELEMS )
+	if((d1_idx + 1 >= HN_AMALGAM_MAX_ELEMS) && (d2_idx + 1 >=
+	                                            HN_AMALGAM_MAX_ELEMS))
 	{
 		/* create a 2nd dimension amalgam using a knot16 */
 		am->data[d3_idx + 1] = (am16d2 *)hn_allock16( );
@@ -106,8 +107,8 @@ static bl _appendk_d3( void * am_, void * k )
 
 		/* create a 1st dimension amalgam using a knot16
 		   and add it into the new 2nd dimension amalgam */
-		am->data[d3_idx + 1]->data[0] =
-			(am16d1 *)hn_allock16( );
+		am->data[d3_idx + 1]->data[0]
+		        = (am16d1 *)hn_allock16( );
 		am->data[d3_idx + 1]->len = 1;
 
 		/* append the knot into the new amalgam */
@@ -116,7 +117,7 @@ static bl _appendk_d3( void * am_, void * k )
 
 		am->len += 1;
 	}
-	else if( d1_idx + 1 >= HN_AMALGAM_MAX_ELEMS )
+	else if(d1_idx + 1 >= HN_AMALGAM_MAX_ELEMS)
 	{
 		am16d1 ** const data = am->data[d3_idx]->data;
 		const u16 idx        = d2_idx + 1;
@@ -139,7 +140,7 @@ static bl _appendk_d3( void * am_, void * k )
 	}
 
 	return HN_FALSE;
-}
+} /* _appendk_d3 */
 
 static bl _appendk_d4( void * am_, void * k )
 {
@@ -147,21 +148,21 @@ static bl _appendk_d4( void * am_, void * k )
 	const u16 d4_idx  = am->len - 1;
 	const u16 d3_idx  = am->data[d4_idx]->len - 1;
 	const u16 d2_idx  = am->data[d4_idx]->data[d3_idx]->len - 1;
-	const u16 d1_idx =
-		am->data[d4_idx]->data[d3_idx]->data[d2_idx]->len - 1;
+	const u16 d1_idx
+	        = am->data[d4_idx]->data[d3_idx]->data[d2_idx]->len - 1;
 
-	if( d4_idx + 1 >= HN_AMALGAM_MAX_ELEMS &&
-		d3_idx + 1 >= HN_AMALGAM_MAX_ELEMS &&
-		d2_idx + 1 >= HN_AMALGAM_MAX_ELEMS &&
-		d1_idx + 1 >= HN_AMALGAM_MAX_ELEMS )
+	if((d4_idx + 1 >= HN_AMALGAM_MAX_ELEMS) && (d3_idx + 1 >=
+	                                            HN_AMALGAM_MAX_ELEMS)
+	   && (d2_idx + 1 >= HN_AMALGAM_MAX_ELEMS) && (d1_idx + 1 >=
+	                                               HN_AMALGAM_MAX_ELEMS))
 	{
 		/* out of memory */
 		return HN_TRUE;
 	}
 
-	if( d1_idx + 1 >= HN_AMALGAM_MAX_ELEMS &&
-		d2_idx + 1 >= HN_AMALGAM_MAX_ELEMS &&
-		d3_idx + 1 >= HN_AMALGAM_MAX_ELEMS )
+	if((d1_idx + 1 >= HN_AMALGAM_MAX_ELEMS) && (d2_idx + 1 >=
+	                                            HN_AMALGAM_MAX_ELEMS)
+	   && (d3_idx + 1 >= HN_AMALGAM_MAX_ELEMS))
 	{
 		/* create a 3rd dimension amalgam using a knot16 */
 		am->data[d4_idx + 1] = (am16d3 *)hn_allock16( );
@@ -169,19 +170,19 @@ static bl _appendk_d4( void * am_, void * k )
 
 		/* create a 2nd dimension amalgam using a knot16
 		   and add it into the new 3rd dimension amalgam */
-		am->data[d4_idx + 1]->data[0] =
-			(am16d2 *)hn_allock16( );
+		am->data[d4_idx + 1]->data[0]
+		        = (am16d2 *)hn_allock16( );
 		HN_CHK_RETV( am->data[d4_idx + 1]->data[0] != NULL,
-			HN_TRUE );
+		             HN_TRUE );
 		am->data[d4_idx + 1]->len = 1;
 
 		/* create a 1st dimension amalgam using a knot16
 		   and add it into the new 2nd dimension amalgam */
-		am->data[d4_idx + 1]->data[0]->data[0] =
-			(am16d1 *)hn_allock16( );
-		HN_CHK_RETV(
-			am->data[d4_idx + 1]->data[0]->data[0] != NULL,
-			HN_TRUE );
+		am->data[d4_idx + 1]->data[0]->data[0]
+		        = (am16d1 *)hn_allock16( );
+		HN_CHK_RETV( am->data[d4_idx + 1]->data[0]->data[0] !=
+		             NULL,
+		             HN_TRUE );
 		am->data[d4_idx + 1]->data[0]->len = 1;
 
 		/* append the knot into the new amalgam */
@@ -190,8 +191,8 @@ static bl _appendk_d4( void * am_, void * k )
 
 		am->len += 1;
 	}
-	else if( d1_idx + 1 >= HN_AMALGAM_MAX_ELEMS &&
-		d2_idx + 1 >= HN_AMALGAM_MAX_ELEMS )
+	else if((d1_idx + 1 >= HN_AMALGAM_MAX_ELEMS) && (d2_idx + 1 >=
+	                                                 HN_AMALGAM_MAX_ELEMS))
 	{
 		am16d2 ** const data = am->data[d4_idx]->data;
 		const u16 idx        = d3_idx + 1;
@@ -212,10 +213,10 @@ static bl _appendk_d4( void * am_, void * k )
 
 		am->data[d4_idx]->len += 1;
 	}
-	else if( d1_idx + 1 >= HN_AMALGAM_MAX_ELEMS )
+	else if(d1_idx + 1 >= HN_AMALGAM_MAX_ELEMS)
 	{
-		am16d1 ** const data =
-			am->data[d4_idx]->data[d3_idx]->data;
+		am16d1 ** const data
+		        = am->data[d4_idx]->data[d3_idx]->data;
 		const u16 idx = d2_idx + 1;
 
 		/* create a 1st dimension amalgam using a knot16 */
@@ -232,17 +233,17 @@ static bl _appendk_d4( void * am_, void * k )
 	{
 		/* append the knot into the amalgam directly */
 		am->data[d4_idx]
-			->data[d3_idx]
-			->data[d2_idx]
-			->data[d1_idx + 1] = k;
+		->data[d3_idx]
+		->data[d2_idx]
+		->data[d1_idx + 1] = k;
 		am->data[d4_idx]->data[d3_idx]->data[d2_idx]->len += 1;
 	}
 
 	return HN_FALSE;
-}
+} /* _appendk_d4 */
 
-struct hn_err hn_himem_appendk(
-	void * am, struct hn_amalgam am_opts, void * k )
+struct hn_err hn_himem_appendk( void * am, struct hn_amalgam am_opts,
+                                void * k )
 {
 	struct hn_err ret;
 
@@ -269,5 +270,6 @@ nomem:
 	ret.id    = HN_ERR_ID_ENOMEM;
 
 finish:
+
 	return ret;
 }

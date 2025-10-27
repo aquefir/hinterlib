@@ -7,27 +7,28 @@
 \**********************************************************************/
 
 #include <hn/himem.h>
-
 #include <hn/memops.h>
 #include <hn/types/int.h>
 #include <hn/types/mem.h>
 
-typedef bl ( *_insertk_f )( void *, amoffs *, void * );
+typedef bl (* _insertk_f)( void *, amoffs *, void * );
 
 static bl _insertk_d1( void *, amoffs *, void * );
 static bl _insertk_d2( void *, amoffs *, void * );
 static bl _insertk_d3( void *, amoffs *, void * );
 static bl _insertk_d4( void *, amoffs *, void * );
 
-static _insertk_f const _insertk[] = {
-	&_insertk_d1, &_insertk_d2, &_insertk_d3, &_insertk_d4 };
+static _insertk_f const _insertk[] =
+{
+	&_insertk_d1, &_insertk_d2, &_insertk_d3, &_insertk_d4
+};
 
 static void _insert( am16d1 * am, u16 offs, void * k )
 {
 	ptri i;
 
 	/* step 1: move the second half of the amalgam forward by one */
-	for( i = am->len - 1; i >= offs; --i )
+	for(i = am->len - 1; i >= offs; --i)
 	{
 		am->data[i + 1] = am->data[i];
 	}
@@ -40,7 +41,7 @@ static bl _insertk_d1( void * am_, amoffs * offs, void * k_ )
 {
 	am16d1 * const am = am_;
 
-	if( am->len >= HN_AMALGAM_MAX_ELEMS - 1 )
+	if(am->len >= HN_AMALGAM_MAX_ELEMS - 1)
 	{
 		/* out of memory */
 		return HN_TRUE;
@@ -57,7 +58,7 @@ static bl _insertk_d2( void * am_, amoffs * offs, void * k_ )
 	const u16 d2_idx  = offs[0].n < am->len - 1;
 	const u16 d1_idx  = am->data[d2_idx]->len - 1;
 
-	if( am->len >= HN_AMALGAM_MAX_ELEMS - 1 )
+	if(am->len >= HN_AMALGAM_MAX_ELEMS - 1)
 	{
 		/* out of memory */
 		return HN_TRUE;
@@ -83,14 +84,14 @@ static void _chk_offs( u8 subdiv_ct, volatile amoffs * offs )
 	const u8 lim = subdiv_ct + 1;
 	u8 i;
 
-	for( i = 0; i < lim; ++i )
+	for(i = 0; i < lim; ++i)
 	{
 		(void)offs[i].n;
 	}
 }
 
-struct hn_err hn_himem_insertk(
-	void * am, struct hn_amalgam am_opts, amoffs * offs, void * k )
+struct hn_err hn_himem_insertk( void * am, struct hn_amalgam am_opts,
+                                amoffs * offs, void * k )
 {
 	struct hn_err ret;
 
@@ -116,5 +117,6 @@ nomem:
 	ret.id    = HN_ERR_ID_ENOMEM;
 
 finish:
+
 	return ret;
 }

@@ -14,13 +14,11 @@ typedef double hn_f64;
 /* Single-precision IEEE 754 floating-point number. */
 typedef float hn_f32;
 
-#if !defined( _CFGOPT_NOSHORTHAND )
-
+#if !defined(_CFGOPT_NOSHORTHAND)
 /* Double-precision IEEE 754 floating-point number. */
 typedef double f64;
 /* Single-precision IEEE 754 floating-point number. */
 typedef float f32;
-
 #endif /* !defined( _CFGOPT_NOSHORTHAND ) */
 
 #endif /* INC_API__HN_TYPES_FLOAT_H */

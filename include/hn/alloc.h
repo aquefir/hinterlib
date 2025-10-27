@@ -12,7 +12,7 @@
 #include "types/base.h"
 #include "types/mem.h"
 
-#if defined( __STDC__ )
+#if defined(__STDC__)
 #include <alloca.h>
 #endif
 

@@ -37,9 +37,10 @@ struct hn_fmode
 	hn_ubf update : 1;
 	hn_ubf : 13;
 	hn_ubf : 16;
-} HN_PACKED;
+}
+HN_PACKED;
 
-#if !defined( _CFGOPT_NOSTDIO )
+#if !defined(_CFGOPT_NOSTDIO)
 /* Return the file handle for standard input, or `stdin`. */
 HN_API struct hn_file * hn_fstdin( void );
 
@@ -75,8 +76,8 @@ HN_API struct hn_file * hn_fopen( const hn_chr *, struct hn_fmode );
  *       by parameter is no longer valid and should be discarded. It
  *       should also not be flushed or closed by the caller.
  */
-HN_API struct hn_file * hn_freopen(
-	const hn_chr *, struct hn_fmode, struct hn_file * );
+HN_API struct hn_file * hn_freopen( const hn_chr *, struct hn_fmode,
+                                    struct hn_file * );
 
 /**
  *
@@ -177,8 +178,7 @@ HN_API hn_bl hn_fsetpos( struct hn_fpos *, struct hn_file * );
  */
 HN_API hn_bl hn_fseek16( struct hn_file *, hn_s16, enum hn_forigin );
 
-#if defined( _SYNDEF_HAVE_I32 )
-
+#if defined(_SYNDEF_HAVE_I32)
 /**
  *
  * @brief Change the current I/O position of a file handle.
@@ -190,11 +190,9 @@ HN_API hn_bl hn_fseek16( struct hn_file *, hn_s16, enum hn_forigin );
  *       fails.
  */
 HN_API hn_bl hn_fseek32( struct hn_file *, hn_s32, enum hn_forigin );
-
 #endif /* defined( _SYNDEF_HAVE_I32 ) */
 
-#if defined( _SYNDEF_HAVE_I64 )
-
+#if defined(_SYNDEF_HAVE_I64)
 /**
  *
  * @brief Change the current I/O position of a file handle.
@@ -206,7 +204,6 @@ HN_API hn_bl hn_fseek32( struct hn_file *, hn_s32, enum hn_forigin );
  *       fails.
  */
 HN_API hn_bl hn_fseek64( struct hn_file *, hn_s64, enum hn_forigin );
-
 #endif /* defined( _SYNDEF_HAVE_I64 ) */
 
 /* Clear any error conditions set upon a file handle. */

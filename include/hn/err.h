@@ -13,7 +13,7 @@
 #include "types/char.h"
 
 /* TODO: Document this! */
-#if defined( _CFGOPT_NOSTDIO )
+#if defined(_CFGOPT_NOSTDIO)
 /* fake out */
 #define HN_ERR_WRILN( _s )
 #else /* !defined( _CFGOPT_NOSTDIO ) */
@@ -23,10 +23,10 @@
 #define _FOO_API__HN_ERR_H INC_API__HN_CONIO_H
 #undef _FOO_API__HN_ERR_H
 
-#define HN_ERR_WRILN( _s ) hn_wriln_e( "%s", ( _s ) )
+#define HN_ERR_WRILN( _s ) hn_wriln_e( "%s", (_s))
 #endif /* defined( _CFGOPT_NOSTDIO ) */
 
-#if !defined( HN_CHK_DIE )
+#if !defined(HN_CHK_DIE)
 /* Assert an expression, otherwise die. */
 #define HN_CHK_DIE( _hn_expr, _hn_failstr ) \
 	do \
@@ -42,7 +42,7 @@
 	} while( 0 )
 #endif /* !defined( HN_CHK_DIE ) */
 
-#if !defined( HN_CHK_RET )
+#if !defined(HN_CHK_RET)
 /* Assert an expression, otherwise return void. */
 #define HN_CHK_RET( _hn_expr ) \
 	do \
@@ -57,7 +57,7 @@
 	} while( 0 )
 #endif /* !defined( HN_CHK_RET ) */
 
-#if !defined( HN_CHK_PRET )
+#if !defined(HN_CHK_PRET)
 /* Assert an expression, otherwise print and return void. */
 #define HN_CHK_PRET( _hn_expr, _hn_failstr ) \
 	do \
@@ -73,7 +73,7 @@
 	} while( 0 )
 #endif /* !defined( HN_CHK_PRET ) */
 
-#if !defined( HN_CHK_RETV )
+#if !defined(HN_CHK_RETV)
 /* Assert an expression, otherwise return a value. */
 #define HN_CHK_RETV( _hn_expr, _hn_failval ) \
 	do \
@@ -88,7 +88,7 @@
 	} while( 0 )
 #endif /* !defined( HN_CHK_RETV ) */
 
-#if !defined( HN_CHK_PRETV )
+#if !defined(HN_CHK_PRETV)
 /* Assert an expression, otherwise print and return a value. */
 #define HN_CHK_PRETV( _hn_expr, _hn_failval, _hn_failstr ) \
 	do \
@@ -104,7 +104,7 @@
 	} while( 0 )
 #endif /* !defined( HN_CHK_PRETV ) */
 
-#if !defined( HN_CHK_BREAK )
+#if !defined(HN_CHK_BREAK)
 /* Assert an expression, otherwise break. */
 #define HN_CHK_BREAK( _hn_expr ) \
 	do \
@@ -119,7 +119,7 @@
 	} while( 0 )
 #endif /* !defined( HN_CHK_BREAK ) */
 
-#if !defined( HN_CHK_PBREAK )
+#if !defined(HN_CHK_PBREAK)
 /* Assert an expression, otherwise print and break. */
 #define HN_CHK_PBREAK( _hn_expr, _hn_failstr ) \
 	do \
@@ -135,7 +135,7 @@
 	} while( 0 )
 #endif /* !defined( HN_CHK_PBREAK ) */
 
-#if !defined( HN_CHK_CONT )
+#if !defined(HN_CHK_CONT)
 /* Assert an expression, otherwise continue. */
 #define HN_CHK_CONT( _hn_expr ) \
 	do \
@@ -150,7 +150,7 @@
 	} while( 0 )
 #endif /* !defined( HN_CHK_CONT ) */
 
-#if !defined( HN_CHK_PCONT )
+#if !defined(HN_CHK_PCONT)
 /* Assert an expression, otherwise print and continue. */
 #define HN_CHK_PCONT( _hn_expr, _hn_failstr ) \
 	do \
@@ -166,7 +166,7 @@
 	} while( 0 )
 #endif /* !defined( HN_CHK_PCONT ) */
 
-#if !defined( HN_CHK_GOTO )
+#if !defined(HN_CHK_GOTO)
 /* Assert an expression, otherwise goto a label. */
 #define HN_CHK_GOTO( _hn_expr, _hn_label ) \
 	do \
@@ -181,7 +181,7 @@
 	} while( 0 )
 #endif /* !defined( HN_CHK_GOTO ) */
 
-#if !defined( HN_CHK_PGOTO )
+#if !defined(HN_CHK_PGOTO)
 /* Assert an expression, otherwise print and goto a label. */
 #define HN_CHK_PGOTO( _hn_expr, _hn_label, _hn_failstr ) \
 	do \
@@ -491,7 +491,8 @@ struct hn_err
 	hn_ubf : 7 HN_PACKED;
 	/* For downstream to define and build string tables for. */
 	hn_ubf xid : 16 HN_PACKED;
-} HN_TYPELESS;
+}
+HN_TYPELESS;
 
 extern const hn_chr * const hn_err_id_strings[HN_MAX_ERR_ID];
 

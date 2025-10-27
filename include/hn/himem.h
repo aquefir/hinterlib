@@ -19,10 +19,9 @@
  * Fields Forever ...
  */
 
+#include "err.h"
 #include "types/base.h"
 #include "types/mem.h"
-
-#include "err.h"
 
 /* increment amalgam */
 HN_API struct hn_err hn_himem_inc(
@@ -31,7 +30,8 @@ HN_API struct hn_err hn_himem_inc(
 	/* dynamic typing information for amalgam */
 	struct hn_amalgam,
 	/* amalgam offset to store the result */
-	hn_amoffs * );
+	hn_amoffs *
+	);
 
 /* decrement amalgam */
 HN_API struct hn_err hn_himem_dec(
@@ -40,7 +40,8 @@ HN_API struct hn_err hn_himem_dec(
 	/* dynamic typing information for amalgam */
 	struct hn_amalgam,
 	/* amalgam offset to store the result */
-	hn_amoffs * );
+	hn_amoffs *
+	);
 
 HN_API struct hn_err hn_himem_deepcopy(
 	/* reference to input amalgam */
@@ -50,7 +51,8 @@ HN_API struct hn_err hn_himem_deepcopy(
 	/* reference to output amalgam */
 	void *,
 	/* dynamic typing information for output amalgam */
-	struct hn_amalgam );
+	struct hn_amalgam
+	);
 
 HN_API struct hn_err hn_himem_appendk(
 	/* reference to input amalgam */
@@ -58,7 +60,8 @@ HN_API struct hn_err hn_himem_appendk(
 	/* dynamic typing information for input amalgam */
 	struct hn_amalgam,
 	/* reference to knot to append to the amalgam */
-	void * );
+	void *
+	);
 
 HN_API struct hn_err hn_himem_insertk(
 	/* reference to input amalgam */
@@ -68,7 +71,8 @@ HN_API struct hn_err hn_himem_insertk(
 	/* offset in target dimension to insert knot at */
 	hn_amoffs *,
 	/* reference to knot to insert into the amalgam */
-	void * );
+	void *
+	);
 
 HN_API struct hn_err hn_himem_deletek(
 	/* reference to input amalgam */
@@ -76,7 +80,8 @@ HN_API struct hn_err hn_himem_deletek(
 	/* dynamic typing information for input amalgam */
 	struct hn_amalgam,
 	/* offset in target dimension to delete knot from */
-	hn_amoffs * );
+	hn_amoffs *
+	);
 
 HN_API struct hn_err hn_himem_read8(
 	/* reference to input amalgam */
@@ -104,7 +109,7 @@ HN_API struct hn_err hn_himem_read16(
 	/* reference to output data */
 	hn_u16 * );
 
-#if defined( HN_HAVE_I32 )
+#if defined(HN_HAVE_I32)
 HN_API struct hn_err hn_himem_read32(
 	/* reference to input amalgam */
 	void *,
@@ -119,7 +124,7 @@ HN_API struct hn_err hn_himem_read32(
 	hn_u32 * );
 #endif /* defined( HN_HAVE_I32 ) */
 
-#if defined( HN_HAVE_I64 )
+#if defined(HN_HAVE_I64)
 HN_API struct hn_err hn_himem_read64(
 	/* reference to input amalgam */
 	void *,
@@ -206,7 +211,7 @@ HN_API struct hn_err hn_himem_write16(
 	/* dynamic typing information for the output amalgam */
 	struct hn_amalgam );
 
-#if defined( HN_HAVE_I32 )
+#if defined(HN_HAVE_I32)
 HN_API struct hn_err hn_himem_write32(
 	/* input data */
 	u32,
@@ -221,7 +226,7 @@ HN_API struct hn_err hn_himem_write32(
 	struct hn_amalgam );
 #endif /* defined( HN_HAVE_I32 ) */
 
-#if defined( HN_HAVE_I64 )
+#if defined(HN_HAVE_I64)
 HN_API struct hn_err hn_himem_write64(
 	/* input data */
 	u64,

@@ -8,8 +8,7 @@
 
 #include <hn/conio.h>
 
-#if !defined( _CFGOPT_NOSTDIO )
-
+#if !defined(_CFGOPT_NOSTDIO)
 #include <stdarg.h>
 #include <stdio.h>
 
@@ -17,7 +16,7 @@ void hn_wri_o( const hn_chr * s, ... )
 {
 	va_list args;
 
-	if( s == NULL )
+	if(s == NULL)
 	{
 		return;
 	}
@@ -33,7 +32,7 @@ void hn_wri_e( const hn_chr * s, ... )
 {
 	va_list args;
 
-	if( s == NULL )
+	if(s == NULL)
 	{
 		return;
 	}
@@ -49,23 +48,23 @@ void hn_wri_f( struct hn_file * f, const hn_chr * s, ... )
 {
 	va_list args;
 
-	if( f == NULL || s == NULL )
+	if((f == NULL) || (s == NULL))
 	{
 		return;
 	}
 
 	va_start( args, s );
-	vfprintf( (FILE *)f, s, args );
+	vfprintf((FILE *)f, s, args );
 	va_end( args );
 
-	fflush( (FILE *)f );
+	fflush((FILE *)f );
 }
 
 void hn_wriln_o( const hn_chr * s, ... )
 {
 	va_list args;
 
-	if( s == NULL )
+	if(s == NULL)
 	{
 		return;
 	}
@@ -82,7 +81,7 @@ void hn_wriln_e( const hn_chr * s, ... )
 {
 	va_list args;
 
-	if( s == NULL )
+	if(s == NULL)
 	{
 		return;
 	}
@@ -99,22 +98,22 @@ void hn_wriln_f( struct hn_file * f, const hn_chr * s, ... )
 {
 	va_list args;
 
-	if( f == NULL || s == NULL )
+	if((f == NULL) || (s == NULL))
 	{
 		return;
 	}
 
 	va_start( args, s );
-	vfprintf( (FILE *)f, s, args );
+	vfprintf((FILE *)f, s, args );
 	va_end( args );
 
 	fputs( "\n", (FILE *)f );
-	fflush( (FILE *)f );
+	fflush((FILE *)f );
 }
 
 hn_ptri hn_readn_i( hn_chr * buf, hn_ptri count )
 {
-	if( buf == NULL || count == 0 )
+	if((buf == NULL) || (count == 0))
 	{
 		return 0;
 	}
@@ -124,7 +123,7 @@ hn_ptri hn_readn_i( hn_chr * buf, hn_ptri count )
 
 hn_ptri hn_readn_f( struct hn_file * f, hn_chr * buf, hn_ptri count )
 {
-	if( buf == NULL || count == 0 )
+	if((buf == NULL) || (count == 0))
 	{
 		return 0;
 	}
@@ -136,16 +135,16 @@ hn_ptri hn_readln_i( hn_chr * buf, hn_ptri count )
 {
 	ptri r;
 
-	if( buf == NULL || count == 0 )
+	if((buf == NULL) || (count == 0))
 	{
 		return 0;
 	}
 
-	for( r = 0; r < count; ++r )
+	for(r = 0; r < count; ++r)
 	{
 		buf[r] = fgetc( stdin );
 
-		if( buf[r] == '\n' )
+		if(buf[r] == '\n')
 		{
 			break;
 		}
@@ -158,16 +157,16 @@ hn_ptri hn_readln_f( struct hn_file * f, hn_chr * buf, hn_ptri count )
 {
 	ptri r;
 
-	if( f == NULL || buf == NULL || count == 0 )
+	if((f == NULL) || (buf == NULL) || (count == 0))
 	{
 		return 0;
 	}
 
-	for( r = 0; r < count; ++r )
+	for(r = 0; r < count; ++r)
 	{
-		buf[r] = fgetc( (FILE *)f );
+		buf[r] = fgetc((FILE *)f );
 
-		if( buf[r] == '\n' )
+		if(buf[r] == '\n')
 		{
 			break;
 		}
@@ -175,5 +174,4 @@ hn_ptri hn_readln_f( struct hn_file * f, hn_chr * buf, hn_ptri count )
 
 	return r;
 }
-
 #endif /* !defined( _CFGOPT_NOSTDIO ) */

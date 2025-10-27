@@ -28,11 +28,10 @@
  * use compressed amalgams with this ABI.
  */
 
+#include "ct.h"
 #include "types/base.h"
 #include "types/char.h"
 #include "types/int.h"
-
-#include "ct.h"
 
 enum hn_numbase
 {
@@ -58,29 +57,29 @@ HN_API hn_bl hn_nimb_resize( hn_ptri, struct hn_ct * );
 /* Create a nimb from a 16-bit unsigned integer primitive. */
 HN_API hn_bl hn_nimb_from16( hn_u16, struct hn_ct * );
 
-#if defined( _SYNDEF_HAVE_I32 )
+#if defined(_SYNDEF_HAVE_I32)
 /* Create a nimb from a 32-bit unsigned integer primitive. */
 HN_API hn_bl hn_nimb_from32( hn_u32, struct hn_ct * );
 #endif /* defined( _SYNDEF_HAVE_I32 ) */
 
-#if defined( _SYNDEF_HAVE_I64 )
+#if defined(_SYNDEF_HAVE_I64)
 /* Create a nimb from a 64-bit unsigned integer primitive. */
 HN_API hn_bl hn_nimb_from64( hn_u64, struct hn_ct * );
 #endif /* defined( _SYNDEF_HAVE_I64 ) */
 
 /* Create a nimb from an ASCII character string. */
-HN_API hn_bl hn_nimb_fromstr(
-	hn_chr *, enum hn_numbase, struct hn_ct * );
+HN_API hn_bl hn_nimb_fromstr( hn_chr *, enum hn_numbase, struct hn_ct *
+                              );
 
 /* Create a 16-bit unsigned integer primitive from a nimb. */
 HN_API hn_bl hn_nimb_to16( struct hn_ct *, hn_u16 * );
 
-#if defined( _SYNDEF_HAVE_I32 )
+#if defined(_SYNDEF_HAVE_I32)
 /* Create a 32-bit unsigned integer primitive from a nimb. */
 HN_API hn_bl hn_nimb_to32( struct hn_ct *, hn_u32 * );
 #endif /* defined( _SYNDEF_HAVE_I32 ) */
 
-#if defined( _SYNDEF_HAVE_I64 )
+#if defined(_SYNDEF_HAVE_I64)
 /* Create a 64-bit unsigned integer primitive from a nimb. */
 HN_API hn_bl hn_nimb_to64( struct hn_ct *, hn_u64 * );
 #endif /* defined( _SYNDEF_HAVE_I64 ) */

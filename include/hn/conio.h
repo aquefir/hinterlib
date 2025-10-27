@@ -9,8 +9,7 @@
 #ifndef INC_API__HN_CONIO_H
 #define INC_API__HN_CONIO_H
 
-#if !defined( _CFGOPT_NOSTDIO )
-
+#if !defined(_CFGOPT_NOSTDIO)
 #include "file.h"
 #include "types/base.h"
 #include "types/char.h"
@@ -154,7 +153,6 @@ HN_API hn_ptri hn_readln_i( hn_chr *, hn_ptri );
  *       `hn_feof()` and `hn_ferror()`, respectively.
  */
 HN_API hn_ptri hn_readln_f( struct hn_file *, hn_chr *, hn_ptri );
-
 #endif /* !defined( _CFGOPT_NOSTDIO ) */
 
 #endif /* INC_API__HN_CONIO_H */

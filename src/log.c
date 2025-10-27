@@ -8,16 +8,14 @@
 
 #include <hn/log.h>
 
-#if !defined( _CFGOPT_NOSTDIO )
-
+#if !defined(_CFGOPT_NOSTDIO)
+#include <hn/memops.h>
 #include <stdarg.h>
 #include <stdio.h>
 
-#include <hn/memops.h>
-
 hn_bl hn_log_grp( struct hn_log * log )
 {
-	if( log == NULL || log->indent_lvl >= 7 )
+	if((log == NULL) || (log->indent_lvl >= 7))
 	{
 		return HN_TRUE;
 	}
@@ -29,7 +27,7 @@ hn_bl hn_log_grp( struct hn_log * log )
 
 hn_bl hn_log_ungrp( struct hn_log * log )
 {
-	if( log == NULL || log->indent_lvl <= 0 )
+	if((log == NULL) || (log->indent_lvl <= 0))
 	{
 		return HN_TRUE;
 	}
@@ -45,7 +43,7 @@ void hn_log_info( struct hn_log * log, const chr * fmt, ... )
 	u16 i;
 	va_list args;
 
-	if( log == NULL || fmt == NULL )
+	if((log == NULL) || (fmt == NULL))
 	{
 		return;
 	}
@@ -53,7 +51,7 @@ void hn_log_info( struct hn_log * log, const chr * fmt, ... )
 	hn_memset( 0, HN_LOG_PREFIX_SZ + 1, prefix );
 	hn_memcpy( prefix, HN_LOG_PREFIX_SZ + 1, log->prefix_info );
 
-	for( i = 0; i < log->indent_lvl; ++i )
+	for(i = 0; i < log->indent_lvl; ++i)
 	{
 		fputs( "\t", stderr );
 	}
@@ -74,7 +72,7 @@ void hn_log_warn( struct hn_log * log, const chr * fmt, ... )
 	u16 i;
 	va_list args;
 
-	if( log == NULL || fmt == NULL )
+	if((log == NULL) || (fmt == NULL))
 	{
 		return;
 	}
@@ -82,7 +80,7 @@ void hn_log_warn( struct hn_log * log, const chr * fmt, ... )
 	hn_memset( 0, HN_LOG_PREFIX_SZ + 1, prefix );
 	hn_memcpy( prefix, HN_LOG_PREFIX_SZ + 1, log->prefix_warn );
 
-	for( i = 0; i < log->indent_lvl; ++i )
+	for(i = 0; i < log->indent_lvl; ++i)
 	{
 		fputs( "\t", stderr );
 	}
@@ -103,7 +101,7 @@ void hn_log_err( struct hn_log * log, const chr * fmt, ... )
 	u16 i;
 	va_list args;
 
-	if( log == NULL || fmt == NULL )
+	if((log == NULL) || (fmt == NULL))
 	{
 		return;
 	}
@@ -111,7 +109,7 @@ void hn_log_err( struct hn_log * log, const chr * fmt, ... )
 	hn_memset( 0, HN_LOG_PREFIX_SZ + 1, prefix );
 	hn_memcpy( prefix, HN_LOG_PREFIX_SZ + 1, log->prefix_err );
 
-	for( i = 0; i < log->indent_lvl; ++i )
+	for(i = 0; i < log->indent_lvl; ++i)
 	{
 		fputs( "\t", stderr );
 	}
@@ -125,5 +123,4 @@ void hn_log_err( struct hn_log * log, const chr * fmt, ... )
 	fputs( "\n", stderr );
 	fflush( stderr );
 }
-
 #endif /* !defined( _CFGOPT_NOSTDIO ) */

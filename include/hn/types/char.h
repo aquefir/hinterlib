@@ -11,32 +11,30 @@
 
 #include "def.h"
 
-#if defined( __has_attribute )
-
+#if defined(__has_attribute)
 #if __has_attribute( packed )
-#if !defined( HN_PACKED )
+#if !defined(HN_PACKED)
 /* Force the structure to be tightly packed into as few octets as
    possible. */
-#define HN_PACKED __attribute__( ( packed ) )
+#define HN_PACKED __attribute__((packed))
 #endif /* !defined( HN_PACKED ) */
 #endif /* __has_attribute( packed ) */
 
 #if __has_attribute( may_alias )
-#if !defined( HN_TYPELESS )
+#if !defined(HN_TYPELESS)
 /* Prevents the compiler from doing type analysis based optimisations on
    the type, treating it as octet-addressable cast-friendly data. */
-#define HN_TYPELESS __attribute__( ( may_alias ) )
+#define HN_TYPELESS __attribute__((may_alias))
 #endif /* !defined( HN_TYPELESS ) */
 #endif /* __has_attribute( may_alias ) */
-
 #endif /* defined( __has_attribute ) */
 
 /* fallback #defines in case attributes are not supported */
 
-#if !defined( HN_PACKED )
+#if !defined(HN_PACKED)
 /* special case to take advantage of TinyCC supporting packed */
-#if defined( HN_CC_TCC )
-#define HN_PACKED __attribute__( ( packed ) )
+#if defined(HN_CC_TCC)
+#define HN_PACKED __attribute__((packed))
 #else
 #define HN_PACKED
 #endif /* defined( HN_CC_TCC ) */
@@ -47,7 +45,7 @@
 #define _FOO_API__CHAR_H INC_API__HN_TYPES_DEF_H
 #undef _FOO_API__CHAR_H
 
-#if !defined( HN_TYPELESS )
+#if !defined(HN_TYPELESS)
 #define HN_TYPELESS
 #endif /* !defined( HN_TYPELESS ) */
 
@@ -61,16 +59,18 @@
 	( ( ( (hn_uchr)_uchr ).hi >= 0 ) && \
 		( ( (hn_uchr)_uchr ).hi <= 31 ) )
 
-#define HN_CHR_TRUNCATE( _chr ) ( ( _chr ) &= 0x7F )
+#define HN_CHR_TRUNCATE( _chr ) ((_chr) &= 0x7F)
 
-#define HN_UCHR_TRUNCATE( _uchr ) ( ( ( (hn_uchr)_uchr ).hi &= 31 ) )
+#define HN_UCHR_TRUNCATE( _uchr ) \
+	((((hn_uchr)_uchr). \
+	  hi &= 31))
 
 /* A single ASCII character. */
 typedef char hn_chr HN_TYPELESS;
 /* A single Unicode code point. */
 struct hn_uchr
 {
-#if defined( HN_LILENDIAN )
+#if defined(HN_LILENDIAN)
 	/* The lower 16 bits of the code point. */
 	__UINT16_TYPE__ code;
 	/* The upper 5 bits of the code point. */
@@ -81,18 +81,17 @@ struct hn_uchr
 	/* The lower 16 bits of the code point. */
 	__UINT16_TYPE__ code;
 #endif /* defined( HN_LILENDIAN ) */
-} HN_PACKED HN_TYPELESS;
+}
+HN_PACKED HN_TYPELESS;
 
 /* A single Unicode code point. */
 typedef struct hn_uchr hn_uchr;
 
-#if !defined( _CFGOPT_NOSHORTHAND )
-
+#if !defined(_CFGOPT_NOSHORTHAND)
 /* A single ASCII character. */
 typedef char chr HN_TYPELESS;
 /* A single Unicode code point. */
 typedef struct hn_uchr uchr;
-
 #endif /* !defined( _CFGOPT_NOSHORTHAND ) */
 
 #endif /* INC_API__HN_TYPES_CHAR_H */
