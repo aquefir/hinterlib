@@ -52,12 +52,18 @@ static HN_PURE hn_chr hn_max_chr( hn_chr x, hn_chr y )
 
 static HN_PURE hn_uchr hn_min_uchr( hn_uchr x, hn_uchr y )
 {
-	return x.hi < y.hi ? x : x.hi == y.hi && x.lo < y.lo ? x : y;
+	return x.plane < y.plane ?
+		x :
+		x.plane == y.plane && x.code < y.code ?
+			x : y;
 }
 
 static HN_PURE hn_uchr hn_max_uchr( hn_uchr x, hn_uchr y )
 {
-	return x.hi > y.hi ? x : x.hi == y.hi && x.lo > y.lo ? x : y;
+	return x.plane > y.plane ?
+		x :
+		x.plane == y.plane && x.code > y.code ?
+			x : y;
 }
 
 static HN_PURE hn_f32 hn_min_f32( hn_f32 x, hn_f32 y )
