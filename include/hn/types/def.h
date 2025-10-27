@@ -129,8 +129,9 @@ Small Device C compiler.
 
 #if !defined( HN_PLATFORM_UNIX )
 /* Hinterlib counts macOS/iOS as Unices even though compilers don't. */
-#if defined( unix ) || defined( __unix ) || defined( __unix__ ) || \
-	( defined( __APPLE__ ) && defined( __MACH__ ) )
+#if defined( unix ) || defined( __unix ) || defined( __unix__ )
+#define HN_PLATFORM_UNIX
+#elif defined( __APPLE__ ) && defined( __MACH__ )
 #define HN_PLATFORM_UNIX
 #endif
 #endif /* !defined( HN_PLATFORM_UNIX ) */
@@ -217,8 +218,9 @@ Small Device C compiler.
 #endif /* !defined( HN_PLATFORM_ILLUMOS ) */
 
 #if !defined( HN_PLATFORM_WINDOWS )
-#if defined( _WIN16 ) || defined( _WIN32 ) || defined( __CYGWIN__ ) || \
-	defined( __WINDOWS__ )
+#if defined( _WIN16 ) || defined( _WIN32 )
+#define HN_PLATFORM_WINDOWS
+#elif defined( __CYGWIN__ ) || defined( __WINDOWS__ )
 #define HN_PLATFORM_WINDOWS
 #endif
 #endif /* !defined( HN_PLATFORM_WINDOWS ) */
@@ -230,8 +232,9 @@ Small Device C compiler.
 #endif /* !defined( HN_ARCH_AMD64 ) */
 
 #if !defined( HN_ARCH_ARM32 )
-#if defined( __arm__ ) || defined( __thumb__ ) || defined( _M_ARM ) || \
-	defined( _M_ARMT )
+#if defined( __arm__ ) || defined( __thumb__ )
+#define HN_ARCH_ARM32
+#elif defined( _M_ARM ) || defined( _M_ARMT )
 #define HN_ARCH_ARM32
 #endif
 #endif /* !defined( HN_ARCH_ARM32 ) */
@@ -243,25 +246,31 @@ Small Device C compiler.
 #endif /* !defined( HN_ARCH_ARMV4 ) */
 
 #if !defined( HN_ARCH_ARMV5 )
-#if defined( __ARM_ARCH_5__ ) || defined( __ARM_ARCH_5E__ ) || \
-	defined( __ARM_ARCH_5T__ ) || defined( __ARM_ARCH_5TE__ ) || \
-	defined( __ARM_ARCH_5TEJ__ )
+#if defined( __ARM_ARCH_5__ ) || defined( __ARM_ARCH_5E__ )
+#define HN_ARCH_ARMV5
+#elif defined( __ARM_ARCH_5T__ ) || defined( __ARM_ARCH_5TE__ )
+#define HN_ARCH_ARMV5
+#elif defined( __ARM_ARCH_5TEJ__ )
 #define HN_ARCH_ARMV5
 #endif
 #endif /* !defined( HN_ARCH_ARMV5 ) */
 
 #if !defined( HN_ARCH_ARMV6 )
-#if defined( __ARM_ARCH_6__ ) || defined( __ARM_ARCH_6J__ ) || \
-	defined( __ARM_ARCH_6K__ ) || defined( __ARM_ARCH_6Z__ ) || \
-	defined( __ARM_ARCH_6ZK__ ) || defined( __ARM_ARCH_6T2__ )
+#if defined( __ARM_ARCH_6__ ) || defined( __ARM_ARCH_6J__ )
+#define HN_ARCH_ARMV6
+#elif defined( __ARM_ARCH_6K__ ) || defined( __ARM_ARCH_6Z__ )
+#define HN_ARCH_ARMV6
+#elif defined( __ARM_ARCH_6ZK__ ) || defined( __ARM_ARCH_6T2__ )
 #define HN_ARCH_ARMV6
 #endif
 #endif /* !defined( HN_ARCH_ARMV6 ) */
 
 #if !defined( HN_ARCH_ARMV7 )
-#if defined( __ARM_ARCH_7__ ) || defined( __ARM_ARCH_7A__ ) || \
-	defined( __ARM_ARCH_7R__ ) || defined( __ARM_ARCH_7M__ ) || \
-	defined( __ARM_ARCH_7S__ )
+#if defined( __ARM_ARCH_7__ ) || defined( __ARM_ARCH_7A__ )
+#define HN_ARCH_ARMV7
+#elif defined( __ARM_ARCH_7R__ ) || defined( __ARM_ARCH_7M__ )
+#define HN_ARCH_ARMV7
+#elif defined( __ARM_ARCH_7S__ )
 #define HN_ARCH_ARMV7
 #endif
 #endif /* !defined( HN_ARCH_ARMV7 ) */
@@ -339,18 +348,21 @@ Small Device C compiler.
 #endif /* !defined( HN_ARCH_SPARC ) */
 
 #if !defined( HN_HAVE_I32 )
-#if ( defined( __SIZEOF_LONG__ ) && __SIZEOF_LONG__ >= 4 ) || \
-	( defined( __SIZEOF_INT__ ) && __SIZEOF_INT__ >= 4 )
+#if defined( __SIZEOF_LONG__ ) && __SIZEOF_LONG__ >= 4
+#define HN_HAVE_I32
+#elif defined( __SIZEOF_INT__ ) && __SIZEOF_INT__ >= 4
 #define HN_HAVE_I32
 #endif
 #endif /* !defined( HN_HAVE_I32 ) */
 
 #if !defined( HN_HAVE_I64 )
-#if ( defined( __SIZEOF_INT__ ) && __SIZEOF_INT__ >= 8 ) || \
-	( defined( __SIZEOF_LONG__ ) && __SIZEOF_LONG__ >= 8 ) || \
-	( defined( __SIZEOF_LONG_LONG__ ) && \
-		__SIZEOF_LONG_LONG__ >= 8 ) || \
-	( defined( __SIZEOF_POINTER__ ) && __SIZEOF_POINTER__ >= 8 )
+#if defined( __SIZEOF_INT__ ) && __SIZEOF_INT__ >= 8
+#define HN_HAVE_I64
+#elif defined( __SIZEOF_LONG__ ) && __SIZEOF_LONG__ >= 8
+#define HN_HAVE_I64
+#elif defined( __SIZEOF_LONG_LONG__ ) && __SIZEOF_LONG_LONG__ >= 8
+#define HN_HAVE_I64
+#elif defined( __SIZEOF_POINTER__ ) && __SIZEOF_POINTER__ >= 8
 #define HN_HAVE_I64
 #endif
 #endif /* !defined( HN_HAVE_I64 ) */
@@ -362,9 +374,10 @@ Small Device C compiler.
 #endif /* !defined( HN_HAVE_I128 ) */
 
 #if !defined( HN_LILENDIAN )
-#if defined( __BYTE_ORDER__ ) && \
-	__BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
+#if defined( __BYTE_ORDER__ )
+#if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
 #define HN_LILENDIAN
+#endif
 #endif
 #endif /* !defined( HN_LILENDIAN ) */
 
@@ -381,36 +394,41 @@ Small Device C compiler.
 #endif /* !defined( HN_PDPENDIAN ) */
 
 #if !defined( HN_PTRSZ_16 )
-#if ( defined( _BB_PSZ ) && _BB_PSZ == 2 ) || \
-	( defined( __POINTER_WIDTH__ ) && __POINTER_WIDTH__ == 16 )
+#if defined( _BB_PSZ ) && _BB_PSZ == 2
+#define HN_PTRSZ_16
+#elif defined( __POINTER_WIDTH__ ) && __POINTER_WIDTH__ == 16
 #define HN_PTRSZ_16
 #endif
 #endif /* !defined( HN_PTRSZ_16 ) */
 
 #if !defined( HN_PTRSZ_32 )
-#if ( defined( _BB_PSZ ) && _BB_PSZ == 4 ) || \
-	( defined( __POINTER_WIDTH__ ) && __POINTER_WIDTH__ == 32 )
+#if defined( _BB_PSZ ) && _BB_PSZ == 4
+#define HN_PTRSZ_32
+#elif defined( __POINTER_WIDTH__ ) && __POINTER_WIDTH__ == 32
 #define HN_PTRSZ_32
 #endif
 #endif /* !defined( HN_PTRSZ_32 ) */
 
 #if !defined( HN_PTRSZ_64 )
-#if ( defined( _BB_PSZ ) && _BB_PSZ == 8 ) || \
-	( defined( __POINTER_WIDTH__ ) && __POINTER_WIDTH__ == 64 )
+#if defined( _BB_PSZ ) && _BB_PSZ == 8
+#define HN_PTRSZ_64
+#elif defined( __POINTER_WIDTH__ ) && __POINTER_WIDTH__ == 64
 #define HN_PTRSZ_64
 #endif
 #endif /* !defined( HN_PTRSZ_64 ) */
 
 #if !defined( HN_LONGSZ_32 )
-#if ( defined( _BB_LSZ ) && _BB_LSZ == 4 ) || \
-	( defined( __LONG_WIDTH__ ) && __LONG_WIDTH__ == 32 )
+#if defined( _BB_LSZ ) && _BB_LSZ == 4
+#define HN_LONGSZ_32
+#elif defined( __LONG_WIDTH__ ) && __LONG_WIDTH__ == 32
 #define HN_LONGSZ_32
 #endif
 #endif /* !defined( HN_LONGSZ_32 ) */
 
 #if !defined( HN_LONGSZ_64 )
-#if ( defined( _BB_LSZ ) && _BB_LSZ == 8 ) || \
-	( defined( __LONG_WIDTH__ ) && __LONG_WIDTH__ == 64 )
+#if defined( _BB_LSZ ) && _BB_LSZ == 8
+#define HN_LONGSZ_64
+#elif defined( __LONG_WIDTH__ ) && __LONG_WIDTH__ == 64
 #define HN_LONGSZ_64
 #endif
 #endif /* !defined( HN_LONGSZ_64 ) */
@@ -419,21 +437,25 @@ Small Device C compiler.
 
 #if defined( HN_HAVE_I32 )
 #if !defined( __INT32_TYPE__ )
-#if ( defined( _BB_ISZ ) && _BB_ISZ == 4 ) || \
-	( defined( __SIZEOF_INT__ ) && __SIZEOF_INT__ == 4 )
+#if defined( _BB_ISZ ) && _BB_ISZ == 4
 #define __INT32_TYPE__ int
-#elif ( defined( _BB_LSZ ) && _BB_LSZ == 4 ) || \
-	( defined( __SIZEOF_LONG__ ) && __SIZEOF_LONG__ == 4 )
+#elif defined( __SIZEOF_INT__ ) && __SIZEOF_INT__ == 4
+#define __INT32_TYPE__ int
+#elif defined( _BB_LSZ ) && _BB_LSZ == 4
+#define __INT32_TYPE__ long int
+#elif defined( __SIZEOF_LONG__ ) && __SIZEOF_LONG__ == 4
 #define __INT32_TYPE__ long int
 #endif
 #endif /* !defined( __INT32_TYPE__ ) */
 
 #if !defined( __UINT32_TYPE__ )
-#if ( defined( _BB_ISZ ) && _BB_ISZ == 4 ) || \
-	( defined( __SIZEOF_INT__ ) && __SIZEOF_INT__ == 4 )
+#if defined( _BB_ISZ ) && _BB_ISZ == 4
 #define __UINT32_TYPE__ unsigned int
-#elif ( defined( _BB_LSZ ) && _BB_LSZ == 4 ) || \
-	( defined( __SIZEOF_LONG__ ) && __SIZEOF_LONG__ == 4 )
+#elif defined( __SIZEOF_INT__ ) && __SIZEOF_INT__ == 4
+#define __UINT32_TYPE__ unsigned int
+#elif defined( _BB_LSZ ) && _BB_LSZ == 4
+#define __UINT32_TYPE__ long unsigned int
+#elif defined( __SIZEOF_LONG__ ) && __SIZEOF_LONG__ == 4
 #define __UINT32_TYPE__ long unsigned int
 #endif
 #endif /* !defined( __UINT32_TYPE__ ) */
@@ -441,11 +463,13 @@ Small Device C compiler.
 
 #if defined( HN_HAVE_I64 )
 #if !defined( __INT64_TYPE__ )
-#if ( defined( _BB_ISZ ) && _BB_ISZ == 8 ) || \
-	( defined( __SIZEOF_INT__ ) && __SIZEOF_INT__ == 8 )
+#if defined( _BB_ISZ ) && _BB_ISZ == 8
 #define __INT64_TYPE__ int
-#elif ( defined( _BB_LSZ ) && _BB_LSZ == 8 ) || \
-	( defined( __SIZEOF_LONG__ ) && __SIZEOF_LONG__ == 8 )
+#elif defined( __SIZEOF_INT__ ) && __SIZEOF_INT__ == 8
+#define __INT64_TYPE__ int
+#elif defined( _BB_LSZ ) && _BB_LSZ == 8
+#define __INT64_TYPE__ long int
+#elif defined( __SIZEOF_LONG__ ) && __SIZEOF_LONG__ == 8
 #define __INT64_TYPE__ long int
 #elif defined( __SIZEOF_LONG_LONG__ ) && __SIZEOF_LONG_LONG__ == 8
 #define __INT64_TYPE__ long long int
@@ -453,11 +477,13 @@ Small Device C compiler.
 #endif /* !defined( __INT64_TYPE__ ) */
 
 #if !defined( __UINT64_TYPE__ )
-#if ( defined( _BB_ISZ ) && _BB_ISZ == 8 ) || \
-	( defined( __SIZEOF_INT__ ) && __SIZEOF_INT__ == 8 )
+#if defined( _BB_ISZ ) && _BB_ISZ == 8
 #define __UINT64_TYPE__ unsigned int
-#elif ( defined( _BB_LSZ ) && _BB_LSZ == 8 ) || \
-	( defined( __SIZEOF_LONG__ ) && __SIZEOF_LONG__ == 8 )
+#elif defined( __SIZEOF_INT__ ) && __SIZEOF_INT__ == 8
+#define __UINT64_TYPE__ unsigned int
+#elif defined( _BB_LSZ ) && _BB_LSZ == 8
+#define __UINT64_TYPE__ long unsigned int
+#elif defined( __SIZEOF_LONG__ ) && __SIZEOF_LONG__ == 8
 #define __UINT64_TYPE__ long unsigned int
 #elif defined( __SIZEOF_LONG_LONG__ ) && __SIZEOF_LONG_LONG__ == 8
 #define __UINT64_TYPE__ long long unsigned int
