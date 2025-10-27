@@ -71,17 +71,17 @@ typedef char hn_chr HN_TYPELESS;
 /* A single Unicode code point. */
 struct hn_uchr
 {
-#if defined( _SYNDEF_LILENDIAN )
+#if defined( HN_LILENDIAN )
 	/* The lower 16 bits of the code point. */
-	__UINT16_TYPE__ lo;
+	__UINT16_TYPE__ code;
 	/* The upper 5 bits of the code point. */
-	__UINT16_TYPE__ hi;
+	__UINT16_TYPE__ plane;
 #else
 	/* The upper 5 bits of the code point. */
-	__UINT16_TYPE__ hi;
+	__UINT16_TYPE__ plane;
 	/* The lower 16 bits of the code point. */
-	__UINT16_TYPE__ lo;
-#endif /* defined( _SYNDEF_LILENDIAN ) */
+	__UINT16_TYPE__ code;
+#endif /* defined( HN_LILENDIAN ) */
 } HN_PACKED HN_TYPELESS;
 
 /* A single Unicode code point. */
