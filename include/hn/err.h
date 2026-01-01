@@ -269,6 +269,10 @@ enum hn_err_id
 	HN_ERR_ID_EDOM = 33,
 	/* Math result not representable */
 	HN_ERR_ID_ERANGE = 34,
+
+	/* After this point, Linux and Darwin diverge.
+	 * Nonetheless, Hinterlib follows Linux */
+
 	/* Resource deadlock would occur */
 	HN_ERR_ID_EDEADLK = 35,
 	/* File name too long */
