@@ -69,7 +69,7 @@ HN_API hn_bl hn_nimb_from64( hn_u64, struct hn_ct * );
 
 /* Create a nimb from an ASCII character string. */
 HN_API hn_bl hn_nimb_fromstr( hn_chr *, enum hn_numbase, struct hn_ct *
-                              );
+	);
 
 /* Create a 16-bit unsigned integer primitive from a nimb. */
 HN_API hn_bl hn_nimb_to16( struct hn_ct *, hn_u16 * );

@@ -55,7 +55,7 @@ bl hn_setenv( chr * key, chr * val, hn_bl ovr )
 
 	{
 		const int r = setenv((const chr *)key, (const chr *)val,
-		                     (int)ovr );
+			(int)ovr );
 
 		return (r == 0) ? HN_FALSE : HN_TRUE;
 	}

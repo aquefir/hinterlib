@@ -67,7 +67,7 @@ static bl _dec1( am16d2 * am, u16 dimct, amoffs * ofs )
 }
 
 struct hn_err hn_himem_dec( void * am_, struct hn_amalgam am_opts,
-                            amoffs * ofs )
+	amoffs * ofs )
 {
 	struct hn_err ret;
 	bl r;

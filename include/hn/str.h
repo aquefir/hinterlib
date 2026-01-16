@@ -80,7 +80,7 @@ HN_API hn_ptri hn_str2ustr( hn_chr *, hn_uchr * );
  *          `NUL` terminator.
  */
 HN_API hn_ptri hn_ustr2str( hn_uchr *, struct hn_asciify_opts, hn_chr *
-                            );
+	);
 
 /**
  *
@@ -154,7 +154,7 @@ HN_API hn_ptri hn_stra2ustra( hn_chr **, hn_uchr ** );
  *          `NULL`) to the output unistring array.
  */
 HN_API hn_ptri hn_ustra2stra( hn_uchr **, struct hn_asciify_opts,
-                              hn_chr ** );
+	hn_chr ** );
 
 /**
  *
@@ -175,10 +175,10 @@ HN_API hn_ptri hn_ustra2stra( hn_uchr **, struct hn_asciify_opts,
  *          string and a `NULL` terminator for the array.
  */
 HN_API hn_ptri hn_strsplit( hn_chr *,
-                            hn_chr *,
-                            enum hn_strsplit_delimincl,
-                            hn_ptri,
-                            hn_chr ** );
+	hn_chr *,
+	enum hn_strsplit_delimincl,
+	hn_ptri,
+	hn_chr ** );
 
 /**
  *
@@ -199,10 +199,10 @@ HN_API hn_ptri hn_strsplit( hn_chr *,
  *          each unistring and a `NULL` terminator for the array.
  */
 HN_API hn_ptri hn_ustrsplit( hn_uchr *,
-                             hn_uchr *,
-                             enum hn_strsplit_delimincl,
-                             hn_ptri,
-                             hn_uchr ** );
+	hn_uchr *,
+	enum hn_strsplit_delimincl,
+	hn_ptri,
+	hn_uchr ** );
 
 /**
  *

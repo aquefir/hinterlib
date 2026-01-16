@@ -68,7 +68,7 @@ struct hn_file * hn_fopen( const hn_chr * path, struct hn_fmode mode )
 }
 
 struct hn_file * hn_freopen( const hn_chr * path, struct hn_fmode mode,
-                             struct hn_file * file )
+	struct hn_file * file )
 {
 	chr cmode[4];
 
@@ -113,9 +113,9 @@ struct hn_file * hn_freopen( const hn_chr * path, struct hn_fmode mode,
 #endif
 
 	return (struct hn_file *)freopen( path,
-	                                  (const char *)cmode,
-					  (
-						  FILE *)file );
+		       (const char *)cmode,
+		       (
+			       FILE *)file );
 }
 
 hn_bl hn_fclose( struct hn_file * file )
@@ -195,7 +195,7 @@ hn_bl hn_fseek16(
 	)
 {
 	return (fseek((FILE *)file, (long)ofs, orig_stdio_map[orig] ) ==
-	        0) ?
+	       0) ?
 	       HN_FALSE :
 	       HN_TRUE;
 }
@@ -208,7 +208,7 @@ hn_bl hn_fseek32(
 	)
 {
 	return (fseek((FILE *)file, (long)ofs, orig_stdio_map[orig] ) ==
-	        0) ?
+	       0) ?
 	       HN_FALSE :
 	       HN_TRUE;
 }
@@ -221,7 +221,7 @@ hn_bl hn_fseek64(
 	)
 {
 	return (fseek((FILE *)file, (long)ofs, orig_stdio_map[orig] ) ==
-	        0) ?
+	       0) ?
 	       HN_FALSE :
 	       HN_TRUE;
 }

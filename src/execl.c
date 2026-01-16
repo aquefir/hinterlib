@@ -19,7 +19,7 @@ bl hn_execpath( chr p[HN_PATHMAX + 1] )
 
 	{
 		const int r
-		        = readlink( "/proc/self/exe", p, HN_PATHMAX );
+			= readlink( "/proc/self/exe", p, HN_PATHMAX );
 
 		HN_CHK_RETV( r != -1, HN_TRUE );
 	}

@@ -53,28 +53,28 @@ static HN_PURE hn_chr hn_max_chr( hn_chr x, hn_chr y )
 static HN_PURE hn_uchr hn_min_uchr( hn_uchr x, hn_uchr y )
 {
 	return (x.
-	        plane < y.
-	        plane) ?
+	       plane < y.
+	       plane) ?
 	       x :
 	       (x.
-	        plane == y.
-	        plane) && (x.
-	                   code < y.
-	                   code) ?
+	       plane == y.
+	       plane) && (x.
+	       code < y.
+	       code) ?
 	       x : y;
 }
 
 static HN_PURE hn_uchr hn_max_uchr( hn_uchr x, hn_uchr y )
 {
 	return (x.
-	        plane > y.
-	        plane) ?
+	       plane > y.
+	       plane) ?
 	       x :
 	       (x.
-	        plane == y.
-	        plane) && (x.
-	                   code > y.
-	                   code) ?
+	       plane == y.
+	       plane) && (x.
+	       code > y.
+	       code) ?
 	       x : y;
 }
 

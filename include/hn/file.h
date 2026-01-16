@@ -77,7 +77,7 @@ HN_API struct hn_file * hn_fopen( const hn_chr *, struct hn_fmode );
  *       should also not be flushed or closed by the caller.
  */
 HN_API struct hn_file * hn_freopen( const hn_chr *, struct hn_fmode,
-                                    struct hn_file * );
+	struct hn_file * );
 
 /**
  *

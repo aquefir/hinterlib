@@ -91,7 +91,7 @@ static void _chk_offs( u8 subdiv_ct, volatile amoffs * offs )
 }
 
 struct hn_err hn_himem_insertk( void * am, struct hn_amalgam am_opts,
-                                amoffs * offs, void * k )
+	amoffs * offs, void * k )
 {
 	struct hn_err ret;
 

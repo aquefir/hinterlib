@@ -150,9 +150,9 @@ void * hn_alloc( ptri sz )
 		void * ret = NULL;
 		/* never gonna get less than 64 bytes */
 		const int r = posix_memalign((void **)&ret,
-		                             64,
-		                             (sz < 64
-		                             ) ? 64 : sz );
+			64,
+			(sz < 64
+			) ? 64 : sz );
 
 		return (r == 0) ? ret : NULL;
 	}
