@@ -35,19 +35,19 @@ editor, but if it doesn&rsquo;t, simply run `make format`. The
 `clang-format` process can be pretty slow to start; you can speed it up
 with the `-j` flag (e.g. `make format -j$(nproc)` on most Unices, or
 `make format -j$(sysctl -n hw.ncpu)` on macOS).
-	- For non-code text files, or for code files in languages that are
-	  not checked into an auto-formatting policy, simply ensure that the
-	  file is line-limited to 72 character columns. CJK characters count
-	  as two such characters for limiting purposes.
+	- For non-code text files, or for code files in languages that
+	  are not checked into an auto-formatting policy, simply ensure
+	  that the file is line-limited to 72 character columns. CJK
+	  characters count as two such characters for limiting purposes.
 3. Make sure all commits are signed using your OpenPGP keypair.
 4. Make sure your signing key is publicly available on a PGP keyserver
 (e.g. `keys.openpgp.org`, `keyserver.ubuntu.com` or
 `keyserver.pgp.com`).
 5. Make sure your commits are coherently authored!
-	1. One commit should correspond to one clean feature, subroutine or
-	other code collection and nothing else.
-	2. Avoid making petty commits for things like typos; instead, roll
-	back the commit history and reauthor the commit.
+	1. One commit should correspond to one clean feature, subroutine
+	   or other code collection and nothing else.
+	2. Avoid making petty commits for things like typos; instead,
+	   roll back the commit history and reauthor the commit.
 
 ## Project policies
 
@@ -72,26 +72,27 @@ commit which you will either have to redo or we will have to throw out.
 3. In light of the coherent commit policy, you should still try to keep
 works-in-progress remotely synced. The way we recommend accomplishing
 this is as follows:
-	1. If you are a maintainer, create a separate branch for your work on
-	the main repository; if you are a contributor, create that branch on
-	your own GitHub &ldquo;fork&rdquo;.
+	1. If you are a maintainer, create a separate branch for your
+	   work on the main repository; if you are a contributor, create
+	   that branch on your own GitHub &ldquo;fork&rdquo;.
 		- Do not perform any work on a `master` branch anywhere!
-		- Understand that you are the custodian of that branch; think of
-		yourself as the arbiter of its commit history.
-	2. Perform your work targeting that branch, making _proper commits_
-	as outlined in [Contribution requirements &sect;&sect;
-	5.1](#contribution-requirements), and creating
-	&ldquo;work-in-progress&rdquo; commits for any partially-completed
-	work at the end of the work day.
+		- Understand that you are the custodian of that branch;
+		  think of yourself as the arbiter of its commit
+		  history.
+	2. Perform your work targeting that branch, making _proper
+	   commits_ as outlined in [Contribution requirements
+	   &sect;&sect; 5.1](#contribution-requirements), and creating
+	   &ldquo;work-in-progress&rdquo; commits for any
+	   partially-completed work at the end of the work day.
 	3. At the start of the next work day, roll back those unfinished
-	commits by doing `git reset HEAD~$1` where `$1` is the number of
-	unfinished commits.
+	   commits by doing `git reset HEAD~$1` where `$1` is the number
+	   of unfinished commits.
 	4. Rewrite the branch&rsquo;s history with the next day&rsquo;s
-	commits, including unfinished ones, by doing
-	`git push --force-with-lease`. This is preferable to a simple
-	`git push --force` as it won&rsquo;t overwrite anyone else&rsquo;s
-	work in case another collaborator pushed to your branch without
-	notifying you. We recommend `alias`ing `git push --force-with-lease`
-	in your shell.
-	5. Continue working as usual and repeat the previous three steps each
-	day until the &ldquo;pull request&rdquo; is complete.
+	   commits, including unfinished ones, by doing
+	   `git push --force-with-lease`. This is preferable to a simple
+	   `git push --force` as it won&rsquo;t overwrite anyone
+	   else&rsquo;s work in case another collaborator pushed to your
+	   branch without notifying you. We recommend `alias`ing
+	   `git push --force-with-lease` in your shell.
+	5. Continue working as usual and repeat the previous three steps
+	   each day until the &ldquo;pull request&rdquo; is complete.
