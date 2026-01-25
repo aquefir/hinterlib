@@ -247,7 +247,7 @@ struct hn_err hn_himem_appendk( void * am, struct hn_amalgam am_opts,
 {
 	struct hn_err ret;
 
-	hn_memset( 0, sizeof ret, &ret );
+	hn_memset( &ret, 0, sizeof ret );
 
 	HN_CHK_GOTO( am != NULL, inval );
 	HN_CHK_GOTO( k != NULL, inval );

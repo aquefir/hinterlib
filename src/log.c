@@ -48,8 +48,8 @@ void hn_log_info( struct hn_log * log, const chr * fmt, ... )
 		return;
 	}
 
-	hn_memset( 0, HN_LOG_PREFIX_SZ + 1, prefix );
-	hn_memcpy( prefix, HN_LOG_PREFIX_SZ + 1, log->prefix_info );
+	hn_memset( prefix, 0, HN_LOG_PREFIX_SZ + 1 );
+	hn_memcpy( prefix, log->prefix_info, HN_LOG_PREFIX_SZ + 1 );
 
 	for(i = 0; i < log->indent_lvl; ++i)
 	{
@@ -77,8 +77,8 @@ void hn_log_warn( struct hn_log * log, const chr * fmt, ... )
 		return;
 	}
 
-	hn_memset( 0, HN_LOG_PREFIX_SZ + 1, prefix );
-	hn_memcpy( prefix, HN_LOG_PREFIX_SZ + 1, log->prefix_warn );
+	hn_memset( prefix, 0, HN_LOG_PREFIX_SZ + 1 );
+	hn_memcpy( prefix, log->prefix_warn, HN_LOG_PREFIX_SZ + 1 );
 
 	for(i = 0; i < log->indent_lvl; ++i)
 	{
@@ -106,8 +106,8 @@ void hn_log_err( struct hn_log * log, const chr * fmt, ... )
 		return;
 	}
 
-	hn_memset( 0, HN_LOG_PREFIX_SZ + 1, prefix );
-	hn_memcpy( prefix, HN_LOG_PREFIX_SZ + 1, log->prefix_err );
+	hn_memset( prefix, 0, HN_LOG_PREFIX_SZ + 1 );
+	hn_memcpy( prefix, log->prefix_err, HN_LOG_PREFIX_SZ + 1 );
 
 	for(i = 0; i < log->indent_lvl; ++i)
 	{

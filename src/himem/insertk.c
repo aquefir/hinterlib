@@ -95,7 +95,7 @@ struct hn_err hn_himem_insertk( void * am, struct hn_amalgam am_opts,
 {
 	struct hn_err ret;
 
-	hn_memset( 0, sizeof ret, &ret );
+	hn_memset( &ret, 0, sizeof ret );
 
 	HN_CHK_GOTO( am != NULL, inval );
 	HN_CHK_GOTO( offs != NULL, inval );

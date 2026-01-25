@@ -16,22 +16,22 @@
  *
  * @brief Set the contents of a stretch of memory, octet-by-octet, to a
  *        given value.
+ * @param buf The pointer to the memory buffer.
  * @param oct The octet to use as the fill value.
  * @param buf_sz The length of the buffer, denominated in octets.
- * @param buf The pointer to the memory buffer.
  */
-HN_API void hn_memset( hn_u8, hn_ptri, void * );
+HN_API void hn_memset( void *, hn_u8, hn_ptri );
 
 /**
  *
  * @brief Copies the contents of one memory buffer to another buffer
  *        in-place.
- * @param src The pointer to the source memory buffer.
- * @param src_sz The length of the source buffer, denominated in octets.
  * @param dst The pointer to the destination memory buffer, the
  *        contents of which must be at least as large as @param src_sz.
+ * @param src The pointer to the source memory buffer.
+ * @param src_sz The length of the source buffer, denominated in octets.
  */
-HN_API void hn_memcpy( void *, hn_ptri, void * );
+HN_API void hn_memcpy( void *, void *, hn_ptri );
 
 /**
  *
