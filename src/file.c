@@ -29,7 +29,7 @@ struct hn_file * hn_fopen( const hn_chr * path, struct hn_fmode mode )
 		return NULL;
 	}
 
-	hn_memset( 0, 4, cmode );
+	hn_memset( cmode, 0, 4 );
 
 	switch(mode.approach)
 	{
@@ -77,7 +77,7 @@ struct hn_file * hn_freopen( const hn_chr * path, struct hn_fmode mode,
 		return NULL;
 	}
 
-	hn_memset( 0, 4, cmode );
+	hn_memset( cmode, 0, 4 );
 
 	switch(mode.approach)
 	{

@@ -24,7 +24,7 @@ static bl _execpath2( chr p[HN_PATHMAX + 1], knot16 buf )
 	HN_CHK_RETV( r == 0, HN_TRUE );
 
 	/* zero out the result buffer to make NUL termination easy */
-	hn_memset( 0, HN_PATHMAX + 1, p );
+	hn_memset( p, 0, HN_PATHMAX + 1 );
 
 	/* dereference symlinks first, as we cannot assume dirname( ) is
 	   smart */

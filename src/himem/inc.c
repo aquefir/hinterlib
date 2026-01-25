@@ -72,7 +72,7 @@ struct hn_err hn_himem_inc( void * am_, struct hn_amalgam am_opts,
 	struct hn_err ret;
 	bl r;
 
-	hn_memset( 0, sizeof ret, &ret );
+	hn_memset( &ret, 0, sizeof ret );
 
 	HN_CHK_GOTO( am_ != NULL, inval );
 	HN_CHK_GOTO( ofs != NULL, inval );

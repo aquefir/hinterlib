@@ -41,7 +41,7 @@ bl hn_getenv( chr * key, chr * val, ptri val_sz )
 		const ptri v_sz = strlen((const char *)v );
 		const ptri cpy  = (v_sz > val_sz) ? val_sz : v_sz;
 
-		hn_memcpy( val, cpy, v );
+		hn_memcpy( v, val, cpy );
 		val[cpy] = '\0';
 	}
 

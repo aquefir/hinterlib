@@ -160,7 +160,7 @@ hn_bl hn_ct_init( hn_u16 sz[4], enum hn_ct_type type, hn_ptri ct_sz,
 		HN_CHK_RETV( sz <= ct_sz, HN_TRUE );
 	}
 
-	hn_memset( 0, ct_sz, ct );
+	hn_memset( ct, 0, ct_sz );
 	ct->type = type;
 
 	init_sub[type]( ct );
