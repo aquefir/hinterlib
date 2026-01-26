@@ -2,6 +2,9 @@
 
 ![Hinterlib][0]
 
+[![licence][6]](https://aquefir.co/asl)
+[![documentation][7]](https://kb.xion.mt/Hinterlib)
+
 **Hinterlib** is a `libc` surrogate and support library.
 
 Versions 1.x of Hinterlib, Hinterlib/Neopolitan, and/or unilib were
@@ -25,3 +28,5 @@ terms and conditions.
 [3]: COMPILING.md
 [4]: CONTRIBUTING.md
 [5]: GOVERNANCE.md
+[6]: https://img.shields.io/badge/licence-ASL%20v1.1-70c8a8
+[7]: https://img.shields.io/badge/docs-online-e89810
