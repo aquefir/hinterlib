@@ -6,6 +6,7 @@
  *            Released under Artisan Software Licence v1.1            *
 \**********************************************************************/
 
+#include <hn/alloc.h>
 #include <hn/himem.h>
 #include <hn/memops.h>
 #include <hn/types/int.h>
