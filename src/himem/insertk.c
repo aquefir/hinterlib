@@ -37,7 +37,7 @@ static void _insert( am16d1 * am, u16 offs, void * k )
 	am->data[offs] = k;
 }
 
-static bl _insertk_d1( void * am_, amoffs * offs, void * k_ )
+static bl _insertk_d1( void * am_, amoffs * offs, void * k )
 {
 	am16d1 * const am = am_;
 
@@ -47,12 +47,12 @@ static bl _insertk_d1( void * am_, amoffs * offs, void * k_ )
 		return HN_TRUE;
 	}
 
-	_insert( am, offs[0].n, k_ );
+	_insert( am, offs[0].n, k );
 
 	return HN_FALSE;
 }
 
-static bl _insertk_d2( void * am_, amoffs * offs, void * k_ )
+static bl _insertk_d2( void * am_, amoffs * offs, void * k )
 {
 	am16d2 * const am = am_;
 	const u16 d2_idx  = offs[0].n < am->len - 1;
@@ -74,7 +74,7 @@ static bl _insertk_d3( void * am_, amoffs * offs, void * k_ )
 	return HN_FALSE;
 }
 
-static bl _insertk_d4( void * am_, amoffs * offs, void * k_ )
+static bl _insertk_d4( void * am_, amoffs * offs, void * k )
 {
 	return HN_FALSE;
 }
