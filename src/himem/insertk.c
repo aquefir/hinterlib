@@ -61,8 +61,8 @@ static bl _insertk_d2( void * am_, amoffs * offs, void * k )
 	const u16 d1_idx  = offs[1].n;
 	const ptri d1_sz  = am->data[d2_idx]->len;
 
-	if(d2_sz >= HN_AMALGAM_MAX_ELEMS - 1
-		&& d1_sz >= HN_AMALGAM_MAX_ELEMS - 1)
+	if((d2_sz >= HN_AMALGAM_MAX_ELEMS - 1) && (d1_sz >=
+		HN_AMALGAM_MAX_ELEMS - 1))
 	{
 		/* out of memory to split */
 		return HN_TRUE;
@@ -86,25 +86,37 @@ static bl _insertk_d2( void * am_, amoffs * offs, void * k )
 
 		/* insert the higher order amalgam the same as if it
 		 * were a lower order one */
-		_insert( (am16d1 *)am, d2_idx, k2 );
+		_insert((am16d1 *)am, d2_idx, k2 );
 
 		/* copy over the old latter half */
 		hn_memcpy( am->data[d2_idx + 1],
-			&(am->data[d2_idx]->data[d1_idx]), d1_sz );
-		/* zero it out after copy */
-		hn_memset( &(am->data[d2_idx]->data[d1_idx]), 0,
+			&(am->data[d2_idx]->
+			data[d1_idx]),
 			d1_sz );
+		/* zero it out after copy */
+		hn_memset( &(am->data[d2_idx]->data[d1_idx]), 0, d1_sz )
+		;
 		/* emplace the new knot at the end of the original 1st
 		 * dimension amalgam */
-		 am->data[d2_idx]->data[d1_idx] = k;
+		am->data[d2_idx]->data[d1_idx] = k;
 	}
 
 	return HN_FALSE;
 }
 
-static bl _insertk_d3_1and2( am16d3 * am, u16 d3_idx, ptri d3_sz,
-u16 d2_idx, ptri d2_sz, u16 d1_idx, ptri d1_sz, void * k, void * k2,
-void * k3 )
+static bl _insertk_d3_1and2(
+	am16d3 * am,
+	u16 d3_idx,
+	ptri d3_sz,
+	u16
+	d2_idx,
+	ptri d2_sz,
+	u16 d1_idx,
+	ptri d1_sz,
+	void * k,
+	void * k2,
+	void * k3
+	)
 {
 	/* this gets more complicated than with a 2nd dimension amalgam
 	 * as we have to split multiple orders distinctly as this is the
@@ -123,16 +135,16 @@ static bl _insertk_d3( void * am_, amoffs * offs, void * k )
 	const u16 d1_idx  = offs[2].n;
 	const ptri d1_sz  = am->data[d3_idx]->data[d2_idx]->len;
 
-	if(d3_sz >= HN_AMALGAM_MAX_ELEMS - 1 &&
-		d2_sz >= HN_AMALGAM_MAX_ELEMS - 1 &&
-		d1_sz >= HN_AMALGAM_MAX_ELEMS - 1)
+	if((d3_sz >= HN_AMALGAM_MAX_ELEMS - 1) && (d2_sz >=
+		HN_AMALGAM_MAX_ELEMS - 1) && (d1_sz >=
+		HN_AMALGAM_MAX_ELEMS - 1))
 	{
 		/* out of memory to split */
 		return HN_TRUE;
 	}
 
-	if(d2_sz >= HN_AMALGAM_MAX_ELEMS - 1 &&
-		d1_sz >= HN_AMALGAM_MAX_ELEMS - 1)
+	if((d2_sz >= HN_AMALGAM_MAX_ELEMS - 1) && (d1_sz >=
+		HN_AMALGAM_MAX_ELEMS - 1))
 	{
 		bl r;
 		void * k3;
