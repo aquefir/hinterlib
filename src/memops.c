@@ -9,12 +9,12 @@
 #include <hn/memops.h>
 #include <string.h>
 
-void hn_memset( hn_u8 oct, hn_ptri buf_sz, void * buf )
+void hn_memset( void * buf, hn_u8 oct, hn_ptri buf_sz )
 {
 	memset( buf, oct, buf_sz );
 }
 
-void hn_memcpy( void * dst, hn_ptri sz, void * src )
+void hn_memcpy( void * dst, void * src, hn_ptri sz )
 {
 	memcpy( dst, src, sz );
 }
