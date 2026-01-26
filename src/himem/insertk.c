@@ -101,8 +101,53 @@ static bl _insertk_d2( void * am_, amoffs * offs, void * k )
 	return HN_FALSE;
 }
 
-static bl _insertk_d3( void * am_, amoffs * offs, void * k_ )
+static bl _insertk_d3_1and2( am16d3 * am, u16 d3_idx, ptri d3_sz,
+u16 d2_idx, ptri d2_sz, u16 d1_idx, ptri d1_sz, void * k, void * k2,
+void * k3 )
 {
+	/* this gets more complicated than with a 2nd dimension amalgam
+	 * as we have to split multiple orders distinctly as this is the
+	 * special edge case where both the 1st and 2nd dimensions are
+	 * full (but not the third). */
+	return HN_FALSE;
+}
+
+static bl _insertk_d3( void * am_, amoffs * offs, void * k )
+{
+	am16d3 * const am = am_;
+	const u16 d3_idx  = offs[0].n;
+	const ptri d3_sz  = am->len;
+	const u16 d2_idx  = offs[1].n;
+	const ptri d2_sz  = am->data[d3_idx]->len;
+	const u16 d1_idx  = offs[2].n;
+	const ptri d1_sz  = am->data[d3_idx]->data[d2_idx]->len;
+
+	if(d3_sz >= HN_AMALGAM_MAX_ELEMS - 1 &&
+		d2_sz >= HN_AMALGAM_MAX_ELEMS - 1 &&
+		d1_sz >= HN_AMALGAM_MAX_ELEMS - 1)
+	{
+		/* out of memory to split */
+		return HN_TRUE;
+	}
+
+	if(d2_sz >= HN_AMALGAM_MAX_ELEMS - 1 &&
+		d1_sz >= HN_AMALGAM_MAX_ELEMS - 1)
+	{
+		bl r;
+		void * k3;
+		void * const k2 = hn_allock16( );
+
+		HN_CHK_RETV( k2 != NULL, HN_TRUE );
+
+		k3 = hn_allock16( );
+		HN_CHK_RETV( k3 != NULL, HN_TRUE );
+
+		r = _insertk_d3_1and2( am, d3_idx, d3_sz, d2_idx, d2_sz,
+			d1_idx, d1_sz, k, k2, k3 );
+
+		HN_CHK_RETV( r == HN_FALSE, HN_TRUE );
+	}
+
 	return HN_FALSE;
 }
 
