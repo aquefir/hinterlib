@@ -55,16 +55,48 @@ static bl _insertk_d1( void * am_, amoffs * offs, void * k )
 static bl _insertk_d2( void * am_, amoffs * offs, void * k )
 {
 	am16d2 * const am = am_;
-	const u16 d2_idx  = offs[0].n < am->len - 1;
-	const u16 d1_idx  = am->data[d2_idx]->len - 1;
+	const u16 d2_idx  = offs[0].n;
+	const ptri d2_sz  = am->len;
+	const u16 d1_idx  = offs[1].n;
+	const ptri d1_sz  = am->data[d2_idx]->len;
 
-	if(am->len >= HN_AMALGAM_MAX_ELEMS - 1)
+	if(d2_sz >= HN_AMALGAM_MAX_ELEMS - 1
+		&& d1_sz >= HN_AMALGAM_MAX_ELEMS - 1)
 	{
-		/* out of memory */
+		/* out of memory to split */
 		return HN_TRUE;
 	}
 
-	/* _insert( am->data, offs[0].n, k_ ); */
+	/* in this case, the total container is not full but the target
+	 * dimension is, requiring us to split it into two at the index
+	 * of offset.
+	 * the way this is done is by inserting an empty 1st dimension
+	 *.amalgam just after the index of offset, copying the latter
+	 * half of the original 1st dimension amalgam into it, zeroing
+	 * out the source of that copy, and finally placing the new knot
+	 * at the end of the original amalgam.
+	 * this does create some fragmentation but it is of no
+	 * performance concern as these are all linked lists anyway. */
+	if(d1_sz >= HN_AMALGAM_MAX_ELEMS - 1)
+	{
+		void * const k2 = hn_allock16( );
+
+		HN_CHK_RETV( k2 != NULL, HN_TRUE );
+
+		/* insert the higher order amalgam the same as if it
+		 * were a lower order one */
+		_insert( (am16d1 *)am, d2_idx, k2 );
+
+		/* copy over the old latter half */
+		hn_memcpy( am->data[d2_idx + 1],
+			&(am->data[d2_idx]->data[d1_idx]), d1_sz );
+		/* zero it out after copy */
+		hn_memset( &(am->data[d2_idx]->data[d1_idx]), 0,
+			d1_sz );
+		/* emplace the new knot at the end of the original 1st
+		 * dimension amalgam */
+		 am->data[d2_idx]->data[d1_idx] = k;
+	}
 
 	return HN_FALSE;
 }
