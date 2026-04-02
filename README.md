@@ -3,7 +3,7 @@
 ![Hinterlib][0]
 
 [![licence][6]](https://aquefir.co/asl)
-[![documentation][7]](https://kb.xion.mt/Hinterlib)
+[![documentation][7]](MANUAL.md)
 
 **Hinterlib** is a `libc` surrogate and support library.
 
