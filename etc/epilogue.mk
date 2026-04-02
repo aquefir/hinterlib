@@ -61,6 +61,7 @@ override INB_DEBUGLOG := $(INB_DEBUGLOG.O_$(.O_INB_DEBUGLOG))
 .FN_FILE.PCM   := \033[35mAssembling
 .FN_FILE.IMG   := \033[35mTransmogrifying
 .FN_FILE.BIN   := \033[35mProcessing
+.FN_FILE.SCH   := \033[37mSchematising
 
 .FN_FILE = @$(ECHO) -e " $(.FN_FILE.$(1))\033[0m \033[1m$(2)\033[0m ..."
 .FN_FILENOAT = $(ECHO) -e " $(.FN_FILE.$(1))\033[0m \033[1m$(2)\033[0m ..."
