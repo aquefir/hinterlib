@@ -1,10 +1,9 @@
 #!/usr/bin/make
-# -*- coding: utf-8 -*-
 ##
 ## INBOUND, an agnostic software building system
 ##
 ## Written by Alexander Nicholi <//nich.fi/>
-## Copyright (C) 2024-2025 Aquefir Consulting LLC <//aquefir.co/>
+## Copyright (C) 2024-2026 Aquefir Consulting LLC <//aquefir.co/>
 ## Released under BSD-2-Clause.
 ##
 ## Epilogue file, to be included at the end of your Makefile
@@ -28,6 +27,12 @@
 # compilation. The default is simply "debug.log" in the current working
 # directory, but this can be changed using this variable.
 
+ifeq ($(strip $(.K_INB)),)
+$(error This epilogue needs the prologue to be included in the parent \
+Makefile first. Please include it at the top of the Makefile and make \
+sure this file is included at the bottom.)
+endif
+
 # Inspect the origin of the new variable.
 # If it is undefined or set by default, say so. Otherwise it was
 # customised. The ".O_" prefix denotes "origin" and is to prevent
@@ -48,20 +53,21 @@ INB_DEBUGLOG.O_CUSTOM := $(INB_DEBUGLOG)
 # Finally, set the variable.
 override INB_DEBUGLOG := $(INB_DEBUGLOG.O_$(.O_INB_DEBUGLOG))
 
-.FN_FILE.S     := \033[32mAssembling
-.FN_FILE.C     := \033[34mCompiling
-.FN_FILE.CXX   := \033[33mCompiling
-.FN_FILE.OBJC  := \033[32mCompiling
-.FN_FILE.AR    := \033[32mLinking
-.FN_FILE.LD    := \033[31mLinking
-.FN_FILE.OCPY  := \033[37mCopying binary of
-.FN_FILE.STRIP := \033[31mStripping
-.FN_FILE.FMT   := \033[37mFormatting
-.FN_FILE.MID   := \033[35mProcessing
-.FN_FILE.PCM   := \033[35mAssembling
-.FN_FILE.IMG   := \033[35mTransmogrifying
-.FN_FILE.BIN   := \033[35mProcessing
-.FN_FILE.SCH   := \033[37mSchematising
+.FN_FILE.S      := \033[32mAssembling
+.FN_FILE.C      := \033[34mCompiling
+.FN_FILE.CXX    := \033[33mCompiling
+.FN_FILE.OBJC   := \033[32mCompiling
+.FN_FILE.OBJCXX := \033[32mCompiling
+.FN_FILE.AR     := \033[32mLinking
+.FN_FILE.LD     := \033[31mLinking
+.FN_FILE.OCPY   := \033[37mCopying binary of
+.FN_FILE.STRIP  := \033[31mStripping
+.FN_FILE.FMT    := \033[37mFormatting
+.FN_FILE.MID    := \033[35mProcessing
+.FN_FILE.PCM    := \033[35mAssembling
+.FN_FILE.IMG    := \033[35mTransmogrifying
+.FN_FILE.BIN    := \033[35mProcessing
+.FN_FILE.SCH    := \033[37mSchematising
 
 .FN_FILE = @$(ECHO) -e " $(.FN_FILE.$(1))\033[0m \033[1m$(2)\033[0m ..."
 .FN_FILENOAT = $(ECHO) -e " $(.FN_FILE.$(1))\033[0m \033[1m$(2)\033[0m ..."
@@ -110,6 +116,17 @@ else ifeq ($(origin OBJCFLAGS),default)
 else
 # environment [override], file, command line, override, automatic
 .L_OBJCFLAGS += $(OBJCFLAGS)
+endif
+
+# OBJCXXFLAGS
+.L_OBJCXXFLAGS := $(OBJCXXFLAGS.ANY.$(TP))
+ifeq ($(origin OBJCXXFLAGS),undefined)
+# nop
+else ifeq ($(origin OBJCXXFLAGS),default)
+# nop
+else
+# environment [override], file, command line, override, automatic
+.L_OBJCXXFLAGS += $(OBJCXXFLAGS)
 endif
 
 # ARFLAGS
@@ -195,6 +212,20 @@ else
 .L_OBJCFLAGS := $(OBJCFLAGS)
 endif
 
+ifeq ($(origin OBJCXXFLAGS),undefined)
+# nop
+else ifeq ($(origin OBJCXXFLAGS),default)
+# nop
+else ifeq ($(origin OBJCXXFLAGS),command line)
+# nop
+else ifeq ($(strip $(OBJCXXFLAGS)),)
+# nop
+else
+# environment [override], file, override, automatic
+# not empty
+.L_OBJCXXFLAGS := $(OBJCXXFLAGS)
+endif
+
 ifeq ($(origin ARFLAGS),undefined)
 # nop
 else ifeq ($(origin ARFLAGS),default)
@@ -226,12 +257,13 @@ endif
 endif # $(INB_OVERRIDE)
 
 # Finally, set the variables.
-ASFLAGS   := $(.L_ASFLAGS)
-CFLAGS    := $(.L_CFLAGS)
-CXXFLAGS  := $(.L_CXXFLAGS)
-OBJCFLAGS := $(.L_OBJCFLAGS)
-ARFLAGS   := $(.L_ARFLAGS)
-LDFLAGS   := $(.L_LDFLAGS)
+ASFLAGS     := $(.L_ASFLAGS)
+CFLAGS      := $(.L_CFLAGS)
+CXXFLAGS    := $(.L_CXXFLAGS)
+OBJCFLAGS   := $(.L_OBJCFLAGS)
+OBJCXXFLAGS := $(.L_OBJCXXFLAGS)
+ARFLAGS     := $(.L_ARFLAGS)
+LDFLAGS     := $(.L_LDFLAGS)
 
 ## Add built-in libs and #includes
 
@@ -530,6 +562,7 @@ endif
 	$(CFILES:.c=.c.o) \
 	$(CPPFILES:.cpp=.cpp.o) \
 	$(MFILES:.m=.m.o) \
+	$(MMFILES:.mm=.mm.o) \
 	$(SNIPFILES:.snip=.snip.o) \
 	$(MAPFILES:.map=.map.o) \
 	$(MAPBFILES:.mapb=.mapb.o) \
@@ -566,13 +599,15 @@ endif
 	$(SFILES.DARWIN86:.s=.s.o) \
 	$(CFILES.DARWIN86:.c=.c.o) \
 	$(CPPFILES.DARWIN86:.cpp=.cpp.o) \
-	$(MFILES.DARWIN86:.m=.m.o)
+	$(MFILES.DARWIN86:.m=.m.o) \
+	$(MMFILES.DARWIN86:.mm=.mm.o)
 
 .L_OFILES.DARWINM1 := \
 	$(SFILES.DARWINM1:.s=.s.o) \
 	$(CFILES.DARWINM1:.c=.c.o) \
 	$(CPPFILES.DARWINM1:.cpp=.cpp.o) \
-	$(MFILES.DARWINM1:.m=.m.o)
+	$(MFILES.DARWINM1:.m=.m.o) \
+	$(MMFILES.DARWINM1:.mm=.mm.o)
 
 .L_OFILES.FREEBSD := \
 	$(SFILES.FREEBSD:.s=.s.o) \
@@ -633,10 +668,13 @@ endif
 
 # IntelliSense schematic temporary artefacts.
 SCHFILES := $(patsubst %,%.sch,$(CFILES) $(CPPFILES) $(MFILES) \
-	$(PUBHFILES) $(PRVHFILES) $(CFILES.AGBHB) $(CPPFILES.AGBHB) \
+	$(MMFILES) $(PUBHFILES) $(PRVHFILES) \
+	$(CFILES.AGBHB) $(CPPFILES.AGBHB) \
 	$(CFILES.AGBSP) $(CPPFILES.AGBSP) \
 	$(CFILES.DARWIN86) $(CPPFILES.DARWIN86) $(MFILES.DARWIN86) \
+	$(MMFILES.DARWIN86) \
 	$(CFILES.DARWINM1) $(CPPFILES.DARWINM1) $(MFILES.DARWINM1) \
+	$(MMFILES.DARWINM1) \
 	$(CFILES.FREEBSD) $(CPPFILES.FREEBSD) \
 	$(CFILES.IBMPC) $(CPPFILES.IBMPC) \
 	$(CFILES.ILLUMOS) $(CPPFILES.ILLUMOS) \
@@ -651,10 +689,13 @@ SCHFILES := $(patsubst %,%.sch,$(CFILES) $(CPPFILES) $(MFILES) \
 
 # Auto-formatter temporary artefacts.
 FMTFILES := $(patsubst %,%.fmt,$(CFILES) $(CPPFILES) $(MFILES) \
-	$(PUBHFILES) $(PRVHFILES) $(CFILES.AGBHB) $(CPPFILES.AGBHB) \
+	$(MMFILES) $(PUBHFILES) $(PRVHFILES) \
+	$(CFILES.AGBHB) $(CPPFILES.AGBHB) \
 	$(CFILES.AGBSP) $(CPPFILES.AGBSP) \
 	$(CFILES.DARWIN86) $(CPPFILES.DARWIN86) $(MFILES.DARWIN86) \
+	$(MMFILES.DARWIN86) \
 	$(CFILES.DARWINM1) $(CPPFILES.DARWINM1) $(MFILES.DARWINM1) \
+	$(MMFILES.DARWINM1) \
 	$(CFILES.FREEBSD) $(CPPFILES.FREEBSD) \
 	$(CFILES.IBMPC) $(CPPFILES.IBMPC) \
 	$(CFILES.ILLUMOS) $(CPPFILES.ILLUMOS) \
@@ -676,14 +717,19 @@ endif
 
 ## Define the target recipes.
 
-.PHONY: debug release check schema clean format
+.PHONY: debug release check clean format
+ifneq ($(strip $(.K_GE_4_4)),)
+.PHONY: schema
+endif
 # Remove all default implicit rules by emptying the suffixes builtin
 # This causes false circular dependencies with multi-dotted file
 # extensions if we don't do this
 .SUFFIXES:
 
+ifneq ($(strip $(.K_GE_4_4)),)
 # schema generation uses stdio so it can't be parallelised easily
 .NOTPARALLEL: schema
+endif
 
 ## Debug build
 ## useful for: normal testing, valgrind, LLDB
@@ -788,6 +834,13 @@ check: $(.L_OFILES)
 	@cat $< | $(FMT) $(FMTFLAGS) -l OC > $@
 	@mv $@ $<
 
+# Objective-C++
+%.mm.fmt: %.mm
+	$(call .FN_FILE,FMT,$<)
+	@cat $< | $(FMT) $(FMTFLAGS) -l OC+ > $@
+	@mv $@ $<
+
+# C family headers
 %.h.fmt: %.h
 	$(call .FN_FILE,FMT,$<)
 	@cat $< | $(FMT) $(FMTFLAGS) -l OC+ > $@
@@ -844,6 +897,16 @@ check: $(.L_OFILES)
 	@$(ECHO) -n '$(.K_DEFINE) $(.K_INCLUDE) $<' >> compile_commands.json
 	@$(ECHO) -n '","file":"$<"},' >> compile_commands.json
 
+# Objective-C++
+%.mm.sch: %.mm
+	$(call .FN_FILE,SCH,$<)
+	@$(ECHO) -n '{"directory":"$(shell pwd)",' >> compile_commands.json
+	@$(ECHO) -n '"command":"' >> compile_commands.json
+	@$(ECHO) -n '$(CC) -c -o $@ $(CFLAGS) ' >> compile_commands.json
+	@$(ECHO) -n '$(.K_DEFINE) $(.K_INCLUDE) $<' >> compile_commands.json
+	@$(ECHO) -n '","file":"$<"},' >> compile_commands.json
+
+# C family headers
 %.h.sch: %.h
 	$(call .FN_FILE,SCH,$<)
 	@$(ECHO) -n '{"directory":"$(shell pwd)",' >> compile_commands.json
@@ -898,6 +961,12 @@ check: $(.L_OFILES)
 	@$(CC) -o $@ $(OBJCFLAGS) $(.K_DEFINE) $(.K_INCLUDE) $< \
 		2>>$(INB_DEBUGLOG)
 
+# Objective-C++
+%.mm.o: %.mm
+	$(call .FN_FILE,OBJCXX,$@)
+	@$(CC) -o $@ $(OBJCXXFLAGS) $(.K_DEFINE) $(.K_INCLUDE) $< \
+		2>>$(INB_DEBUGLOG)
+
 # Static library recipe.
 
 $(.L_ATARGET): $(.L_OFILES)
@@ -934,6 +1003,7 @@ endif
 
 # Generate compile_commands.json for clangd.
 
+ifneq ($(strip $(.K_GE_4_4)),)
 schema-start:
 	@$(ECHO) -n '[' > compile_commands.json
 
@@ -942,6 +1012,7 @@ schema: schema-start $(SCHFILES) schema-end
 schema-end:
 	@truncate -s-1 compile_commands.json
 	@$(ECHO) -n ']' >> compile_commands.json
+endif
 
 # Clean the repository.
 

@@ -1,10 +1,9 @@
 #!/usr/bin/make
-# -*- coding: utf-8 -*-
 ##
 ## INBOUND, an agnostic software building system
 ##
 ## Written by Alexander Nicholi <//nich.fi/>
-## Copyright (C) 2024-2025 Aquefir Consulting LLC <//aquefir.co/>
+## Copyright (C) 2024-2026 Aquefir Consulting LLC <//aquefir.co/>
 ## Released under BSD-2-Clause.
 ##
 ## Prologue file, to be included at the beginning of your Makefile
@@ -23,18 +22,36 @@
 ## For more information, visit <//kb.xion.mt/Inbound>.
 ##
 
-# Check Make version; we need at least GNU Make 3.82. Fortunately,
-# 'undefine' directive has been introduced exactly in GNU Make 3.82.
+# Exhaustive version check. Since the addition of the schema .PHONY
+# target, Inbound requires GNU Make v4.4 or later, but will otherwise
+# work with v3.82 or later (with warning).
+# Checking for v3.82 is a bit more primitive yet fool-proof as it scans
+# the .FEATURES variable; checking for v4.4 requires parsing the builtin
+# with some coreutils shell commands.
 ifeq ($(filter undefine,$(value .FEATURES)),)
 ifneq ($(strip $(MAKE_VERSION)),)
 $(error Unsupported GNU Make version. \
 The build system does not work properly with GNU Make $(MAKE_VERSION). \
-Please use GNU Make 3.82 or later)
+Please use GNU Make 4.4 or later)
 else
 $(error Unsupported Make utility. \
-Please use GNU Make 3.82 or later)
+Please use GNU Make 4.4 or later)
+endif
+else
+.K_MAJOR := $(shell /bin/echo $(MAKE_VERSION) | cut -f1 -d.)
+.K_MINOR := $(shell /bin/echo $(MAKE_VERSION) | cut -f2 -d.)
+.K_GE_4_4 := $(shell test $(.K_MAJOR) -gt 4 -o \( $(.K_MAJOR) -eq 4 -a $(.K_MINOR) -ge 4 \) && echo 1)
+ifeq ($(strip $(.K_GE_4_4)),)
+$(warning Partially supported GNU Make version. \
+The build system cannot correctly emit clangd LSP schemas before v4.4. \
+That .PHONY target will be disabled. All else should work as expected.)
 endif
 endif
+
+# Inbound presence constant
+override INB := 1
+# Just saying we're here to the epilogue
+override .K_INB := 1
 
 # INB_OVERRIDE : If set, epilogue.mk will take user-set *FLAGS
 # variables as the entirety of the flags, instead of appending them to
@@ -1169,6 +1186,85 @@ OBJCFLAGS.CHECK.OPENBSD  := -E -Wextra -Werror -Wno-unused-variable
 OBJCFLAGS.CHECK.WIN95    := -E -Wextra -Werror -Wno-unused-variable
 OBJCFLAGS.CHECK.WINNT32  := -E -Wextra -Werror -Wno-unused-variable
 OBJCFLAGS.CHECK.WINNT64  := -E -Wextra -Werror -Wno-unused-variable
+
+# Objective-C++ compiler flags.
+# Form: OBJCXXFLAGS.<RECIPE>.<TP>
+
+.K_OBJCXXFLAGS_W := -Wpedantic -Wno-long-long
+
+OBJCXXFLAGS.ANY.AGBHB    := -ansi -frandom-seed=69420 -march=armv4t \
+	-mcpu=arm7tdmi -mthumb-interwork -pipe $(.K_OBJCXXFLAGS_W) \
+	-x objective-c++
+OBJCXXFLAGS.ANY.AGBSP    := -ansi -ffreestanding -fno-pie -fPIC \
+	-frandom-seed=69420 -march=armv4t -mcpu=arm7tdmi -nostdinc \
+	-pipe $(.K_OBJCXXFLAGS_W) -x objective-c++
+OBJCXXFLAGS.ANY.DARWIN86 := -ansi -fPIC -frandom-seed=69420 \
+	-march=x86-64 -mtune=k8 -pipe $(.K_OBJCXXFLAGS_W) -x \
+	objective-c++
+OBJCXXFLAGS.ANY.DARWINM1 := -ansi -fPIC -frandom-seed=69420 \
+	-march=armv8.4-a -mcpu=apple-m1 -pipe $(.K_OBJCXXFLAGS_W) \
+	-x objective-c++
+OBJCXXFLAGS.ANY.FREEBSD  := -ansi -fPIC -frandom-seed=69420 \
+	-march=x86-64 -mtune=k8 -pipe $(.K_OBJCXXFLAGS_W) -x \
+	objective-c++
+OBJCXXFLAGS.ANY.ILLUMOS  := -ansi -fPIC -frandom-seed=69420 -mcpu=v9 \
+	-mtune=niagara -pipe $(.K_OBJCXXFLAGS_W) -x objective-c++
+OBJCXXFLAGS.ANY.LINUX32  := -ansi -fPIC -frandom-seed=69420 \
+	-march=i686 -mtune=k8 -pipe $(.K_OBJCXXFLAGS_W) -x objective-c++
+OBJCXXFLAGS.ANY.LINUX64  := -ansi -fPIC -frandom-seed=69420 \
+	-march=x86-64 -mtune=k8 -pipe $(.K_OBJCXXFLAGS_W) -x \
+	objective-c++
+OBJCXXFLAGS.ANY.OPENBSD  := -ansi -fPIC -frandom-seed=69420 \
+	-march=x86-64 -mtune=k8 -pipe $(.K_OBJCXXFLAGS_W) -x \
+	objective-c++
+OBJCXXFLAGS.ANY.WIN95    := -ansi -fPIC -frandom-seed=69420 \
+	-march=i386 -mtune=i486 -pipe $(.K_OBJCXXFLAGS_W) -x \
+	objective-c++
+OBJCXXFLAGS.ANY.WINNT32  := -ansi -fPIC -frandom-seed=69420 \
+	-march=i386 -mtune=i686 -pipe $(.K_OBJCXXFLAGS_W) -x \
+	objective-c++
+OBJCXXFLAGS.ANY.WINNT64  := -ansi -fPIC -frandom-seed=69420 \
+	-march=x86-64 -mtune=k8 -pipe $(.K_OBJCXXFLAGS_W) -x \
+	objective-c++
+
+OBJCXXFLAGS.DEBUG.AGBHB    := -c -O0 -g3 -Wall
+OBJCXXFLAGS.DEBUG.AGBSP    := -c -O0 -g3 -Wall
+OBJCXXFLAGS.DEBUG.DARWIN86 := -c -O0 -g3 -Wall
+OBJCXXFLAGS.DEBUG.DARWINM1 := -c -O0 -g3 -Wall
+OBJCXXFLAGS.DEBUG.FREEBSD  := -c -O0 -g3 -Wall
+OBJCXXFLAGS.DEBUG.ILLUMOS  := -c -O0 -g3 -Wall
+OBJCXXFLAGS.DEBUG.LINUX32  := -c -O0 -g3 -Wall
+OBJCXXFLAGS.DEBUG.LINUX64  := -c -O0 -g3 -Wall
+OBJCXXFLAGS.DEBUG.OPENBSD  := -c -O0 -g3 -Wall
+OBJCXXFLAGS.DEBUG.WIN95    := -c -O0 -g3 -Wall
+OBJCXXFLAGS.DEBUG.WINNT32  := -c -O0 -g3 -Wall
+OBJCXXFLAGS.DEBUG.WINNT64  := -c -O0 -g3 -Wall
+
+OBJCXXFLAGS.RELEASE.AGBHB    := -c -O3 -w
+OBJCXXFLAGS.RELEASE.AGBSP    := -c -O3 -w
+OBJCXXFLAGS.RELEASE.DARWIN86 := -c -O3 -w
+OBJCXXFLAGS.RELEASE.DARWINM1 := -c -O3 -w
+OBJCXXFLAGS.RELEASE.FREEBSD  := -c -O3 -w
+OBJCXXFLAGS.RELEASE.ILLUMOS  := -c -O3 -w
+OBJCXXFLAGS.RELEASE.LINUX32  := -c -O3 -w
+OBJCXXFLAGS.RELEASE.LINUX64  := -c -O3 -w
+OBJCXXFLAGS.RELEASE.OPENBSD  := -c -O3 -w
+OBJCXXFLAGS.RELEASE.WIN95    := -c -O3 -w
+OBJCXXFLAGS.RELEASE.WINNT32  := -c -O3 -w
+OBJCXXFLAGS.RELEASE.WINNT64  := -c -O3 -w
+
+OBJCXXFLAGS.CHECK.AGBHB    := -E -Wextra -Werror -Wno-unused-variable
+OBJCXXFLAGS.CHECK.AGBSP    := -E -Wextra -Werror -Wno-unused-variable
+OBJCXXFLAGS.CHECK.DARWIN86 := -E -Wextra -Werror -Wno-unused-variable
+OBJCXXFLAGS.CHECK.DARWINM1 := -E -Wextra -Werror -Wno-unused-variable
+OBJCXXFLAGS.CHECK.FREEBSD  := -E -Wextra -Werror -Wno-unused-variable
+OBJCXXFLAGS.CHECK.ILLUMOS  := -E -Wextra -Werror -Wno-unused-variable
+OBJCXXFLAGS.CHECK.LINUX32  := -E -Wextra -Werror -Wno-unused-variable
+OBJCXXFLAGS.CHECK.LINUX64  := -E -Wextra -Werror -Wno-unused-variable
+OBJCXXFLAGS.CHECK.OPENBSD  := -E -Wextra -Werror -Wno-unused-variable
+OBJCXXFLAGS.CHECK.WIN95    := -E -Wextra -Werror -Wno-unused-variable
+OBJCXXFLAGS.CHECK.WINNT32  := -E -Wextra -Werror -Wno-unused-variable
+OBJCXXFLAGS.CHECK.WINNT64  := -E -Wextra -Werror -Wno-unused-variable
 
 # Archiver flags.
 # Form: ARFLAGS.<RECIPE>.<TP>
