@@ -37,7 +37,11 @@ hn_bl hn_log_ungrp( struct hn_log * log )
 	return HN_FALSE;
 }
 
-void hn_log_info( struct hn_log * log, const chr * fmt, ... )
+void hn_log_info(
+	struct hn_log * log,
+	const chr * fmt,
+	...
+	)
 {
 	chr prefix[HN_LOG_PREFIX_SZ + 1];
 	u16 i;
@@ -66,7 +70,11 @@ void hn_log_info( struct hn_log * log, const chr * fmt, ... )
 	fflush( stderr );
 }
 
-void hn_log_warn( struct hn_log * log, const chr * fmt, ... )
+void hn_log_warn(
+	struct hn_log * log,
+	const chr * fmt,
+	...
+	)
 {
 	chr prefix[HN_LOG_PREFIX_SZ + 1];
 	u16 i;
@@ -95,7 +103,11 @@ void hn_log_warn( struct hn_log * log, const chr * fmt, ... )
 	fflush( stderr );
 }
 
-void hn_log_err( struct hn_log * log, const chr * fmt, ... )
+void hn_log_err(
+	struct hn_log * log,
+	const chr * fmt,
+	...
+	)
 {
 	chr prefix[HN_LOG_PREFIX_SZ + 1];
 	u16 i;

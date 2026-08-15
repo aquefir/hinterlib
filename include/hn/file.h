@@ -60,7 +60,10 @@ HN_API struct hn_file * hn_fstderr( void );
  * @note `hn_ferror()` may have useful information if this routine
  *       fails.
  */
-HN_API struct hn_file * hn_fopen( const hn_chr *, struct hn_fmode );
+HN_API struct hn_file * hn_fopen(
+	const hn_chr *,
+	struct hn_fmode
+	);
 
 /**
  *
@@ -76,8 +79,11 @@ HN_API struct hn_file * hn_fopen( const hn_chr *, struct hn_fmode );
  *       by parameter is no longer valid and should be discarded. It
  *       should also not be flushed or closed by the caller.
  */
-HN_API struct hn_file * hn_freopen( const hn_chr *, struct hn_fmode,
-	struct hn_file * );
+HN_API struct hn_file * hn_freopen(
+	const hn_chr *,
+	struct hn_fmode,
+	struct hn_file *
+	);
 
 /**
  *
@@ -111,7 +117,10 @@ HN_API hn_bl hn_fflush( struct hn_file * );
  * @note To properly allocate a sufficiently sized internal buffer,
  *       first call `hn_fgetbufsz()`.
  */
-HN_API hn_bl hn_fsetbuf( struct hn_file *, hn_u8 * );
+HN_API hn_bl hn_fsetbuf(
+	struct hn_file *,
+	hn_u8 *
+	);
 
 /* Returns the size of an internal stdio buffer, denominated in octets.
  */
@@ -164,7 +173,10 @@ HN_API struct hn_fpos * hn_fgetpos( struct hn_file * );
  * @note `hn_ferror()` may have useful information if this routine
  *       fails.
  */
-HN_API hn_bl hn_fsetpos( struct hn_fpos *, struct hn_file * );
+HN_API hn_bl hn_fsetpos(
+	struct hn_fpos *,
+	struct hn_file *
+	);
 
 /**
  *

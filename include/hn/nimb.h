@@ -68,68 +68,123 @@ HN_API hn_bl hn_nimb_from64( hn_u64, struct hn_ct * );
 #endif /* defined( _SYNDEF_HAVE_I64 ) */
 
 /* Create a nimb from an ASCII character string. */
-HN_API hn_bl hn_nimb_fromstr( hn_chr *, enum hn_numbase, struct hn_ct *
+HN_API hn_bl hn_nimb_fromstr(
+	hn_chr *,
+	enum hn_numbase,
+	struct hn_ct *
 	);
 
 /* Create a 16-bit unsigned integer primitive from a nimb. */
-HN_API hn_bl hn_nimb_to16( struct hn_ct *, hn_u16 * );
+HN_API hn_bl hn_nimb_to16(
+	struct hn_ct *,
+	hn_u16 *
+	);
 
 #if defined(_SYNDEF_HAVE_I32)
 /* Create a 32-bit unsigned integer primitive from a nimb. */
-HN_API hn_bl hn_nimb_to32( struct hn_ct *, hn_u32 * );
+HN_API hn_bl hn_nimb_to32(
+	struct hn_ct *,
+	hn_u32 *
+	);
 #endif /* defined( _SYNDEF_HAVE_I32 ) */
 
 #if defined(_SYNDEF_HAVE_I64)
 /* Create a 64-bit unsigned integer primitive from a nimb. */
-HN_API hn_bl hn_nimb_to64( struct hn_ct *, hn_u64 * );
+HN_API hn_bl hn_nimb_to64(
+	struct hn_ct *,
+	hn_u64 *
+	);
 #endif /* defined( _SYNDEF_HAVE_I64 ) */
 
 /* Create an ASCII character string from a nimb. */
-HN_API hn_bl hn_nimb_tostr( struct hn_ct *, enum hn_numbase, hn_chr * );
+HN_API hn_bl hn_nimb_tostr(
+	struct hn_ct *,
+	enum hn_numbase,
+	hn_chr *
+	);
 
 /* Get the size of the nimb by traversing the sentinel bits therein. */
 HN_API hn_ptri hn_nimb_size( struct hn_ct * );
 
 /* Perform a full comparison of two nimbs. */
-HN_API hn_u8 hn_nimb_cmp( struct hn_ct, struct hn_ct * );
+HN_API hn_u8 hn_nimb_cmp(
+	struct hn_ct,
+	struct hn_ct *
+	);
 
 /* Add two nimbs together. */
-HN_API hn_bl hn_nimb_add( struct hn_ct, struct hn_ct * );
+HN_API hn_bl hn_nimb_add(
+	struct hn_ct,
+	struct hn_ct *
+	);
 
 /* Subtract one nimb from another. */
-HN_API hn_bl hn_nimb_sub( struct hn_ct, struct hn_ct * );
+HN_API hn_bl hn_nimb_sub(
+	struct hn_ct,
+	struct hn_ct *
+	);
 
 /* Logically shift a nimb left. */
-HN_API void hn_nimb_lsl( struct hn_ct, struct hn_ct * );
+HN_API void hn_nimb_lsl(
+	struct hn_ct,
+	struct hn_ct *
+	);
 
 /* Logically shift a nimb right. */
-HN_API void hn_nimb_lsr( struct hn_ct, struct hn_ct * );
+HN_API void hn_nimb_lsr(
+	struct hn_ct,
+	struct hn_ct *
+	);
 
 /* Rotate a nimb left. */
-HN_API void hn_nimb_rol( struct hn_ct, struct hn_ct * );
+HN_API void hn_nimb_rol(
+	struct hn_ct,
+	struct hn_ct *
+	);
 
 /* Rotate a nimb right. */
-HN_API void hn_nimb_ror( struct hn_ct, struct hn_ct * );
+HN_API void hn_nimb_ror(
+	struct hn_ct,
+	struct hn_ct *
+	);
 
 /* Logically AND two nimbs. */
-HN_API void hn_nimb_and( struct hn_ct, struct hn_ct * );
+HN_API void hn_nimb_and(
+	struct hn_ct,
+	struct hn_ct *
+	);
 
 /* Logically OR two nimbs. */
-HN_API hn_bl hn_nimb_orr( struct hn_ct, struct hn_ct * );
+HN_API hn_bl hn_nimb_orr(
+	struct hn_ct,
+	struct hn_ct *
+	);
 
 /* Logically bit inverse a nimb. */
 HN_API void hn_nimb_not( struct hn_ct * );
 
 /* Logically exclusive-OR two nimbs. */
-HN_API hn_bl hn_nimb_xor( struct hn_ct, struct hn_ct * );
+HN_API hn_bl hn_nimb_xor(
+	struct hn_ct,
+	struct hn_ct *
+	);
 
 /* Count the leading zero bits of a nimb. */
-HN_API hn_bl hn_nimb_clz( struct hn_ct, struct hn_ct * );
+HN_API hn_bl hn_nimb_clz(
+	struct hn_ct,
+	struct hn_ct *
+	);
 
 /* Count the trailing zero bits of a nimb. */
-HN_API hn_bl hn_nimb_ctz( struct hn_ct, struct hn_ct * );
+HN_API hn_bl hn_nimb_ctz(
+	struct hn_ct,
+	struct hn_ct *
+	);
 
 /* Count the number of high bits in a nimb. */
-HN_API hn_bl hn_nimb_pct( struct hn_ct, struct hn_ct * );
+HN_API hn_bl hn_nimb_pct(
+	struct hn_ct,
+	struct hn_ct *
+	);
 
 #endif /* INC_API__HN_NIMB_H */

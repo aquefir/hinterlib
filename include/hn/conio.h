@@ -21,7 +21,10 @@
  *        See https://en.cppreference.com/w/c/io/fprintf for details.
  * @param ... The parameters specified in the format sring, if any.
  */
-HN_API void hn_wri_o( const hn_chr *, ... );
+HN_API void hn_wri_o(
+	const hn_chr *,
+	...
+	);
 
 /**
  *
@@ -30,7 +33,10 @@ HN_API void hn_wri_o( const hn_chr *, ... );
  *        See https://en.cppreference.com/w/c/io/fprintf for details.
  * @param ... The parameters specified in the format sring, if any.
  */
-HN_API void hn_wri_e( const hn_chr *, ... );
+HN_API void hn_wri_e(
+	const hn_chr *,
+	...
+	);
 
 /**
  *
@@ -43,7 +49,11 @@ HN_API void hn_wri_e( const hn_chr *, ... );
  *       piping that may be layered on top. For general-purpose binary
  *       file I/O, see `<hn/file.h>` instead.
  */
-HN_API void hn_wri_f( struct hn_file *, const hn_chr *, ... );
+HN_API void hn_wri_f(
+	struct hn_file *,
+	const hn_chr *,
+	...
+	);
 
 /**
  *
@@ -52,7 +62,10 @@ HN_API void hn_wri_f( struct hn_file *, const hn_chr *, ... );
  *        See https://en.cppreference.com/w/c/io/fprintf for details.
  * @param ... The parameters specified in the format sring, if any.
  */
-HN_API void hn_wriln_o( const hn_chr *, ... );
+HN_API void hn_wriln_o(
+	const hn_chr *,
+	...
+	);
 
 /**
  *
@@ -61,7 +74,10 @@ HN_API void hn_wriln_o( const hn_chr *, ... );
  *        See https://en.cppreference.com/w/c/io/fprintf for details.
  * @param ... The parameters specified in the format sring, if any.
  */
-HN_API void hn_wriln_e( const hn_chr *, ... );
+HN_API void hn_wriln_e(
+	const hn_chr *,
+	...
+	);
 
 /**
  *
@@ -74,7 +90,11 @@ HN_API void hn_wriln_e( const hn_chr *, ... );
  *       piping that may be layered on top. For general-purpose binary
  *       file I/O, see `<hn/file.h>` instead.
  */
-HN_API void hn_wriln_f( struct hn_file *, const hn_chr *, ... );
+HN_API void hn_wriln_f(
+	struct hn_file *,
+	const hn_chr *,
+	...
+	);
 
 /**
  *

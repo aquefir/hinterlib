@@ -12,7 +12,10 @@
 #include <stdarg.h>
 #include <stdio.h>
 
-void hn_wri_o( const hn_chr * s, ... )
+void hn_wri_o(
+	const hn_chr * s,
+	...
+	)
 {
 	va_list args;
 
@@ -28,7 +31,10 @@ void hn_wri_o( const hn_chr * s, ... )
 	fflush( stdout );
 }
 
-void hn_wri_e( const hn_chr * s, ... )
+void hn_wri_e(
+	const hn_chr * s,
+	...
+	)
 {
 	va_list args;
 
@@ -44,7 +50,11 @@ void hn_wri_e( const hn_chr * s, ... )
 	fflush( stderr );
 }
 
-void hn_wri_f( struct hn_file * f, const hn_chr * s, ... )
+void hn_wri_f(
+	struct hn_file * f,
+	const hn_chr * s,
+	...
+	)
 {
 	va_list args;
 
@@ -60,7 +70,10 @@ void hn_wri_f( struct hn_file * f, const hn_chr * s, ... )
 	fflush((FILE *)f );
 }
 
-void hn_wriln_o( const hn_chr * s, ... )
+void hn_wriln_o(
+	const hn_chr * s,
+	...
+	)
 {
 	va_list args;
 
@@ -77,7 +90,10 @@ void hn_wriln_o( const hn_chr * s, ... )
 	fflush( stdout );
 }
 
-void hn_wriln_e( const hn_chr * s, ... )
+void hn_wriln_e(
+	const hn_chr * s,
+	...
+	)
 {
 	va_list args;
 
@@ -94,11 +110,15 @@ void hn_wriln_e( const hn_chr * s, ... )
 	fflush( stderr );
 }
 
-void hn_wriln_f( struct hn_file * f, const hn_chr * s, ... )
+void hn_wriln_f(
+	struct hn_file * f,
+	const hn_chr * s,
+	...
+	)
 {
 	va_list args;
 
-	if((f == NULL) || (s == NULL))
+	if(f == NULL || s == NULL)
 	{
 		return;
 	}
@@ -111,9 +131,12 @@ void hn_wriln_f( struct hn_file * f, const hn_chr * s, ... )
 	fflush((FILE *)f );
 }
 
-hn_ptri hn_readn_i( hn_chr * buf, hn_ptri count )
+hn_ptri hn_readn_i(
+	hn_chr * buf,
+	hn_ptri count
+	)
 {
-	if((buf == NULL) || (count == 0))
+	if(buf == NULL || count == 0)
 	{
 		return 0;
 	}
@@ -121,9 +144,13 @@ hn_ptri hn_readn_i( hn_chr * buf, hn_ptri count )
 	return fread( buf, 1, count, stdin );
 }
 
-hn_ptri hn_readn_f( struct hn_file * f, hn_chr * buf, hn_ptri count )
+hn_ptri hn_readn_f(
+	struct hn_file * f,
+	hn_chr * buf,
+	hn_ptri count
+	)
 {
-	if((buf == NULL) || (count == 0))
+	if(buf == NULL || count == 0)
 	{
 		return 0;
 	}
@@ -131,11 +158,14 @@ hn_ptri hn_readn_f( struct hn_file * f, hn_chr * buf, hn_ptri count )
 	return fread( buf, 1, count, (FILE *)f );
 }
 
-hn_ptri hn_readln_i( hn_chr * buf, hn_ptri count )
+hn_ptri hn_readln_i(
+	hn_chr * buf,
+	hn_ptri count
+	)
 {
 	ptri r;
 
-	if((buf == NULL) || (count == 0))
+	if(buf == NULL || count == 0)
 	{
 		return 0;
 	}
@@ -153,11 +183,15 @@ hn_ptri hn_readln_i( hn_chr * buf, hn_ptri count )
 	return r;
 }
 
-hn_ptri hn_readln_f( struct hn_file * f, hn_chr * buf, hn_ptri count )
+hn_ptri hn_readln_f(
+	struct hn_file * f,
+	hn_chr * buf,
+	hn_ptri count
+	)
 {
 	ptri r;
 
-	if((f == NULL) || (buf == NULL) || (count == 0))
+	if(f == NULL || buf == NULL || count == 0)
 	{
 		return 0;
 	}

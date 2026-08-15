@@ -323,16 +323,28 @@ HN_API hn_bl hn_ct_init(
 
 HN_API hn_bl hn_ct_make( hn_u16[4], enum hn_ct_type, struct hn_ct ** );
 
-HN_API hn_bl hn_ct_readu8( struct hn_ct *, hn_u8 * );
+HN_API hn_bl hn_ct_readu8(
+	struct hn_ct *,
+	hn_u8 *
+	);
 
-HN_API hn_bl hn_ct_readu16( struct hn_ct *, hn_u16 * );
+HN_API hn_bl hn_ct_readu16(
+	struct hn_ct *,
+	hn_u16 *
+	);
 
 #if defined(_SYNDEF_HAVE_I32)
-HN_API hn_bl hn_ct_readu32( struct hn_ct *, hn_u32 * );
+HN_API hn_bl hn_ct_readu32(
+	struct hn_ct *,
+	hn_u32 *
+	);
 #endif /* defined( _SYNDEF_HAVE_I32 ) */
 
 #if defined(_SYNDEF_HAVE_I64)
-HN_API hn_bl hn_ct_readu64( struct hn_ct *, hn_u64 * );
+HN_API hn_bl hn_ct_readu64(
+	struct hn_ct *,
+	hn_u64 *
+	);
 #endif /* defined( _SYNDEF_HAVE_I64 ) */
 
 HN_API hn_bl hn_ct_readk8( struct hn_ct *, hn_knot8 );
@@ -377,6 +389,9 @@ HN_API hn_bl hn_ct_seek32( struct hn_ct *, hn_s32 );
 HN_API hn_bl hn_ct_seek64( struct hn_ct *, hn_s64 );
 #endif /* defined( _SYNDEF_HAVE_I64 ) */
 
-HN_API void hn_ct_copy( struct hn_ct *, struct hn_ct * );
+HN_API void hn_ct_copy(
+	struct hn_ct *,
+	struct hn_ct *
+	);
 
 #endif /* INC_API__HN_CT_H */

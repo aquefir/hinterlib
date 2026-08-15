@@ -71,7 +71,11 @@ HN_API hn_bl hn_log_ungrp( struct hn_log * );
  *        See https://en.cppreference.com/w/c/io/fprintf for details.
  * @param ... The parameters specified in the format sring, if any.
  */
-HN_API void hn_log_info( struct hn_log *, const chr *, ... );
+HN_API void hn_log_info(
+	struct hn_log *,
+	const chr *,
+	...
+	);
 
 /**
  *
@@ -81,7 +85,11 @@ HN_API void hn_log_info( struct hn_log *, const chr *, ... );
  *        See https://en.cppreference.com/w/c/io/fprintf for details.
  * @param ... The parameters specified in the format sring, if any.
  */
-HN_API void hn_log_warn( struct hn_log *, const chr *, ... );
+HN_API void hn_log_warn(
+	struct hn_log *,
+	const chr *,
+	...
+	);
 
 /**
  *
@@ -91,7 +99,11 @@ HN_API void hn_log_warn( struct hn_log *, const chr *, ... );
  *        See https://en.cppreference.com/w/c/io/fprintf for details.
  * @param ... The parameters specified in the format sring, if any.
  */
-HN_API void hn_log_err( struct hn_log *, const chr *, ... );
+HN_API void hn_log_err(
+	struct hn_log *,
+	const chr *,
+	...
+	);
 #endif /* !defined( _CFGOPT_NOSTDIO ) */
 
 #endif /* INC_API__HN_LOG_H */

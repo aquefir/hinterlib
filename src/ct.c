@@ -115,8 +115,12 @@ static void init_am20d4( struct hn_ct * ct ) { }
 
 static void init_file( struct hn_ct * ct ) { }
 
-hn_bl hn_ct_init( hn_u16 sz[4], enum hn_ct_type type, hn_ptri ct_sz,
-	struct hn_ct * ct )
+hn_bl hn_ct_init(
+	hn_u16 sz[4],
+	enum hn_ct_type type,
+	hn_ptri ct_sz,
+	struct hn_ct * ct
+	)
 {
 	HN_CHK_RETV( type < HN_MAX_CT_TYPE, HN_TRUE );
 	HN_CHK_RETV( ct != NULL, HN_TRUE );
@@ -155,7 +159,7 @@ hn_bl hn_ct_init( hn_u16 sz[4], enum hn_ct_type type, hn_ptri ct_sz,
 	else
 	{
 		const ptri sz = sizeof(struct hn_ct_file) +
-			HN_PATHMAX + 1 + sizeof(struct hn_ct);
+		                HN_PATHMAX + 1 + sizeof(struct hn_ct);
 
 		HN_CHK_RETV( sz <= ct_sz, HN_TRUE );
 	}

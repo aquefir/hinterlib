@@ -13,7 +13,11 @@
 #include <hn/types/int.h>
 #include <hn/types/mem.h>
 
-static bl _dec1( am16d2 * am, u16 dimct, amoffs * ofs )
+static bl _dec1(
+	am16d2 * am,
+	u16 dimct,
+	amoffs * ofs
+	)
 {
 	am16d2 ** const am_list = alloca( sizeof(am16d2 *) * dimct );
 	am16d2 * last_am        = am;
@@ -66,8 +70,11 @@ static bl _dec1( am16d2 * am, u16 dimct, amoffs * ofs )
 	return HN_FALSE;
 }
 
-struct hn_err hn_himem_dec( void * am_, struct hn_amalgam am_opts,
-	amoffs * ofs )
+struct hn_err hn_himem_dec(
+	void * am_,
+	struct hn_amalgam am_opts,
+	amoffs * ofs
+	)
 {
 	struct hn_err ret;
 	bl r;
@@ -79,7 +86,7 @@ struct hn_err hn_himem_dec( void * am_, struct hn_amalgam am_opts,
 
 	r = _dec1( am_, am_opts.subdiv_ct + 1, ofs );
 
-	ret.id = (r == HN_FALSE) ? HN_ERR_ID_SUCCESS : HN_ERR_ID_ERANGE;
+	ret.id = r == HN_FALSE ? HN_ERR_ID_SUCCESS : HN_ERR_ID_ERANGE;
 
 	goto finish;
 

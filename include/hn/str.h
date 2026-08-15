@@ -64,7 +64,10 @@ HN_API hn_ptri hn_ustrlen( hn_uchr * );
  * @returns The number of runes that would be output, not including the
  *          `NUL` terminator.
  */
-HN_API hn_ptri hn_str2ustr( hn_chr *, hn_uchr * );
+HN_API hn_ptri hn_str2ustr(
+	hn_chr *,
+	hn_uchr *
+	);
 
 /**
  *
@@ -79,7 +82,10 @@ HN_API hn_ptri hn_str2ustr( hn_chr *, hn_uchr * );
  * @returns The number of runes that would be output, not including the
  *          `NUL` terminator.
  */
-HN_API hn_ptri hn_ustr2str( hn_uchr *, struct hn_asciify_opts, hn_chr *
+HN_API hn_ptri hn_ustr2str(
+	hn_uchr *,
+	struct hn_asciify_opts,
+	hn_chr *
 	);
 
 /**
@@ -111,7 +117,10 @@ HN_API hn_ptri hn_ustrasz( hn_uchr ** );
  * @returns The number of octets written (or to be written if `dst` is
  *          `NULL`) to the output string array.
  */
-HN_API hn_ptri hn_stracpy( hn_chr **, hn_chr ** );
+HN_API hn_ptri hn_stracpy(
+	hn_chr **,
+	hn_chr **
+	);
 
 /**
  *
@@ -125,7 +134,10 @@ HN_API hn_ptri hn_stracpy( hn_chr **, hn_chr ** );
  * @returns The number of octets written (or to be written if `dst` is
  *          `NULL`) to the output unistring array.
  */
-HN_API hn_ptri hn_ustracpy( hn_uchr **, hn_uchr ** );
+HN_API hn_ptri hn_ustracpy(
+	hn_uchr **,
+	hn_uchr **
+	);
 
 /**
  *
@@ -138,7 +150,10 @@ HN_API hn_ptri hn_ustracpy( hn_uchr **, hn_uchr ** );
  * @returns The number of octets written (or to be written if `ustr` is
  *          `NULL`) to the output unistring array.
  */
-HN_API hn_ptri hn_stra2ustra( hn_chr **, hn_uchr ** );
+HN_API hn_ptri hn_stra2ustra(
+	hn_chr **,
+	hn_uchr **
+	);
 
 /**
  *
@@ -153,8 +168,11 @@ HN_API hn_ptri hn_stra2ustra( hn_chr **, hn_uchr ** );
  * @returns The number of octets written (or to be written if `ustr` is
  *          `NULL`) to the output unistring array.
  */
-HN_API hn_ptri hn_ustra2stra( hn_uchr **, struct hn_asciify_opts,
-	hn_chr ** );
+HN_API hn_ptri hn_ustra2stra(
+	hn_uchr **,
+	struct hn_asciify_opts,
+	hn_chr **
+	);
 
 /**
  *
@@ -175,10 +193,10 @@ HN_API hn_ptri hn_ustra2stra( hn_uchr **, struct hn_asciify_opts,
  *          string and a `NULL` terminator for the array.
  */
 HN_API hn_ptri hn_strsplit( hn_chr *,
-	hn_chr *,
-	enum hn_strsplit_delimincl,
-	hn_ptri,
-	hn_chr ** );
+                            hn_chr *,
+                            enum hn_strsplit_delimincl,
+                            hn_ptri,
+                            hn_chr ** );
 
 /**
  *
@@ -199,10 +217,10 @@ HN_API hn_ptri hn_strsplit( hn_chr *,
  *          each unistring and a `NULL` terminator for the array.
  */
 HN_API hn_ptri hn_ustrsplit( hn_uchr *,
-	hn_uchr *,
-	enum hn_strsplit_delimincl,
-	hn_ptri,
-	hn_uchr ** );
+                             hn_uchr *,
+                             enum hn_strsplit_delimincl,
+                             hn_ptri,
+                             hn_uchr ** );
 
 /**
  *
@@ -216,7 +234,11 @@ HN_API hn_ptri hn_ustrsplit( hn_uchr *,
  * @returns The number of ASCII characters that were written to `str`,
  *          or would have been written in the case `str` is `NULL`.
  */
-HN_API hn_ptri hn_strjoin( hn_chr **, hn_chr *, hn_chr * );
+HN_API hn_ptri hn_strjoin(
+	hn_chr **,
+	hn_chr *,
+	hn_chr *
+	);
 
 /**
  *
@@ -230,6 +252,10 @@ HN_API hn_ptri hn_strjoin( hn_chr **, hn_chr *, hn_chr * );
  * @returns The number of Unicode runes that were written to `ustr`, or
  *          would have been written in the case `ustr` is `NULL`.
  */
-HN_API hn_ptri hn_ustrjoin( hn_uchr **, hn_uchr *, hn_uchr * );
+HN_API hn_ptri hn_ustrjoin(
+	hn_uchr **,
+	hn_uchr *,
+	hn_uchr *
+	);
 
 #endif /* INC_API__HN_STR_H */

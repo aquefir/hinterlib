@@ -16,7 +16,10 @@
 #include <mach-o/dyld.h>
 #include <stdlib.h>
 
-static bl _execpath2( chr p[HN_PATHMAX + 1], knot16 buf )
+static bl _execpath2(
+	chr p[HN_PATHMAX + 1],
+	knot16 buf
+	)
 {
 	u32 sz      = HN_PATHMAX;
 	const int r = _NSGetExecutablePath((chr *)buf, &sz );
