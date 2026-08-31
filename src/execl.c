@@ -6,4 +6,23 @@
  *            Released under Artisan Software Licence v1.1            *
 \**********************************************************************/
 
-#include <hn/str.h>
+#include <hn/err.h>
+#include <hn/exec.h>
+#include <hn/memops.h>
+#include <unistd.h>
+
+bl hn_execpath( chr p[HN_PATHMAX + 1] )
+{
+	HN_CHK_RETV( p != NULL, HN_TRUE );
+
+	hn_memset( p, 0, HN_PATHMAX + 1 );
+
+	{
+		const int r
+		        = readlink( "/proc/self/exe", p, HN_PATHMAX );
+
+		HN_CHK_RETV( r != -1, HN_TRUE );
+	}
+
+	return HN_FALSE;
+}

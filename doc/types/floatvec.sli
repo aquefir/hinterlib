@@ -1,0 +1,28 @@
+hn/types/floatvec/hn_f64v2.type
+	2-wide vector of double-precision IEEE 754 floating-point numbers.
+hn/types/floatvec/hn_f64v4.type
+	4-wide vector of double-precision IEEE 754 floating-point numbers.
+hn/types/floatvec/hn_f64v8.type
+	8-wide vector of double-precision IEEE 754 floating-point numbers.
+hn/types/floatvec/hn_f32v2.type
+	2-wide vector of single-precision IEEE 754 floating-point numbers.
+hn/types/floatvec/hn_f32v4.type
+	4-wide vector of single-precision IEEE 754 floating-point numbers.
+hn/types/floatvec/hn_f32v8.type
+	8-wide vector of single-precision IEEE 754 floating-point numbers.
+hn/types/floatvec/hn_f32v16.type
+	16-wide vector of single-precision IEEE 754 floating-point numbers.
+hn/types/floatvec/f64v2.type
+	2-wide vector of double-precision IEEE 754 floating-point numbers.
+hn/types/floatvec/f64v4.type
+	4-wide vector of double-precision IEEE 754 floating-point numbers.
+hn/types/floatvec/f64v8.type
+	8-wide vector of double-precision IEEE 754 floating-point numbers.
+hn/types/floatvec/f32v2.type
+	2-wide vector of single-precision IEEE 754 floating-point numbers.
+hn/types/floatvec/f32v4.type
+	4-wide vector of single-precision IEEE 754 floating-point numbers.
+hn/types/floatvec/f32v8.type
+	8-wide vector of single-precision IEEE 754 floating-point numbers.
+hn/types/floatvec/f32v16.type
+	16-wide vector of single-precision IEEE 754 floating-point numbers.

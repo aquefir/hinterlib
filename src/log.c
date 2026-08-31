@@ -1,58 +1,138 @@
-/*****************************************************************************\
- *                                 Hinterlib                                 *
- *                                                                           *
- *                      Copyright (C) 2019-2022 Aquefir                      *
- *                        Released under BSD-2-Clause                        *
-\*****************************************************************************/
+/**********************************************************************\
+ *                            Hinterlib v2                            *
+ *                                                                    *
+ *             Copyright (C) 2019-2024 Alexander Nicholi.             *
+ *           Copyright (C) 2024-2025 Aquefir Consulting LLC           *
+ *            Released under Artisan Software Licence v1.1            *
+\**********************************************************************/
 
-#include <uni/log.h>
+#include <hn/log.h>
 
+#if !defined(_CFGOPT_NOSTDIO)
+#include <hn/memops.h>
 #include <stdarg.h>
-#ifndef CFG_GBA
 #include <stdio.h>
 
-#include <uni/err.h>
-
-int uni_print( const char * fmt, ... )
+hn_bl hn_log_grp( struct hn_log * log )
 {
-	va_list args;
+	if((log == NULL) || (log->indent_lvl >= 7))
+	{
+		return HN_TRUE;
+	}
 
-	UNI_ASSERT( fmt != NULL );
-	fprintf( stdout, "\n[info] " );
-	va_start( args, fmt );
-	vprintf( fmt, args );
-	va_end( args );
-	fflush( stdout );
+	log->indent_lvl += 1;
 
-	return 0;
+	return HN_FALSE;
 }
 
-int uni_pwarn( const char * fmt, ... )
+hn_bl hn_log_ungrp( struct hn_log * log )
 {
-	va_list args;
+	if((log == NULL) || (log->indent_lvl <= 0))
+	{
+		return HN_TRUE;
+	}
 
-	UNI_ASSERT( fmt != NULL );
-	fprintf( stdout, "\n[warn] " );
-	va_start( args, fmt );
-	vprintf( fmt, args );
-	va_end( args );
-	fflush( stdout );
+	log->indent_lvl -= 1;
 
-	return 0;
+	return HN_FALSE;
 }
 
-int uni_perror( const char * fmt, ... )
+void hn_log_info(
+	struct hn_log * log,
+	const chr * fmt,
+	...
+	)
 {
+	chr prefix[HN_LOG_PREFIX_SZ + 1];
+	u16 i;
 	va_list args;
 
-	UNI_ASSERT( fmt != NULL );
-	fprintf( stderr, "\n[fail] " );
+	if((log == NULL) || (fmt == NULL))
+	{
+		return;
+	}
+
+	hn_memset( prefix, 0, HN_LOG_PREFIX_SZ + 1 );
+	hn_memcpy( prefix, log->prefix_info, HN_LOG_PREFIX_SZ + 1 );
+
+	for(i = 0; i < log->indent_lvl; ++i)
+	{
+		fputs( "\t", stderr );
+	}
+
+	fprintf( stderr, "%s", prefix );
+
 	va_start( args, fmt );
-	vprintf( fmt, args );
+	vfprintf( stderr, fmt, args );
 	va_end( args );
+
+	fputs( "\n", stderr );
 	fflush( stderr );
-
-	return 0;
 }
 
-#endif
+void hn_log_warn(
+	struct hn_log * log,
+	const chr * fmt,
+	...
+	)
+{
+	chr prefix[HN_LOG_PREFIX_SZ + 1];
+	u16 i;
+	va_list args;
+
+	if((log == NULL) || (fmt == NULL))
+	{
+		return;
+	}
+
+	hn_memset( prefix, 0, HN_LOG_PREFIX_SZ + 1 );
+	hn_memcpy( prefix, log->prefix_warn, HN_LOG_PREFIX_SZ + 1 );
+
+	for(i = 0; i < log->indent_lvl; ++i)
+	{
+		fputs( "\t", stderr );
+	}
+
+	fprintf( stderr, "%s", prefix );
+
+	va_start( args, fmt );
+	vfprintf( stderr, fmt, args );
+	va_end( args );
+
+	fputs( "\n", stderr );
+	fflush( stderr );
+}
+
+void hn_log_err(
+	struct hn_log * log,
+	const chr * fmt,
+	...
+	)
+{
+	chr prefix[HN_LOG_PREFIX_SZ + 1];
+	u16 i;
+	va_list args;
+
+	if((log == NULL) || (fmt == NULL))
+	{
+		return;
+	}
+
+	hn_memset( prefix, 0, HN_LOG_PREFIX_SZ + 1 );
+	hn_memcpy( prefix, log->prefix_err, HN_LOG_PREFIX_SZ + 1 );
+
+	for(i = 0; i < log->indent_lvl; ++i)
+	{
+		fputs( "\t", stderr );
+	}
+
+	fprintf( stderr, "%s", prefix );
+
+	va_start( args, fmt );
+	vfprintf( stderr, fmt, args );
+	va_end( args );
+
+	fputs( "\n", stderr );
+	fflush( stderr );
+}
+#endif /* !defined( _CFGOPT_NOSTDIO ) */

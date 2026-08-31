@@ -1,12 +1,22 @@
-# -*- coding: utf-8 -*-
+########################################################################
+##                            Hinterlib v2                            ##
+##                                                                    ##
+##             Copyright (C) 2019-2024 Alexander Nicholi.             ##
+##           Copyright (C) 2024-2025 Aquefir Consulting LLC           ##
+##            Released under Artisan Software Licence v1.1            ##
+########################################################################
 
-data
+/data
+/*.log
+/.cache
+/compile_commands.json
 3rdparty/*
 !3rdparty/README
 
 coverage.report
 *.prof*
-*.tes
+*.fmt
+*.sch
 *.o
 *.obj
 *.gcno
@@ -35,6 +45,7 @@ coverage.report
 
 .vscode/*
 !.vscode/c_cpp_properties.json
+!.vscode/settings.json
 
 
 
